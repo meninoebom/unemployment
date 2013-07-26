@@ -1,5 +1,12 @@
 @import "bootstrap-sass/lib/bootstrap";
 
+$blue: #0096C8;
+$green: #7CB555;
+$darkGrey: #333;
+$grey: #DDD;
+$lightGrey: #F3F3F3;
+$white: #FFF;
+
 /* Put your CSS here */
 html, body {
   margin: 20px;
@@ -26,4 +33,14 @@ body {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
+}
+
+.container {
+    height: 100%;
+    width: 100%;
+}
+.intro {
+    background: $blue; 
+    height: 100%;
+    width: 100%;
 }
