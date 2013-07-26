@@ -9,11 +9,10 @@ $white: #FFF;
 
 /* Put your CSS here */
 html, body {
-  margin: 20px;
 }
 
 body {
-    background: #fafafa;
+    background: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
     color: #333;
 }
@@ -35,10 +34,27 @@ body {
     letter-spacing: -1px;
 }
 
-.container {
+.intro-container, .overview-container, .level-intro-container {
+    background: $lightGrey;
+    color: $darkGrey;
+    padding: 50px;
+    width: 1170px;
+}
+.intro-container {
+    margin: 100px auto 0;
+}
+.overview-container {
+    margin: 100px auto 0;
+}
+.level-intro-container {
+    margin: 200px auto 0;
+}
+
+.level-1-container {
     height: 100%;
     width: 100%;
 }
+
 .intro {
     background: $blue; 
     height: 100%;
