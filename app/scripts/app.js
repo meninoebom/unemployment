@@ -36,4 +36,19 @@ angular.module('unemploymentApp', ['ui','ui.state'])
   }]).run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-});
+  }).directive('draggable', function(){
+    return {
+      restrict: 'A', //attribute only
+      link: function(scope, elem, attr, ctrl) {
+        elem.bind('dragstart', function(e) {
+          //do something here.
+            this.style.opacity = '0.4';  // this / e.target is the source node.
+            console.log("dragging");
+        }); 
+        elem.bind('drop', function(e) {
+          //do something here.
+            console.log("dropped");
+        });
+      }
+    };
+  });

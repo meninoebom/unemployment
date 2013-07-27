@@ -1,5 +1,6 @@
 @import "bootstrap-sass/lib/bootstrap";
 
+
 $blue: #0096C8;
 $green: #7CB555;
 $darkGrey: #333;
@@ -27,13 +28,16 @@ body {
     border-radius: 6px;
     padding: 60px;
 }
-
 .hero-unit h1 {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
 }
-
+.intro {
+    background: $blue; 
+    height: 100%;
+    width: 100%;
+}
 .intro-container, .overview-container, .level-intro-container {
     background: $lightGrey;
     color: $darkGrey;
@@ -49,14 +53,54 @@ body {
 .level-intro-container {
     margin: 200px auto 0;
 }
-
+.level-1{
+    background: #888;
+}
 .level-1-container {
-    height: 100%;
+     width: 940px;
+     margin: 0 auto;
+}
+.progress-bar {
+    background: $darkGrey; 
+    height: 50px;
     width: 100%;
+  box-shadow:  1px 6px 5px 6px #ccc;
+    /*@include box-shadow(red 20px 20px 10px);*/
+}
+.profiles {
+    background: $grey;
+    box-shadow: inset -4px 0px 9px -6px;
+    float: left;
+    height: 600px;
+    width: 300px;
+    .profile {
+        background: $darkGrey;
+        color: $white;
+        cursor: move;
+        height: 40px;
+        margin: 10px;
+        width: 100px;
+    }
+}
+.tree {
+    background: $white;
+    float: left;
+    height:400px;
+    width: 640px;
+}
+.dialogue {
+    background: $white;
+    box-shadow: inset 1px 4px 9px -6px;
+    float: left;
+    height: 200px;
+    width: 640px;
 }
 
-.intro {
-    background: $blue; 
-    height: 100%;
-    width: 100%;
+.node {
+    height: 100px;
+    width: 100px;
+    border: 2px solid #000;
+}
+.node.over {
+    border: 2px dashed #000;
 }

@@ -1,1 +1,7 @@
-<div class="sidebar">This is the employment profiles</div>
+<div class="profiles" ng-controller="profilesController">
+	<ul>
+		<li ng-repeat="profile in profiles" draggable="true" class="profile">
+			{{profile.name}}
+		</li>
+	</ul>
+</div>
