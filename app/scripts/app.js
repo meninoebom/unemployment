@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('unemploymentApp', ['ui','ui.state'])
+var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragdrop'])
   .config(['$stateProvider','$routeProvider', function ($stateProvider, $routeProvider) {
     $stateProvider
       .state('intro', {
@@ -21,34 +21,20 @@ angular.module('unemploymentApp', ['ui','ui.state'])
       .state('level-1', {
         url: "/level/1",
         templateUrl: "views/level-1.html",
+        controller: 'Level1Ctrl',
         baseClass: "level-1"
-      })  ;
-
-
-    // $routeProvider
-    //   .when('/', {
-    //     templateUrl: 'views/main.html',
-    //     controller: 'MainCtrl'
-    //   })
-    //   .otherwise({
-    //     redirectTo: '/'
-    //   });
+      });
   }]).run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-  }).directive('draggable', function(){
-    return {
-      restrict: 'A', //attribute only
-      link: function(scope, elem, attr, ctrl) {
-        elem.bind('dragstart', function(e) {
-          //do something here.
-            this.style.opacity = '0.4';  // this / e.target is the source node.
-            console.log("dragging");
-        }); 
-        elem.bind('drop', function(e) {
-          //do something here.
-            console.log("dropped");
-        });
-      }
-    };
-  });
+  }).controller('Level1Ctrl', ['$scope', function($scope) {
+    $scope.incorrectModal = angular.element('#incorrect-modal');
+    $scope.incorrectModal.modal({
+      show: false
+    });  
+    $scope.incorrect = function() {
+      $scope.incorrectModal.modal('show');
+    }
+}]);;
+
+

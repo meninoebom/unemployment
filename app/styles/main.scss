@@ -1,6 +1,5 @@
 @import "bootstrap-sass/lib/bootstrap";
 
-
 $blue: #0096C8;
 $green: #7CB555;
 $darkGrey: #333;
@@ -8,10 +7,14 @@ $grey: #DDD;
 $lightGrey: #F3F3F3;
 $white: #FFF;
 
-/* Put your CSS here */
-html, body {
-}
+@mixin circle($dimensions) {
+    height: $dimensions;
+    width: $dimensions;
+    border-radius: 50%;
+}  
 
+
+/* Put your CSS here */
 body {
     background: #fff;
     font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -96,11 +99,72 @@ body {
     width: 640px;
 }
 
+$nodeSize: 55px;
+$nodeBorderWidth: 7px;
+$labelSize: 14px;
 .node {
-    height: 100px;
-    width: 100px;
-    border: 2px solid #000;
+    color: $darkGrey;
+    position: absolute;
+    text-align: center;
+    height: $nodeSize + $nodeBorderWidth*2;
+    width: $nodeSize + $nodeBorderWidth*2;
+    .circle {
+        @include circle($nodeSize);
+        border: 6px solid $grey;
+    }
+    .total {
+        font-size: $labelSize;
+        font-weight: bold;
+        display: block;
+        margin: ($nodeSize - $nodeBorderWidth)/2 - $labelSize/2 auto 0;
+    }
+    .node-label {
+        position: relative;
+        font-size: 9px;
+        line-height: 10px;
+        bottom: -($nodeBorderWidth);
+        display: block;
+        margin: 0 auto;
+    }
 }
+.non-institution {
+    left: 60%;top: 60px;
+    .labor-force {
+        left: -100px;top: 80px;
+        .employed {
+            left: -100px;top: 80px;
+        }
+        .unemployed {
+            left: 100px;top: 80px;
+            .friction{left: -100px;top: 80px;}
+            .structure{left: 0px;top: 80px;}
+            .cyclic{left: 100px;top: 80px;}
+        }
+    }
+    .not-labor-force {
+        left: 100px;top: 80px;
+    }
+}
+
 .node.over {
     border: 2px dashed #000;
+}
+#incorrect-modal.modal {
+    @include border-radius(4px);
+    background: $darkGrey;
+    border: 1px solid $red;
+    opacity: .9;
+    text-align: center;
+    top: 50%;
+    strong{
+        display: block;
+        color: $red;
+        text-transform: uppercase;
+    }
+    small {
+        color: $white;
+    }
+}
+.modal-backdrop, .modal-backdrop.fade.in {
+    opacity: .1;
 }

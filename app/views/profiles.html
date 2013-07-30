@@ -1,6 +1,6 @@
-<div class="profiles" ng-controller="profilesController">
+<div class="profiles" ng-controller="ProfilesController">
 	<ul>
-		<li ng-repeat="profile in profiles" draggable="true" class="profile">
+		<li ng-repeat="profile in profiles" employment-status="{{profile.employmentStatus}}" isDropped="{{profile.isDropped}}" draggable="true" class="profile">
 			{{profile.name}}
 		</li>
 	</ul>
