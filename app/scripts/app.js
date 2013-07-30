@@ -43,6 +43,16 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
     $scope.incorrect = function() {
       $scope.incorrectModal.modal('show');
     }
+    $scope.profiles = [
+      {incorrectAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {incorrectAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {incorrectAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {incorrectAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {incorrectAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {incorrectAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: "employed", active: "false"},
+      {incorrectAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"}
+    ];
+
 }]);;
 
 

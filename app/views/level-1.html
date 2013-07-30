@@ -1,6 +1,16 @@
 <div class="level-1-container">
 	<div ng-include src="'views/progress-bar.html'"></div>
-	<div ng-include src="'views/profiles.html'"></div>
+	
+	<div class="profiles">
+		<ul>
+			<li ng-repeat="profile in profiles" employment-status="{{profile.employmentStatus}}" draggable="{{profile.active}}" ng-class="{'profile': true, 'active': profile.active}" index="{{$index}}">
+				{{profile.active}} {{profile.incorrectAttempts}}
+
+			</li>
+		</ul>
+	</div>
+
+
 	<div ng-include src="'views/tree.html'"></div>
 	<div ng-include src="'views/dialogue.html'"></div>
 </div>
