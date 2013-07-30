@@ -16,20 +16,31 @@ angular.module('dragdrop', [])
 .directive('target', function(){
 	return {
 		restrict: 'A',
-		link: function(scope, elem, attrs, ctrl) {
+		require: 'ngModel',
+		link: function(scope, elem, attrs, ngModel) {
 			var correctAnswer = attrs.employmentStatus;
+			scope.count = 0;
+
 			elem.bind('dragover', function(e) {
 				e.preventDefault();
 			}).bind('drop', function(e) {
 				e.preventDefault();
 				var profileStatus = e.originalEvent.dataTransfer.getData('text/plain');
-				console.log(profileStatus);
+
 				if(profileStatus == correctAnswer) {
-					console.log('correctAnswer');
+					scope.count = scope.count + 1;
+					ngModel.$setViewValue(scope.count);
+					ngModel.$render();
 				} else	{
 					scope.incorrect();
 				}
 			});
+
+
+			ngModel.$render = function() {
+				elem.find('.total').html(ngModel.$viewValue || 0);
+			}
+
 		}
 	};
 });

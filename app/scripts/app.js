@@ -28,6 +28,14 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
   }).controller('Level1Ctrl', ['$scope', function($scope) {
+
+    $scope.employedCount = 0;
+    $scope.frictionalCount = 0;
+    $scope.structuralCount = 0;
+    $scope.cyclicalCount = 0;
+    $scope.notInLaborForceCount = 0;
+
+
     $scope.incorrectModal = angular.element('#incorrect-modal');
     $scope.incorrectModal.modal({
       show: false

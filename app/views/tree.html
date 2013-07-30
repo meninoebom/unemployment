@@ -1,38 +1,38 @@
 <div class="tree">
-	<div class="node non-institution">
+	<div class="node branch non-institution">
 		<div class="circle"><span class="total">0</span></div>
 		<span class="node-label">Non-institutional<br /> Adult Population</span>
-		<div class="node labor-force">
+		<div class="node branch labor-force">
 			<div class="circle"><span class="total">0</span></div>
 
 			<span class="node-label">Labor Force</span>
-			<div class="node employed" target employment-status="employed">
+			<div class="node leaf employed" target ng-model="employedCount" employment-status="employed">
 				<div class="circle"><span class="total">0</span></div>
 	
 				<span class="node-label">Employed</span>
 			</div>
-			<div class="node unemployed">
+			<div class="node branch unemployed">
 				<div class="circle"><span class="total">0</span></div>
 	
 				<span class="node-label">Unemployed</span>
-				<div class="node friction" target employment-status="frictionally">
+				<div class="node leaf friction" target ng-model="frictionalCount" employment-status="frictionally">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Frictionally Unemployed</span>
 				</div>
-				<div class="node structure" target employment-status="structurally">
+				<div class="node leaf structure" target ng-model="structuralCount" employment-status="structurally">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Structurally Unemployed</span>
 				</div>
-				<div class="node cyclic" target employment-status="cyclical">
+				<div class="node leaf cyclic" target ng-model="cyclicalCount" employment-status="cyclical">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Cyclically Unemployed</span>
 				</div>
 			</div>
 		</div>
-		<div class="node not-labor-force" target employment-status="not-labor-force">
+		<div class="node leaf not-labor-force" target ng-model="notLaborForceCount" employment-status="not-labor-force">
 			<div class="circle"><span class="total">0</span></div>
 
 			<span class="node-label">Not in Labor Force</span>
