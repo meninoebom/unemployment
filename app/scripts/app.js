@@ -44,15 +44,30 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
       $scope.incorrectModal.modal('show');
     }
     $scope.profiles = [
-      {incorrectAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {incorrectAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {incorrectAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {incorrectAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {incorrectAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {incorrectAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: "employed", active: "false"},
-      {incorrectAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"}
+      {failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
+      {failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"}
     ];
 
-}]);;
+    $scope.showDetails = function (e) {
+       var elem = angular.element(e.currentTarget);
+       var isActive = elem.hasClass('active');
+       if(!isActive){        
+         elem.popover({content: elem.attr("data-content"), placement: elem.attr("data-placement")});
+         elem.popover('show');
+       }
+    }
+
+    $scope.hideDetails = function (e) {
+       var elem = angular.element(e.currentTarget);
+       elem.popover('hide');
+    }
+
+    $scope.testBool = true;
+}]);
 
 

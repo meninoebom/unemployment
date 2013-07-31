@@ -36,7 +36,7 @@ angular.module('dragdrop', [])
 					ngModel.$render();
 				} else	{
 					scope.$apply(function(){
-						currentProfile.incorrectAttempts++;
+						currentProfile.failedAttempts++;
 					});
 					scope.incorrect();
 				}

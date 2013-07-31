@@ -3,13 +3,16 @@
 	
 	<div class="profiles">
 		<ul>
-			<li ng-repeat="profile in profiles" employment-status="{{profile.employmentStatus}}" draggable="{{profile.active}}" ng-class="{'profile': true, 'active': profile.active}" index="{{$index}}">
-				{{profile.active}} {{profile.incorrectAttempts}}
+			<li ng-repeat="profile in profiles" employment-status="{{profile.employmentStatus}}" draggable="{{profile.active}}" ng-class="{'profile': true, 'active': profile.active}" id="profile-{{$index}}" index="{{$index}}"  ng-mouseover="showDetails($event)" ng-mouseover="hideDetails($event)" data-content="{{profile.name}}{{profile.description}}{{profile.employmentStatus}}" data-placement="right" data-trigger="hover">
+				<span class="incorrect" ng-show="profile.failedAttempts" >
+					{{profile.failedAttempts}}
+				</span>
+
+
 
 			</li>
 		</ul>
 	</div>
-
 
 	<div ng-include src="'views/tree.html'"></div>
 	<div ng-include src="'views/dialogue.html'"></div>
