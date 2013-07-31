@@ -55,16 +55,24 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
 
     $scope.showDetails = function (e) {
        var elem = angular.element(e.currentTarget);
+       var name = elem.attr("name");
+       var description = elem.attr("description");
+       var employmentStatus = elem.attr("employment-status");
+       var placement = elem.attr("placement");
        var isActive = elem.hasClass('active');
-       if(!isActive){        
-         elem.popover({content: elem.attr("data-content"), placement: elem.attr("data-placement")});
-         elem.popover('show');
+       if(isActive){        
+         var content = "<h4>"+name+"</h4><p>"+description+"</p>";
+       } else {
+         console.log(employmentStatus);
+         var content = "<h4>"+name+"</h4><p>"+description+"</p><span>"+employmentStatus+"</span>";
        }
+       elem.popover({content: content, placement: placement, html: true});
+       elem.popover('show');
     }
 
     $scope.hideDetails = function (e) {
        var elem = angular.element(e.currentTarget);
-       elem.popover('hide');
+       elem.popover('destroy');
     }
 
     $scope.testBool = true;
