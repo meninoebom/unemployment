@@ -60,7 +60,7 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
       5: 'not in labor force'
     };
 
-    $scope.showDetails = function (e) {
+    /*$scope.showDetails = function (e) {
        var elem = angular.element(e.currentTarget);
        var name = elem.attr("name");
        var description = elem.attr("description");
@@ -79,15 +79,7 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
     $scope.hideDetails = function (e) {
        var elem = angular.element(e.currentTarget);
        elem.popover('destroy');
-    }
-
-    // $scope.getProfileImg = function(gender, state) {
-    //   var gender = (gender == "m" ? "male" : "female");
-    //   var rand = Math.floor(Math.random()*3)+1;
-    //   rand = rand.toString();
-    //   return "img/profiles/"+gender+"/"+rand+"_"+state+".png";
-    //   return { 'background-image': "url('" + item.imageURL + "')"  }
-    // }
+    }*/
 
 }]);
 

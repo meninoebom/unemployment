@@ -4,24 +4,30 @@ angular.module('dragdrop', [])
 .directive('profileBg', function(){
     return {
 		restrict: 'A',
+		//require: 'ngModel',
+		// scope: {
+		// 	model: '@ngModel'
+		// },
 		link: function(scope, elem, attrs, ctrl) {
-		    attrs.$observe('gender', function(value) {
-		        var gender = (value == 'm') ? 'male' : 'female';
+	        // console.log(scope)
+
+	        scope.$watch(attrs.profile, function(profile) {
+
+		        var gender = (profile.gender == 'm') ? 'male' : 'female';
 			    var rand = Math.floor(Math.random()*3)+1;
-		        elem.bind('mouseenter', function(){
-		            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_roll.png')");
-		        }).bind('mouseleave', function(){
-		        	setDefaultBgImage(elem);
-		        })
-		        var setDefaultBgImage = function(elem) {
-		        	if(elem.hasClass('active')) {
-		        		elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
-		        	} else {
-				        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_inactive.png')");
-		        	}
-		        }
-		        setDefaultBgImage(elem);		        
-		    });
+				if(profile.active) {
+			    	elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+	        		elem.bind('mouseenter', function(){
+			            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_roll.png')");
+			        }).bind('mouseleave', function(){
+				        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+			        })
+	        	} else {
+			        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_inactive.png')");
+			        elem.unbind();
+	        	}	        
+	        }, true);
+
 		}
 	};
 })

@@ -4,20 +4,23 @@
 	<div class="profiles">
 		<ul>
 			<li 
-				ng-repeat="profile in profiles" 
+				ng-repeat="profile in profiles"
+				ng-model="profile"
+				profile="profile"
+				profile-bg
+				draggable="{{profile.active}}" 
+				ng-class="{'profile': true, 'active': profile.active}" 
+				ng-mouseover="showDetails($event)"
+				ng-mouseleave="hideDetails($event)" 
+				
 				index="{{$index}}"  
 				name="{{profile.name}}" 
 				description="{{profile.description}}" 
 				employment-status="{{profile.employmentStatus}}" 
-				draggable="{{profile.active}}" 
-				ng-class="{'profile': true, 'active': profile.active}" 
 				id="profile-{{$index}}" 
-				ng-mouseover="showDetails($event)"
-				ng-mouseleave="hideDetails($event)" 
 				placement="right"
-				gender="{{profile.gender}}"
-				profile-bg>
-				<span class="incorrect" ng-show="profile.failedAttempts" >
+				>
+				<span class="failed-attempts-count" ng-show="profile.failedAttempts" >
 					{{profile.failedAttempts}}
 					<div class="failed-attempts-details"></div>
 				</span>
