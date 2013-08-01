@@ -6,7 +6,7 @@
 			<div class="circle"><span class="total">0</span></div>
 
 			<span class="node-label">Labor Force</span>
-			<div class="node leaf employed" target ng-model="employedCount" employment-status="employed">
+			<div class="node leaf employed" target ng-model="employedCount" employment-status="1">
 				<div class="circle"><span class="total">0</span></div>
 	
 				<span class="node-label">Employed</span>
@@ -15,24 +15,24 @@
 				<div class="circle"><span class="total">0</span></div>
 	
 				<span class="node-label">Unemployed</span>
-				<div class="node leaf friction" target ng-model="frictionalCount" employment-status="frictionally">
+				<div class="node leaf friction" target ng-model="frictionalCount" employment-status="2">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Frictionally Unemployed</span>
 				</div>
-				<div class="node leaf structure" target ng-model="structuralCount" employment-status="structurally">
+				<div class="node leaf structure" target ng-model="structuralCount" employment-status="3">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Structurally Unemployed</span>
 				</div>
-				<div class="node leaf cyclic" target ng-model="cyclicalCount" employment-status="cyclical">
+				<div class="node leaf cyclic" target ng-model="cyclicalCount" employment-status="4">
 					<div class="circle"><span class="total">0</span></div>
 		
 					<span class="node-label">Cyclically Unemployed</span>
 				</div>
 			</div>
 		</div>
-		<div class="node leaf not-labor-force" target ng-model="notLaborForceCount" employment-status="not-labor-force">
+		<div class="node leaf not-labor-force" target ng-model="notLaborForceCount" employment-status="5">
 			<div class="circle"><span class="total">0</span></div>
 
 			<span class="node-label">Not in Labor Force</span>

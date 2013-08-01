@@ -44,26 +44,32 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
       $scope.incorrectModal.modal('show');
     }
     $scope.profiles = [
-      {failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"},
-      {failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: "employed", active: "true"}
+      {gender: "m", failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: 1, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: 2, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: 3, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: 4, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: 5, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: 1, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: 2, active: "true"}
     ];
+    $scope.empStatusMap = {
+      1: 'employed',
+      2: 'frictionally unemployed',
+      3: 'structurally unemployed',
+      4: 'cyclically unemployed',
+      5: 'not in labor force'
+    };
 
     $scope.showDetails = function (e) {
        var elem = angular.element(e.currentTarget);
        var name = elem.attr("name");
        var description = elem.attr("description");
-       var employmentStatus = elem.attr("employment-status");
+       var employmentStatus = $scope.empStatusMap[elem.attr("employment-status")];
        var placement = elem.attr("placement");
        var isActive = elem.hasClass('active');
        if(isActive){        
          var content = "<h4>"+name+"</h4><p>"+description+"</p>";
        } else {
-         console.log(employmentStatus);
          var content = "<h4>"+name+"</h4><p>"+description+"</p><span>"+employmentStatus+"</span>";
        }
        elem.popover({content: content, placement: placement, html: true});
@@ -75,7 +81,14 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
        elem.popover('destroy');
     }
 
-    $scope.testBool = true;
+    // $scope.getProfileImg = function(gender, state) {
+    //   var gender = (gender == "m" ? "male" : "female");
+    //   var rand = Math.floor(Math.random()*3)+1;
+    //   rand = rand.toString();
+    //   return "img/profiles/"+gender+"/"+rand+"_"+state+".png";
+    //   return { 'background-image': "url('" + item.imageURL + "')"  }
+    // }
+
 }]);
 
 

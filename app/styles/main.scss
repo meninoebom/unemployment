@@ -13,6 +13,12 @@ $white: #FFF;
     border-radius: 50%;
 }  
 
+@mixin font($size: 16px, $line-height: 18px, $color: $darkGrey) {
+    font-size: $size;
+    line-height: $line-height;
+    color: $color;
+}  
+
 /* Put your CSS here */
 body {
     background: #fff;
@@ -24,7 +30,7 @@ body {
     list-style: none;
  }
 
-.hero-unit {
+/*.hero-unit {
     margin: 50px auto 0 auto;
     width: 300px;
     font-size: 18px;
@@ -38,7 +44,9 @@ body {
     font-size: 60px;
     line-height: 1;
     letter-spacing: -1px;
-}
+}*/
+
+
 .intro {
     background: $blue; 
     height: 100%;
@@ -63,33 +71,79 @@ body {
     background: #888;
 }
 .level-1-container {
-     width: 940px;
+     width: 1024px;
      margin: 0 auto;
 }
-.progress-bar {
+.banner {
     background: $darkGrey; 
-    height: 50px;
+    height: 60px;
     width: 100%;
-    box-shadow:  1px 6px 5px 6px #ccc;
+    /*box-shadow:  1px 6px 5px 6px #ccc;*/
     /*@include box-shadow(red 20px 20px 10px);*/
+
+    div {
+        display: inline-block;
+        float: left;
+    }
+    h1 {
+        @include font(20px, 22px, $white);
+        float: left;
+        margin: 21px 20px 0;
+    }
+    .score-container {
+        margin: 9px 20px 0;
+    }
+    .score-label {
+        @include font(10px, 12px, $white);
+        display: inline-block;
+        padding-right: 5px;
+    }
+    .score {
+        display: inline-block;
+        @include font(20px, 22px, $white);
+        background: transparent url('../img/level-score_bg.png') top left;
+        background-size: 95px 40px; /*downsample for retina*/
+        font-weight: bold;
+        width: 65px;
+        height: 20px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+        padding-left: 30px;
+    }
+    .progress-bar-container {
+        margin: 14px 20px 0;
+    }
+    .progress-bar-label {
+        @include font(10px, 12px, $white);
+        padding-right: 5px;
+    }
+    .progress-bar {
+
+    }
+    .logo {
+        float: right;
+        margin: 10px 21px 0 0;
+    }
 }
+
 .profiles {
     background: $grey;
     box-shadow: inset -4px 0px 9px -6px;
     float: left;
-    height: 600px;
-    width: 300px;
+    height: 708px;
+    width: 303px;
     .profile {
-        background: #aaa;
+        background-position: 50% 100%;
+        background-size: 100%;
+        background-repeat: no-repeat;
         color: $white;
-        height: 40px;
-        margin: 10px;
+        height: 67px;
         position: relative;
-        width: 100px;
+        width: 67px;
+        float: left;
     }
     .active {
         cursor: move;
-        background: $darkGrey;
     }
     .incorrect {
         background: $red;
@@ -108,15 +162,15 @@ body {
 .tree {
     background: $white;
     float: left;
-    height:400px;
-    width: 640px;
+    height:536px;
+    width: 721px;
 }
 .dialogue {
     background: $white;
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
-    height: 200px;
-    width: 640px;
+    height: 172px;
+    width: 721px;
 }
 
 $nodeSize: 55px;

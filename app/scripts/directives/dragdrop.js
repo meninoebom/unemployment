@@ -1,6 +1,24 @@
 'use strict';
 
 angular.module('dragdrop', [])
+.directive('profileBg', function(){
+    return {
+		restrict: 'A',
+		link: function(scope, elem, attrs, ctrl) {
+		    attrs.$observe('gender', function(value) {
+		        var gender = (value == 'm') ? 'male' : 'female';
+			    var rand = Math.floor(Math.random()*3)+1;
+		        elem.bind('mouseenter', function(){
+		            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_roll.png')");
+		        }).bind('mouseleave', function(){
+		            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+		        })
+		        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+
+		    });
+		}
+	};
+})
 .directive('draggable', function(){
 	return {
 		restrict: 'A',
@@ -17,7 +35,7 @@ angular.module('dragdrop', [])
 		restrict: 'A',
 		require: 'ngModel',
 		link: function(scope, elem, attrs, ngModel) {
-			var correctAnswer = attrs.employmentStatus;
+			var correctAnswer = scope.empStatusMap[attrs.employmentStatus];
 			var count = 0;
 
 			elem.bind('dragover', function(e) {
@@ -26,7 +44,7 @@ angular.module('dragdrop', [])
 				e.preventDefault();
 				var currentProfileIndex = e.originalEvent.dataTransfer.getData('text/plain');
 				var currentProfile = scope.profiles[currentProfileIndex];
-				var profileStatus = currentProfile.employmentStatus;
+				var profileStatus = scope.empStatusMap[currentProfile.employmentStatus];
 				if(profileStatus == correctAnswer) {
 					count++;
 					ngModel.$setViewValue(count);
