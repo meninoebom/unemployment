@@ -11,10 +11,16 @@ angular.module('dragdrop', [])
 		        elem.bind('mouseenter', function(){
 		            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_roll.png')");
 		        }).bind('mouseleave', function(){
-		            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+		        	setDefaultBgImage(elem);
 		        })
-		        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
-
+		        var setDefaultBgImage = function(elem) {
+		        	if(elem.hasClass('active')) {
+		        		elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+		        	} else {
+				        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_inactive.png')");
+		        	}
+		        }
+		        setDefaultBgImage(elem);		        
 		    });
 		}
 	};
