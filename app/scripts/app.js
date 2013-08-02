@@ -28,14 +28,11 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
   }).controller('Level1Ctrl', ['$scope', function($scope) {
-
     $scope.employedCount = 0;
     $scope.frictionalCount = 0;
     $scope.structuralCount = 0;
     $scope.cyclicalCount = 0;
     $scope.notInLaborForceCount = 0;
-
-
     $scope.incorrectModal = angular.element('#incorrect-modal');
     $scope.incorrectModal.modal({
       show: false
@@ -44,42 +41,85 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
       $scope.incorrectModal.modal('show');
     }
     $scope.profiles = [
-      {gender: "m", failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentStatus: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentStatus: 2, active: "true"},
-      {gender: "m", failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentStatus: 3, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentStatus: 4, active: "true"},
-      {gender: "m", failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentStatus: 5, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentStatus: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentStatus: 2, active: "true"}
+      {gender: "m", failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentCategoryId: 3, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentCategoryId: 4, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentCategoryId: 5, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"}
     ];
-    $scope.empStatusMap = {
-      1: 'employed',
-      2: 'frictionally unemployed',
-      3: 'structurally unemployed',
-      4: 'cyclically unemployed',
-      5: 'not in labor force'
-    };
 
-    /*$scope.showDetails = function (e) {
-       var elem = angular.element(e.currentTarget);
-       var name = elem.attr("name");
-       var description = elem.attr("description");
-       var employmentStatus = $scope.empStatusMap[elem.attr("employment-status")];
-       var placement = elem.attr("placement");
-       var isActive = elem.hasClass('active');
-       if(isActive){        
-         var content = "<h4>"+name+"</h4><p>"+description+"</p>";
-       } else {
-         var content = "<h4>"+name+"</h4><p>"+description+"</p><span>"+employmentStatus+"</span>";
-       }
-       elem.popover({content: content, placement: placement, html: true});
-       elem.popover('show');
+$scope.employmentCategories = [
+      { id: 1,
+        name: 'employed',
+        parent: 7,
+        profiles: 0
+      },
+      { id: 2,
+        name: 'frictionally unemployed',
+        parent: 8,
+        profiles: 0
+      },
+      { id: 3,
+        name: 'structurally unemployed',
+        parent: 8,
+        profiles: 0
+      },
+      { id: 4,
+        name: 'cyclically unemployed',
+        parent: 8,
+        profiles: 0
+      },
+      { id: 5,
+        name: 'not in labor',
+        parent: 6,
+        profiles: 0
+      },
+      { id: 6,
+        name: 'non institutional',
+        parent: null,
+        profiles: 0
+      },
+      { id: 7,
+        name: 'labor force',
+        parent: 6,
+        profiles: 0
+      },
+      { id: 8,
+        name: 'unemployed',
+        parent: 7,
+        profiles: 0
+      }
+    ];
+
+    $scope.getEmpCategoryObjById = function(id) {
+        var obj = $scope.findObjById($scope.employmentCategories, id);
+        return obj;
     }
 
-    $scope.hideDetails = function (e) {
-       var elem = angular.element(e.currentTarget);
-       elem.popover('destroy');
-    }*/
+    $scope.findObjById = function(array, id) {
+      for(var i = 0, len = array.length; i < len; i++) {
+        if(array[i].id == id) {
+          return array[i];
+        }
+      }
+    }
+
+    $scope.addProfiles = function(id){
+      var tree = $scope.employmentCategories;
+      var node = $scope.findObjById(tree, id);
+      $scope.updateTree(tree, node);
+      console.log(tree);
+    }
+
+    $scope.updateTree = function updateTree(tree, node) {
+      if(node.parent) {
+        var parentNode = $scope.findObjById(tree, node.parent);
+        updateTree(tree, parentNode)
+      }
+      node.profiles++;
+    }
 
 }]);
 

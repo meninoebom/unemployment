@@ -1,38 +1,41 @@
 <div class="tree">
+	<h2>Employment Categories</h2>
+	<img src="img/tree_bg.png" width="492" height="410" />
 	<div class="node branch non-institution">
-		<div class="circle"><span class="total">0</span></div>
+		<div class="circle"><span class="total">{{employmentCategories[5].profiles}}</span></div>
 		<span class="node-label">Non-institutional<br /> Adult Population</span>
-		<div class="node branch labor-force">
-			<div class="circle"><span class="total">0</span></div>
 
+		<div class="node branch labor-force">
+			<div class="circle"><span class="total">{{employmentCategories[6].profiles}}</span></div>
 			<span class="node-label">Labor Force</span>
-			<div class="node leaf employed" target ng-model="employedCount" employment-status="1">
-				<div class="circle"><span class="total">0</span></div>
-	
+
+			<div class="node leaf employed" target ng-model="employedCount" employment-category-id="1">
+				<div class="circle"><span class="total">{{employmentCategories[0].profiles}}</span></div>
 				<span class="node-label">Employed</span>
 			</div>
+
 			<div class="node branch unemployed">
 				<div class="circle"><span class="total">0</span></div>
-	
 				<span class="node-label">Unemployed</span>
-				<div class="node leaf friction" target ng-model="frictionalCount" employment-status="2">
-					<div class="circle"><span class="total">0</span></div>
-		
+
+				<div class="node leaf friction" target ng-model="frictionalCount" employment-category-id="2">
+					<div class="circle"><span class="total">{{employmentCategories[1].profiles}}</span></div>
 					<span class="node-label">Frictionally Unemployed</span>
 				</div>
-				<div class="node leaf structure" target ng-model="structuralCount" employment-status="3">
-					<div class="circle"><span class="total">0</span></div>
-		
+
+				<div class="node leaf structure" target ng-model="structuralCount" employment-category-id="3">
+					<div class="circle"><span class="total">{{employmentCategories[2].profiles}}</span></div>
 					<span class="node-label">Structurally Unemployed</span>
 				</div>
-				<div class="node leaf cyclic" target ng-model="cyclicalCount" employment-status="4">
-					<div class="circle"><span class="total">0</span></div>
-		
+
+				<div class="node leaf cyclic" target ng-model="cyclicalCount" employment-category-id="4">
+					<div class="circle"><span class="total">{{employmentCategories[3].profiles}}</span></div>
 					<span class="node-label">Cyclically Unemployed</span>
 				</div>
+
 			</div>
 		</div>
-		<div class="node leaf not-labor-force" target ng-model="notLaborForceCount" employment-status="5">
+		<div class="node leaf not-labor-force" target ng-model="notLaborForceCount" employment-category-id="5">
 			<div class="circle"><span class="total">0</span></div>
 
 			<span class="node-label">Not in Labor Force</span>

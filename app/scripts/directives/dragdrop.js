@@ -1,33 +1,49 @@
 'use strict';
 
 angular.module('dragdrop', [])
+.directive('showDetails', function(){
+    return {
+		restrict: 'A',
+		link: function(scope, elem, attrs, ctrl) {
+	       var name = scope.profile.name;
+	       var description = scope.profile.description;
+	       var employmentCategoryObj = scope.getEmpCategoryObjById(scope.profile.employmentCategoryId);
+	       var empCategoryName = employmentCategoryObj.name;
+	       scope.$watch(attrs.profile, function(profile) {       	
+		       if(profile.active){        
+		         var content = "<h4>"+name+"</h4><p>"+description+"</p>";
+		       } else {
+		         var content = "<h4>"+name+"</h4><p>"+description+"</p><span>"+empCategoryName+"</span>";
+		       }
+		       elem.bind('mouseenter', function(){
+			       elem.popover({content: content, placement: 'right', html: true});
+			       elem.popover('show'); 
+		        }).bind('mouseleave', function(){
+			        elem.popover('destroy');
+		        });
+	       }, true);
+		}
+	};
+})
 .directive('profileBg', function(){
     return {
 		restrict: 'A',
-		//require: 'ngModel',
-		// scope: {
-		// 	model: '@ngModel'
-		// },
 		link: function(scope, elem, attrs, ctrl) {
-	        // console.log(scope)
-
+		    var whichImg = Math.floor(Math.random()*3)+1;
 	        scope.$watch(attrs.profile, function(profile) {
-
 		        var gender = (profile.gender == 'm') ? 'male' : 'female';
-			    var rand = Math.floor(Math.random()*3)+1;
 				if(profile.active) {
-			    	elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+			    	elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_active.png')");
 	        		elem.bind('mouseenter', function(){
-			            elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_roll.png')");
+			            elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_roll.png')");
 			        }).bind('mouseleave', function(){
-				        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_active.png')");
+				        elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_active.png')");
 			        })
 	        	} else {
-			        elem.css("background-image", "url('img/profiles/"+gender+"/"+rand+"_inactive.png')");
+			        elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_inactive.png')");
 			        elem.unbind();
 	        	}	        
 	        }, true);
-
 		}
 	};
 })
@@ -35,7 +51,6 @@ angular.module('dragdrop', [])
 	return {
 		restrict: 'A',
 		link: function(scope, elem, attrs, ctrl) {
-
 			elem.bind('dragstart', function(e) {
 				e.originalEvent.dataTransfer.setData('text/plain', attrs.index);
 			});
@@ -47,21 +62,20 @@ angular.module('dragdrop', [])
 		restrict: 'A',
 		require: 'ngModel',
 		link: function(scope, elem, attrs, ngModel) {
-			var correctAnswer = scope.empStatusMap[attrs.employmentStatus];
+			var category = scope.getEmpCategoryObjById(attrs.employmentCategoryId);
 			var count = 0;
-
 			elem.bind('dragover', function(e) {
 				e.preventDefault();
 			}).bind('drop', function(e) {
 				e.preventDefault();
 				var currentProfileIndex = e.originalEvent.dataTransfer.getData('text/plain');
 				var currentProfile = scope.profiles[currentProfileIndex];
-				var profileStatus = scope.empStatusMap[currentProfile.employmentStatus];
-				if(profileStatus == correctAnswer) {
+				if(currentProfile.employmentCategoryId == attrs.employmentCategoryId) {
 					count++;
 					ngModel.$setViewValue(count);
 					scope.$apply(function(){
 						currentProfile.active = false;
+						scope.addProfiles(attrs.employmentCategoryId);
 					});
 					ngModel.$render();
 				} else	{
@@ -71,11 +85,9 @@ angular.module('dragdrop', [])
 					scope.incorrect();
 				}
 			});
-
 			ngModel.$render = function() {
 				elem.find('.total').html(ngModel.$viewValue || 0);
 			}
-
 		}
 	};
 });
