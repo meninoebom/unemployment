@@ -1,13 +1,13 @@
 <div class="tree">
-	<h2>Employment Categories</h2>
-	<img src="img/tree_bg.png" width="492" height="410" />
+	<h2 class="tree-header">Employment Categories</h2>
+	<div class="tree-bg"><img src="img/tree_bg.png" width="378" height="308" /></div>
 	<div class="node branch non-institution">
 		<div class="circle"><span class="total">{{employmentCategories[5].profiles}}</span></div>
 		<span class="node-label">Non-institutional<br /> Adult Population</span>
 
 		<div class="node branch labor-force">
 			<div class="circle"><span class="total">{{employmentCategories[6].profiles}}</span></div>
-			<span class="node-label">Labor Force</span>
+			<span class="node-label">Labor<br />Force</span>
 
 			<div class="node leaf employed" target ng-model="employedCount" employment-category-id="1">
 				<div class="circle"><span class="total">{{employmentCategories[0].profiles}}</span></div>
@@ -15,8 +15,8 @@
 			</div>
 
 			<div class="node branch unemployed">
-				<div class="circle"><span class="total">0</span></div>
-				<span class="node-label">Unemployed</span>
+				<div class="circle"><span class="total">{{employmentCategories[7].profiles}}</span></div>
+				<span class="node-label side">Unemployed</span>
 
 				<div class="node leaf friction" target ng-model="frictionalCount" employment-category-id="2">
 					<div class="circle"><span class="total">{{employmentCategories[1].profiles}}</span></div>

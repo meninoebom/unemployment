@@ -92,6 +92,16 @@ $scope.employmentCategories = [
         profiles: 0
       }
     ];
+    $scope.profileCountsMap = {
+      employed: $scope.employmentCategories[0].profiles,
+      unemployed: $scope.employmentCategories[7].profiles,
+      laborForce: $scope.employmentCategories[6].profiles,
+      notInLaborForce: $scope.employmentCategories[4].profiles,
+      nonInstitutional: $scope.employmentCategories[5].profiles,
+      frictional: $scope.employmentCategories[1].profiles,
+      structural: $scope.employmentCategories[2].profiles,
+      cyclical: $scope.employmentCategories[3].profiles,
+    }
 
     $scope.getEmpCategoryObjById = function(id) {
         var obj = $scope.findObjById($scope.employmentCategories, id);

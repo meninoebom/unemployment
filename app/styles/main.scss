@@ -14,6 +14,8 @@ $white: #FFF;
     border-radius: 50%;
 }  
 
+$semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
+
 @mixin font($size: 16px, $line-height: 18px, $color: $darkGrey) {
     font-size: $size;
     line-height: $line-height;
@@ -30,10 +32,12 @@ $white: #FFF;
 
 body {
     background: #fff;
-    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-family: $semibold;
     color: #333;
 }
-
+div, ul, li, p {
+    padding: 0; margin: 0;
+}
  ul {
     list-style: none;
  }
@@ -65,7 +69,7 @@ body {
      width: 1024px;
      margin: 0 auto;
 }
-.banner {
+.main-header {
     background: $darkGrey; 
     height: 60px;
     width: 100%;
@@ -85,7 +89,7 @@ body {
         margin: 9px 20px 0;
     }
     .score-label {
-        @include font(10px, 12px, $white);
+        @include font(16px, 15px, $white);
         display: inline-block;
         padding-right: 5px;
     }
@@ -105,11 +109,8 @@ body {
         margin: 14px 20px 0;
     }
     .progress-bar-label {
-        @include font(10px, 12px, $white);
+        @include font(16px, 15px, $white);
         padding-right: 5px;
-    }
-    .progress-bar {
-
     }
     .logo {
         float: right;
@@ -119,10 +120,21 @@ body {
 
 .profiles {
     background: $grey;
-    box-shadow: inset -4px 0px 9px -6px;
+    border-right: 1px solid #b4b4b4;
     float: left;
     height: 708px;
-    width: 303px;
+    width: 302px;
+    .profiles-header {
+        @include font(21px, 24px);
+        font-family: $semibold;
+        padding: 16px;
+        margin: 0 0 40px 0;
+        box-shadow: 5px 6px 6px -7px;
+        background-color: #eee;
+    }
+    ul {
+        margin-left: 16px;
+    }
     .profile {
         background-position: 50% 100%;
         background-size: 100%;
@@ -155,9 +167,16 @@ body {
     float: left;
     height:536px;
     width: 721px;
-    padding-left: 150px;
+    position: relative;
     h2 {
-        padding: 20px 0;
+        @include font(24px, 24px);
+        padding: 16px 0 25px 207px;
+        margin: 0;
+    }
+    .tree-bg {
+        position: absolute;
+        top: 104px;
+        left: 160px;
     }
 }
 .dialogue {
@@ -168,54 +187,58 @@ body {
     width: 721px;
 }
 
-$nodeSize: 55px;
-$nodeBorderWidth: 7px;
+$nodeSize: 130px;
+$circleBorderWidth: 9px;
 $labelSize: 14px;
 .node {
     color: $darkGrey;
     position: absolute;
     text-align: center;
-    height: $nodeSize + $nodeBorderWidth*2;
-    width: $nodeSize + $nodeBorderWidth*2;
+    height: $nodeSize + $circleBorderWidth*2;
+    width: $nodeSize + $circleBorderWidth*2;
     .total {
         font-size: $labelSize;
         font-weight: bold;
         display: block;
-        margin: ($nodeSize - $nodeBorderWidth)/2 - $labelSize/2 auto 0;
+        margin: ($nodeSize - $circleBorderWidth)/2 - $labelSize/2 auto 0;
     }
     .node-label {
         position: relative;
-        font-size: 9px;
-        line-height: 10px;
-        bottom: -($nodeBorderWidth);
+        @include font(16px, 20px);
+        bottom: -($circleBorderWidth);
         display: block;
         margin: 0 auto;
     }
+    .node-label.side {
+            top: -50px; left: 100px;
+    }
+}
+.circle {
+    margin: 0 auto;
+    @include circle(83px);
 }
 .branch .circle {
-    @include circle($nodeSize);
-    border: 6px solid $grey;
+    border: $circleBorderWidth solid $grey;
 }
 .leaf .circle {
-    @include circle($nodeSize);
-    border: 6px solid #EC9905;
+    border: $circleBorderWidth solid #EC9905;
 }
 .non-institution {
-    left: 60%;top: 60px;
+    left: 337px;top: 67px;
     .labor-force {
-        left: -100px;top: 80px;
+        left: -167px;top: 69px;
         .employed {
-            left: -100px;top: 80px;
+            left: -100px;top: 117px;
         }
         .unemployed {
-            left: 100px;top: 80px;
-            .friction{left: -100px;top: 80px;}
-            .structure{left: 0px;top: 80px;}
-            .cyclic{left: 100px;top: 80px;}
+            left: 107px;top: 117px;
+            .friction{left: -100px;top: 144px;}
+            .structure{left: 30px;top: 144px;}
+            .cyclic{left: 165px;top: 144px;}
         }
     }
     .not-labor-force {
-        left: 100px;top: 80px;
+        left: 167px;top: 69px;
     }
 }
 
