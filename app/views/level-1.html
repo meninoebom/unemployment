@@ -1,30 +1,8 @@
 <div class="level-1-container">
 	<div ng-include src="'views/main-header.html'"></div>
-	
-	<div class="profiles">
-		<h2 class="profiles-header">Are they unemployed?</h2>
-		<ul>
-			<li 
-				ng-repeat="profile in profiles"
-				ng-model="profile"
-				profile="profile"
-				profile-bg
-				draggable="{{profile.active}}" 
-				ng-class="{'profile': true, 'active': profile.active}" 
-				index="{{$index}}"  
-				id="profile-{{$index}}" 
-				show-details
-				>
-				<span class="failed-attempts-count" ng-show="profile.failedAttempts" >
-					{{profile.failedAttempts}}
-					<div class="failed-attempts-details"></div>
-				</span>
-			</li>
-		</ul>
-	</div>
-
-	<div ng-include src="'views/tree.html'"></div>
-	<div ng-include src="'views/question-area.html'"></div>
+	<div ng-include src="'views/level-1/profiles.html'"></div>
+	<div ng-include src="'views/level-1/tree.html'"></div>
+	<div ng-include src="'views/level-1/question-area.html'"></div>
 </div>
 
 <div id="incorrect-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">

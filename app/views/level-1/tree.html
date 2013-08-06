@@ -1,0 +1,46 @@
+<div class="tree">
+	<h2 class="tree-header">Employment Categories</h2>
+	<div class="tree-bg"><img src="img/tree_bg.png" width="378" height="308" /></div>
+	<div class="node branch non-institution">
+		<div class="circle"><span class="total">{{employmentCategories[5].count}}</span></div>
+		<span class="node-label">Non-institutional<br /> Adult Population</span>
+
+		<div class="node branch labor-force">
+			<div class="circle"><span class="total">{{employmentCategories[6].count}}</span></div>
+			<span class="node-label">Labor<br />Force</span>
+
+			<div class="node leaf employed" target employment-category-id="1">
+				<div class="circle"><span class="total">{{employmentCategories[0].count}}</span></div>
+				<span class="node-label">Employed</span>
+			</div>
+
+			<div class="node branch unemployed">
+				<div class="circle"><span class="total">{{employmentCategories[7].count}}</span></div>
+				<span class="node-label side">Unemployed</span>
+
+				<div class="node leaf friction" target employment-category-id="2">
+					<div class="circle"><span class="total">{{employmentCategories[1].count}}</span></div>
+					<span class="node-label">Frictionally Unemployed</span>
+				</div>
+
+				<div class="node leaf structure" target employment-category-id="3">
+					<div class="circle"><span class="total">{{employmentCategories[2].count}}</span></div>
+					<span class="node-label">Structurally Unemployed</span>
+				</div>
+
+				<div class="node leaf cyclic" target employment-category-id="4">
+					<div class="circle"><span class="total">{{employmentCategories[3].count}}</span></div>
+					<span class="node-label">Cyclically Unemployed</span>
+				</div>
+
+			</div>
+		</div>
+		<div class="node leaf not-labor-force" target employment-category-id="5">
+			<div class="circle"><span class="total">0</span></div>
+
+			<span class="node-label">Not in Labor Force</span>
+		</div>
+	</div>
+</div>
+
+
