@@ -47,7 +47,8 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
       {gender: "f", failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentCategoryId: 4, active: "true"},
       {gender: "m", failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentCategoryId: 5, active: "true"},
       {gender: "f", failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"}
+      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Mike Rogers", description: "Works as a freelancer from home", employmentCategoryId: 3, active: "true"}
     ];
 
 $scope.employmentCategories = [

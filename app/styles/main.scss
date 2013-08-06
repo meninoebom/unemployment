@@ -86,10 +86,11 @@ div, ul, li, p {
         margin: 21px 20px 0;
     }
     .score-container {
-        margin: 9px 20px 0;
+        margin: 10px 20px 0;
     }
     .score-label {
         @include font(16px, 15px, $white);
+        font-family: 'open_sansregular';
         display: inline-block;
         padding-right: 5px;
     }
@@ -106,10 +107,30 @@ div, ul, li, p {
         padding-left: 30px;
     }
     .progress-bar-container {
-        margin: 14px 20px 0;
+        margin: 18px 20px 0;
+        position: relative;
+        .prog-bar-level-icon {
+            position: absolute;
+            top: 4px;
+            display: none;
+            &.level-icon-1 {
+                left: 81px;
+                display: inline;
+            }
+            &.level-icon-2 {
+                left: 149px;
+            }
+            &.level-icon-3 {
+                left: 219px;
+            }
+            &.level-icon-4 {
+                left: 286px;
+            }
+        }
     }
     .progress-bar-label {
         @include font(16px, 15px, $white);
+        font-family: 'open_sansregular';
         padding-right: 5px;
     }
     .logo {
@@ -179,17 +200,40 @@ div, ul, li, p {
         left: 160px;
     }
 }
-.dialogue {
+.question-area {
+    padding: 19px 16px;
     background: $white;
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
     height: 172px;
     width: 721px;
+    position: relative;
+    .question-area-indicator {
+        width: 52px;
+        float: left;
+    }
+    p.question {
+        @include font(18px, 22px);
+    }
+    .button-link {
+        @include font(18px, 18px);
+        letter-spacing: 0.06em;
+        padding: 10px 41px;
+        background: #035990;
+        color: #FFF;
+        position: absolute;
+        bottom: 19px;
+        right: 16px;
+        &:hover{
+            text-decoration: none;
+        }
+    }
 }
 
 $nodeSize: 130px;
+$circleDiameter: 83px;
 $circleBorderWidth: 9px;
-$labelSize: 14px;
+$labelSize: 21px;
 .node {
     color: $darkGrey;
     position: absolute;
@@ -199,8 +243,9 @@ $labelSize: 14px;
     .total {
         font-size: $labelSize;
         font-weight: bold;
+        font-family: 'open_sansbold';
         display: block;
-        margin: ($nodeSize - $circleBorderWidth)/2 - $labelSize/2 auto 0;
+        margin: (($circleDiameter - $circleBorderWidth*2)/2) - $labelSize/2 auto 0;
     }
     .node-label {
         position: relative;
@@ -215,7 +260,7 @@ $labelSize: 14px;
 }
 .circle {
     margin: 0 auto;
-    @include circle(83px);
+    @include circle($circleDiameter);
 }
 .branch .circle {
     border: $circleBorderWidth solid $grey;
