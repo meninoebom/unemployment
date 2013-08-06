@@ -16,7 +16,7 @@ $lightBlue: #70caf2;
     height: $dimensions;
     width: $dimensions;
     border-radius: 50%;
-}  
+}       
 
 $semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
@@ -87,14 +87,13 @@ div, ul, li, p {
     margin: 200px auto 0;
     position: relative;
 }
-.level-1{
+.level-1, .level-2{
     background: #888;
 }
-.level-1-container {
+.level-1-container, .level-2-container {
      width: 1024px;
      margin: 0 auto;
 }
-
 
 .main-header {
     background: $darkGrey; 
@@ -112,110 +111,127 @@ div, ul, li, p {
         float: left;
         margin: 21px 20px 0;
     }
-    .score-container {
-        margin: 10px 20px 0;
-    }
-    .score-label {
-        @include font(16px, 15px, $white);
-        font-family: 'open_sansregular';
-        display: inline-block;
-        padding-right: 5px;
-    }
-    .score {
-        display: inline-block;
-        @include font(20px, 22px, $white);
-        background: transparent url('../img/level-score_bg.png') top left;
-        background-size: 95px 40px; /*downsample for retina*/
-        font-weight: bold;
-        width: 95px;
-        height: 40px;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        padding-left: 30px;
-    }
-    .progress-bar-container {
-        margin: 18px 20px 0;
-        position: relative;
-        .prog-bar-level-icon {
-            position: absolute;
-            top: 4px;
-            display: none;
-            &.level-icon-1 {
-                left: 81px;
-                display: inline;
-            }
-            &.level-icon-2 {
-                left: 149px;
-            }
-            &.level-icon-3 {
-                left: 219px;
-            }
-            &.level-icon-4 {
-                left: 286px;
-            }
+}
+
+.score-container {
+    margin: 10px 20px 0;
+}
+.score-label {
+    @include font(16px, 15px, $white);
+    font-family: 'open_sansregular';
+    display: inline-block;
+    padding-right: 5px;
+}
+.score {
+    display: inline-block;
+    @include font(20px, 22px, $white);
+    background: transparent url('../img/level-score_bg.png') top left;
+    background-size: 95px 40px; /*downsample for retina*/
+    font-weight: bold;
+    width: 95px;
+    height: 40px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 30px;
+}
+.progress-bar-container {
+    margin: 18px 20px 0;
+    position: relative;
+    .prog-bar-level-icon {
+        position: absolute;
+        top: 4px;
+        display: none;
+        &.level-icon-1 {
+            left: 81px;
         }
-    }
-    .progress-bar-label {
-        @include font(16px, 15px, $white);
-        font-family: 'open_sansregular';
-        padding-right: 5px;
-    }
-    .logo {
-        float: right;
-        margin: 10px 21px 0 0;
+        &.level-icon-2 {
+            left: 149px;
+        }
+        &.level-icon-3 {
+            left: 219px;
+        }
+        &.level-icon-4 {
+            left: 286px;
+        }
     }
 }
 
-.profiles {
+.level-1 .progress-bar-container {
+    .level-icon-1 {
+        display: inline;
+    }
+} 
+.level-2 .progress-bar-container {
+    .level-icon-1, .level-icon-2 {
+        display: inline;
+    }
+} 
+.level-3 .progress-bar-container {
+    .level-icon-1, .level-icon-2, .level-icon-3 {
+        display: inline;
+    }
+} 
+.level-4 .progress-bar-container {
+    .level-icon-1, .level-icon-2, .level-icon-3, .level-icon-4 {
+        display: inline;
+    }
+} 
+
+.progress-bar-label {
+    @include font(16px, 15px, $white);
+    font-family: 'open_sansregular';
+    padding-right: 5px;
+}
+.logo {
+    float: right;
+    margin: 10px 21px 0 0;
+}
+
+.profiles, .level-2-graphs {
     background: $grey;
     border-right: 1px solid #b4b4b4;
     float: left;
     height: 708px;
     width: 302px;
-    .profiles-header {
-        @include font(21px, 24px);
-        font-family: $semibold;
-        padding: 16px;
-        margin: 0 0 40px 0;
-        box-shadow: 5px 6px 6px -7px;
-        background-color: #eee;
-    }
     ul {
         margin-left: 16px;
     }
-    .profile {
-        background-position: 50% 100%;
-        background-size: 100%;
-        background-repeat: no-repeat;
-        color: $white;
-        height: 67px;
-        position: relative;
-        width: 67px;
-        float: left;
-    }
-    .active {
-        cursor: move;
-    }
-    .failed-attempts-count {
-        background: $red;
-        color: $white;
-        display: block;
-        height: 14px;
-        font-size: 8px;
-        line-height: 14px;
-        position: absolute;
-        right: 12px;
-        text-align: center;
-        top: 12px;
-        width: 14px;
-    }
 }
 
-
-
-
-
-
+.profiles-header {
+    @include font(21px, 24px);
+    font-family: $semibold;
+    padding: 16px;
+    margin: 0 0 40px 0;
+    box-shadow: 5px 6px 6px -7px;
+    background-color: #eee;
+}
+.profile {
+    background-position: 50% 100%;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    color: $white;
+    height: 67px;
+    position: relative;
+    width: 67px;
+    float: left;
+    &.active {
+        cursor: move;
+    }
+}
+.failed-attempts-count {
+    background: $red;
+    color: $white;
+    display: block;
+    height: 14px;
+    font-size: 8px;
+    line-height: 14px;
+    position: absolute;
+    right: 12px;
+    text-align: center;
+    top: 12px;
+    width: 14px;
+}
 
 .tree {
     background: $white;
@@ -236,7 +252,7 @@ div, ul, li, p {
 }
 .question-area {
     padding: 19px 16px;
-    background: $white;
+    background: #f3f3f3;
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
     height: 172px;
@@ -246,10 +262,41 @@ div, ul, li, p {
         width: 52px;
         float: left;
     }
-    p.question {
+    .question {
         @include font(18px, 22px);
+        width: 600px;
+        float: left;
+        p {
+
+        }
     }
 }
+
+
+@mixin popover($color: $darkGrey) {
+    background: $color;
+    &.right .arrow:after {
+        border-right-color: $color;
+    }
+    &.left .arrow:after {
+        border-left-color: $color;
+    }
+    &.top .arrow:after {
+        border-top-color: $color;
+    }
+    &.bottom .arrow:after {
+        border-bottom-color: $color;
+    }    
+}
+
+[rel=popover][data-color=red] + .popover {
+    @include popover($red);
+}
+
+[rel=popover][data-color=darkGrey] + .popover {
+    @include popover($darkGrey);
+}
+
 
 $nodeSize: 130px;
 $circleDiameter: 83px;

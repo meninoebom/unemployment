@@ -1,14 +1,6 @@
 'use strict';
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', function($scope) {
-    $scope.incorrectModal = angular.element('#incorrect-modal');
-    $scope.incorrectModal.modal({
-      show: false
-    });  
-    $scope.incorrect = function() {
-      $scope.incorrectModal.modal('show');
-    }
-
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -51,18 +43,4 @@ $scope.employmentCategories = [
         count: 252
       }
     ];
-
-    $scope.getEmpCategoryObjById = function(id) {
-        var obj = $scope.findObjById($scope.employmentCategories, id);
-        return obj;
-    }
-
-    $scope.findObjById = function(array, id) {
-      for(var i = 0, len = array.length; i < len; i++) {
-        if(array[i].id == id) {
-          return array[i];
-        }
-      }
-    }
-
 }]);
