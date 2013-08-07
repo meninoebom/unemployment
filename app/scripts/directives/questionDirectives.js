@@ -12,20 +12,38 @@ angular.module('questionDirectives', [])
 			elem.popover({ content: content, trigger: "hover", html: true, placement: "bottom" });
 		}
 	};
-}).directive('wrongAnswerPopover', function(){
+}).directive('wrongAnswerPopover', function(responseHandler){
     return {
 		restrict: 'A',
 		link: function(scope, elem, attrs, ctrl) {
-			scope.$watch(attrs.wrongAnswerPopover, function(val){
-				console.log(val);
-				if (val == '') return;
-				elem.popover({ content: val, trigger: "manual", html: true, placement: "top", 
-					template: '<div class="popover incorrect-answer-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>' });
-				elem.bind('blur', function() {
-					elem.popover('show');
+			var content;
+			var contentObj = [
+				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.',
+				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.[image of equation goes here]',
+				'For attempt 2 the user gets this hint',
+				'The final hint offered to the user is this'
+			]
+			
+			var called = false;
+			scope.$on('showHint', function() {
+				if (scope.numAttempts < 3) {
+					content = contentObj[scope.numAttempts - 1]
+				} else {
+					content = contentObj[2]
+				}    
+				if (called) {
+					elem.popover('destroy');
+				}
+				called = true;
+                elem.popover({ 
+					content: content, trigger: "manual", html: true, placement: "top", 
+					template: '<div class="popover incorrect-answer-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><img src="img/indicator_alert.png" class="alert-icon" width="44" height="45" /><div class="popover-content"><p></p></div></div><img class="popover-close-button" src="img/popover_close.png" width="25" height="25" /></div>'
 				});
-
-			})
+				elem.popover('show');	
+				angular.element('.popover-close-button').bind('click', function() {
+					elem.popover('destroy');
+				});				
+            });
 		}
 	};
 }).directive('eatClick', function() {

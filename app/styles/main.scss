@@ -12,6 +12,7 @@ $lightGreen: #8ec859;
 $blue: #0d5b92;
 $lightBlue: #70caf2;
 $red: #990000;
+$purple: #652066;
 
 @mixin circle($dimensions) {
     height: $dimensions;
@@ -289,6 +290,15 @@ div, ul, li, p {
         border-bottom-color: $background;
     }    
 }
+.popover-close-button {
+    position: absolute;
+    top: -12px;
+    right: -12px;
+}
+.popover .alert-icon {
+    float: left;
+    margin: 5px 14px 0 5px;
+}
 
 .incorrect-answer-popover {
     @include popover($red, $white);
@@ -338,7 +348,7 @@ $labelSize: 21px;
     border: $circleBorderWidth solid $grey;
 }
 .level-1 .leaf .circle {
-    border: $circleBorderWidth solid #EC9905;
+    border: $circleBorderWidth solid $purple;
 }
 .level-2 .non-institution .circle {
     border: $circleBorderWidth solid $darkGrey;

@@ -1,6 +1,7 @@
 'use strict';
 
-unemploymentApp.controller('Level2Ctrl', ['$scope', function($scope) {
+unemploymentApp.controller('Level2Ctrl', ['$scope', 'responseHandler', function($scope, responseHandler) {
+
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -43,10 +44,30 @@ $scope.employmentCategories = [
         count: 252
       }
     ];
-  $scope.submitAnswer1 = function() {
-    console.log('processAnswer');
-  }
-  $scope.question1IncorrectAnswerText = function() {
-    return "test";
+  $scope.questionData = {
+    question1: {
+      answer: 100,
+      response: ""
+    },
+    question2: {
+      answer: 100,
+      response: ""
+    },
+    question3: {
+      answer: 100,
+      response: ""
+    }
+  };
+  $scope.numAttempts = 0;
+  $scope.submitResponse = function(question) {
+    var answer = parseInt(question.answer);
+    var response = parseInt(question.response);
+    if(response === answer) {
+      console.log('right');
+    } else {
+      $scope.numAttempts++;
+      $scope.$broadcast('showHint');
+      //responseHandler.showHint();
+    }
   }
 }]);

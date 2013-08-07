@@ -38,6 +38,12 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragd
   }]).run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-  });
+  }).factory('responseHandler', function($rootScope){
+    return {
+      showHint: function() {
+         $rootScope.$broadcast('showHint');
+      }
+    }
+});
 
 
