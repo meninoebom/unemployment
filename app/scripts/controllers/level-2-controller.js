@@ -67,7 +67,6 @@ $scope.employmentCategories = [
     } else {
       $scope.numAttempts++;
       $scope.$broadcast('showHint');
-      //responseHandler.showHint();
     }
   }
 }]);

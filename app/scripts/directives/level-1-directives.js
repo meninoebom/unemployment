@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('dragdrop', [])
+angular.module('level-1-directives', [])
 .directive('showDetails', function(){
     return {
 		restrict: 'A',

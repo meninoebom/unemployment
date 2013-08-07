@@ -1,6 +1,6 @@
 'use strict';
 
-var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'dragdrop', 'questionDirectives'])
+var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'level-1-directives', 'questionDirectives'])
   .config(['$stateProvider','$routeProvider', function ($stateProvider, $routeProvider) {
     $stateProvider
       .state('intro', {

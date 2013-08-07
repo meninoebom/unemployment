@@ -20,8 +20,7 @@ angular.module('questionDirectives', [])
 			var contentObj = [
 				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.',
 				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.[image of equation goes here]',
-				'For attempt 2 the user gets this hint',
-				'The final hint offered to the user is this'
+				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.[image of equation goes here][equation calculator goes here]'
 			]
 			
 			var called = false;
