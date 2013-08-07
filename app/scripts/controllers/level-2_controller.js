@@ -43,4 +43,10 @@ $scope.employmentCategories = [
         count: 252
       }
     ];
+  $scope.submitAnswer1 = function() {
+    console.log('processAnswer');
+  }
+  $scope.question1IncorrectAnswerText = function() {
+    return "test";
+  }
 }]);

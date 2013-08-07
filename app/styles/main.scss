@@ -302,7 +302,6 @@ div, ul, li, p {
     @include popover($white);
 }
 
-
 $nodeSize: 130px;
 $circleDiameter: 83px;
 $circleBorderWidth: 9px;
@@ -376,10 +375,10 @@ $labelSize: 21px;
         left: 167px;top: 69px;
     }
 }
-
 .node.over {
     border: 2px dashed #000;
 }
+
 #incorrect-modal.modal {
     @include border-radius(4px);
     background: $darkGrey;

@@ -2,7 +2,7 @@
 <div class="question"><p>The 
 	<a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="laborForceParticipation">labor force participation rate</a> 
 	of the group above is 
-	<input show-wrong-right data-color="darkGrey" type="text" size="4"> 
+	<input ngModel="question1Answer" wrong-answer-popover='question1IncorrectAnswerText()' data-color="darkGrey" type="text" size="4"> 
 	percent. <br />
 	Round the answer to the nearest hundreth.</p></div>
-<a href="#/level/2/intro" class="button-link blue" type="button">Next</a>
+<button class="button-link blue" ng-click="submitAnswer1()" type="button">Next</button>
