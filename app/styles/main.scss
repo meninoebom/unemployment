@@ -11,6 +11,7 @@ $green: #0f673a;
 $lightGreen: #8ec859;
 $blue: #0d5b92;
 $lightBlue: #70caf2;
+$red: #990000;
 
 @mixin circle($dimensions) {
     height: $dimensions;
@@ -272,29 +273,33 @@ div, ul, li, p {
     }
 }
 
-
-@mixin popover($color: $darkGrey) {
-    background: $color;
+@mixin popover($background: $white, $textColor: $darkGrey) {
+    background: $background;
+    color: $textColor;
     &.right .arrow:after {
-        border-right-color: $color;
+        border-right-color: $background;
     }
     &.left .arrow:after {
-        border-left-color: $color;
+        border-left-color: $background;
     }
     &.top .arrow:after {
-        border-top-color: $color;
+        border-top-color: $background;
     }
     &.bottom .arrow:after {
-        border-bottom-color: $color;
+        border-bottom-color: $background;
     }    
 }
 
-[rel=popover][data-color=red] + .popover {
-    @include popover($red);
+.incorrect-answer-popover {
+    @include popover($red, $white);
 }
 
 [rel=popover][data-color=darkGrey] + .popover {
     @include popover($darkGrey);
+}
+
+[rel=popover][data-color=white] + .popover {
+    @include popover($white);
 }
 
 
