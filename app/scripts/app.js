@@ -1,6 +1,6 @@
 'use strict';
 
-var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'level-1-directives', 'questionDirectives'])
+var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'level-1-directives', 'questionDirectives', 'd3Directives'])
   .config(['$stateProvider','$routeProvider', function ($stateProvider, $routeProvider) {
     $stateProvider
       .state('intro', {
@@ -38,12 +38,6 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'level
   }]).run(function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-  }).factory('responseHandler', function($rootScope){
-    return {
-      showHint: function() {
-         $rootScope.$broadcast('showHint');
-      }
-    }
-});
+  });
 
 

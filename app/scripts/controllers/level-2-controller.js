@@ -1,7 +1,6 @@
 'use strict';
 
-unemploymentApp.controller('Level2Ctrl', ['$scope', 'responseHandler', function($scope, responseHandler) {
-
+unemploymentApp.controller('Level2Ctrl', ['$scope',  function($scope ) {
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -44,29 +43,52 @@ $scope.employmentCategories = [
         count: 252
       }
     ];
-  $scope.questionData = {
-    question1: {
-      answer: 100,
-      response: ""
-    },
-    question2: {
-      answer: 100,
-      response: ""
-    },
-    question3: {
-      answer: 100,
-      response: ""
-    }
-  };
+
+  $scope.questions = [
+    {answer: 100, url: 'views/level-2/questions/question-1.html'},
+    {answer: 100, url: 'views/level-2/questions/question-2.html'},
+    {answer: 100, url: 'views/level-2/questions/question-3.html'}
+  ];
+
   $scope.numAttempts = 0;
-  $scope.submitResponse = function(question) {
-    var answer = parseInt(question.answer);
-    var response = parseInt(question.response);
-    if(response === answer) {
-      console.log('right');
+
+  $scope.response = {value: 0};
+
+  $scope.currentQuestion = {num: 1}
+  
+  $scope.submitResponse = function(num) {
+    var answer = $scope.questions[num-1].answer;
+    if($scope.response.value == answer) {
+      $scope.currentQuestion.num = num + 1;
     } else {
       $scope.numAttempts++;
       $scope.$broadcast('showHint');
-    }
+    }  
   }
+
+  $scope.getCurrentQuestionUrl = function() {
+    return $scope.questions[$scope.currentQuestion.num - 1].url;
+    console.log($scope.questions[$scope.currentQuestion.num - 1].url);
+  }
+
+  $scope.populationChartData =   [
+    {"category": "Not in Labor Force", "population": "2704659", "className": "not-labor-force-slice"},
+    {"category": "Labor Force", "population": "4499890", "className": "labor-force-slice"}
+  ]
+  $scope.laborForceChartData =   [
+    {"category": "Unemployed", "population": "2704659", "className": "unemployed-slice"},
+    {"category": "employed", "population": "4499890", "className": "employed-slice"}
+  ]
+
+  $scope.populationChartOptions = {
+    size: 200,
+    colors: ["#006639", "#8dc758"],
+  };
+
+  $scope.laborForceChartOptions = {
+    size: 200,
+    colors: ["#70caf2", "#0d5b92"],
+  };
+
+
 }]);

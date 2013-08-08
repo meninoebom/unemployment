@@ -6,15 +6,18 @@ angular.module('questionDirectives', [])
 		restrict: 'A',
 		link: function(scope, elem, attrs, ctrl) {
 			var popverContent = {
-				laborForceParticipation: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />'
+				laborForceParticipation: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />',
+				employment: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />'
 			}
 			var content = popverContent[attrs.content];
 			elem.popover({ content: content, trigger: "hover", html: true, placement: "bottom" });
 		}
 	};
-}).directive('wrongAnswerPopover', function(responseHandler){
+}).directive('wrongAnswerPopover', function(){
     return {
 		restrict: 'A',
+		replace: true,
+		//scope: {ngModel: '=ngModel'},
 		link: function(scope, elem, attrs, ctrl) {
 			var content;
 			var contentObj = [
