@@ -71,22 +71,29 @@ $scope.employmentCategories = [
     console.log($scope.questions[$scope.currentQuestion.num - 1].url);
   }
 
+  $scope.notLaborCount = String($scope.employmentCategories[4].count);
+  $scope.laborCount = String($scope.employmentCategories[6].count);
+  $scope.unemployedCount = String($scope.employmentCategories[7].count);
+  $scope.employedCount = String($scope.employmentCategories[0].count);
+
   $scope.populationChartData =   [
-    {"category": "Not in Labor Force", "population": "2704659", "className": "not-labor-force-slice"},
-    {"category": "Labor Force", "population": "4499890", "className": "labor-force-slice"}
+    {"category": "Labor Force", "population": $scope.laborCount, "className": "labor-force-slice"},
+    {"category": "Not in Labor Force", "population": $scope.notLaborCount, "className": "not-labor-force-slice"}
   ]
   $scope.laborForceChartData =   [
-    {"category": "Unemployed", "population": "2704659", "className": "unemployed-slice"},
-    {"category": "employed", "population": "4499890", "className": "employed-slice"}
+    {"category": "employed", "population": $scope.employedCount, "className": "employed-slice"},
+    {"category": "Unemployed", "population": $scope.unemployedCount, "className": "unemployed-slice"}
   ]
 
   $scope.populationChartOptions = {
     size: 200,
+    rotation: 12,
     colors: ["#006639", "#8dc758"],
   };
 
   $scope.laborForceChartOptions = {
     size: 200,
+    rotation: 330,
     colors: ["#70caf2", "#0d5b92"],
   };
 

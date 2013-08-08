@@ -10,6 +10,7 @@ angular.module('d3Directives', []).directive('piechart', ['$window', '$timeout',
         width = Math.min(element[0].parentElement.offsetWidth, size),
         height = Math.min(element[0].parentElement.offsetHeight, size),
         radius = Math.min(width, height) / 2,
+        rotation = scope.options.rotation,
         colorArray = scope.options.colors;
 
     var color = d3.scale.ordinal()
@@ -27,7 +28,7 @@ angular.module('d3Directives', []).directive('piechart', ['$window', '$timeout',
         .attr("width", width)
         .attr("height", height)
         .append("g")
-        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+        .attr("transform", "translate(" + width / 2 + "," + height / 2 + ") rotate("+ rotation +")");
 
     var g = svg.selectAll(".arc")
         .data(pie(data))
@@ -40,11 +41,23 @@ angular.module('d3Directives', []).directive('piechart', ['$window', '$timeout',
         .style("stroke", "white")
         .style("stroke-width", "4");
 
+    var total = 0;  
+    data.forEach(function(d) {
+        total += parseInt(d.population);
+    });
+
     g.append("text")
-        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ")"; })
-        .attr("dy", ".35em")
+        .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(-"+ rotation +")"; })
+        .attr("dy", "-1em")
+        .attr("dx", "-1em")
         .style("text-anchor", "middle")
-        .text(function(d) { return d.data.category; });
+        .style("font-size", "14px")
+        .style("fill", "white")
+        .style("stroke", "none")
+        .text(function(d) {
+         return Math.round(d.data.population/total * 100)+"%"; 
+    });
+
   };//end of link function
 
   return {
