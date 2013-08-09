@@ -60,6 +60,7 @@ $scope.employmentCategories = [
     var answer = $scope.questions[questionNum-1].answer;
     if($scope.response.value == answer) {
       $scope.currentQuestion.num = questionNum + 1;
+      $scope.response.value = 0;
       $scope.displayPieChartPercentage(questionNum);
     } else {
       $scope.numAttempts++;
