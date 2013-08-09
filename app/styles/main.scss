@@ -1,7 +1,7 @@
 @import "bootstrap-sass/lib/bootstrap";
 @import "fonts/fonts";
 
-/*$blue: #0096C8;*/
+/* Color Palette */
 $green: #7CB555;
 $darkGrey: #333;
 $grey: #DDD;
@@ -20,13 +20,13 @@ $purple: #652066;
     border-radius: 50%;
 }       
 
-$semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
-
 @mixin font($size: 16px, $line-height: 18px, $color: $darkGrey) {
     font-size: $size;
     line-height: $line-height;
     color: $color;
 }  
+
+$semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* Put your CSS here */
 
@@ -73,25 +73,31 @@ div, ul, li, p {
     height: 100%;
     width: 100%;
 }
+
 .intro-container, .overview-container, .level-intro-container {
     background: $lightGrey;
     color: $darkGrey;
     padding: 50px;
     width: 1170px;
 }
+
 .intro-container {
     margin: 100px auto 0;
 }
+
 .overview-container {
     margin: 100px auto 0;
 }
+
 .level-intro-container {
     margin: 200px auto 0;
     position: relative;
 }
+
 .level-1, .level-2{
     background: #888;
 }
+
 .level-1-container, .level-2-container {
      width: 1024px;
      margin: 0 auto;
@@ -118,12 +124,14 @@ div, ul, li, p {
 .score-container {
     margin: 10px 20px 0;
 }
+
 .score-label {
     @include font(16px, 15px, $white);
     font-family: 'open_sansregular';
     display: inline-block;
     padding-right: 5px;
 }
+
 .score {
     display: inline-block;
     @include font(20px, 22px, $white);
@@ -136,6 +144,7 @@ div, ul, li, p {
     padding-bottom: 10px;
     padding-left: 30px;
 }
+
 .progress-bar-container {
     margin: 18px 20px 0;
     position: relative;
@@ -163,16 +172,19 @@ div, ul, li, p {
         display: inline;
     }
 } 
+
 .level-2 .progress-bar-container {
     .level-icon-1, .level-icon-2 {
         display: inline;
     }
 } 
+
 .level-3 .progress-bar-container {
     .level-icon-1, .level-icon-2, .level-icon-3 {
         display: inline;
     }
 } 
+
 .level-4 .progress-bar-container {
     .level-icon-1, .level-icon-2, .level-icon-3, .level-icon-4 {
         display: inline;
@@ -184,12 +196,13 @@ div, ul, li, p {
     font-family: 'open_sansregular';
     padding-right: 5px;
 }
+
 .logo {
     float: right;
     margin: 10px 21px 0 0;
 }
 
-.profiles, .level-2-graphs {
+.profiles, .level-2-pie-charts {
     background: $grey;
     border-right: 1px solid #b4b4b4;
     float: left;
@@ -208,6 +221,7 @@ div, ul, li, p {
     box-shadow: 5px 6px 6px -7px;
     background-color: #eee;
 }
+
 .profile {
     background-position: 50% 100%;
     background-size: 100%;
@@ -221,6 +235,7 @@ div, ul, li, p {
         cursor: move;
     }
 }
+
 .failed-attempts-count {
     background: $red;
     color: $white;
@@ -252,6 +267,7 @@ div, ul, li, p {
         left: 160px;
     }
 }
+
 .question-area {
     padding: 19px 16px;
     background: #f3f3f3;
@@ -274,11 +290,11 @@ div, ul, li, p {
     }
 }
 
-
 $nodeSize: 130px;
 $circleDiameter: 83px;
 $circleBorderWidth: 9px;
 $labelSize: 21px;
+
 .node {
     color: $darkGrey;
     position: absolute;
@@ -303,33 +319,42 @@ $labelSize: 21px;
             top: -50px; left: 100px;
     }
 }
+
 .circle {
     margin: 0 auto;
     @include circle($circleDiameter);
 }
+
 .level-1 .branch .circle {
     border: $circleBorderWidth solid $grey;
 }
+
 .level-1 .leaf .circle {
     border: $circleBorderWidth solid $purple;
 }
+
 .level-2 .non-institution .circle {
     border: $circleBorderWidth solid $darkGrey;
 }
+
 .level-2 .labor-force .circle {
     border: $circleBorderWidth solid $green;
 }
+
 .level-2 .not-labor-force .circle {
     border: $circleBorderWidth solid $lightGreen;
 }
+
 .level-2 .employed .circle {
     border: $circleBorderWidth solid $blue;
 }
+
 .level-2 .unemployed .circle,.level-2 .friction .circle,
 .level-2 .structure .circle,.level-2 .cyclic .circle
  {
     border: $circleBorderWidth solid $lightBlue;
 }
+
 .non-institution {
     left: 337px;top: 67px;
     .labor-force {
@@ -348,6 +373,7 @@ $labelSize: 21px;
         left: 167px;top: 69px;
     }
 }
+
 .node.over {
     border: 2px dashed #000;
 }
@@ -368,6 +394,7 @@ $labelSize: 21px;
         color: $white;
     }
 }
+
 .modal-backdrop, .modal-backdrop.fade.in {
     opacity: .1;
 }

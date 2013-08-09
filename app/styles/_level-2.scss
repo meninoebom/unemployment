@@ -1,6 +1,31 @@
+.level-2-pie-charts {
+    .pie-charts-main-header {
+        @include font(21px, 24px);
+        font-family: $semibold;
+        padding: 16px;
+        margin: 0 0 5px 0;
+        box-shadow: 5px 6px 6px -7px;
+        background-color: #eee;
+    }
+    .pie-chart-container {
+        text-align: center;
+    }
+    .pie-chart-title {
+        @include font(18px, 24px);
+        font-family: 'open_sansbold';
+        display: block;
+        margin: 0;
+        padding: 0;
+    }
+    .legend-label {
+      @include font(14px, 16px);
+    }
+}
+
 .level-2-response-field {
     width: 30px;
 }
+
 @mixin popover($background: $white, $textColor: $darkGrey) {
     background: $background;
     color: $textColor;
@@ -17,11 +42,13 @@
         border-bottom-color: $background;
     }    
 }
+
 .popover-close-button {
     position: absolute;
     top: -12px;
     right: -12px;
 }
+
 .popover .alert-icon {
     float: left;
     margin: 5px 14px 0 5px;

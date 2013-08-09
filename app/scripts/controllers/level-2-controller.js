@@ -56,14 +56,32 @@ $scope.employmentCategories = [
 
   $scope.currentQuestion = {num: 1}
   
-  $scope.submitResponse = function(num) {
-    var answer = $scope.questions[num-1].answer;
+  $scope.submitResponse = function(questionNum) {
+    var answer = $scope.questions[questionNum-1].answer;
     if($scope.response.value == answer) {
-      $scope.currentQuestion.num = num + 1;
+      $scope.currentQuestion.num = questionNum + 1;
+      $scope.displayPieChartPercentage(questionNum);
     } else {
       $scope.numAttempts++;
       $scope.$broadcast('showHint');
     }  
+  }
+
+  $scope.displayPieChartPercentage = function(questionNum) {
+    switch(questionNum){
+      case 1:
+        angular.element('.labor-force-percentage-label').fadeIn("slow");
+        angular.element('.not-labor-force-percentage-label').fadeIn("slow");
+        break;
+      case 2:
+        angular.element('.employed-percentage-label').fadeIn("slow");
+        break;     
+      case 3:
+        angular.element('.unemployed-percentage-label').fadeIn("slow");
+        break;
+        default:
+        break;
+    }
   }
 
   $scope.getCurrentQuestionUrl = function() {
@@ -77,24 +95,24 @@ $scope.employmentCategories = [
   $scope.employedCount = String($scope.employmentCategories[0].count);
 
   $scope.populationChartData =   [
-    {"category": "Labor Force", "population": $scope.laborCount, "className": "labor-force-slice"},
-    {"category": "Not in Labor Force", "population": $scope.notLaborCount, "className": "not-labor-force-slice"}
+    {"category": "Labor Force", "population": $scope.laborCount, "className": "labor-force"},
+    {"category": "Not in Labor Force", "population": $scope.notLaborCount, "className": "not-labor-force"}
   ]
   $scope.laborForceChartData =   [
-    {"category": "employed", "population": $scope.employedCount, "className": "employed-slice"},
-    {"category": "Unemployed", "population": $scope.unemployedCount, "className": "unemployed-slice"}
+    {"category": "Employed", "population": $scope.employedCount, "className": "employed"},
+    {"category": "Unemployed", "population": $scope.unemployedCount, "className": "unemployed"}
   ]
 
   $scope.populationChartOptions = {
-    size: 200,
+    diameter: 192,
     rotation: 12,
     colors: ["#006639", "#8dc758"],
   };
 
   $scope.laborForceChartOptions = {
-    size: 200,
+    diameter: 192,
     rotation: 330,
-    colors: ["#70caf2", "#0d5b92"],
+    colors: ["#0d5b92", "#70caf2"],
   };
 
 
