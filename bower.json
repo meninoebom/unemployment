@@ -13,7 +13,7 @@
     "angular-mocks": "~1.0.7",
     "angular-scenario": "~1.0.7",
     "angular-ui": "~0.4.0",
-    "jquery": "~2.0.3",
+    "jquery": "~1.9.1",
     "jquery-ui": "~1.10.3",
     "angular-dragdrop": "~1.0.2"
   }

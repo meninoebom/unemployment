@@ -47,14 +47,15 @@ $scope.employmentCategories = [
   $scope.questions = [
     {answer: 100, url: 'views/level-2/questions/question-1.html'},
     {answer: 100, url: 'views/level-2/questions/question-2.html'},
-    {answer: 100, url: 'views/level-2/questions/question-3.html'}
+    {answer: 100, url: 'views/level-2/questions/question-3.html'},
+    {answer: 100, url: 'views/level-2/questions/question-4.html'}
   ];
 
   $scope.numAttempts = 0;
 
   $scope.response = {value: 0};
 
-  $scope.currentQuestion = {num: 1}
+  $scope.currentQuestion = {num: 5}
   
   $scope.submitResponse = function(questionNum) {
     var answer = $scope.questions[questionNum-1].answer;

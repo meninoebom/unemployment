@@ -65,3 +65,19 @@
 [rel=popover][data-color=white] + .popover {
     @include popover($white);
 }
+
+.scenario-radio-buttons-container {
+    width: 157px;
+    margin-right: 25px;
+    .scenario-category-label {
+        font-family: 'open_sansbold';
+        @include font(16px, 20px);
+        width: 132px;
+    }
+    .info-icon {
+        display: block;
+        height: 25px;
+        width: 25px;
+        background: transparent url('../img/info_icon.png') no-repeat top left / 25px 25px;
+    }
+}

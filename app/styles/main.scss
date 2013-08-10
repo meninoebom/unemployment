@@ -156,6 +156,10 @@ div, ul, li, p {
      margin: 0 auto;
 }
 
+.level-2-container {
+    background: $grey;
+}
+
 .main-header {
     background: $darkGrey; 
     height: 60px;
@@ -253,9 +257,8 @@ div, ul, li, p {
 
 .profiles, .level-2-pie-charts {
     background: $grey;
-    border-right: 1px solid #b4b4b4;
     float: left;
-    height: 708px;
+    min-height: 708px;
     width: 302px;
     ul {
         margin-left: 16px;
@@ -322,7 +325,7 @@ div, ul, li, p {
     background: #f3f3f3;
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
-    height: 172px;
+    min-height: 172px;
     width: 721px;
     position: relative;
     .question-area-indicator {

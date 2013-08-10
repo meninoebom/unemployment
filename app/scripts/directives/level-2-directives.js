@@ -8,7 +8,8 @@ angular.module('questionDirectives', [])
 			var popverContent = {
 				laborForceParticipation: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />',
 				employment: '<img src="img/employmentRateFormula.png" width="311" height="149" />',
-				unemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />'
+				unemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />',
+				naturalUnemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />'
 			}
 			var content = popverContent[attrs.content];
 			elem.popover({ content: content, trigger: "hover", html: true, placement: "right" });
@@ -18,7 +19,6 @@ angular.module('questionDirectives', [])
     return {
 		restrict: 'A',
 		replace: true,
-		//scope: {ngModel: '=ngModel'},
 		link: function(scope, elem, attrs, ctrl) {
 			var content;
 			var contentObj = [
