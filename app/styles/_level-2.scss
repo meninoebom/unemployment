@@ -67,17 +67,32 @@
 }
 
 .scenario-radio-buttons-container {
-    width: 157px;
-    margin-right: 25px;
+    margin: 20px 20px 0 0;
+    float: left;
+    .scenario-category-header {
+        float: left;
+        min-width: 150px;
+    }
     .scenario-category-label {
+        float: left;
         font-family: 'open_sansbold';
-        @include font(16px, 20px);
-        width: 132px;
+        @include font(14px, 16px);
+        margin-right: 10px;
     }
     .info-icon {
         display: block;
+        float: left;
         height: 25px;
         width: 25px;
         background: transparent url('../img/info_icon.png') no-repeat top left / 25px 25px;
+    }
+    ul {
+        @include font(14px, 16px);
+        font-family: 'open_sanssemibold';
+        width: 150px;
+        padding-left: 8px;
+        input {
+            margin: 0 5px 0 0;
+        }
     }
 }
