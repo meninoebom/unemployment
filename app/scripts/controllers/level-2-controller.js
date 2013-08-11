@@ -117,5 +117,54 @@ $scope.employmentCategories = [
     colors: ["#0d5b92", "#70caf2"],
   };
 
-
+  $scope.scenarios = [
+    { text: "a group of people who are employed full time lose thier jobs and find part time employment",
+      moveFromCategoryId: null,
+      moveToCateogryId: null,
+      answers: {
+        laborForceParticipation: 'same',
+        employment: 'same',
+        unemployment: 'same'
+      }
+    },
+    { text: "a group of autoworkers who were recently replaced by high tech robots decide to stop looking for work",
+      moveFromCategoryId: 3,
+      moveToCateogryId: 5,
+      answers: {
+        laborForceParticipation: 'decrease',
+        employment: 'increase',
+        unemployment: 'decrease'
+      }
+    },
+    { text: "a group of people who had given up on finding work due to the recession start looking for work again",
+      moveFromCategoryId: 5,
+      moveToCateogryId: 4,
+      answers: {
+        laborForceParticipation: 'increase',
+        employment: 'decrease',
+        unemployment: 'increase'
+      }
+    }
+  ]
+  $scope.submitScenarioResponses = function() {
+    var scenario = $scope.currentScenario;
+    //if(scenario.moveToCateogryId) $scope.movePeopleToNewCateogry(scenario);
+    $scope.getRandomScenario();
+  }
+  $scope.movePeopleToNewCateogry = function(scenario) {
+    var num = _.random(5,10);
+    var to = _.findWhere($scope.employmentCategories, {id: scenario.moveToCateogryId});
+    var from = _.findWhere($scope.employmentCategories, {id: scenario.moveFromCateogryId});
+    console.log('moving from ' + from + ' to ' + to);
+  }
+  $scope.getRandomScenario = function() {
+    if ($scope.scenarios.length > 1) {
+      var currentScenarioIndex = _.random($scope.scenarios.length - 1);
+      $scope.currentScenario = $scope.scenarios[currentScenarioIndex];
+      $scope.scenarios.splice(currentScenarioIndex, 1);
+    } else {
+      $scope.currentScenario = $scope.scenarios[0];
+    }
+  }
+  $scope.getRandomScenario();
 }]);
