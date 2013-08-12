@@ -1,6 +1,6 @@
 'use strict';
 
-unemploymentApp.controller('Level2Ctrl', ['$scope',  function($scope ) {
+unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -120,7 +120,7 @@ $scope.employmentCategories = [
   $scope.scenarios = [
     { text: "a group of people who are employed full time lose thier jobs and find part time employment",
       moveFromCategoryId: null,
-      moveToCateogryId: null,
+      moveToCategoryId: null,
       answers: {
         laborForceParticipation: 'same',
         employment: 'same',
@@ -129,7 +129,7 @@ $scope.employmentCategories = [
     },
     { text: "a group of autoworkers who were recently replaced by high tech robots decide to stop looking for work",
       moveFromCategoryId: 3,
-      moveToCateogryId: 5,
+      moveToCategoryId: 5,
       answers: {
         laborForceParticipation: 'decrease',
         employment: 'increase',
@@ -138,33 +138,51 @@ $scope.employmentCategories = [
     },
     { text: "a group of people who had given up on finding work due to the recession start looking for work again",
       moveFromCategoryId: 5,
-      moveToCateogryId: 4,
+      moveToCategoryId: 4,
       answers: {
         laborForceParticipation: 'increase',
         employment: 'decrease',
         unemployment: 'increase'
       }
     }
-  ]
+  ];
   $scope.submitScenarioResponses = function() {
-    var scenario = $scope.currentScenario;
-    //if(scenario.moveToCateogryId) $scope.movePeopleToNewCateogry(scenario);
-    $scope.getRandomScenario();
+    if (!$("input[name=labor-force]:checked").val() 
+      || !$("input[name=employment]:checked").val() 
+      || !$("input[name=unemployment]:checked").val()) {      
+      angular.element('#choose-answers-modal').modal('show');
+    } else {
+      //tally the score here
+      $scope.doAnimation($scope.currentScenario);
+      $scope.getNewRandomScenario();
+      $scope.clearResponses(); 
+    }
   }
-  $scope.movePeopleToNewCateogry = function(scenario) {
-    var num = _.random(5,10);
-    var to = _.findWhere($scope.employmentCategories, {id: scenario.moveToCateogryId});
-    var from = _.findWhere($scope.employmentCategories, {id: scenario.moveFromCateogryId});
-    console.log('moving from ' + from + ' to ' + to);
+  $scope.clearResponses = function() {
+    $("input").prop('checked', false); 
   }
-  $scope.getRandomScenario = function() {
+  $scope.doAnimation = function(scenario) {
+    if(scenario.moveToCategoryId) {
+      var num = _.random(5,10);
+      var from = _.findWhere($scope.employmentCategories, {id: scenario.moveFromCategoryId});
+      var to = _.findWhere($scope.employmentCategories, {id: scenario.moveToCategoryId});
+      console.log('moving from ' + from.name + ' to ' + to.name);
+    } else {
+      return;
+    }
+  }
+  $scope.getNewRandomScenario = function() {
+    //if there are no more scenarios then go to level 3
     if ($scope.scenarios.length > 1) {
       var currentScenarioIndex = _.random($scope.scenarios.length - 1);
       $scope.currentScenario = $scope.scenarios[currentScenarioIndex];
       $scope.scenarios.splice(currentScenarioIndex, 1);
-    } else {
+    } else if ($scope.scenarios.length == 1) {
       $scope.currentScenario = $scope.scenarios[0];
+      $scope.scenarios = [];
+    } else {
+      $state.transitionTo('level-3-intro');
     }
   }
-  $scope.getRandomScenario();
+  $scope.getNewRandomScenario();
 }]);

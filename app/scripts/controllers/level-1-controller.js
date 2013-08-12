@@ -6,12 +6,8 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
     $scope.structuralCount = 0;
     $scope.cyclicalCount = 0;
     $scope.notInLaborForceCount = 0;
-    $scope.incorrectModal = angular.element('#incorrect-modal');
-    $scope.incorrectModal.modal({
-      show: false
-    });  
-    $scope.incorrect = function() {
-      $scope.incorrectModal.modal('show');
+    $scope.showIncorrectModal = function() {
+      angular.element('#incorrect-modal').modal('show');
     }
     $scope.profiles = [
       {gender: "m", failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},

@@ -82,7 +82,7 @@ angular.module('level-1-directives', [])
 					scope.$apply(function(){
 						currentProfile.failedAttempts++;
 					});
-					scope.incorrect();
+					scope.showIncorrectModal();
 				}
 			});
 			ngModel.$render = function() {

@@ -430,7 +430,7 @@ $labelSize: 21px;
     border: 2px dashed #000;
 }
 
-#incorrect-modal.modal {
+.modal {
     @include border-radius(4px);
     background: $darkGrey;
     border: 1px solid $red;
@@ -439,7 +439,7 @@ $labelSize: 21px;
     top: 50%;
     strong{
         display: block;
-        color: $red;
+        color: $white;
         text-transform: uppercase;
     }
     small {

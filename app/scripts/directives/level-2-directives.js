@@ -22,9 +22,9 @@ angular.module('questionDirectives', [])
 		link: function(scope, elem, attrs, ctrl) {
 			var content;
 			var contentObj = [
-				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.',
-				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.[image of equation goes here]',
-				'The labor force participation rate is the percentage of teh people in the non-institutional adult population who are in teh labor force.[image of equation goes here][equation calculator goes here]'
+				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.',
+				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.[image of equation goes here]',
+				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.[image of equation goes here][equation calculator goes here]'
 			]
 			
 			var called = false;
