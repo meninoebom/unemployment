@@ -102,7 +102,7 @@ div, ul, li, p, h1, h2, h3, h4 {
     }
     .column {
         width: 200px;
-        margin-right: 65px;
+        margin-right: 71px;
         float: left;
         .image-container {
             width: 100%;
@@ -111,7 +111,6 @@ div, ul, li, p, h1, h2, h3, h4 {
         }
     }
     .last-column {
-        float: right;
         margin-right: 0
     }
 }
@@ -321,7 +320,7 @@ div, ul, li, p, h1, h2, h3, h4 {
 }
 
 .question-area {
-    padding: 19px 16px;
+    padding: 19px 16px 40px;
     background: #f3f3f3;
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
@@ -337,7 +336,7 @@ div, ul, li, p, h1, h2, h3, h4 {
         width: 600px;
         float: left;
         p {
-
+            margin-bottom: 14px;
         }
     }
 }

@@ -12,7 +12,7 @@ angular.module('level-2-directives-module', [])
 				naturalUnemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />'
 			}
 			var content = popverContent[attrs.content];
-			elem.popover({ content: content, trigger: "hover", html: true, placement: "right" });
+			elem.popover({ content: content, trigger: "hover", html: true});
 		}
 	};
 }).directive('wrongAnswerPopover', function(){
@@ -23,7 +23,7 @@ angular.module('level-2-directives-module', [])
 			var content;
 			var contentObj = [
 				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.',
-				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.[image of equation goes here]',
+				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.<img src="img/employment-rate-second-hint.png">',
 				'The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.[image of equation goes here][equation calculator goes here]'
 			]
 			
@@ -58,7 +58,7 @@ angular.module('level-2-directives-module', [])
 }).directive('equationTool', ['$http', '$templateCache', '$compile', function($http, $templateCache, $compile) {
 	return {
 		restrict: 'A',
-		replace: true,
+		scope: { test:'@' },
 		link: function(scope, element, attrs, ctrl) {
 			var src = attrs.equationTool, content;
 			$http.get(src, {cache: $templateCache}).success(function(response){
@@ -71,17 +71,11 @@ angular.module('level-2-directives-module', [])
 					content: content, trigger: "manual", html: true, placement: "top", 
 					template: '<div class="popover equation-tool-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div><img class="popover-close-button" src="img/popover_close.png" width="25" height="25" /></div>'
 				});
-
 				$elem.popover('show');	
-
-				$compile($elem.contents())(scope);
-
-				console.log($elem);
+				var compiled = $compile($elem.next('.popover').find('.popover-content'))(scope);
 				$elem.next('.popover').find('.popover-close-button').click(function(event) {
 					$elem.popover('destroy');
 				});	
-
-
 			});
 		}
 	}

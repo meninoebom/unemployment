@@ -1,9 +1,10 @@
 'use strict';
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
-$scope.test = {
-  val: 'foo'
-}
+$scope.eqToolEmployed = 0;
+$scope.eqToolUnemployed = $scope.eqToolEmployed;
+$scope.eqToolNonInstitution = 0;
+$scope.eqToolLaborForceParticipationRate = $scope.eqToolEmployed + $scope.eqToolUnemployed;
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -53,6 +54,13 @@ $scope.employmentCategories = [
     {answer: 100, url: 'views/level-2/questions/question-3.html'},
     {answer: 100, url: 'views/level-2/questions/question-4.html'}
   ];
+
+  $scope.hints = {
+
+  }
+
+
+  
 
   $scope.numAttempts = 0;
 
