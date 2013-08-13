@@ -66,6 +66,72 @@
     @include popover($white);
 }
 
+.equation-tool-popover {
+    text-align: center;
+    max-width: 500px;
+    width: 500px;
+    h2 {
+        @include font(18px, 22px);
+        font-family: 'open_sanssemibold';
+        width: 270px;
+        text-align: center;
+        margin: 0 0 10px 0;
+    }
+    .top-caption, .bottom-caption {
+        @include font(12px, 12px);
+        margin: 0 0 4px 0;
+        width: 270px;
+        float: left;    
+    }
+    .numerator, .denominator {
+        width: 270px;
+        position: relative;
+        float: left;
+        .inner { 
+            display: inline-block;
+        }
+    }
+    .divisor-container {
+        width: 100%;
+        float: left;
+        margin: -10px 0 -8px;
+        .divisor-line {
+            width: 260px;
+            height: 2px;
+            background: $darkGrey;
+            margin: 17px 0 0;
+            float: left;
+        }
+    }
+    .parenthesis, .plus-sign {
+        width: 10px;
+        @include font(24px, 24px);
+        float: left;
+    }
+    .plus-sign {
+        margin: 0 5px;
+    }
+    p { float: left; 
+        position: relative; 
+        width: 110px; 
+        text-align: center;
+    }
+    input {
+        width: 96px;
+        height: 33px;
+        border: 1px solid #000;
+        margin: 0 0 5px 0;
+        padding: 0;
+        background: $grey;
+    }
+    .caption {
+        display: inline-block;
+        @include font(12px, 14px);
+        margin: 0;
+        padding: 0;
+    }
+}
+
 .scenario-radio-buttons-container {
     margin: 20px 20px 0 0;
     float: left;

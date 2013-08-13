@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('d3Directives', []).directive('piechart', ['$window', '$timeout', function($window, $timeout) {
+angular.module('pie-chart-directive-module', []).directive('piechart', ['$window', '$timeout', function($window, $timeout) {
   
   var link  = function(scope, element, attrs, ctrl) {
 

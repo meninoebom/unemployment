@@ -1,6 +1,9 @@
 'use strict';
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
+$scope.test = {
+  val: 'foo'
+}
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -55,7 +58,7 @@ $scope.employmentCategories = [
 
   $scope.response = {value: 0};
 
-  $scope.currentQuestion = {num: 5}
+  $scope.currentQuestion = {num: 5};//start at question
   
   $scope.submitResponse = function(questionNum) {
     var answer = $scope.questions[questionNum-1].answer;
@@ -172,7 +175,6 @@ $scope.employmentCategories = [
     }
   }
   $scope.getNewRandomScenario = function() {
-    //if there are no more scenarios then go to level 3
     if ($scope.scenarios.length > 1) {
       var currentScenarioIndex = _.random($scope.scenarios.length - 1);
       $scope.currentScenario = $scope.scenarios[currentScenarioIndex];

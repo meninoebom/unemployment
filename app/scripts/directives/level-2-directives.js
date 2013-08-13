@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('questionDirectives', [])
+angular.module('level-2-directives-module', [])
 .directive('showFormula', function(){
     return {
 		restrict: 'A',
@@ -55,4 +55,34 @@ angular.module('questionDirectives', [])
             event.preventDefault();
         });
     }
-});
+}).directive('equationTool', ['$http', '$templateCache', '$compile', function($http, $templateCache, $compile) {
+	return {
+		restrict: 'A',
+		replace: true,
+		link: function(scope, element, attrs, ctrl) {
+			var src = attrs.equationTool, content;
+			$http.get(src, {cache: $templateCache}).success(function(response){
+				content = response;
+			}).error();
+			$(element).click(function(event) { 
+				event.preventDefault();
+				var $elem = $(this);
+				$elem.popover({ 
+					content: content, trigger: "manual", html: true, placement: "top", 
+					template: '<div class="popover equation-tool-popover"><div class="arrow"></div><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div><img class="popover-close-button" src="img/popover_close.png" width="25" height="25" /></div>'
+				});
+
+				$elem.popover('show');	
+
+				$compile($elem.contents())(scope);
+
+				console.log($elem);
+				$elem.next('.popover').find('.popover-close-button').click(function(event) {
+					$elem.popover('destroy');
+				});	
+
+
+			});
+		}
+	}
+}]);

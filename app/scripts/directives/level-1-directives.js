@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('level-1-directives', [])
+angular.module('level-1-directives-module', [])
 .directive('showDetails', function(){
     return {
 		restrict: 'A',
