@@ -1,10 +1,11 @@
 'use strict';
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
-$scope.eqToolEmployed = 0;
-$scope.eqToolUnemployed = $scope.eqToolEmployed;
-$scope.eqToolNonInstitution = 0;
-$scope.eqToolLaborForceParticipationRate = $scope.eqToolEmployed + $scope.eqToolUnemployed;
+
+//$scope.laborPopover = '<h2>Labor Force Participation Rate</h2><div class="numerator"><div class="top-caption">#Labor Force</div><span class="inner"><div class="parenthesis">(</div><p><input type="text" ng-model="eqToolEmployed"/><span class="caption">#Employed</span></p><span class="plus-sign">+</span><p><input type="text" ng-model="eqToolUnemployed"/><span class="caption">#Unemployed</span></p><div class="parenthesis">)</div></span></div><div class="divisor-container"><div class="divisor-line"></div> X 100=<input type="text" ng-model="eqToolLaborForceParticipationRate"/></div><div class="denominator"><span class="inner"><p><input type="text" ng-model="eqToolNonInstitution"/><span class="caption">#Non-institutional Adult Population</span></p></span></div>';
+// $scope.eqToolEmployed = 0;
+// $scope.eqToolNonInstitution = 0;
+// $scope.eqToolLaborForceParticipationRate = $scope.eqToolEmployed + $scope.eqToolUnemployed;
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -58,9 +59,6 @@ $scope.employmentCategories = [
   $scope.hints = {
 
   }
-
-
-  
 
   $scope.numAttempts = 0;
 

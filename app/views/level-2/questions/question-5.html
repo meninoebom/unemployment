@@ -4,7 +4,32 @@
 
 <div class="scenario-radio-buttons-container">
 	<div class="scenario-category-header clearfix"><h3 class="scenario-category-label">Labor Force<br />Participation Rate</h3>
-		<a class="info-icon" equation-tool="/views/level-2/equation-tool/labor.html" href="#"></a>
+		<button class="info-button" >
+			<div class="popover top">
+				<div class="popover-inner">
+					<div class="arrow"></div>
+					<div class="popover-content">
+						<div class="equation-tool">
+							<h2>Labor Force Participation Rate</h2>
+							<div class="numerator">
+								<div class="top-caption">#Labor Force</div>
+								<span class="inner">
+									<div class="parenthesis">(</div>
+									<p><input type="text" ng-model="eqToolEmployed" /><span class="caption">#Employed</span></p> 
+									<span class="plus-sign">+</span> 
+									<p><input type="text" ng-model="eqToolUnemployed" /><span class="caption">#Unemployed</span></p>
+									<div class="parenthesis">)</div>
+								</span>	
+							</div>
+							<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" ng-model="eqToolLaborForceParticipationRate" /></div>    
+							<div class="denominator">
+								<span class="inner"><p><input type="text" ng-model="eqToolNonInstitution" /><span class="caption">#Non-institutional Adult Population</span></p></span>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</button>
 	</div>
 	<br />
 	<ul class="clearfix">
@@ -15,7 +40,32 @@
 </div>
 <div class="scenario-radio-buttons-container">
 	<div class="scenario-category-header"><h3 class="scenario-category-label">Employment<br />Rate</h3>
-		<a class="info-icon" equation-tool="/views/level-2/equation-tool/employment.html" href="#"></a>
+		<button class="info-button" >
+			<div class="popover top">
+				<div class="popover-inner">
+					<div class="arrow"></div>
+					<div class="popover-content">
+						<div class="equation-tool">
+						<h2>Employment Rate</h2>
+						<div class="numerator">
+							<span class="inner"><p><input type="text" value="{{numNonInstitution}}" /><span class="caption">#Employed</span></p></span>
+						</div> 
+						<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" value="{{numEmployed+numUnemployed/numNonInstitution}}" /></div>    
+						<div class="denominator">
+							<span class="inner">
+								<div class="parenthesis">(</div>
+								<p><input type="text" value="{{numEmployed}}" /><span class="caption">#Employed</span></p> 
+								<span class="plus-sign">+</span> 
+								<p><input type="text" value="{{numUnemployed}}" /><span class="caption">#Unemployed</span></p>
+								<div class="parenthesis">)</div>
+							</span>	
+							<div class="top-caption">#Labor Force</div>
+						</div>
+					</div>
+					</div>
+				</div>
+			</div>
+		</button>
 	</div>
 	<br />
 	<ul class="clearfix">
@@ -26,7 +76,32 @@
 </div>
 <div class="scenario-radio-buttons-container">
 	<div class="scenario-category-header"><h3 class="scenario-category-label">Unemployment<br />Rate</h3>
-		<a class="info-icon" equation-tool="/views/level-2/equation-tool/unemployment.html" href="#"></a>
+		<button class="info-button" >
+			<div class="popover top">
+				<div class="popover-inner">
+					<div class="arrow"></div>
+					<div class="popover-content">
+						<div class="equation-tool">
+							<h2>Unemployment Rate</h2>
+							<div class="numerator">
+								<span class="inner"><p><input type="text" value="{{numNonInstitution}}" /><span class="caption">#Unemployed</span></p></span>
+							</div> 
+							<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" value="{{numEmployed+numUnemployed/numNonInstitution}}" /></div>    
+							<div class="denominator">
+								<span class="inner">
+									<div class="parenthesis">(</div>
+									<p><input type="text" value="{{numEmployed}}" /><span class="caption">#Employed</span></p> 
+									<span class="plus-sign">+</span> 
+									<p><input type="text" value="{{numUnemployed}}" /><span class="caption">#Unemployed</span></p>
+									<div class="parenthesis">)</div>
+								</span>	
+								<div class="top-caption">#Labor Force</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</button>
 	</div>
 	<br />
 	<ul class="clearfix">
