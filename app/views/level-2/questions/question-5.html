@@ -15,15 +15,15 @@
 								<div class="top-caption">#Labor Force</div>
 								<span class="inner">
 									<div class="parenthesis">(</div>
-									<p><input type="text" ng-model="eqToolEmployed" /><span class="caption">#Employed</span></p> 
+									<p><input type="text" ng-model="eqTool.employed" /><span class="caption">#Employed</span></p> 
 									<span class="plus-sign">+</span> 
-									<p><input type="text" ng-model="eqToolUnemployed" /><span class="caption">#Unemployed</span></p>
+									<p><input type="text" ng-model="eqTool.unemployed" /><span class="caption">#Unemployed</span></p>
 									<div class="parenthesis">)</div>
 								</span>	
 							</div>
-							<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" ng-model="eqToolLaborForceParticipationRate" /></div>    
+							<div class="divisor-container"><div class="divisor-line"></div> X 100 = {{laborParticipationRate() | number:2}}</div>    
 							<div class="denominator">
-								<span class="inner"><p><input type="text" ng-model="eqToolNonInstitution" /><span class="caption">#Non-institutional Adult Population</span></p></span>
+								<span class="inner"><p><input type="text" ng-model="eqTool.nonInstitutional" /><span class="caption">#Non-institutional Adult Population</span></p></span>
 							</div>
 						</div>
 					</div>
@@ -48,15 +48,15 @@
 						<div class="equation-tool">
 						<h2>Employment Rate</h2>
 						<div class="numerator">
-							<span class="inner"><p><input type="text" value="{{numNonInstitution}}" /><span class="caption">#Employed</span></p></span>
+							<span class="inner"><p><input type="text" ng-model="eqTool.employed" /><span class="caption">#Employed</span></p></span>
 						</div> 
-						<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" value="{{numEmployed+numUnemployed/numNonInstitution}}" /></div>    
+						<div class="divisor-container"><div class="divisor-line"></div> X 100 = {{employmentRate() | number:2}}</div>    
 						<div class="denominator">
 							<span class="inner">
 								<div class="parenthesis">(</div>
-								<p><input type="text" value="{{numEmployed}}" /><span class="caption">#Employed</span></p> 
+								<p><input type="text" ng-model="eqTool.employed" /><span class="caption">#Employed</span></p> 
 								<span class="plus-sign">+</span> 
-								<p><input type="text" value="{{numUnemployed}}" /><span class="caption">#Unemployed</span></p>
+								<p><input type="text" ng-model="eqTool.unemployed" /><span class="caption">#Unemployed</span></p>
 								<div class="parenthesis">)</div>
 							</span>	
 							<div class="top-caption">#Labor Force</div>
@@ -84,15 +84,15 @@
 						<div class="equation-tool">
 							<h2>Unemployment Rate</h2>
 							<div class="numerator">
-								<span class="inner"><p><input type="text" value="{{numNonInstitution}}" /><span class="caption">#Unemployed</span></p></span>
+								<span class="inner"><p><input type="text" ng-model="eqTool.unemployed" /><span class="caption">#Unemployed</span></p></span>
 							</div> 
-							<div class="divisor-container"><div class="divisor-line"></div> X 100 = <input type="text" value="{{numEmployed+numUnemployed/numNonInstitution}}" /></div>    
+							<div class="divisor-container"><div class="divisor-line"></div> X 100 = {{unemploymentRate() | number:2}}</div>    
 							<div class="denominator">
 								<span class="inner">
 									<div class="parenthesis">(</div>
-									<p><input type="text" value="{{numEmployed}}" /><span class="caption">#Employed</span></p> 
+									<p><input type="text" ng-model="eqTool.employed" /><span class="caption">#Employed</span></p> 
 									<span class="plus-sign">+</span> 
-									<p><input type="text" value="{{numUnemployed}}" /><span class="caption">#Unemployed</span></p>
+									<p><input type="text" ng-model="eqTool.unemployed" /><span class="caption">#Unemployed</span></p>
 									<div class="parenthesis">)</div>
 								</span>	
 								<div class="top-caption">#Labor Force</div>
