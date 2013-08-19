@@ -64,14 +64,7 @@ $scope.employmentCategories = [
       }
     ];
 
-  $scope.questions = [
-    {answer: 100, url: 'views/level-2/questions/question-1.html'},
-    {answer: 100, url: 'views/level-2/questions/question-2.html'},
-    {answer: 100, url: 'views/level-2/questions/question-3.html'},
-    {answer: 100, url: 'views/level-2/questions/question-4.html'}
-  ];
-
-  //$scope.hints = {}
+  $scope.fillInTheBlankAnswers = [100, 100, 100, 100];
 
   $scope.numAttempts = 0;
 
@@ -89,16 +82,15 @@ $scope.employmentCategories = [
   $scope.showHint = false;
   
   $scope.submitResponse = function(questionNum) {
-    var answer = $scope.questions[questionNum-1].answer;
+    var answer = $scope.fillInTheBlankAnswers[questionNum-1];
     if($scope.response.value == answer) {
       $scope.currentQuestion.num = questionNum + 1;
       $scope.response.value = 0;
       $scope.displayPieChartPercentage(questionNum);
+      $scope.numAttempts = 0;
     } else {
-      $scope.numAttempts++;
+      //$scope.numAttempts++;
       $scope.$broadcast('showHint');
-      //$scope.showHint = true;
-      console.log('showHint');
     }  
   }
 
@@ -117,11 +109,6 @@ $scope.employmentCategories = [
         default:
         break;
     }
-  }
-
-  $scope.getCurrentQuestionUrl = function() {
-    return $scope.questions[$scope.currentQuestion.num - 1].url;
-    console.log($scope.questions[$scope.currentQuestion.num - 1].url);
   }
 
   $scope.notLaborCount = String($scope.employmentCategories[4].count);
