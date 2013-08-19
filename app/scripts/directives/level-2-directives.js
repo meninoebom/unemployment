@@ -220,6 +220,25 @@ angular.module('level-2-directives-module', [])
 			elem.popover({ content: content, trigger: "hover", html: true});
 		}
 	};
+}).directive('incorrectAnswerPopover', function(){
+	return {
+		restrict: 'C',
+		replace: false,
+		link: function(scope, element, attrs, ctrl) {
+			var children = element.find('.popover-content').children();
+			children.css('display','none');
+			scope.$on('showHint', function() {
+				element.toggle();
+				
+				_.each(children, function(child, index, children) {
+					if(index + 1 <= scope.numAttempts) $(child).css('display','block');
+				});
+			});
+			element.find('.popover-close-button').bind('click', function() {
+				element.toggle();
+			});	
+		}
+	}
 }).directive('wrongAnswerPopover', function(){
     return {
 		restrict: 'A',

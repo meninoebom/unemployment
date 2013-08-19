@@ -2,6 +2,8 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
+$scope.currentQuestion = {num: 1};//start at question
+
 $scope.eqTool = {
   employed: "",
   unemployed: "",
@@ -69,15 +71,22 @@ $scope.employmentCategories = [
     {answer: 100, url: 'views/level-2/questions/question-4.html'}
   ];
 
-  $scope.hints = {
-
-  }
+  //$scope.hints = {}
 
   $scope.numAttempts = 0;
 
+  $scope.whichAttempt = function(num) {
+    console.log("$scope.numAttempts = "+$scope.numAttempts);
+    if($scope.numAttempts == num) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
   $scope.response = {value: 0};
 
-  $scope.currentQuestion = {num: 5};//start at question
+  $scope.showHint = false;
   
   $scope.submitResponse = function(questionNum) {
     var answer = $scope.questions[questionNum-1].answer;
@@ -88,6 +97,8 @@ $scope.employmentCategories = [
     } else {
       $scope.numAttempts++;
       $scope.$broadcast('showHint');
+      //$scope.showHint = true;
+      console.log('showHint');
     }  
   }
 

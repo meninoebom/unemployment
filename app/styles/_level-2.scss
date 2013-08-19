@@ -60,6 +60,8 @@
 
 .incorrect-answer-popover {
     @include popover($red, $white);
+    display: block;
+    width: 500px
 }
 
 [rel=popover][data-color=darkGrey] + .popover {
