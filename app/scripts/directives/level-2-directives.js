@@ -6,7 +6,6 @@ angular.module('directives.ue.level-2', [])
 		restrict: 'AC',
 		scope: true,
 		link: function(scope, element, attrs) {
-			console.log('info button');
 			// Default hide triggers for each show trigger
 			var triggerMap = {
 				'mouseenter': 'mouseleave',
@@ -211,7 +210,6 @@ angular.module('directives.ue.level-2', [])
     return {
 		restrict: 'A',
 		link: function(scope, elem, attrs, ctrl) {
-			console.log('showFormula');
 			var popverContent = {
 				laborForceParticipation: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />',
 				employment: '<img src="img/employmentRateFormula.png" width="311" height="149" />',
@@ -227,7 +225,6 @@ angular.module('directives.ue.level-2', [])
 		restrict: 'C',
 		replace: false,
 		link: function(scope, element, attrs, ctrl) {
-			console.log('incorrectAnswerPopover');
 			var children = element.find('.popover-content').children();
 			children.css('display','none');
 			var showing = false;
@@ -254,7 +251,6 @@ angular.module('directives.ue.level-2', [])
     }
 }).directive('piechart', ['$window', '$timeout', function($window, $timeout) {
   var link  = function(scope, element, attrs, ctrl) {
-  	console.log('piechart');
     var data = scope.data,
         diameter = scope.options.diameter,
         radius = diameter / 2,
