@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
-$scope.currentQuestion = {num: 1};//start at question
+$scope.currentQuestion = {num: 1};//which question will display first
 
 $scope.eqTool = {
   employed: "",
@@ -78,8 +78,6 @@ $scope.employmentCategories = [
   }
 
   $scope.response = {value: 0};
-
-  $scope.showHint = false;
   
   $scope.submitResponse = function(questionNum) {
     var answer = $scope.fillInTheBlankAnswers[questionNum-1];
@@ -89,7 +87,6 @@ $scope.employmentCategories = [
       $scope.displayPieChartPercentage(questionNum);
       $scope.numAttempts = 0;
     } else {
-      //$scope.numAttempts++;
       $scope.$broadcast('showHint');
     }  
   }
