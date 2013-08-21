@@ -1,17 +1,71 @@
 
 .level-4-graph {
-	width: 690px;
-	height: 535px;
 	float: left;
+	height: 535px;
+	width: 690px;
 }
 .level-4-periods {
-	width: 334px;
-	height: 535px;
 	float: left;
-	.recessions-container, .expansions-container {
-		width: 312px;
+	height: 535px;
+	width: 334px;
+	.period-select-container {
+		@include font(15px, 18px);
 		height: 377px;
-		overflow: scroll;
+		overflow-y: scroll;
+		width: 312px;
+		.period {
+			height: 45px;
+			border-bottom: 2px solid $white;
+			.order-num {
+				border: 2px solid #000;
+				display: block;
+				float: left;
+				height: 16px;
+				margin: 13px 9px 0;
+				width: 16px;
+			}
+		}
+		.vert-center-wrapper {
+			height: 100%;
+			width: 260px;
+			float: left;
+		}
+		.vert-center-wrapper:before {
+		  content: '';
+		  display: inline-block;
+		  height: 100%; 
+		  vertical-align: middle;
+		  /*margin-right: -0.25em;  Adjusts for spacing */
+		  /*background: #808080; width: 5px;*/
+		 }
+		 .vert-center {
+		 	display: inline-block;
+			vertical-align: middle;
+			width: 259px;
+		 }
+	}
+	.periods-header {
+		background: $grey;
+		height: 35px;
+		margin-bottom: 2px;
+		width: 312px;
+		h2 {
+			@include font(21px, 21px);
+			float: left;
+			margin: 0;
+			padding: 10px 0 0 12px;
+			width: 280px;
+		}
+		.open-collapse-button {
+			@include font(21px, 26px);
+			background: $white;
+			display: block;
+			float: left;
+			height: 26px;
+			margin-top: 5px;
+			text-align: center;
+			width: 26px;
+		}
 	}
 }
 .level-4-question-area {

@@ -1,10 +1,26 @@
 Data View: <button class="graph-view-button"></button> <button class="grid-view-button"></button>
-<h2>Recessionary Periods</h2><button class="plus-minus" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></button>
-<div class="recessions-container" collapse="recessionsIsCollapsed">
-<div ng-repeat="period in recessions">{{period.name}}</div>
+
+<div class="periods-header">
+<h2>Recessionary Periods</h2>
+<span class="open-collapse-button" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed">-</span>
 </div>
-<h2>Expansionary Periods</h2><button class="pluse-minus" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed"></button>
-<div class="expansions-container" collapse="expansionsIsCollapsed">
-<div ng-repeat="period in expansions">{{period.name}}</div>
+
+<div class="period-select-container" collapse="recessionsIsCollapsed">
+	<div class="period" ng-repeat="period in recessions">
+		<span class="order-num"></span>
+		<div class="vert-center-wrapper"><div class="vert-center">{{period.name}}</div></div>
+	</div>
+</div>
+
+<div class="periods-header">
+<h2>Expansionary Periods</h2>
+<span class="open-collapse-button" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed">-</span>
+</div>
+<div class="period-select-container" collapse="expansionsIsCollapsed">
+	<div class="period" ng-repeat="period in expansions">
+		<span class="order-num"></span>
+
+		<div class="vert-center-wrapper"><div class="vert-center">{{period.name}}</div></div>
+	</div>
 </div>
 

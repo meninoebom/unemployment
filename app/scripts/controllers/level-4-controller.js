@@ -23,5 +23,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	$scope.submitResponse = function() {
 		$scope.currentQuestion++; 
 	}
+	$scope.recessionsIsCollapsed = false;
+	$scope.expansionsIsCollapsed = false;
 
 }]);
