@@ -1,0 +1,47 @@
+
+.level-4-graph {
+	width: 690px;
+	height: 535px;
+	float: left;
+}
+.level-4-periods {
+	width: 334px;
+	height: 535px;
+	float: left;
+	.recessions-container, .expansions-container {
+		width: 312px;
+		height: 377px;
+		overflow: scroll;
+	}
+}
+.level-4-question-area {
+    padding: 19px 16px 40px;
+    background: #f3f3f3;
+    box-shadow: inset 1px 4px 9px -6px;
+    float: left;
+    min-height: 172px;
+    width: 100%;
+    position: relative;
+    .question-area-indicator {
+        width: 52px;
+        float: left;
+    }
+    .question {
+        @include font(18px, 22px);
+        width: 600px;
+        float: left;
+        & > p {
+            margin-bottom: 14px;
+        }
+	    ul {
+	        @include font(14px, 16px);
+	        font-family: 'open_sanssemibold';
+	        padding-left: 1px;
+	        input {
+	            position: relative;
+	            bottom: 2px;
+	            margin: 0 6px 0 0;
+	        }
+	    }
+    }
+}

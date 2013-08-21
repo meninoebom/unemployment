@@ -15,6 +15,28 @@
     }    
 }
 
+.level-2 .non-institution .circle {
+    border: $circleBorderWidth solid $darkGrey;
+}
+
+.level-2 .labor-force .circle {
+    border: $circleBorderWidth solid $green;
+}
+
+.level-2 .not-labor-force .circle {
+    border: $circleBorderWidth solid $lightGreen;
+}
+
+.level-2 .employed .circle {
+    border: $circleBorderWidth solid $blue;
+}
+
+.level-2 .unemployed .circle,.level-2 .friction .circle,
+.level-2 .structure .circle,.level-2 .cyclic .circle
+ {
+    border: $circleBorderWidth solid $lightBlue;
+}
+
 .level-2-pie-charts {
     .pie-charts-main-header {
         @include font(21px, 24px);

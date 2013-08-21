@@ -1,1 +1,10 @@
-Periods
+Data View: <button class="graph-view-button"></button> <button class="grid-view-button"></button>
+<h2>Recessionary Periods</h2><button class="plus-minus" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></button>
+<div class="recessions-container" collapse="recessionsIsCollapsed">
+<div ng-repeat="period in recessions">{{period.name}}</div>
+</div>
+<h2>Expansionary Periods</h2><button class="pluse-minus" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed"></button>
+<div class="expansions-container" collapse="expansionsIsCollapsed">
+<div ng-repeat="period in expansions">{{period.name}}</div>
+</div>
+
