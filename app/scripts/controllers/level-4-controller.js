@@ -25,17 +25,28 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	}
 	$scope.recessionsIsCollapsed = false;
 	$scope.expansionsIsCollapsed = false;
-	$scope.selectedColors = ['purple','green','blue'];
-	$scope.togglePeriodSelect = function(period) {
-		if (period.color == "") {
-			if ($scope.selectedColors.length) {
-				period.color = $scope.selectedColors.shift();
-			} else {
-				return;
-			}
-		} else {
-			$scope.selectedColors.push(period.color);
+	$scope.availableSelectionColors = ['purple','green','blue'];
+	$scope.selectedPeriods = [];
+	$scope.togglePeriodSelect = function(period, ngRepeatIndex) {
+	    if(period.selected) {
+	    	period.selected = false;
+			$scope.selectedPeriods.splice(_.indexOf($scope.selectedPeriods, period),1);
+			period.selectedOrderNum = "";
+	    	$scope.availableSelectionColors.push(period.color);
 			period.color = "";
-		}
+	    } else {
+	    	if($scope.selectedPeriods.length < 3) {
+		    	period.selected = true;
+		    	$scope.selectedPeriods.push(period);
+		    	period.ngRepeatIndex = ngRepeatIndex;
+		    	$scope.selectedPeriods = _.sortBy($scope.selectedPeriods, 'ngRepeatIndex');
+		    	_.each($scope.selectedPeriods, function(period, index, list) {
+		    		period.selectedOrderNum = index + 1;
+		    	});
+		    	period.color = $scope.availableSelectionColors.shift();
+		    } else {
+		    	return;
+		    }
+	    }
 	}
 }]);
