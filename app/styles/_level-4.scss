@@ -7,12 +7,44 @@
 .level-4-periods {
 	float: left;
 	height: 535px;
-	width: 334px;
+	width: 312px;
+	header {
+		height: 71px;
+		padding-top: 8px;
+	}
+	.switch-view-button-label {
+		@include font(16px, 24px);
+		float: right;
+		margin-top: 5px;
+	}
+	.switch-view-button {
+		background-color: #000;
+		float: right;
+		height: 33px;
+		margin-left: 8px;
+		text-indent: -9999px;
+		width: 33px;
+		display: inline-block;
+		cursor: pointer;
+	}	
+	.graph-view-button {
+		background-size: 33px;
+		background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;
+		&.active {
+			background-image: url('../img/graph_view_active.png');
+		}	
+	}
+	.grid-view-button {
+		background-size: 33px;
+		background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;
+		&.active {
+			background-image: url('../img/grid_view_active.png');
+		}	
+	}
 	.period-select-container {
 		@include font(15px, 18px);
 		height: 377px;
 		overflow-y: scroll;
-		width: 312px;
 		.period {
 			height: 45px;
 			border-bottom: 2px solid $white;
@@ -24,36 +56,21 @@
 				margin: 13px 9px 0;
 				width: 16px;
 			}
+			.period-name {width: 260px;}
+			&.purple {background-color: $purple; color: $white;}
+			&.blue {background-color: $blue; color: $white;}
+			&.green {background-color: $green; color: $white;}
 		}
-		.vert-center-wrapper {
-			height: 100%;
-			width: 260px;
-			float: left;
-		}
-		.vert-center-wrapper:before {
-		  content: '';
-		  display: inline-block;
-		  height: 100%; 
-		  vertical-align: middle;
-		  /*margin-right: -0.25em;  Adjusts for spacing */
-		  /*background: #808080; width: 5px;*/
-		 }
-		 .vert-center {
-		 	display: inline-block;
-			vertical-align: middle;
-			width: 259px;
-		 }
 	}
-	.periods-header {
+	.period-select-header {
 		background: $grey;
 		height: 35px;
 		margin-bottom: 2px;
-		width: 312px;
 		h2 {
 			@include font(21px, 21px);
 			float: left;
 			margin: 0;
-			padding: 10px 0 0 12px;
+			padding: 5px 0 0 12px;
 			width: 280px;
 		}
 		.open-collapse-button {
@@ -65,28 +82,23 @@
 			margin-top: 5px;
 			text-align: center;
 			width: 26px;
+			&.collapse:before{
+				content:"-";
+			}
+			&.expand:before{
+				content:"+";
+			}
 		}
 	}
 }
 .level-4-question-area {
-    padding: 19px 16px 40px;
-    background: #f3f3f3;
-    box-shadow: inset 1px 4px 9px -6px;
-    float: left;
-    min-height: 172px;
+    padding: 19px 16px 40px 65px;
     width: 100%;
-    position: relative;
     .question-area-indicator {
-        width: 52px;
-        float: left;
-    }
+        margin-top: 5px;
+	}
     .question {
-        @include font(18px, 22px);
-        width: 600px;
-        float: left;
-        & > p {
-            margin-bottom: 14px;
-        }
+        width: 810px;
 	    ul {
 	        @include font(14px, 16px);
 	        font-family: 'open_sanssemibold';

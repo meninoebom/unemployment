@@ -45,46 +45,6 @@
     width: 14px;
 }
 
-.tree {
-    background: $white;
-    float: left;
-    height:536px;
-    width: 721px;
-    position: relative;
-    h2 {
-        @include font(24px, 24px);
-        padding: 16px 0 25px 207px;
-        margin: 0;
-    }
-    .tree-bg {
-        position: absolute;
-        top: 104px;
-        left: 160px;
-    }
-}
-
-.question-area {
-    padding: 19px 16px 40px;
-    background: #f3f3f3;
-    box-shadow: inset 1px 4px 9px -6px;
-    float: left;
-    min-height: 172px;
-    width: 721px;
-    position: relative;
-    .question-area-indicator {
-        width: 52px;
-        float: left;
-    }
-    .question {
-        @include font(18px, 22px);
-        width: 600px;
-        float: left;
-        & > p {
-            margin-bottom: 14px;
-        }
-    }
-}
-
 $nodeSize: 130px;
 $circleDiameter: 83px;
 $circleBorderWidth: 9px;
