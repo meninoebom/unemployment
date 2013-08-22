@@ -9,7 +9,7 @@
 <span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[recessionsIsCollapsed]" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></span>
 </div>
 <div class="period-select-container" collapse="recessionsIsCollapsed">
-	<div class="period" ng-class="period.color" ng-repeat="period in recessions">
+	<div class="period" ng-class="period.color" ng-repeat="period in recessions" ng-click="togglePeriodSelect(period)">
 		<span class="order-num"></span>
 		<div class="vert-center-wrapper period-name"><div class="vert-center">{{period.name}}</div></div>
 	</div>

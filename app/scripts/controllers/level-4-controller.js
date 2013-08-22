@@ -3,9 +3,9 @@
 unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	
 	$scope.recessions = [
-		{name: "Great Depression: August 1929 - March 1933", color: "purple"},
-		{name: "May 1937 - June 1938", color: "green"},
-		{name: "February 1945 - October 1945", color: "blue"},
+		{name: "Great Depression: August 1929 - March 1933", color: ""},
+		{name: "May 1937 - June 1938", color: ""},
+		{name: "February 1945 - October 1945", color: ""},
 		{name: "Novemeber 1948 - October 1949", color: ""},
 		{name: "July 1953 - May 1954", color: ""}
 	];
@@ -25,5 +25,17 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	}
 	$scope.recessionsIsCollapsed = false;
 	$scope.expansionsIsCollapsed = false;
-
+	$scope.selectedColors = ['purple','green','blue'];
+	$scope.togglePeriodSelect = function(period) {
+		if (period.color == "") {
+			if ($scope.selectedColors.length) {
+				period.color = $scope.selectedColors.shift();
+			} else {
+				return;
+			}
+		} else {
+			$scope.selectedColors.push(period.color);
+			period.color = "";
+		}
+	}
 }]);
