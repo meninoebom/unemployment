@@ -2,6 +2,7 @@
 
 angular.module('directives.ue.level-2', [])
 .directive('infoButton',['$position', '$timeout', function($position, $timeout){
+	//TODO clean out unnecessary code from this directive
 	return {
 		restrict: 'AC',
 		scope: true,
@@ -250,6 +251,7 @@ angular.module('directives.ue.level-2', [])
         });
     }
 }).directive('piechart', ['$window', '$timeout', function($window, $timeout) {
+	//TODO don't think I am actually using $window or $timeout service in this directive
   var link  = function(scope, element, attrs, ctrl) {
     var data = scope.data,
         diameter = scope.options.diameter,

@@ -1,11 +1,38 @@
 'use strict';
 
 angular.module('directives.ue.level-4', [])
-.directive('fooBar',['$position', '$timeout', function($position, $timeout){
+.directive('unemploymentGraph',[function(){
 	return {
-		restrict: 'EAC',
-		link: function() {
-			console.log("foo-bar");
+		restrict: 'E',
+		link: function(scope, element, attrs) {
+			
+			var data = [3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 2, 5, 7],
+			width = 690,
+			height = 538,
+			topMargin = 40,
+			bottomMargin = 40,
+			leftMargin = 40,
+			rightMargin = 40,
+			y = d3.scale.linear().domain([0, d3.max(data)]).range([0 + topMargin, height - bottomMargin]),
+			x = d3.scale.linear().domain([0, data.length]).range([0 + leftMargin, width - rightMargin]);
+
+			var graph = d3.select(element[0]).append("svg:svg")
+			    .attr("width", width)
+			    .attr("height", height);
+			 
+			var g = graph.append("svg:g")
+			    .attr("transform", "translate(0, "+height+")");
+
+			var line = d3.svg.line()
+			    .x(function(d,i) { return x(i); })
+			    .y(function(d) { return -1 * y(d); });
+
+			g.append("svg:path").attr("d", line(data))
+				.attr("fill","none")
+				.attr("stroke","#F00")
+				.attr("stroke-width",3);
+
+
 		}
 	}
 }]);
