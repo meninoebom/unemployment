@@ -8,7 +8,7 @@
 <h2>Recessionary Periods</h2>
 <span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[recessionsIsCollapsed]" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></span>
 </div>
-<div class="period-select-container" collapse="recessionsIsCollapsed">
+<div class="period-select-container" ue-collapse="recessionsIsCollapsed" target-height="377">
 	<div class="period" ng-class="period.color" ng-repeat="period in recessions" ng-click="toggleSelectedPeriod(period, recessions, $index)">
 		<span class="order-num">
 			{{period.selectedOrderNum}}
@@ -22,7 +22,7 @@
 <h2>Expansionary Periods</h2>
 <span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[expansionsIsCollapsed]" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed"></span>
 </div>
-<div class="period-select-container" collapse="expansionsIsCollapsed">
+<div class="period-select-container" ue-collapse="expansionsIsCollapsed" target-height="377">
 	<div class="period" ng-class="period.color" ng-repeat="period in expansions" ng-click="toggleSelectedPeriod(period, expansions, $index)">
 		<span class="order-num">
 			{{period.selectedOrderNum}}
