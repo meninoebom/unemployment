@@ -52,9 +52,26 @@
 				border: 2px solid #000;
 				display: block;
 				float: left;
-				height: 16px;
+				height: 18px;
+				line-height: 15px;
 				margin: 13px 9px 0;
-				width: 16px;
+				position: relative;
+				text-align: center;
+				width: 18px;
+				.line-style-icon {
+					background-size: 18px 3px;
+					background-repeat: no-repeat;
+					background-color: transparent;
+					bottom: -8px;
+					display: block;
+					height: 3px;
+					left: -2px;
+					position: absolute;
+					width: 18px;
+				}
+				.line-style-purple {background-image: url('../img/level_4_selected_period_line_style_1.png');}
+				.line-style-green {background-image: url('../img/level_4_selected_period_line_style_2.png');}
+				.line-style-blue {background-image: url('../img/level_4_selected_period_line_style_3.png');}
 			}
 			.period-name {width: 260px;}
 			&.purple {background-color: $purple; color: $white;}

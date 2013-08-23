@@ -9,8 +9,11 @@
 <span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[recessionsIsCollapsed]" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></span>
 </div>
 <div class="period-select-container" collapse="recessionsIsCollapsed">
-	<div class="period" ng-class="period.color" ng-repeat="period in recessions" ng-click="togglePeriodSelect(period, $index)">
-		<span class="order-num">{{period.selectedOrderNum}}</span>
+	<div class="period" ng-class="period.color" ng-repeat="period in recessions" ng-click="toggleSelectedPeriod(period, recessions, $index)">
+		<span class="order-num">
+			{{period.selectedOrderNum}}
+			<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+		</span>
 		<div class="vert-center-wrapper period-name"><div class="vert-center">{{period.name}}</div></div>
 	</div>
 </div>
@@ -20,8 +23,11 @@
 <span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[expansionsIsCollapsed]" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed"></span>
 </div>
 <div class="period-select-container" collapse="expansionsIsCollapsed">
-	<div class="period" ng-repeat="period in expansions">
-		<span class="order-num"></span>
+	<div class="period" ng-class="period.color" ng-repeat="period in expansions" ng-click="toggleSelectedPeriod(period, expansions, $index)">
+		<span class="order-num">
+			{{period.selectedOrderNum}}
+			<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+		</span>
 		<div class="vert-center-wrapper period-name"><div class="vert-center">{{period.name}}</div></div>
 	</div>
 </div>
