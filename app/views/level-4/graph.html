@@ -1,1 +1,26 @@
+<style>
+			/* tell the SVG path to be a thin blue line without any area fill */
+			path {
+				fill: none;
+			}
+			
+			.axis {
+			  shape-rendering: crispEdges;
+			}
+ 
+			.x.axis .minor {
+			  stroke-opacity: .5;
+			  stroke-dasharray: 3, 3;
+			}
+ 
+			.x.axis line, .x.axis path {
+			  fill: none;
+			  stroke: #000;
+			} 
+			.y.axis line, .y.axis path {
+			  fill: none;
+			  stroke: #000;
+			}
+</style>
+<h2>Unemployment Rates in the United States</h2>
 <unemployment-graph></unemployment-graph>

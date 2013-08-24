@@ -3,6 +3,10 @@
 	float: left;
 	height: 535px;
 	width: 690px;
+	h2 {
+		@include font(24px, 18px);
+		margin: 42px 0 0 107px;
+	}
 }
 .level-4-periods {
 	float: left;
