@@ -1,6 +1,6 @@
 'use strict';
 
-var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angular-underscore', 'ui.bootstrap', 'directives.ue.level-1', 'directives.ue.level-2', 'directives.ue.level-3', 'directives.ue.level-4', 'directives.ue.collapse'])
+var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angular-underscore', 'ui.bootstrap', 'directives.ue.level-1', 'directives.ue.level-2', 'directives.ue.level-3', 'directives.ue.level-4', 'directives.ue.collapse','unemployment.services'])
   .config(['$stateProvider','$routeProvider', function ($stateProvider, $routeProvider) {
     $stateProvider
       .state('intro', {
@@ -53,7 +53,7 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
       })
       .state('level-4', {
         url: "",
-        // url: "/level/4",
+        //url: "/level/4",
         templateUrl: "views/level-4/main.html",
         controller: "Level4Ctrl",
         baseClass: "level-4"

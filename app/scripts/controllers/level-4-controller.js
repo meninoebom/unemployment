@@ -1,7 +1,9 @@
 'use strict';
 
-unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
+unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
 	
+	$scope.test = "foo";	
+
 	$scope.recessions = [
 		{name: "Great Depression: August 1929 - March 1933", color: ""},
 		{name: "May 1937 - June 1938", color: ""},
@@ -9,6 +11,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 		{name: "Novemeber 1948 - October 1949", color: ""},
 		{name: "July 1953 - May 1954", color: ""}
 	];
+
 	$scope.expansions = [
 		{name: "October 1945 - Novemeber 1948", color: ""},
 		{name: "October 1949 - July 1953", color: ""},
@@ -16,18 +19,23 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 		{name: "April 1958 - April 1960", color: ""},
 		{name: "Feb 1961 - December 1969", color: ""}
 	];
+
 	$scope.currentQuestion = 1;
+
 	$scope.showQuestion = function(num) {
 		return ($scope.currentQuestion == num) ? true : false; 
 	}
+
 	$scope.submitResponse = function() {
 		$scope.currentQuestion++; 
 	}
+
 	$scope.recessionsIsCollapsed = false;
 	$scope.expansionsIsCollapsed = false;
 	$scope.availableSelectionColors = ['purple','green','blue'];
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
+
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {
 			$scope.resetSelections();
@@ -38,11 +46,12 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	    } else {
 	    	if($scope.selectedPeriods.length < 3) {
 	    		$scope.selectPeriod(period, ngRepeatIndex);
-		    } else {
+ 		    } else {
 		    	return;
 		    }
 	    }
 	}
+
 	$scope.selectPeriod = function(period, ngRepeatIndex) {
 		period.selected = true;
     	$scope.selectedPeriods.push(period);
@@ -53,6 +62,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
     	});
     	period.color = $scope.availableSelectionColors.shift();
 	}
+
 	$scope.deselectPeriod = function(period) {
 			period.selected = false;
 			$scope.selectedPeriods.splice(_.indexOf($scope.selectedPeriods, period),1);
@@ -60,6 +70,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope',  function($scope ) {
 	    	$scope.availableSelectionColors.push(period.color);
 			period.color = "";
 	}
+
 	$scope.resetSelections = function() {
 		var unSelectedPeriods = $scope.selectedPeriods.slice(0); //had to make a copy by value of the array
 		_.each(unSelectedPeriods, function(period, index, list) {

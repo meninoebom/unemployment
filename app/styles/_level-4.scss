@@ -1,11 +1,13 @@
 
-.level-4-graph {
+.level-4-graph-container {
 	float: left;
 	height: 535px;
 	width: 690px;
+	padding: 0 0 20px 42px;
+	text-align: center;
 	h2 {
 		@include font(24px, 18px);
-		margin: 42px 0 0 107px;
+		margin: 42px 0 25px;
 	}
 }
 .level-4-periods {
@@ -52,6 +54,7 @@
 		.period {
 			height: 45px;
 			border-bottom: 2px solid $white;
+			cursor: pointer;
 			.order-num {
 				border: 2px solid #000;
 				display: block;

@@ -1,97 +1,158 @@
 'use strict';
 
 angular.module('directives.ue.level-4', [])
-.directive('unemploymentGraph',[function(){
+.directive('unemploymentGraph',['unemploymentDataService',function(unemploymentDataService){
 	return {
-		restrict: 'E',
-		link: function(scope, element, attrs) {
-			
-			var data = [3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 9, 9, 9],
-			margin = {top: 20, right: 20, bottom: 30, left: 50},
-			width = 600,
-			height = 400,
-			yScale = d3.scale.linear().domain([0, d3.max(data)]).range([0 + margin.top, height - margin.bottom]),
-			xScale = d3.scale.linear().domain([0, data.length]).range([0 + margin.left, width - margin.right]);
+		restrict: 'A',
+    replace: true,
+		link: function(scope, element, attrs, ngModel) {
+  			
+  		var data = [3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 9, 9, 9],
+  		margin = {top: 10, right: 12, bottom: 58, left: 67},
+      outerWidth = 646,
+      outerHeight = 435,
+      width = outerWidth - margin.left - margin.right,
+      height = outerHeight - margin.top - margin.bottom;
 
-			var svg = d3.select(element[0]).append("svg:svg")
-			    .attr("width", width)
-			    .attr("height", height);
+      var svg = d3.select(element[0]).append("svg")
+      .attr("width", width + margin.left + margin.right)
+      .attr("height", height + margin.top + margin.bottom)
+      .append("g")
+      .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
-			var g = svg.append("svg:g")
-			    .attr("transform", "translate(0, "+height+")"); //push it down or else it shows up above the upper limit
+      var xScale = d3.scale.linear()
+        .range([0, width])
+        .domain([-12, 132]);
 
-	 
+      var yScale = d3.scale.linear()
+          .range([height, 0])//start from the bottom (height)
+          .domain([0, 26]);
 
+  		// Add the x-axis.
+  		svg.append("svg:g")
+  		      .attr("class", "x axis")
+  		      .attr("transform", "translate(0," + height + ")")
+            .call(d3.svg.axis()
+                .scale(xScale)
+                .tickSubdivide(3)
+                .tickSize(10, 5, 5)
+                .tickValues([-12,0,12,24,36,48,60,72,84,96,108,120,132]))
+            .append("text")
+            .attr("x", width/2)
+            .attr("y", 50)
+            .attr("dx", ".71em")
+            .style("text-anchor", "middle")
+            .text("Month (Month 0 indicates official start of recession)");
 
-
-			var line = d3.svg.line()
-			    .x(function(d,i) { return xScale(i); })
-			    .y(function(d) { return -1 * yScale(d); }); //flip on the x axis
-
-
-
-			// var xAxis = d3.svg.axis()
-			//   .scale(xScale)
-			//   .orient("bottom");
-
-			// var yAxis = d3.svg.axis()
-			//   .scale(yScale)
-			//   .orient("left");		
-
-			// create xAxis
-			var xAxis = d3.svg.axis().scale(xScale);
-			// Add the x-axis.
-			svg.append("svg:g")
-			      .attr("class", "x axis")
-			      .attr("transform", "translate(0," + 100 + ")")
-			      .call(xAxis);
- 
- 
-			// create left yAxis
-			var yAxisLeft = d3.svg.axis().scale(yScale).tickSize(-height).tickSubdivide(true).orient("left");
-			// Add the y-axis to the left
-			svg.append("svg:g")
-			      .attr("class", "y axis")
-			      .attr("transform", "translate(100,100)")
-			      .call(yAxisLeft);
-
-			g.append("svg:path").attr("d", line(data))
-				.attr("fill","none")
-				.attr("stroke","#F00")
-				.attr("stroke-width",3).style("stroke-dasharray", ("4, 2"));
+      //Add inner ticks
+      svg.append("svg:g")         
+          .attr("class", "x axis")
+          .attr("transform", "translate(0," + height + ")")
+          .call(d3.svg.axis()//create the actual axis
+              .scale(xScale)
+              .orient("top")
+              .tickSubdivide(3)
+              .tickSize(10, 5, 5)
+              .tickValues([-12,0,12,24,36,48,60,72,84,96,108,120,132])
+              .tickFormat("")
+          );
 
 
+  		// create y axis
+  		svg.append("svg:g")
+  	      .attr("class", "y axis")
+  	      .call(d3.svg.axis()//create the actual axis
+            .scale(yScale)
+            .ticks(13)
+            .tickSize(-width, -width, 0)
+            .tickSubdivide(true)
+            .orient("left")
+          )
+          .append("text") //Add the axis label
+          .attr("transform", "rotate(-90)")
+          .attr("y", -45)
+          .attr("x", -height/2)
+          .attr("dy", ".71em")
+          .style("text-anchor", "middle")
+          .text("Unemployement Rate (% of Labor Force)");
+      
+      svg.select(".y.axis")
+          .selectAll(".tick")
+          .style("stroke-dasharray", ("2, 2"));
 
-			// svg.append("g")
-			//   .attr("class", "x axis")
-			//   .attr("transform", "translate(0," + height + ")")
-			//   .call(xAxis);
+      var defs = svg.append("defs");
 
-			// svg.append("g")
-			//   .attr("class", "y axis")
-			//   .call(yAxis)
-			//   .append("text")
-			//   .attr("transform", "rotate(-90)")
-			//   .attr("y", 10)
-			//   .attr("x", -height/2)
-			//   .attr("dy", ".71em")
-			//   .style("text-anchor", "middle")
-			//   .text("Unemployement Rate (% of Labor Force)");
+      defs.append("marker")
+          .attr("id", "triangle-start")
+          .attr("viewBox", "0 0 10 10")
+          .attr("refX", 10)
+          .attr("refY", 5)
+          .attr("markerWidth", -6)
+          .attr("markerHeight", 6)
+          .attr("orient", "auto")
+        .append("path")
+          .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
-			// svg.append("g")
-			//   .attr("class", "x axis")
-			//   .call(yAxis)
-			//   .append("text")
-			//   .attr("x", width/2)
-			//   .attr("y", height)
-			//   .attr("dx", ".71em")
-			//   .style("text-anchor", "middle")
-			//   .text("Month (Month 0 indicates official start of recession)");
+      defs.append("marker")
+          .attr("id", "triangle-end")
+          .attr("viewBox", "0 0 10 10")
+          .attr("refX", 10)
+          .attr("refY", 5)
+          .attr("markerWidth", 6)
+          .attr("markerHeight", 6)
+          .attr("orient", "auto")
+        .append("path")
+          .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
-			//d3.select("axis path, axis line").attr("fill","none");
-			//d3.select("path.domain").attr("stroke","#000");
-		}
-	}
+      var timeScroll = svg.append("line")
+          .attr("x1", 100)
+          .attr("y1", height)
+          .attr("x2", 100)
+          .attr("y2", -5)
+          .attr("fill","none")
+          .attr("stroke","#F00")
+          .attr("stroke-width",3)
+          .attr("marker-end", "url(#triangle-start)");
+
+
+      var graphLine = {
+        draw: function(data, color, lineStyle) {
+          var line = d3.svg.line()
+            .x(function(d,i) { return xScale(i*4); })
+            .y(function(d) { return yScale(d); }); 
+          svg.append("svg:path")
+             .datum(data)
+             .attr("class", "line graph-line")
+             .attr("d", line)
+             .attr("fill","none")
+             .attr("stroke", color)
+             .attr("stroke-width",4)
+             .style("stroke-dasharray", (lineStyle));
+        }
+      }
+
+      var colorMap = {
+        'purple': '#660066',
+        'blue': '#0d5b92',
+        'green': '#0f673a'
+      }
+
+      var lineStyleMap = [
+        '4,2',
+        '4,2,4,2,2,2',
+        '0'
+      ]
+
+      scope.$watch("selectedPeriods", function() {
+        svg.selectAll(".graph-line").remove();        
+        _.each(scope.selectedPeriods, function(element, index, list) {
+          var data = unemploymentDataService.getData(element.name);
+          graphLine.draw(data, colorMap[element.color], lineStyleMap[index] );
+        })
+      }, true);
+
+  		}
+	  }
 }]);
 
 angular.module('directives.ue.collapse',['ui.bootstrap.transition'])
