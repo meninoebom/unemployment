@@ -19,3 +19,6 @@ bc. bower install
 
 h3. Building
 bc. Grunt Build
+
+
+h3. DragDrop

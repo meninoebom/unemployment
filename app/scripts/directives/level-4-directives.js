@@ -1,6 +1,7 @@
 'use strict';
 
 angular.module('directives.ue.level-4', [])
+
 .directive('unemploymentGraph',['unemploymentDataService',function(unemploymentDataService){
 	return {
 		restrict: 'A',
@@ -57,7 +58,6 @@ angular.module('directives.ue.level-4', [])
               .tickFormat("")
           );
 
-
   		// create y axis
   		svg.append("svg:g")
   	      .attr("class", "y axis")
@@ -104,7 +104,24 @@ angular.module('directives.ue.level-4', [])
         .append("path")
           .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
+      var drag = d3.behavior.drag()
+          .origin(function() { 
+              var t = d3.select(this);
+              return {x: t.attr("x1"), y: t.attr("y")};
+          })
+          .on("drag", function(d,i) {
+             var newX = d3.event.x-d3.select(this).attr("x1");
+              d3.select(this)
+                .attr("transform", function(d,i){
+                    return "translate(" + [ newX,0 ] + ")"
+                })
+                .attr("x1", d3.event.x)
+                .attr("x2", d3.event.x);
+          });
+
+
       var timeScroll = svg.append("line")
+          .attr("class", "scrub-bar")
           .attr("x1", 100)
           .attr("y1", height)
           .attr("x2", 100)
@@ -112,8 +129,8 @@ angular.module('directives.ue.level-4', [])
           .attr("fill","none")
           .attr("stroke","#F00")
           .attr("stroke-width",3)
-          .attr("marker-end", "url(#triangle-start)");
-
+          .attr("marker-end", "url(#triangle-start)")
+          .call(drag);
 
       var graphLine = {
         draw: function(data, color, lineStyle) {

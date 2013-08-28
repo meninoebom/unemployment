@@ -2,17 +2,15 @@
 @import "fonts/fonts";
 
 /* Color Palette */
-$green: #7CB555;
-$darkGrey: #333;
-$grey: #DDD;
-$lightGrey: #F3F3F3;
 $white: #FFF;
-$green: #0f673a;
+$lightGrey: #F3F3F3;
+$grey: #DDD;
+$darkGrey: #333;
 $lightGreen: #8ec859;
-$blue: #0d5b92;
+$green: #0f673a;
 $lightBlue: #70caf2;
+$blue: #0d5b92;
 $red: #990000;
-/*$purple: #652066;*/
 $purple: #660066;
 
 @mixin circle($dimensions) {
