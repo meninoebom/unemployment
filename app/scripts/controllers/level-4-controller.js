@@ -35,6 +35,11 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.availableSelectionColors = ['purple','green','blue'];
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
+	
+	$scope.showScrubBarPopover = false;
+	$scope.toggleShowScrubBarPopover = function(state) {
+        $scope.showScrubBarPopover = state;
+    };
 
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {

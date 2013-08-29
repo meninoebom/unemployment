@@ -25,6 +25,23 @@ $purple: #660066;
     color: $color;
 }  
 
+@mixin popover($background: $white, $textColor: $darkGrey) {
+    background: $background;
+    color: $textColor;
+    &.right .arrow:after {
+        border-right-color: $background;
+    }
+    &.left .arrow:after {
+        border-left-color: $background;
+    }
+    &.top .arrow:after {
+        border-top-color: $background;
+    }
+    &.bottom .arrow:after {
+        border-bottom-color: $background;
+    }    
+}
+
 $semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
 
 /* Put your CSS here */

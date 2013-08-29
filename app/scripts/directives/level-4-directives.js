@@ -1,7 +1,33 @@
 'use strict';
 
 angular.module('directives.ue.level-4', [])
-
+// .directive('scrubBarPopover', function(){
+//   return {
+//     restrict: 'C',
+//     replace: false,
+//     link: function(scope, element, attrs, ctrl) {
+//       scope.$watch("showScrubBarPopover", function() {
+//         element.toggle();
+//       });
+//       var children = element.find('.popover-content').children();
+//       children.css('display','none');
+//       var showing = false;
+//       scope.$on('showHint', function() {
+//         if(showing) return;
+//         element.toggle();
+//         _.each(children, function(child, index, children) {
+//           if(index <= scope.numAttempts) $(child).css('display','block');
+//         });
+//         scope.numAttempts++;
+//         showing = true;
+//       });
+//       element.find('.popover-close-button').bind('click', function() {
+//         element.toggle();
+//         showing = false;
+//       }); 
+//     }
+//   }
+// })
 .directive('unemploymentGraph',['unemploymentDataService',function(unemploymentDataService){
 	return {
 		restrict: 'A',
@@ -140,6 +166,11 @@ angular.module('directives.ue.level-4', [])
           .attr("stroke-width",3)
           .attr("marker-end", "url(#triangle-start)")
           .call(drag);
+
+      $(".scrub-bar").on("mousedown", function(){
+          if(scope.selectedPeriods.length) scope.$apply(scope.showScrubBarPopover = true);
+      })
+      $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showScrubBarPopover = false) });
 
       var graphLine = {
         draw: function(data, color, lineStyle) {
