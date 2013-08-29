@@ -110,13 +110,22 @@ angular.module('directives.ue.level-4', [])
               return {x: t.attr("x1"), y: t.attr("y")};
           })
           .on("drag", function(d,i) {
-             var newX = d3.event.x-d3.select(this).attr("x1");
+            var newX;
+            if(d3.event.x > 0 && d3.event.x < width){
+                var distance = d3.event.x-d3.select(this).attr("x1");
+                newX = parseInt(d3.select(this).attr("x1")) + distance;
+            } else if(d3.event.x <= 0) {
+               newX = 0;
+
+            } else if(d3.event.x >= width) {
+                newX = width;
+            }
               d3.select(this)
                 .attr("transform", function(d,i){
-                    return "translate(" + [ newX,0 ] + ")"
+                    return "translate(" + [ distance,0 ] + ")"
                 })
-                .attr("x1", d3.event.x)
-                .attr("x2", d3.event.x);
+                .attr("x1", newX)
+                .attr("x2", newX);
           });
 
 
