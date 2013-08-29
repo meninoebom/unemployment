@@ -5,11 +5,20 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.test = "foo";	
 
 	$scope.recessions = [
-		{name: "Great Depression: August 1929 - March 1933", color: ""},
-		{name: "May 1937 - June 1938", color: ""},
-		{name: "February 1945 - October 1945", color: ""},
-		{name: "Novemeber 1948 - October 1949", color: ""},
-		{name: "July 1953 - May 1954", color: ""}
+		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", color: ""},
+		{name: "May 1937 - June 1938", startDate: "1937-05", endDate: "1938-06", color: ""},
+		{name: "February 1945 - October 1945", startDate: "1945-02", endDate: "1945-10", color: ""},
+		{name: "Novemeber 1948 - October 1949", startDate: "1948-11", endDate: "1949-10", color: ""},
+		{name: "July 1953 - May 1954", startDate: "1953-07", endDate: "1954-05", color: ""},
+		{name: "August 1957 - April 1958", startDate: "1957-08", endDate: "1958-04", color: ""},
+		{name: "April 1960 - February 1961", startDate: "1960-04", endDate: "1961-02", color: ""},
+		{name: "December 1969 - Novemeber 1970", startDate: "1969-12", endDate: "1970-11", color: ""},
+		{name: "November 1973 - March 1975", startDate: "1973-11", endDate: "1975-03", color: ""},
+		{name: "Janurary 1980 - July 1980", startDate: "1980-01", endDate: "1980-07", color: ""},
+		{name: "July 1981 - Novemeber 1982", startDate: "1981-07", endDate: "1982-11", color: ""},
+		{name: "July 1990 - March 1991", startDate: "1990-07", endDate: "1991-03", color: ""},
+		{name: "March 2001 - Novemeber 2001", startDate: "2001-03", endDate: "2001-11", color: ""},
+		{name: "Great Recession: December 2007 - June 2009", startDate: "2007-12", endDate: "2009-06", color: ""}
 	];
 
 	$scope.expansions = [
@@ -35,7 +44,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.availableSelectionColors = ['purple','green','blue'];
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
-	
+
 	$scope.showScrubBarPopover = false;
 	$scope.toggleShowScrubBarPopover = function(state) {
         $scope.showScrubBarPopover = state;

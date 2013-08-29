@@ -28,9 +28,14 @@
 
 <div class="popover scrub-bar-popover" ng-show="showScrubBarPopover" ><div class="arrow"></div>
 		<div class="popover-content">
-			<p>The unemployment rate is the percentage of the people in the labor force who are unemployed.</p>
-			<img src="img/level-2-hint-unemployment-rate.png" width="148" height="63">
-			<p>{{employmentCategories[7].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[7].count / employmentCategories[6].count * 100 | number:2}}</p>
+			Month{{currentMonthOffset}} Unemployment Rate
+			<div ng-repeat="item in selectedPeriods" class="{{item.color}}">
+				{{$index+1}} {{item.yVal}} {{item.month}}
+			</div>
+
+			</div>
 		</div>
 	</div>
 </div>
+
+

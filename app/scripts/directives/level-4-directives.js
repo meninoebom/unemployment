@@ -172,11 +172,14 @@ angular.module('directives.ue.level-4', [])
       })
       $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showScrubBarPopover = false) });
 
+      //TODO massage the drawing function to work with the data Im getting from Charlies data object
       var graphLine = {
         draw: function(data, color, lineStyle) {
           var line = d3.svg.line()
-            .x(function(d,i) { return xScale(i*4); })
-            .y(function(d) { return yScale(d); }); 
+            // .x(function(d,i) { return xScale(i*4); })
+            // .y(function(d) { return yScale(d); }); 
+            .x(function(d) { return xScale(d[0]); })
+            .y(function(d) { return yScale(d[1]); }); 
           svg.append("svg:path")
              .datum(data)
              .attr("class", "line graph-line")
@@ -203,7 +206,12 @@ angular.module('directives.ue.level-4', [])
       scope.$watch("selectedPeriods", function() {
         svg.selectAll(".graph-line").remove();        
         _.each(scope.selectedPeriods, function(element, index, list) {
-          var data = unemploymentDataService.getData(element.name);
+          ///////////////////////////////////////////////////////
+          //Get data from service using name, startDate, and endDate of current selected periods
+          ///////////////////////////////////////////////////////
+          // var data = unemploymentDataService.getData(element.name);
+          var data = unemploymentDataService.getData(element.startDate, element.endDate, 12);
+          console.log(data);
           graphLine.draw(data, colorMap[element.color], lineStyleMap[index] );
         })
       }, true);
