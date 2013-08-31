@@ -128,7 +128,13 @@ angular.module('directives.ue.level-4', [])
                 })
                 .attr("x1", newX)
                 .attr("x2", newX);
-                scope.$apply(scope.currentMonth = convertXPosToMonth(newX));
+                
+                scope.$apply(function() {
+                  scope.currentMonth = convertXPosToMonth(newX);
+                  _.each(scope.selectedPeriods, function(period, index, list){
+                    period.currentMonthYear = unemploymentDataService.getFormattedMonthYear(period.startDate, scope.currentMonth);
+                  });
+                });
           });
 
       scope.currentMonth = 0;

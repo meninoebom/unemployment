@@ -115,6 +115,20 @@ US_Unemployment_Data.date_with_offset = function(d, offset) {
 	return y1+'-'+m1;
 };
 
+Date.prototype.monthNames = [
+    "January", "February", "March",
+    "April", "May", "June",
+    "July", "August", "September",
+    "October", "November", "December"
+];
+
+Date.prototype.getMonthName = function() {
+    return this.monthNames[this.getMonth()];
+};
+Date.prototype.getShortMonthName = function () {
+    return this.getMonthName().substr(0, 3);
+};
+
 
 	return {
 		// given two dates in YYYY-MM format, and a number of months before d1 to start the range at, return an array of
@@ -133,10 +147,16 @@ US_Unemployment_Data.date_with_offset = function(d, offset) {
 			
 			return data;
 			
-		}
-	    // getData : function(id) {
-	    //   return data[id];
-	    // }
+		},
+	    getFormattedMonthYear: function(startDate, offset) {
+	    	var currentDate = US_Unemployment_Data.date_with_offset(startDate, offset);
+	    	var y = currentDate.split('-')[0];
+			var m = currentDate.split('-')[1];
+			var currentDateObj = new Date(y, m, 01);
+			var monthName = currentDateObj.getMonthName();
+			var fullYear = currentDateObj.getFullYear();
+			return monthName+" "+fullYear;
+	    }
 	}
 });
 

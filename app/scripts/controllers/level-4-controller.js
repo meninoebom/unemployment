@@ -76,6 +76,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
     		period.selectedOrderNum = index + 1;
     	});
     	period.color = $scope.availableSelectionColors.shift();
+		period.currentMonthYear = unemploymentDataService.getFormattedMonthYear(period.startDate, 0);    	
 	}
 
 	$scope.deselectPeriod = function(period) {
