@@ -133,6 +133,8 @@ angular.module('directives.ue.level-4', [])
                   scope.currentMonth = convertXPosToMonth(newX);
                   _.each(scope.selectedPeriods, function(period, index, list){
                     period.currentMonthYear = unemploymentDataService.getFormattedMonthYear(period.startDate, scope.currentMonth);
+                    period.currentUnempRate = period.data[scope.currentMonth][1];
+                    console.log(period.currentUnempRate);
                   });
                 });
           });
@@ -186,12 +188,12 @@ angular.module('directives.ue.level-4', [])
 
       scope.$watch("selectedPeriods", function() {
         svg.selectAll(".graph-line").remove();        
-        _.each(scope.selectedPeriods, function(element, index, list) {
+        _.each(scope.selectedPeriods, function(period, index, list) {
           ///////////////////////////////////////////////////////
           //Get data from service using name, startDate, and endDate of current selected periods
           ///////////////////////////////////////////////////////
-          var data = unemploymentDataService.getData(element.startDate, element.endDate, 12);
-          graphLine.draw(data, colorMap[element.color], lineStyleMap[index] );
+          period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
+          graphLine.draw(period.data, colorMap[period.color], lineStyleMap[index] );
         })
       }, true);
 

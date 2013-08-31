@@ -135,18 +135,14 @@ Date.prototype.getShortMonthName = function () {
 		// [x,y] array pairs, where x is the offset in months between d1 and y is the unemployment rate.
 		getData: function(d1, d2, months_before) {
 			if (months_before==undefined) months_before=12;
-			
 			var range_start = US_Unemployment_Data.months_between(US_Unemployment_Data.start_date, d1);
 			var ixStart = Math.max(0, range_start-months_before);
 			var ixEnd = Math.min(US_Unemployment_Data.months_between(US_Unemployment_Data.start_date, d2), US_Unemployment_Data.values.length);
-			
 			data = [];
 			for (var i = ixStart; i<=ixEnd; i++) {
 					data.push([i-range_start, US_Unemployment_Data.values[i]]);
 			}
-			
 			return data;
-			
 		},
 	    getFormattedMonthYear: function(startDate, offset) {
 	    	var currentDate = US_Unemployment_Data.date_with_offset(startDate, offset);
