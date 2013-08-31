@@ -144,14 +144,15 @@ Date.prototype.getShortMonthName = function () {
 			}
 			return data;
 		},
-	    getFormattedMonthYear: function(startDate, offset) {
+	    getCurrentMonthYearFormatted: function(startDate, offset) {
+	    	var currentDateFormatted = {};
 	    	var currentDate = US_Unemployment_Data.date_with_offset(startDate, offset);
 	    	var y = currentDate.split('-')[0];
 			var m = currentDate.split('-')[1];
 			var currentDateObj = new Date(y, m, 01);
-			var monthName = currentDateObj.getMonthName();
-			var fullYear = currentDateObj.getFullYear();
-			return monthName+" "+fullYear;
+			currentDateFormatted.monthName = currentDateObj.getMonthName();
+			currentDateFormatted.fullYear = currentDateObj.getFullYear();
+			return currentDateFormatted;
 	    }
 	}
 });

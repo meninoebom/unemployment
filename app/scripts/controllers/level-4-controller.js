@@ -76,7 +76,12 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
     		period.selectedOrderNum = index + 1;
     	});
     	period.color = $scope.availableSelectionColors.shift();
-		period.currentMonthYear = unemploymentDataService.getFormattedMonthYear(period.startDate, 0);    	
+		var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, 0);
+        period.currentMonthName = currentDateFormatted.monthName;
+        period.currentYear = currentDateFormatted.fullYear;
+        period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
+        period.currentUnempRate = period.data[11][1]; 
+        period.showInPopover = true;  	
 	}
 
 	$scope.deselectPeriod = function(period) {

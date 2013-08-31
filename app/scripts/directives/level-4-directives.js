@@ -132,9 +132,15 @@ angular.module('directives.ue.level-4', [])
                 scope.$apply(function() {
                   scope.currentMonth = convertXPosToMonth(newX);
                   _.each(scope.selectedPeriods, function(period, index, list){
-                    period.currentMonthYear = unemploymentDataService.getFormattedMonthYear(period.startDate, scope.currentMonth);
-                    period.currentUnempRate = period.data[scope.currentMonth][1];
-                    console.log(period.currentUnempRate);
+                    var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+                    period.currentMonthName = currentDateFormatted.monthName;
+                    period.currentYear = currentDateFormatted.fullYear;
+                    if(period.data[scope.currentMonth+13]){
+                      period.showInPopover = true; 
+                      period.currentUnempRate = period.data[scope.currentMonth+13][1];
+                    } else {
+                      period.showInPopover = false;
+                    }
                   });
                 });
           });

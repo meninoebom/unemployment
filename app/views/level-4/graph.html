@@ -29,8 +29,8 @@
 <div class="popover scrub-bar-popover" ng-show="showScrubBarPopover" ><div class="arrow"></div>
 		<div class="popover-content">
 			Month {{currentMonth}} Unemployment Rate
-			<div ng-repeat="item in selectedPeriods" class="{{item.color}}">
-				{{$index+1}} {{item.currentUnempRate}} {{item.currentMonthYear}}
+			<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
+				<span class="order-num">{{period.selectedOrderNum}}</span> <span class="unemp-rate">{{period.currentUnempRate}}</span> <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
 			</div>
 
 			</div>
