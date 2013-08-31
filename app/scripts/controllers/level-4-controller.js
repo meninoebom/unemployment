@@ -21,6 +21,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		{name: "Great Recession: December 2007 - June 2009", startDate: "2007-12", endDate: "2009-06", color: ""}
 	];
 
+//TODO complete this model data
 	$scope.expansions = [
 		{name: "October 1945 - Novemeber 1948", color: ""},
 		{name: "October 1949 - July 1953", color: ""},

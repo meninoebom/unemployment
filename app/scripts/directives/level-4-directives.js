@@ -1,41 +1,13 @@
 'use strict';
 
 angular.module('directives.ue.level-4', [])
-// .directive('scrubBarPopover', function(){
-//   return {
-//     restrict: 'C',
-//     replace: false,
-//     link: function(scope, element, attrs, ctrl) {
-//       scope.$watch("showScrubBarPopover", function() {
-//         element.toggle();
-//       });
-//       var children = element.find('.popover-content').children();
-//       children.css('display','none');
-//       var showing = false;
-//       scope.$on('showHint', function() {
-//         if(showing) return;
-//         element.toggle();
-//         _.each(children, function(child, index, children) {
-//           if(index <= scope.numAttempts) $(child).css('display','block');
-//         });
-//         scope.numAttempts++;
-//         showing = true;
-//       });
-//       element.find('.popover-close-button').bind('click', function() {
-//         element.toggle();
-//         showing = false;
-//       }); 
-//     }
-//   }
-// })
 .directive('unemploymentGraph',['unemploymentDataService',function(unemploymentDataService){
 	return {
 		restrict: 'A',
     replace: true,
 		link: function(scope, element, attrs, ngModel) {
   			
-  		var data = [3, 6, 2, 7, 5, 2, 1, 3, 8, 9, 9, 9, 9],
-  		margin = {top: 10, right: 12, bottom: 58, left: 67},
+  		var margin = {top: 10, right: 12, bottom: 58, left: 67},
       outerWidth = 646,
       outerHeight = 435,
       width = outerWidth - margin.left - margin.right,
@@ -54,6 +26,10 @@ angular.module('directives.ue.level-4', [])
       var yScale = d3.scale.linear()
           .range([height, 0])//start from the bottom (height)
           .domain([0, 26]);
+
+      var convertXPosToMonth = d3.scale.linear() 
+        .rangeRound([-12, 132])
+        .domain([0, width]);
 
   		// Add the x-axis.
   		svg.append("svg:g")
@@ -152,14 +128,16 @@ angular.module('directives.ue.level-4', [])
                 })
                 .attr("x1", newX)
                 .attr("x2", newX);
+                scope.$apply(scope.currentMonth = convertXPosToMonth(newX));
           });
 
+      scope.currentMonth = 0;
 
       var timeScroll = svg.append("line")
           .attr("class", "scrub-bar")
-          .attr("x1", 100)
+          .attr("x1", xScale(0))
           .attr("y1", height)
-          .attr("x2", 100)
+          .attr("x2", xScale(0))
           .attr("y2", -5)
           .attr("fill","none")
           .attr("stroke","#F00")
@@ -172,12 +150,9 @@ angular.module('directives.ue.level-4', [])
       })
       $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showScrubBarPopover = false) });
 
-      //TODO massage the drawing function to work with the data Im getting from Charlies data object
       var graphLine = {
         draw: function(data, color, lineStyle) {
           var line = d3.svg.line()
-            // .x(function(d,i) { return xScale(i*4); })
-            // .y(function(d) { return yScale(d); }); 
             .x(function(d) { return xScale(d[0]); })
             .y(function(d) { return yScale(d[1]); }); 
           svg.append("svg:path")
@@ -209,9 +184,7 @@ angular.module('directives.ue.level-4', [])
           ///////////////////////////////////////////////////////
           //Get data from service using name, startDate, and endDate of current selected periods
           ///////////////////////////////////////////////////////
-          // var data = unemploymentDataService.getData(element.name);
           var data = unemploymentDataService.getData(element.startDate, element.endDate, 12);
-          console.log(data);
           graphLine.draw(data, colorMap[element.color], lineStyleMap[index] );
         })
       }, true);
