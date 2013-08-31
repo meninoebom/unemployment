@@ -23,19 +23,31 @@
 			}
 </style>
 <h2>Unemployment Rates in the United States</h2>
-<div unemployment-graph></div>
+<div class="unemployment-graph">
 
+	<div class="popover month-dial-popover" ng-show="showMonthDialPopover" ><div class="arrow"></div>
+			<div class="popover-content">
+				Month {{currentMonth}} Unemployment Rate
+				<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
+					<span class="order-num">{{period.selectedOrderNum}}</span> <span class="unemp-rate">{{period.currentUnempRate}}</span> <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
+				</div>
 
-<div class="popover scrub-bar-popover" ng-show="showScrubBarPopover" ><div class="arrow"></div>
-		<div class="popover-content">
-			Month {{currentMonth}} Unemployment Rate
-			<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
-				<span class="order-num">{{period.selectedOrderNum}}</span> <span class="unemp-rate">{{period.currentUnempRate}}</span> <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
-			</div>
-
+				</div>
 			</div>
 		</div>
 	</div>
-</div>
 
+	<div class="popover detail-popover" ng-show="showDetailPopover" ><div class="arrow"></div>
+			<div class="popover-content">
+				{{period.name}}
+				Month {{currentMonth}} <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
+
+				<span class="unemp-rate">{{period.currentUnempRate}}</span> Unemployment Rate
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
 

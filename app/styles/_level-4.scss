@@ -135,8 +135,12 @@
 	    }
     }
 }
-.scrub-bar-popover {
+.unemployment-graph {
+	position: relative;
+}
+.month-dial-popover, .detail-popover {
     @include popover($darkGrey, $white);
     display: block;
-    width: 400px
+    width: 400px;
+    position: absolute;
 }

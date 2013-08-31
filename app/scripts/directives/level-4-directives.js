@@ -3,7 +3,7 @@
 angular.module('directives.ue.level-4', [])
 .directive('unemploymentGraph',['unemploymentDataService',function(unemploymentDataService){
 	return {
-		restrict: 'A',
+		restrict: 'C',
     replace: true,
 		link: function(scope, element, attrs, ngModel) {
   			
@@ -128,7 +128,9 @@ angular.module('directives.ue.level-4', [])
                 })
                 .attr("x1", newX)
                 .attr("x2", newX);
-                
+              
+              $('.month-dial-popover').css("left", newX);
+
                 scope.$apply(function() {
                   scope.currentMonth = convertXPosToMonth(newX);
                   _.each(scope.selectedPeriods, function(period, index, list){
@@ -147,8 +149,8 @@ angular.module('directives.ue.level-4', [])
 
       scope.currentMonth = 0;
 
-      var timeScroll = svg.append("line")
-          .attr("class", "scrub-bar")
+      var monthScroller = svg.append("line")
+          .attr("class", "month-dial")
           .attr("x1", xScale(0))
           .attr("y1", height)
           .attr("x2", xScale(0))
@@ -159,10 +161,10 @@ angular.module('directives.ue.level-4', [])
           .attr("marker-end", "url(#triangle-start)")
           .call(drag);
 
-      $(".scrub-bar").on("mousedown", function(){
-          if(scope.selectedPeriods.length) scope.$apply(scope.showScrubBarPopover = true);
+      $(".month-dial").on("mousedown", function(){
+          if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
       })
-      $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showScrubBarPopover = false) });
+      $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
 
       var graphLine = {
         draw: function(data, color, lineStyle) {
@@ -177,8 +179,20 @@ angular.module('directives.ue.level-4', [])
              .attr("stroke", color)
              .attr("stroke-width",4)
              .style("stroke-dasharray", (lineStyle));
+
+          $('.graph-line').on("mouseover", function() {
+            console.log("mouseover");
+            scope.$apply(scope.showDetailPopover = true); 
+          });
+          $('.graph-line').on("mouseout", function () { 
+            console.log("mouseout");
+            scope.$apply(scope.showDetailPopover = false) 
+          });
+
         }
       }
+
+
 
       var colorMap = {
         'purple': '#660066',
