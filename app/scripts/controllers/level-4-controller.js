@@ -2,8 +2,6 @@
 
 unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
 	
-	$scope.test = "foo";	
-
 	$scope.recessions = [
 		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", color: ""},
 		{name: "May 1937 - June 1938", startDate: "1937-05", endDate: "1938-06", color: ""},
@@ -21,13 +19,12 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		{name: "Great Recession: December 2007 - June 2009", startDate: "2007-12", endDate: "2009-06", color: ""}
 	];
 
-//TODO complete this model data
 	$scope.expansions = [
-		{name: "October 1945 - Novemeber 1948", color: ""},
-		{name: "October 1949 - July 1953", color: ""},
-		{name: "May 1954 - August 1957", color: ""},
-		{name: "April 1958 - April 1960", color: ""},
-		{name: "Feb 1961 - December 1969", color: ""}
+		{name: "October 1945 - Novemeber 1948", startDate: "1945-10", endDate: "1948-11", color: ""},
+		{name: "October 1949 - July 1953", startDate: "1949-10", endDate: "1953-07", color: ""},
+		{name: "May 1954 - August 1957", startDate: "1954-03", endDate: "1957-08", color: ""},
+		{name: "April 1958 - April 1960", startDate: "1958-04", endDate: "1960-04", color: ""},
+		{name: "Feb 1961 - December 1969", startDate: "1961-02", endDate: "1969-12", color: ""}
 	];
 
 	$scope.currentQuestion = 1;

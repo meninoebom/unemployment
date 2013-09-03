@@ -4,7 +4,7 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
   .config(['$stateProvider','$routeProvider', function ($stateProvider, $routeProvider) {
     $stateProvider
       .state('intro', {
-        //url: "",
+        url: "",
         templateUrl: "views/main-intro.html",
         baseClass: "intro"
       })
@@ -52,8 +52,8 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
         baseClass: "intro"
       })
       .state('level-4', {
-        url: "",
-        //url: "/level/4",
+        //url: "",
+        url: "/level/4",
         templateUrl: "views/level-4/main.html",
         controller: "Level4Ctrl",
         baseClass: "level-4"
