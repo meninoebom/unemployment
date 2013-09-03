@@ -122,68 +122,6 @@ angular.module('directives.ue.level-4', [])
           .append("path")
             .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
-        var drag = d3.behavior.drag()
-            .origin(function() { 
-                var t = d3.select(this);
-                console.log(this);
-                return {x: t.attr("x1"), y: t.attr("y")};
-            })
-            .on("drag", function(d,i) {
-              var newX;
-              if(d3.event.x > 0 && d3.event.x < width){
-                  var distance = d3.event.x-d3.select(this).attr("x1");
-                  newX = parseInt(d3.select(this).attr("x1")) + distance;
-              } else if(d3.event.x <= 0) {
-                 newX = 0;
-
-              } else if(d3.event.x >= width) {
-                  newX = width;
-              }
-                d3.select(this)
-                  .attr("transform", function(d,i){
-                      return "translate(" + [ distance,0 ] + ")"
-                  })
-                  .attr("x1", newX)
-                  .attr("x2", newX);
-
-                $('.month-dial-popover').css("left", newX);
-
-                  scope.$apply(function() {
-                    scope.currentMonth = convertXPosToMonth(newX);
-                    console.log(scope.currentMonth);
-                    _.each(scope.selectedPeriods, function(period, index, list){
-                      var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
-                      period.currentMonthName = currentDateFormatted.monthName;
-                      period.currentYear = currentDateFormatted.fullYear;
-                      if(period.data[scope.currentMonth+13]){
-                        period.showInPopover = true; 
-                        period.currentUnempRate = period.data[scope.currentMonth+13][1];
-                      } else {
-                        period.showInPopover = false;
-                      }
-                    });
-                  });
-            });
-
-          scope.currentMonth = 0;
-
-          var monthScroller = svg.append("line")
-              .attr("class", "month-dial")
-              .attr("x1", xScale(0))
-              .attr("y1", height)
-              .attr("x2", xScale(0))
-              .attr("y2", -5)
-              .attr("fill","none")
-              .attr("stroke","#F00")
-              .attr("stroke-width",3)
-              .attr("marker-end", "url(#triangle-start)")
-              .call(drag);
-
-          $(".month-dial").on("mousedown", function(){
-              if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
-          })
-          $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
-
 
           var drawGraphLine = function(data, color, lineStyle) {
             var line = d3.svg.line()
@@ -246,6 +184,74 @@ angular.module('directives.ue.level-4', [])
           //   drawGraphLine(period.data, colorMap[period.color], lineStyleMap[index] );
           //})
         }, true);
+
+
+
+
+
+        var drag = d3.behavior.drag()
+            .origin(function() { 
+                var t = d3.select(this);
+                console.log(this);
+                return {x: t.attr("x1"), y: t.attr("y")};
+            })
+            .on("drag", function(d,i) {
+              var newX;
+              if(d3.event.x > 0 && d3.event.x < width){
+                  var distance = d3.event.x-d3.select(this).attr("x1");
+                  newX = parseInt(d3.select(this).attr("x1")) + distance;
+              } else if(d3.event.x <= 0) {
+                 newX = 0;
+
+              } else if(d3.event.x >= width) {
+                  newX = width;
+              }
+                d3.select(this)
+                  .attr("transform", function(d,i){
+                      return "translate(" + [ distance,0 ] + ")"
+                  })
+                  .attr("x1", newX)
+                  .attr("x2", newX);
+
+                $('.month-dial-popover').css("left", newX);
+
+                  scope.$apply(function() {
+                    scope.currentMonth = convertXPosToMonth(newX);
+                    _.each(scope.selectedPeriods, function(period, index, list){
+                      var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+                      period.currentMonthName = currentDateFormatted.monthName;
+                      period.currentYear = currentDateFormatted.fullYear;
+                      if(period.data[scope.currentMonth+13]){
+                        period.showInPopover = true; 
+                        period.currentUnempRate = period.data[scope.currentMonth+13][1];
+                      } else {
+                        period.showInPopover = false;
+                      }
+                    });
+                  });
+            });
+
+
+          var monthScroller = svg.append("line")
+              .attr("class", "month-dial")
+              .attr("x1", xScale(0))
+              .attr("y1", height)
+              .attr("x2", xScale(0))
+              .attr("y2", -5)
+              .attr("fill","none")
+              .attr("stroke","#F00")
+              .attr("stroke-width",3)
+              .attr("marker-end", "url(#triangle-start)")
+              .call(drag);
+
+          $(".month-dial").on("mousedown", function(){
+              if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
+          })
+          $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
+
+
+
+
 
         // scope.$watch("currentSelectionList", function() {
         //   console.log(scope.currentSelectionList);
