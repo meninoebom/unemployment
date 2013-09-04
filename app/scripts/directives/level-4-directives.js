@@ -40,11 +40,11 @@ angular.module('directives.ue.level-4', [])
           'green': '#0f673a'
         }
 
-        var lineStyleMap = [
-          '0',
-          '4,2',
-          '4,2,4,2,2,2'
-        ]
+        var lineStyleMap = {
+          'purple': '0',
+          'green': '4,2',
+          'blue': '4,2,4,2,2,2'
+        }
 
         var stepsBetweenTicks = (function(){
           return Math.round((xAxisMax - xAxisMin) / 13);
@@ -209,7 +209,7 @@ angular.module('directives.ue.level-4', [])
 
           _.each(scope.selectedPeriods, function(period, index, list) {
             period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
-            drawGraphLine(period.data, colorMap[period.color], lineStyleMap[index] );
+            drawGraphLine(period.data, colorMap[period.color], lineStyleMap[period.color] );
           });
         }// end of redraw()
 
@@ -221,7 +221,7 @@ angular.module('directives.ue.level-4', [])
           var xAxisMax = longestPeriod ? unemploymentDataService.months_between(longestPeriod.startDate, longestPeriod.endDate) : 12;
           redraw(xAxisMax);
         });
-        
+
         redraw();
   		}// end link function
 	  }
