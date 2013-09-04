@@ -8,13 +8,14 @@ angular.module('directives.ue.level-4', [])
 		link: function(scope, element, attrs, ngModel) {
   			
 
-      var redraw = function(yAxisMax) {
+      var redraw = function(xAxisMax) {
         d3.select("svg").remove();
     		var margin = {top: 10, right: 12, bottom: 58, left: 67},
         outerWidth = 646,
         outerHeight = 435,
         width = outerWidth - margin.left - margin.right,
-        height = outerHeight - margin.top - margin.bottom;
+        height = outerHeight - margin.top - margin.bottom,
+        xAxisMax = xAxisMax, xAxisMin = -12;
 
         var svg = d3.select(element[0]).append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -25,14 +26,14 @@ angular.module('directives.ue.level-4', [])
 
         var xScale = d3.scale.linear()
           .range([0, width])
-          .domain([-12, yAxisMax]);
+          .domain([xAxisMin, xAxisMax]);
 
         var yScale = d3.scale.linear()
             .range([height, 0])//start from the bottom (height)
             .domain([0, 26]);
 
         var convertXPosToMonth = d3.scale.linear() 
-          .rangeRound([-12, yAxisMax])
+          .rangeRound([xAxisMin, xAxisMax])
           .domain([0, width]);
 
         var colorMap = {
@@ -47,6 +48,18 @@ angular.module('directives.ue.level-4', [])
           '4,2,4,2,2,2'
         ]
 
+        var stepsBetweenTicks = (function(){
+          return Math.round((xAxisMax - xAxisMin) / 13);
+        })();
+
+        var tickMarkArray = d3.range(xAxisMin, xAxisMax, stepsBetweenTicks);
+        if(_.contains(tickMarkArray, 0) != true) {
+          tickMarkArray = _.reject(tickMarkArray, function(num) {
+            return Math.abs(num) <= stepsBetweenTicks;
+          });
+          tickMarkArray.push(0);
+        };
+
     		// Add the x-axis.
     		svg.append("svg:g")
     		      .attr("class", "x axis")
@@ -55,13 +68,15 @@ angular.module('directives.ue.level-4', [])
                   .scale(xScale)
                   .tickSubdivide(3)
                   .tickSize(10, 5, 5)
-                  .tickValues([-12,0,12,24,36,48,60,72,84,96,108,120,132]))
+                  .tickValues(tickMarkArray)
+                )
               .append("text")
               .attr("x", width/2)
               .attr("y", 50)
               .attr("dx", ".71em")
               .style("text-anchor", "middle")
               .text("Month (Month 0 indicates official start of recession)");
+
 
         //Add inner ticks
         svg.append("svg:g")         
@@ -72,7 +87,7 @@ angular.module('directives.ue.level-4', [])
                 .orient("top")
                 .tickSubdivide(3)
                 .tickSize(10, 5, 5)
-                .tickValues([-12,0,12,24,36,48,60,72,84,96,108,120,132])
+                .tickValues(tickMarkArray)
                 .tickFormat("")
             );
 
@@ -121,6 +136,84 @@ angular.module('directives.ue.level-4', [])
             .attr("orient", "auto")
           .append("path")
             .attr("d", "M 0 0 L 10 5 L 0 10 z");
+
+
+
+
+        var drag = d3.behavior.drag()
+            .origin(function() { 
+                var t = d3.select(this);
+                return {x: t.attr("x1"), y: t.attr("y")};
+            })
+            .on("drag", function(d,i) {
+              var newX;
+              if(d3.event.x > 0 && d3.event.x < width){
+                  var distance = d3.event.x - d3.select(this).attr("x1");
+                  newX = parseInt(d3.select(this).attr("x1")) + distance;
+              } else if(d3.event.x <= 0) {
+                 newX = 0;
+
+              } else if(d3.event.x >= width) {
+                  newX = width;
+              }
+                d3.select(this)
+                  .attr("transform", function(d,i){
+                      return "translate(" + [ distance,0 ] + ")"
+                  })
+                  .attr("x1", newX)
+                  .attr("x2", newX);
+
+                $('.month-dial-popover').css("left", newX);
+
+                  scope.$apply(function() {
+                    scope.currentMonth = convertXPosToMonth(newX);
+                    _.each(scope.selectedPeriods, function(period, index, list){
+                      var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+                      period.currentMonthName = currentDateFormatted.monthName;
+                      // period.currentYear = currentDateFormatted.fullYear;
+                      // if(period.data[scope.currentMonth+13]){
+                      //   period.showInPopover = true; 
+                      //   period.currentUnempRate = period.data[scope.currentMonth+13][1];
+                      // } else {
+                      //   period.showInPopover = false;
+                      // }
+                    });
+                  });
+
+                  // scope.$apply(function() {
+                  //   scope.currentMonth = convertXPosToMonth(newX);
+                  //   _.each(scope.selectedPeriods, function(period, index, list){
+                  //     var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+                  //     period.currentMonthName = currentDateFormatted.monthName;
+                  //     period.currentYear = currentDateFormatted.fullYear;
+                  //     if(period.data[scope.currentMonth+13]){
+                  //       period.showInPopover = true; 
+                  //       period.currentUnempRate = period.data[scope.currentMonth+13][1];
+                  //     } else {
+                  //       period.showInPopover = false;
+                  //     }
+                  //   });
+                  // });
+            });
+
+
+          var monthScroller = svg.append("line")
+              .attr("class", "month-dial")
+              .attr("x1", xScale(0))
+              .attr("y1", height)
+              .attr("x2", xScale(0))
+              .attr("y2", -5)
+              .attr("fill","none")
+              .attr("stroke","#F00")
+              .attr("stroke-width",10)
+              .attr("marker-end", "url(#triangle-start)")
+               .call(drag);
+
+          $(".month-dial").on("mousedown", function(){
+              if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
+          })
+          $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
+
 
 
           var drawGraphLine = function(data, color, lineStyle) {
@@ -172,8 +265,8 @@ angular.module('directives.ue.level-4', [])
             return unemploymentDataService.months_between(period.startDate, period.endDate);
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
-          var yAxisMax = longestPeriod ? unemploymentDataService.months_between(longestPeriod.startDate, longestPeriod.endDate) : 132;
-          redraw(yAxisMax);
+          var xAxisMax = longestPeriod ? unemploymentDataService.months_between(longestPeriod.startDate, longestPeriod.endDate) : 12;
+          redraw(xAxisMax);
 
           // svg.selectAll(".graph-line").remove();  
           // _.each(scope.selectedPeriods, function(period, index, list) {
@@ -183,71 +276,8 @@ angular.module('directives.ue.level-4', [])
           //   period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
           //   drawGraphLine(period.data, colorMap[period.color], lineStyleMap[index] );
           //})
-        }, true);
+        });
 
-
-
-
-
-        var drag = d3.behavior.drag()
-            .origin(function() { 
-                var t = d3.select(this);
-                console.log(this);
-                return {x: t.attr("x1"), y: t.attr("y")};
-            })
-            .on("drag", function(d,i) {
-              var newX;
-              if(d3.event.x > 0 && d3.event.x < width){
-                  var distance = d3.event.x-d3.select(this).attr("x1");
-                  newX = parseInt(d3.select(this).attr("x1")) + distance;
-              } else if(d3.event.x <= 0) {
-                 newX = 0;
-
-              } else if(d3.event.x >= width) {
-                  newX = width;
-              }
-                d3.select(this)
-                  .attr("transform", function(d,i){
-                      return "translate(" + [ distance,0 ] + ")"
-                  })
-                  .attr("x1", newX)
-                  .attr("x2", newX);
-
-                $('.month-dial-popover').css("left", newX);
-
-                  scope.$apply(function() {
-                    scope.currentMonth = convertXPosToMonth(newX);
-                    _.each(scope.selectedPeriods, function(period, index, list){
-                      var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
-                      period.currentMonthName = currentDateFormatted.monthName;
-                      period.currentYear = currentDateFormatted.fullYear;
-                      if(period.data[scope.currentMonth+13]){
-                        period.showInPopover = true; 
-                        period.currentUnempRate = period.data[scope.currentMonth+13][1];
-                      } else {
-                        period.showInPopover = false;
-                      }
-                    });
-                  });
-            });
-
-
-          var monthScroller = svg.append("line")
-              .attr("class", "month-dial")
-              .attr("x1", xScale(0))
-              .attr("y1", height)
-              .attr("x2", xScale(0))
-              .attr("y2", -5)
-              .attr("fill","none")
-              .attr("stroke","#F00")
-              .attr("stroke-width",3)
-              .attr("marker-end", "url(#triangle-start)")
-              .call(drag);
-
-          $(".month-dial").on("mousedown", function(){
-              if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
-          })
-          $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
 
 
 
