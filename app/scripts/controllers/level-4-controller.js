@@ -1,10 +1,11 @@
 'use strict';
 
 unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
+	
 	$scope.currentMonth = 0;
 
 	$scope.recessions = [
-		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", color: ""},
+		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", monthsBefore: 4, color: ""},
 		{name: "May 1937 - June 1938", startDate: "1937-05", endDate: "1938-06", color: ""},
 		{name: "February 1945 - October 1945", startDate: "1945-02", endDate: "1945-10", color: ""},
 		{name: "Novemeber 1948 - October 1949", startDate: "1948-11", endDate: "1949-10", color: ""},

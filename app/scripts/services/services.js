@@ -107,7 +107,7 @@ services.factory('unemploymentDataService', function() {
 		// given two dates in YYYY-MM format, and a number of months before d1 to start the range at, return an array of
 		// [x,y] array pairs, where x is the offset in months between d1 and y is the unemployment rate.
 		
-		date_with_offset: function(d, offset) {
+		calculateDateWithOffset: function(d, offset) {
 			var y = d.split('-')[0];
 			var m = d.split('-')[1];
 			
@@ -120,25 +120,25 @@ services.factory('unemploymentDataService', function() {
 			m1 = (m1<10 ? '0'+m1 : m1);
 			return y1+'-'+m1;
 		},
-		months_between: function(d1, d2) {
+		calculateMonthsBetween: function(d1, d2) {
 			var ym1 = d1.split('-');
 			var ym2 = d2.split('-');
 			return 12*(ym2[0]-ym1[0]) + (ym2[1]-ym1[1]);
 		},
 		getData: function(d1, d2, months_before) {
-			if (months_before==undefined) months_before=12;
-			var range_start = this.months_between(US_Unemployment_Data.start_date, d1);
-			var ixStart = Math.max(0, range_start-months_before);
-			var ixEnd = Math.min(this.months_between(US_Unemployment_Data.start_date, d2), US_Unemployment_Data.values.length);
+			if (months_before == undefined) months_before = 12;
+			var range_start = this.calculateMonthsBetween(US_Unemployment_Data.start_date, d1);
+			var ixStart = Math.max(0, range_start - months_before);
+			var ixEnd = Math.min(this.calculateMonthsBetween(US_Unemployment_Data.start_date, d2), US_Unemployment_Data.values.length);
 			data = [];
 			for (var i = ixStart; i<=ixEnd; i++) {
-					data.push([i-range_start, US_Unemployment_Data.values[i]]);
+					data.push([i - range_start, US_Unemployment_Data.values[i]]);
 			}
 			return data;
 		},
 	    getCurrentMonthYearFormatted: function(startDate, offset) {
 	    	var currentDateFormatted = {};
-	    	var currentDate = this.date_with_offset(startDate, offset);
+	    	var currentDate = this.calculateDateWithOffset(startDate, offset);
 	    	var y = currentDate.split('-')[0];
 			var m = currentDate.split('-')[1];
 			var currentDateObj = new Date(y, m, 01);

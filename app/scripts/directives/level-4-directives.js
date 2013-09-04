@@ -14,7 +14,7 @@ angular.module('directives.ue.level-4', [])
         outerHeight = 435,
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom,
-        xAxisMax = xAxisMax, xAxisMin = -12;
+        xAxisMax = xAxisMax + 1, xAxisMin = -12;
 
         var svg = d3.select(element[0]).append("svg")
         .attr("width", width + margin.left + margin.right)
@@ -74,7 +74,6 @@ angular.module('directives.ue.level-4', [])
               .attr("dx", ".71em")
               .style("text-anchor", "middle")
               .text("Month (Month 0 indicates official start of recession)");
-
 
         //Add inner ticks
         svg.append("svg:g")         
@@ -166,9 +165,11 @@ angular.module('directives.ue.level-4', [])
                       var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
                       period.currentMonthName = currentDateFormatted.monthName;
                       period.currentYear = currentDateFormatted.fullYear;
-                      if(period.data[scope.currentMonth+13]){
+                      var monthsBefore = period.monthsBefore || 12;
+                      var currentDataArrayIndex = scope.currentMonth + monthsBefore + 1;
+                      if(period.data[currentDataArrayIndex]){
                         period.showInPopover = true; 
-                        period.currentUnempRate = period.data[scope.currentMonth+13][1];
+                        period.currentUnempRate = period.data[currentDataArrayIndex][1];
                       } else {
                         period.showInPopover = false;
                       }
@@ -184,14 +185,14 @@ angular.module('directives.ue.level-4', [])
               .attr("y2", -5)
               .attr("fill","none")
               .attr("stroke","#F00")
-              .attr("stroke-width",10)
+              .attr("stroke-width",3)
               .attr("marker-end", "url(#triangle-start)")
                .call(drag);
 
           $(".month-dial").on("mousedown", function(){
               if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
           })
-          $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
+          $("body").on('mouseup.hideMonthDialPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
 
           var drawGraphLine = function(data, color, lineStyle) {
             var line = d3.svg.line()
@@ -205,20 +206,20 @@ angular.module('directives.ue.level-4', [])
                .attr("stroke", color)
                .attr("stroke-width",4)
                .style("stroke-dasharray", (lineStyle));
-           }
+          }
 
           _.each(scope.selectedPeriods, function(period, index, list) {
-            period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
+            period.data = unemploymentDataService.getData(period.startDate, period.endDate, period.monthsBefore);
             drawGraphLine(period.data, colorMap[period.color], lineStyleMap[period.color] );
           });
         }// end of redraw()
 
         scope.$watch("selectedPeriods.length", function() {
           var periodsSortedByLongest = _.sortBy(scope.selectedPeriods, function(period) {
-            return unemploymentDataService.months_between(period.startDate, period.endDate);
+            return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
-          var xAxisMax = longestPeriod ? unemploymentDataService.months_between(longestPeriod.startDate, longestPeriod.endDate) : 12;
+          var xAxisMax = longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
           redraw(xAxisMax);
         });
 
