@@ -39,10 +39,10 @@
 
 	<div class="popover detail-popover" ng-show="showDetailPopover" ><div class="arrow"></div>
 			<div class="popover-content">
-				{{period.name}}
-				Month {{currentMonth}} <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
+				<h4>{{detailPeriod.name}}</h4>
+				<h4>Month {{currentMonth}} <span class="month">{{detailPeriod.currentMonthName}}</span> <span class="year">{{detailPeriod.currentYear}}</span></h4>
 
-				<span class="unemp-rate">{{period.currentUnempRate}}</span> Unemployment Rate
+				<span class="unemp-rate">{{detailPeriod.currentUnempRate}}</span> Unemployment Rate
 
 				</div>
 			</div>
