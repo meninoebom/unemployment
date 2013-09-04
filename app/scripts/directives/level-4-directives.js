@@ -6,45 +6,45 @@ angular.module('directives.ue.level-4', [])
 		restrict: 'C',
     replace: true,
 		link: function(scope, element, attrs, ngModel) {
-  		
-
-      var margin = {top: 10, right: 12, bottom: 58, left: 67},
+  			
+      var redraw = function(xAxisMax) {
+        d3.select("svg").remove();
+    		var margin = {top: 10, right: 12, bottom: 58, left: 67},
         outerWidth = 646,
         outerHeight = 435,
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom,
-        xAxisMax, xAxisMin = -12;	
+        xAxisMax = xAxisMax, xAxisMin = -12;
 
-      var xScale = d3.scale.linear();
-          
-
-      var yScale = d3.scale.linear();
-          
-
-      var svg = d3.select(element[0]).append("svg");
-
-      
-      var drawGraph = function(xAxisMax) {
-        $("svg").empty();
-
-        xAxisMax = xAxisMax || 12;
-
-        xScale.range([0, width])
-          .domain([xAxisMin, xAxisMax]);
-        yScale.range([height, 0])//start from the bottom (height)
-          .domain([0, 26]);
-
-        //var svg = d3.select(element[0]).append("svg")
-        svg.attr("width", width + margin.left + margin.right)
+        var svg = d3.select(element[0]).append("svg")
+        .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
         .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
+        var xScale = d3.scale.linear()
+          .range([0, width])
+          .domain([xAxisMin, xAxisMax]);
 
+        var yScale = d3.scale.linear()
+            .range([height, 0])//start from the bottom (height)
+            .domain([0, 26]);
 
         var convertXPosToMonth = d3.scale.linear() 
           .rangeRound([xAxisMin, xAxisMax])
           .domain([0, width]);
+
+        var colorMap = {
+          'purple': '#660066',
+          'blue': '#0d5b92',
+          'green': '#0f673a'
+        }
+
+        var lineStyleMap = [
+          '0',
+          '4,2',
+          '4,2,4,2,2,2'
+        ]
 
         var stepsBetweenTicks = (function(){
           return Math.round((xAxisMax - xAxisMin) / 13);
@@ -135,9 +135,6 @@ angular.module('directives.ue.level-4', [])
           .append("path")
             .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
-
-
-
         var drag = d3.behavior.drag()
             .origin(function() { 
                 var t = d3.select(this);
@@ -179,7 +176,6 @@ angular.module('directives.ue.level-4', [])
                   });
             });
 
-
           var monthScroller = svg.append("line")
               .attr("class", "month-dial")
               .attr("x1", xScale(0))
@@ -197,53 +193,36 @@ angular.module('directives.ue.level-4', [])
           })
           $("body").on('mouseup.hideScrubBarPopover', function () { scope.$apply(scope.showMonthDialPopover = false) });
 
+          var drawGraphLine = function(data, color, lineStyle) {
+            var line = d3.svg.line()
+              .x(function(d) { return xScale(d[0]); })
+              .y(function(d) { return yScale(d[1]); }); 
+            svg.append("svg:path")
+               .datum(data)
+               .attr("class", "line graph-line")
+               .attr("d", line)
+               .attr("fill","none")
+               .attr("stroke", color)
+               .attr("stroke-width",4)
+               .style("stroke-dasharray", (lineStyle));
+           }
 
-        }// end of drawGraph()
+          _.each(scope.selectedPeriods, function(period, index, list) {
+            period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
+            drawGraphLine(period.data, colorMap[period.color], lineStyleMap[index] );
+          });
+        }// end of redraw()
 
-        scope.$watch("selectedPeriods", function() {
+        scope.$watch("selectedPeriods.length", function() {
           var periodsSortedByLongest = _.sortBy(scope.selectedPeriods, function(period) {
             return unemploymentDataService.months_between(period.startDate, period.endDate);
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
           var xAxisMax = longestPeriod ? unemploymentDataService.months_between(longestPeriod.startDate, longestPeriod.endDate) : 12;
-          drawGraph(xAxisMax);
+          redraw(xAxisMax);
         });
-
-        var colorMap = {
-          'purple': '#660066',
-          'blue': '#0d5b92',
-          'green': '#0f673a'
-        }
-
-        var lineStyleMap = [
-          '0',
-          '4,2',
-          '4,2,4,2,2,2'
-        ]
-
-        var drawGraphLine = function(data, color, lineStyle) {
-          var line = d3.svg.line()
-            .x(function(d) { return xScale(d[0]); })
-            .y(function(d) { return yScale(d[1]); }); 
-          svg.append("svg:path")
-             .datum(data)
-             .attr("class", "line graph-line")
-             .attr("d", line)
-             .attr("fill","none")
-             .attr("stroke", color)
-             .attr("stroke-width",4)
-             .style("stroke-dasharray", (lineStyle));
-        }
-
-        scope.$watch("selectedPeriods", function() {
-          _.each(scope.selectedPeriods, function(period, index, list) {
-            period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
-            drawGraphLine(period.data, colorMap[period.color], lineStyleMap[index] );
-          });
-        }, true);
-
-      drawGraph();
-
+        
+        redraw();
   		}// end link function
 	  }
 }]);
