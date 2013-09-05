@@ -250,8 +250,81 @@ angular.module('directives.ue.level-4', [])
 
         redraw();
   		}// end link function
-	  }
-}]);
+	  }// end returned object
+}])
+.directive('detailPopoverPiechart', [function() {
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs) {
+     
+        var period = scope.detailPeriod;
+        //TODO bind to the unemployment rate so that I can use it to draw the graph
+        var data =   [
+          {"category": "Employed", "population": 94, "className": "employed"},
+          {"category": "Unemployed", "population": 6, "className": "unemployed"}
+        ]
+
+        var options = {
+          diameter: 150,
+          rotation: 12,
+          colors: ["#0d5b92", "#70caf2"]
+        };
+
+      var diameter = options.diameter,
+          radius = diameter / 2,
+          rotation = options.rotation,
+          colorArray = options.colors;
+
+      var color = d3.scale.ordinal()
+          .range(colorArray);
+
+      var arc = d3.svg.arc()
+          .outerRadius(radius - 10)
+          .innerRadius(0);
+
+      var pie = d3.layout.pie()
+          .sort(null)
+          .value(function(d) { return d.population; });
+
+      var svg = d3.select(element[0]).append("svg") 
+          .attr("width", diameter)
+          .attr("height", diameter + 80)
+          .append("g")
+          .attr("transform", "translate(" + radius + "," + radius + ") rotate("+ rotation +")");
+
+      var arcContainer = svg.selectAll(".arc")
+          .data(pie(data))
+          .enter().append("g")
+          .attr("class", "arc");
+
+      arcContainer.append("path")
+          .attr("d", arc)
+          .style("fill", function(d) { return color(d.data.category); })
+          .style("stroke", "white")
+          .style("stroke-width", "4");
+
+      var total = 0;  
+      data.forEach(function(d) {
+          total += parseInt(d.population);
+      });
+
+      arcContainer.append("text")
+          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(-"+ rotation +")"; })
+          .attr("dy", "-1em")
+          .attr("dx", "-1em")
+          .attr("class", function(d){ return d.data.className + "-percentage-label"})
+          .style("text-anchor", "middle")
+          .style("font-size", "14px")
+          .style("fill", "white")
+          .style("stroke", "none")
+          .text(function(d) {
+           return Math.round(d.data.population/total * 100)+"%"; 
+      });
+
+
+    }
+  }
+}]);//end of directive
 
 angular.module('directives.ue.collapse',['ui.bootstrap.transition'])
 //Adapted from the Angular UI framework

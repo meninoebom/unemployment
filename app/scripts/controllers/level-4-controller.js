@@ -55,7 +55,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
         $scope.showDetailPopover = state;
     };
 
-    $scope.detailPeriod;
+    $scope.detailPeriod = {};
 
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {

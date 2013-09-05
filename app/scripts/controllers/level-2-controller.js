@@ -125,13 +125,13 @@ $scope.employmentCategories = [
   $scope.populationChartOptions = {
     diameter: 192,
     rotation: 12,
-    colors: ["#006639", "#8dc758"],
+    colors: ["#006639", "#8dc758"]
   };
 
   $scope.laborForceChartOptions = {
     diameter: 192,
     rotation: 330,
-    colors: ["#0d5b92", "#70caf2"],
+    colors: ["#0d5b92", "#70caf2"]
   };
 
   $scope.scenarios = [
