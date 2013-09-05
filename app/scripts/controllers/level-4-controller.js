@@ -2,7 +2,9 @@
 
 unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
 	
-	$scope.currentMonth = 0;
+	$scope.dialPopCurMonth = 0;
+	$scope.detailPopCurMonth = 0;
+    $scope.detailPeriod = {};
 
 	$scope.recessions = [
 		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", monthsBefore: 4},
@@ -54,8 +56,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.toggleShowDetailPopover = function(state) {
         $scope.showDetailPopover = state;
     };
-
-    $scope.detailPeriod = {};
 
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {

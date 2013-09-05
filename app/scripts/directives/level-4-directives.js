@@ -8,7 +8,7 @@ angular.module('directives.ue.level-4', [])
 		link: function(scope, element, attrs, ngModel) {
   			
       var redraw = function(xAxisMax) {
-        d3.select("svg").remove();
+        d3.select(".main-unemp-graph").remove();
     		var margin = {top: 10, right: 12, bottom: 58, left: 67},
         outerWidth = 646,
         outerHeight = 435,
@@ -17,6 +17,7 @@ angular.module('directives.ue.level-4', [])
         xAxisMax = xAxisMax + 1, xAxisMin = -12;
 
         var svg = d3.select(element[0]).append("svg")
+        .attr("class", "main-unemp-graph")
         .attr("width", width + margin.left + margin.right)
         .attr("height", height + margin.top + margin.bottom)
         .append("g")
@@ -84,7 +85,6 @@ angular.module('directives.ue.level-4', [])
                 .orient("top")
                 .tickSubdivide(3)
                 .tickSize(10, 5, 5)
-                //.tickSize(height, height, 5)
                 .tickValues(tickMarkArray)
                 .tickFormat("")
             );
@@ -161,13 +161,13 @@ angular.module('directives.ue.level-4', [])
                 $('.month-dial-popover').css("left", newX);
 
                 //TODO understand why you need apply in this case
-                scope.currentMonth = convertXPosToMonth(newX);
+                scope.dialPopCurMonth = convertXPosToMonth(newX);
                 _.each(scope.selectedPeriods, function(period, index, list){
-                  var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+                  var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.dialPopCurMonth);
                   period.currentMonthName = currentDateFormatted.monthName;
                   period.currentYear = currentDateFormatted.fullYear;
                   var monthsBefore = period.monthsBefore || 11;
-                  var currentDataArrayIndex = scope.currentMonth + monthsBefore + 1;
+                  var currentDataArrayIndex = scope.dialPopCurMonth + monthsBefore + 1;
                   if(period.data[currentDataArrayIndex]){
                     period.showInPopover = true; 
                     period.currentUnempRate = period.data[currentDataArrayIndex][1];
@@ -177,6 +177,16 @@ angular.module('directives.ue.level-4', [])
                     scope.$apply( scope.showInPopover = false );
                   }
                 });
+            })
+            .on("dragend", function(d,i) {
+              var snapToPosDistance = xScale(scope.dialPopCurMonth) - d3.event.x;
+              var newX = xScale(scope.dialPopCurMonth);
+              d3.select(this)
+                  .attr("transform", function(d,i){
+                      return "translate(" + [ snapToPosDistance,0 ] + ")"
+                  })
+                  .attr("x1", newX)
+                  .attr("x2", newX);
             });
 
           var monthScroller = svg.append("line")
@@ -222,24 +232,29 @@ angular.module('directives.ue.level-4', [])
               var $popover = $('.detail-popover');
               var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
               var relativeY = e.pageY - $(this).parent().parent().offset().top - margin.top;
-              scope.currentMonth  = convertXPosToMonth(relativeX);
+              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
               var popoverHeight = $popover.height();
               var popoverWidth = $popover.width();
-              $('.detail-popover').css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.75);
+              $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.75);
+              
               var index = $(this).attr("index");
-              var period = scope.selectedPeriods[index];
-              var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
+              var period = {};
+              var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth);
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
-              var monthsBefore = period.monthsBefore || 12;
-              var currentDataArrayIndex = scope.currentMonth + monthsBefore;
-              period.currentUnempRate = period.data[currentDataArrayIndex][1];
-              scope.detailPeriod = period;
+              var monthsBefore = scope.selectedPeriods[index].monthsBefore || 12;
+              var currentDataArrayIndex = scope.detailPopCurMonth + monthsBefore;
+              period.currentUnempRate = scope.selectedPeriods[index].data[currentDataArrayIndex][1];
+              scope.detailPeriod = {
+                'currentMonthName': period.currentMonthName, 
+                'currentYear': period.currentYear, 
+                'currentUnempRate': period.currentUnempRate
+              };
+
               scope.$apply( scope.showDetailPopover = true ); 
           }).on('mouseout', function () { 
               scope.$apply( scope.showDetailPopover = false ); 
           });
-
         }// end of redraw()
 
         scope.$watch("selectedPeriods.length", function() {
@@ -264,7 +279,6 @@ angular.module('directives.ue.level-4', [])
         if(currentUnempRate === undefined) return;
         element.empty();
         var unempRate = currentUnempRate;
-        
         var empRate = 100 - unempRate;
         
         var data =   [

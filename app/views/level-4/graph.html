@@ -24,7 +24,7 @@
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
-			Month {{currentMonth}} Unemployment Rate
+			Month {{dialPopCurMonth}} Unemployment Rate
 			<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
 				<span class="order-num">{{period.selectedOrderNum}}</span> 
 				<span class="unemp-rate">{{period.currentUnempRate}}</span> 
@@ -37,7 +37,7 @@
 		<div class="arrow"></div>
 		<div class="popover-content">
 			<p>{{detailPeriod.name}}</p>
-			<p>Month {{currentMonth}} 
+			<p>Month {{detailPopCurMonth}} 
 				<span class="month">{{detailPeriod.currentMonthName}}</span> 
 				<span class="year">{{detailPeriod.currentYear}}</span>
 			</p>
