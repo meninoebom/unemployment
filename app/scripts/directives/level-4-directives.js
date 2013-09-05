@@ -257,11 +257,16 @@ angular.module('directives.ue.level-4', [])
     restrict: 'A',
     link: function(scope, element, attrs) {
      
-        var period = scope.detailPeriod;
+      scope.$watch(attrs.currentUnempRate, function(currentUnempRate) {
+        if(currentUnempRate === undefined) return;
+        element.empty();
+        var unempRate = currentUnempRate;
+        var empRate = 100 - unempRate;
+
         //TODO bind to the unemployment rate so that I can use it to draw the graph
         var data =   [
-          {"category": "Employed", "population": 94, "className": "employed"},
-          {"category": "Unemployed", "population": 6, "className": "unemployed"}
+          {"category": "Employed", "population": empRate, "className": "employed"},
+          {"category": "Unemployed", "population": unempRate, "className": "unemployed"}
         ]
 
         var options = {
@@ -320,7 +325,7 @@ angular.module('directives.ue.level-4', [])
           .text(function(d) {
            return Math.round(d.data.population/total * 100)+"%"; 
       });
-
+    })
 
     }
   }

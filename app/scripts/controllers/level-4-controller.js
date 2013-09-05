@@ -57,6 +57,8 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 
     $scope.detailPeriod = {};
 
+    $scope.foo = 50;
+
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {
 			$scope.resetSelections();
