@@ -57,8 +57,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 
     $scope.detailPeriod = {};
 
-    $scope.foo = 50;
-
 	$scope.toggleSelectedPeriod = function(period, list, ngRepeatIndex) {
 		if($scope.currentSelectionList && $scope.currentSelectionList != list ) {
 			$scope.resetSelections();
@@ -93,11 +91,11 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	}
 
 	$scope.deselectPeriod = function(period) {
-			period.selected = false;
-			$scope.selectedPeriods.splice(_.indexOf($scope.selectedPeriods, period),1);
-			period.selectedOrderNum = "";
-	    	$scope.availableSelectionColors.push(period.color);
-			period.color = "";
+		period.selected = false;
+		$scope.selectedPeriods.splice(_.indexOf($scope.selectedPeriods, period),1);
+		period.selectedOrderNum = "";
+    	$scope.availableSelectionColors.push(period.color);
+		period.color = "";
 	}
 
 	$scope.resetSelections = function() {

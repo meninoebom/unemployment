@@ -141,7 +141,7 @@ services.factory('unemploymentDataService', function() {
 	    	var currentDate = this.calculateDateWithOffset(startDate, offset);
 	    	var y = currentDate.split('-')[0];
 			var m = currentDate.split('-')[1];
-			var currentDateObj = new Date(y, m, 01);
+			var currentDateObj = new Date(y, m-1, 01);
 			currentDateFormatted.monthName = currentDateObj.getMonthName();
 			currentDateFormatted.fullYear = currentDateObj.getFullYear();
 			return currentDateFormatted;

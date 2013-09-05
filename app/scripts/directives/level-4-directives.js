@@ -84,6 +84,7 @@ angular.module('directives.ue.level-4', [])
                 .orient("top")
                 .tickSubdivide(3)
                 .tickSize(10, 5, 5)
+                //.tickSize(height, height, 5)
                 .tickValues(tickMarkArray)
                 .tickFormat("")
             );
@@ -165,7 +166,7 @@ angular.module('directives.ue.level-4', [])
                   var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
                   period.currentMonthName = currentDateFormatted.monthName;
                   period.currentYear = currentDateFormatted.fullYear;
-                  var monthsBefore = period.monthsBefore || 12;
+                  var monthsBefore = period.monthsBefore || 11;
                   var currentDataArrayIndex = scope.currentMonth + monthsBefore + 1;
                   if(period.data[currentDataArrayIndex]){
                     period.showInPopover = true; 
@@ -218,18 +219,20 @@ angular.module('directives.ue.level-4', [])
           });
           
           $(".graph-line").on("mousemove", function(e){ 
+              var $popover = $('.detail-popover');
               var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
               var relativeY = e.pageY - $(this).parent().parent().offset().top - margin.top;
               scope.currentMonth  = convertXPosToMonth(relativeX);
-              $('.detail-popover').css("left", relativeX).css("top", relativeY);
-
+              var popoverHeight = $popover.height();
+              var popoverWidth = $popover.width();
+              $('.detail-popover').css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.75);
               var index = $(this).attr("index");
-              var period = scope.selectedPeriods[index]
+              var period = scope.selectedPeriods[index];
               var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.currentMonth);
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
               var monthsBefore = period.monthsBefore || 12;
-              var currentDataArrayIndex = scope.currentMonth + monthsBefore + 1;
+              var currentDataArrayIndex = scope.currentMonth + monthsBefore;
               period.currentUnempRate = period.data[currentDataArrayIndex][1];
               scope.detailPeriod = period;
               scope.$apply( scope.showDetailPopover = true ); 
@@ -261,72 +264,71 @@ angular.module('directives.ue.level-4', [])
         if(currentUnempRate === undefined) return;
         element.empty();
         var unempRate = currentUnempRate;
+        
         var empRate = 100 - unempRate;
-
-        //TODO bind to the unemployment rate so that I can use it to draw the graph
+        
         var data =   [
           {"category": "Employed", "population": empRate, "className": "employed"},
           {"category": "Unemployed", "population": unempRate, "className": "unemployed"}
         ]
-
+        
         var options = {
           diameter: 150,
           rotation: 12,
           colors: ["#0d5b92", "#70caf2"]
         };
+        
+        var diameter = options.diameter,
+            radius = diameter / 2,
+            rotation = options.rotation,
+            colorArray = options.colors;
 
-      var diameter = options.diameter,
-          radius = diameter / 2,
-          rotation = options.rotation,
-          colorArray = options.colors;
+        var color = d3.scale.ordinal()
+            .range(colorArray);
 
-      var color = d3.scale.ordinal()
-          .range(colorArray);
+        var arc = d3.svg.arc()
+            .outerRadius(radius - 10)
+            .innerRadius(0);
 
-      var arc = d3.svg.arc()
-          .outerRadius(radius - 10)
-          .innerRadius(0);
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d) { return d.population; });
 
-      var pie = d3.layout.pie()
-          .sort(null)
-          .value(function(d) { return d.population; });
+        var svg = d3.select(element[0]).append("svg") 
+            .attr("width", diameter)
+            .attr("height", diameter)
+            .append("g")
+            .attr("transform", "translate(" + radius + "," + radius + ") rotate("+ rotation +")");
 
-      var svg = d3.select(element[0]).append("svg") 
-          .attr("width", diameter)
-          .attr("height", diameter + 80)
-          .append("g")
-          .attr("transform", "translate(" + radius + "," + radius + ") rotate("+ rotation +")");
+        var arcContainer = svg.selectAll(".arc")
+            .data(pie(data))
+            .enter().append("g")
+            .attr("class", "arc");
 
-      var arcContainer = svg.selectAll(".arc")
-          .data(pie(data))
-          .enter().append("g")
-          .attr("class", "arc");
+        arcContainer.append("path")
+            .attr("d", arc)
+            .style("fill", function(d) { return color(d.data.category); })
+            .style("stroke", "white")
+            .style("stroke-width", "4");
 
-      arcContainer.append("path")
-          .attr("d", arc)
-          .style("fill", function(d) { return color(d.data.category); })
-          .style("stroke", "white")
-          .style("stroke-width", "4");
+        var total = 0;  
+        data.forEach(function(d) {
+            total += parseInt(d.population);
+        });
 
-      var total = 0;  
-      data.forEach(function(d) {
-          total += parseInt(d.population);
+        arcContainer.append("text")
+            .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(-"+ rotation +")"; })
+            .attr("dy", "-1em")
+            .attr("dx", "-1em")
+            .attr("class", function(d){ return d.data.className + "-percentage-label"})
+            .style("text-anchor", "middle")
+            .style("font-size", "14px")
+            .style("fill", "white")
+            .style("stroke", "none")
+            .text(function(d) {
+             return Math.round(d.data.population/total * 100)+"%"; 
+            });
       });
-
-      arcContainer.append("text")
-          .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(-"+ rotation +")"; })
-          .attr("dy", "-1em")
-          .attr("dx", "-1em")
-          .attr("class", function(d){ return d.data.className + "-percentage-label"})
-          .style("text-anchor", "middle")
-          .style("font-size", "14px")
-          .style("fill", "white")
-          .style("stroke", "none")
-          .text(function(d) {
-           return Math.round(d.data.population/total * 100)+"%"; 
-      });
-    })
-
     }
   }
 }]);//end of directive
@@ -380,7 +382,6 @@ angular.module('directives.ue.collapse',['ui.bootstrap.transition'])
         }
       });
       
-
       var currentTransition;
       var doTransition = function(change) {
         if ( currentTransition ) {

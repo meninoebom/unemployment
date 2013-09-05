@@ -1,55 +1,48 @@
 <style>
-			/* tell the SVG path to be a thin blue line without any area fill */
-			path {
-				fill: none;
-			}
-			
-			.axis {
-			  shape-rendering: crispEdges;
-			}
- 
-			.x.axis .minor {
-			  stroke-opacity: .5;
-			  stroke-dasharray: 3, 3;
-			}
- 
-			.x.axis line, .x.axis path {
-			  fill: none;
-			  stroke: #000;
-			} 
-			.y.axis line, .y.axis path {
-			  fill: none;
-			  stroke: #000;
-			}
+	/* tell the SVG path to be a thin blue line without any area fill */
+	path {
+	  fill: none;
+	}
+	.axis {
+	  shape-rendering: crispEdges;
+	}
+	.x.axis .minor {
+	  stroke-opacity: .5;
+	  stroke-dasharray: 3, 3;
+	}
+	.x.axis line, .x.axis path {
+	  fill: none;
+	  stroke: #000;
+	} 
+	.y.axis line, .y.axis path {
+	  fill: none;
+	  stroke: #000;
+	}
 </style>
 <h2>Unemployment Rates in the United States</h2>
 <div class="unemployment-graph">
-
-	<div class="popover month-dial-popover" ng-show="showMonthDialPopover" ><div class="arrow"></div>
-			<div class="popover-content">
-				Month {{currentMonth}} Unemployment Rate
-				<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
-					<span class="order-num">{{period.selectedOrderNum}}</span> <span class="unemp-rate">{{period.currentUnempRate}}</span> <span class="month">{{period.currentMonthName}}</span> <span class="year">{{period.currentYear}}</span>
-				</div>
-
-				</div>
+	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
+		<div class="arrow"></div>
+		<div class="popover-content">
+			Month {{currentMonth}} Unemployment Rate
+			<div ng-repeat="period in selectedPeriods" ng-show="period.showInPopover" class="{{period.color}}">
+				<span class="order-num">{{period.selectedOrderNum}}</span> 
+				<span class="unemp-rate">{{period.currentUnempRate}}</span> 
+				<span class="month">{{period.currentMonthName}}</span> 
+				<span class="year">{{period.currentYear}}</span>
 			</div>
 		</div>
 	</div>
-
-	<div class="popover detail-popover" ng-show="showDetailPopover" ><div class="arrow"></div>
-			<div class="popover-content">
-				<h4>{{detailPeriod.name}}</h4>
-				<h4>Month {{currentMonth}} <span class="month">{{detailPeriod.currentMonthName}}</span> <span class="year">{{detailPeriod.currentYear}}</span></h4>
-
-				<div detail-popover-piechart current-unemp-rate="detailPeriod.currentUnempRate"></div>
-
-				<span class="unemp-rate">{{detailPeriod.currentUnempRate}}</span> Unemployment Rate
-
-				</div>
-			</div>
+	<div class="popover detail-popover" ng-show="showDetailPopover" >
+		<div class="arrow"></div>
+		<div class="popover-content">
+			<p>{{detailPeriod.name}}</p>
+			<p>Month {{currentMonth}} 
+				<span class="month">{{detailPeriod.currentMonthName}}</span> 
+				<span class="year">{{detailPeriod.currentYear}}</span>
+			</p>
+			<div detail-popover-piechart current-unemp-rate="detailPeriod.currentUnempRate"></div>
+			<span class="unemp-rate">{{detailPeriod.currentUnempRate}}</span> Unemployment Rate
 		</div>
 	</div>
-
 </div>
-

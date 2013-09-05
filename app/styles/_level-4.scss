@@ -142,6 +142,9 @@
 .month-dial-popover, .detail-popover {
     @include popover($darkGrey, $white);
     display: block;
-    width: 400px;
+    width: 300px;
     position: absolute;
+}
+.detail-popover {
+	width: 190px;
 }
