@@ -7,14 +7,16 @@ angular.module('directives.ue.level-4', [])
     replace: true,
 		link: function(scope, element, attrs, ngModel) {
   			
-      var redraw = function(xAxisMax) {
+      var redraw = function(xAxisMax, yAxisMax) {
         d3.select(".main-unemp-graph").remove();
     		var margin = {top: 10, right: 12, bottom: 58, left: 67},
         outerWidth = 646,
         outerHeight = 435,
         width = outerWidth - margin.left - margin.right,
         height = outerHeight - margin.top - margin.bottom,
-        xAxisMax = xAxisMax + 1, xAxisMin = -12;
+        xAxisMax = xAxisMax + 1, xAxisMin = -12, yAxisMax = yAxisMax || 10;
+
+        console.log(yAxisMax);
 
         var svg = d3.select(element[0]).append("svg")
         .attr("class", "main-unemp-graph")
@@ -29,7 +31,7 @@ angular.module('directives.ue.level-4', [])
 
         var yScale = d3.scale.linear()
             .range([height, 0])//start from the bottom (height)
-            .domain([0, 26]);
+            .domain([0, yAxisMax]);
 
         var convertXPosToMonth = d3.scale.linear() 
           .rangeRound([xAxisMin, xAxisMax])
@@ -263,10 +265,16 @@ angular.module('directives.ue.level-4', [])
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
           var xAxisMax = longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
-          redraw(xAxisMax);
+          var highestUnempRates = [];
+          _.each(scope.selectedPeriods, function(period, index, list) {
+            var arrayWithHighestVal = _.max(period.data, function(member) { return member[1]; })
+            highestUnempRates.push(arrayWithHighestVal[1]);
+          })
+          var yAxisMax = (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
+          redraw(xAxisMax, yAxisMax);
         });
 
-        redraw();
+        //redraw();
   		}// end link function
 	  }// end returned object
 }])
