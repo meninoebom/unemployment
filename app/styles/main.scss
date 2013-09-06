@@ -8,10 +8,13 @@ $grey: #DDD;
 $darkGrey: #333;
 $lightGreen: #8ec859;
 $green: #0f673a;
+$lightGreen: #86df58;
 $lightBlue: #70caf2;
 $blue: #0d5b92;
+$lightBlue: #66ccff;
 $red: #990000;
 $purple: #660066;
+$lightPurple: #dcb3ff;
 
 @mixin circle($dimensions) {
     height: $dimensions;

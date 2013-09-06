@@ -16,8 +16,6 @@ angular.module('directives.ue.level-4', [])
         height = outerHeight - margin.top - margin.bottom,
         xAxisMax = xAxisMax + 1, xAxisMin = -12, yAxisMax = yAxisMax || 10;
 
-        console.log(yAxisMax);
-
         var svg = d3.select(element[0]).append("svg")
         .attr("class", "main-unemp-graph")
         .attr("width", width + margin.left + margin.right)
@@ -160,7 +158,17 @@ angular.module('directives.ue.level-4', [])
                   .attr("x1", newX)
                   .attr("x2", newX);
 
-                $('.month-dial-popover').css("left", newX);
+                var center =  $('.main-unemp-graph').width()/2;
+                console.log("newX ="+ newX);
+                console.log("center ="+ center);
+                if (newX <= center) {
+                  console.log("newX <= center");
+                  $('.month-dial-popover').css("left", newX+margin.left).removeClass("left").addClass("right");                  
+                } else {
+                  console.log("newX > center");
+                  $('.month-dial-popover').css("left", newX-$('.month-dial-popover').width()+margin.left).removeClass("right").addClass("left");
+                }
+                  
 
                 //TODO understand why you need apply in this case
                 scope.dialPopCurMonth = convertXPosToMonth(newX);
@@ -242,10 +250,10 @@ angular.module('directives.ue.level-4', [])
               var index = $(this).attr("index");
               var period = {};
               var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth);
-              period.currentMonthName = currentDateFormatted.monthName;
-              period.currentYear = currentDateFormatted.fullYear;
               var monthsBefore = scope.selectedPeriods[index].monthsBefore || 12;
               var currentDataArrayIndex = scope.detailPopCurMonth + monthsBefore;
+              period.currentMonthName = currentDateFormatted.monthName;
+              period.currentYear = currentDateFormatted.fullYear;
               period.currentUnempRate = scope.selectedPeriods[index].data[currentDataArrayIndex][1];
               scope.detailPeriod = {
                 'currentMonthName': period.currentMonthName, 
