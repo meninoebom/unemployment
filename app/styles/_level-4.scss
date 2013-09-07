@@ -139,7 +139,7 @@
 .unemployment-graph {
 	position: relative;
 }
-.month-dial-popover , .detail-popover-test {
+.month-dial-popover , .detail-popover {
     @include popover($darkGrey, $white);
     display: block;
     width: 300px;
@@ -147,15 +147,12 @@
     border-radius: 0;
     h3 {
     	@include font(18px, 24px, #fff);
- 		margin-bottom: 16px;
+    	font-family: 'open_sansregular';
     }
-}
-.month-dial-popover {
-	width: 270px;
-	&.left .arrow, &.right .arrow {
+    &.left .arrow, &.right .arrow {
 		top: 75%;
 	}
-	&.right .arrow:after {
+    &.right .arrow:after {
         border-right-color: $darkGrey;
     }
     &.left .arrow:after {
@@ -167,6 +164,36 @@
     &.bottom .arrow:after {
         border-bottom-color: $darkGrey;
     }  
+}
+.detail-popover {
+	width: 310px;
+	.unemp-rate {
+		@include font(24px, 30px);
+		text-align: center;
+		&.blue { 
+			color: $lightBlue;
+		}
+		&.purple { 
+			color: $lightPurple;
+		}
+		&.green { 
+			color: $lightGreen;
+		}
+	}
+	.percentage-label {
+		@include font(16px, 20px, #fff);
+		font-family: 'open_sanslight';
+		text-align: center;
+	}
+	.detail-popover-piechart {
+		margin: 15px 0 10px 0;
+	}
+}
+.month-dial-popover {
+	width: 270px;
+    h3 {
+ 		margin-bottom: 16px;
+    }
 	p {
 		height: 24px;
 		margin: 0 0 25px 0;
@@ -224,7 +251,4 @@
     .month, .year {
     	text-transform: capitalize;
     }
-}
-.detail-popover-test {
-	width: 190px;
 }

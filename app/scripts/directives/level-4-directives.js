@@ -168,7 +168,6 @@ angular.module('directives.ue.level-4', [])
                   console.log("newX > center");
                   $('.month-dial-popover').css("left", newX-$('.month-dial-popover').width()+margin.left).removeClass("right").addClass("left");
                 }
-                  
 
                 //TODO understand why you need apply in this case
                 scope.dialPopCurMonth = convertXPosToMonth(newX);
@@ -249,16 +248,20 @@ angular.module('directives.ue.level-4', [])
               
               var index = $(this).attr("index");
               var period = {};
+              period.name = scope.selectedPeriods[index].name;
               var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth);
               var monthsBefore = scope.selectedPeriods[index].monthsBefore || 12;
               var currentDataArrayIndex = scope.detailPopCurMonth + monthsBefore;
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
               period.currentUnempRate = scope.selectedPeriods[index].data[currentDataArrayIndex][1];
+              period.color = scope.selectedPeriods[index].color;
               scope.detailPeriod = {
+                'name': period.name,
                 'currentMonthName': period.currentMonthName, 
                 'currentYear': period.currentYear, 
-                'currentUnempRate': period.currentUnempRate
+                'currentUnempRate': period.currentUnempRate,
+                'color': period.color
               };
 
               scope.$apply( scope.showDetailPopover = true ); 
@@ -288,7 +291,7 @@ angular.module('directives.ue.level-4', [])
 }])
 .directive('detailPopoverPiechart', [function() {
   return {
-    restrict: 'A',
+    restrict: 'AC',
     link: function(scope, element, attrs) {
      
       scope.$watch(attrs.currentUnempRate, function(currentUnempRate) {
@@ -301,11 +304,17 @@ angular.module('directives.ue.level-4', [])
           {"category": "Employed", "population": empRate, "className": "employed"},
           {"category": "Unemployed", "population": unempRate, "className": "unemployed"}
         ]
+
+        var colorMap = {
+          'blue': ["#0d5b92", "#70caf2"],
+          'purple': ["#660066", "#dcb3ff"],
+          'green': ["#0f673a", "#8ec859"]
+        }
         
         var options = {
           diameter: 150,
           rotation: 12,
-          colors: ["#0d5b92", "#70caf2"]
+          colors: colorMap[attrs.color]
         };
         
         var diameter = options.diameter,
