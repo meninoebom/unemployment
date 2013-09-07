@@ -41,7 +41,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		$scope.currentQuestion++; 
 	}
 
-	$scope.recessionsIsCollapsed = true;
+	$scope.recessionsIsCollapsed = false;
 	$scope.expansionsIsCollapsed = true;
 	$scope.availableSelectionColors = ['purple','green','blue'];
 	$scope.selectedPeriods = [];

@@ -150,7 +150,7 @@
     	font-family: 'open_sansregular';
     }
     &.left .arrow, &.right .arrow {
-		top: 75%;
+		/*top: 75%;*/
 	}
     &.right .arrow:after {
         border-right-color: $darkGrey;
@@ -167,26 +167,31 @@
 }
 .detail-popover {
 	width: 310px;
-	.unemp-rate {
-		@include font(24px, 30px);
-		text-align: center;
-		&.blue { 
-			color: $lightBlue;
+	.detail-popover-piechart-container {
+		float: left;
+		width: 50%;
+		.detail-popover-piechart {
+			margin: 15px 0 10px 0;
 		}
-		&.purple { 
-			color: $lightPurple;
+		.unemp-rate {
+			@include font(24px, 30px);
+			text-align: center;
+			&.blue { 
+				color: $lightBlue;
+			}
+			&.purple { 
+				color: $lightPurple;
+			}
+			&.green { 
+				color: $lightGreen;
+			}
 		}
-		&.green { 
-			color: $lightGreen;
+		.percentage-label {
+			@include font(16px, 20px, #fff);
+			font-family: 'open_sanslight';
+			text-align: center;
+			margin-bottom: 10px;
 		}
-	}
-	.percentage-label {
-		@include font(16px, 20px, #fff);
-		font-family: 'open_sanslight';
-		text-align: center;
-	}
-	.detail-popover-piechart {
-		margin: 15px 0 10px 0;
 	}
 }
 .month-dial-popover {
