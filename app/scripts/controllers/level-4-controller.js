@@ -41,11 +41,25 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		$scope.currentQuestion++; 
 	}
 
-	$scope.recessionsIsCollapsed = false;
+	$scope.recessionsIsCollapsed = true;
 	$scope.expansionsIsCollapsed = true;
 	$scope.availableSelectionColors = ['purple','green','blue'];
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
+
+	$scope.showGridOrGraph = "graph";
+	$scope.toggleGridAndGraphViews = function(view) {
+		console.log(view);
+        if (view === "graph") {
+        	$scope.showGridOrGraph = "graph";
+        } else if (view === "grid") {
+        	$scope.showGridOrGraph = "grid";        	
+        }
+    };
+
+    $scope.foo = function(view) {
+    	console.log(view);
+    }
 
 	$scope.showMonthDialPopover = false;
 	$scope.toggleShowMonthDialPopover = function(state) {

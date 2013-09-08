@@ -10,6 +10,17 @@
 		margin: 42px 0 25px;
 	}
 }
+.level-4-grid-container {
+	float: left;
+	height: 535px;
+	width: 690px;
+	padding: 0 0 20px 42px;
+	text-align: center;
+	h2 {
+		@include font(24px, 18px);
+		margin: 42px 0 25px;
+	}
+}
 .level-4-periods {
 	float: left;
 	height: 535px;
@@ -25,7 +36,10 @@
 		margin-top: 5px;
 	}
 	.switch-view-button {
-		background-color: #000;
+		background-size: 33px;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-size: 33px;
 		float: right;
 		height: 33px;
 		margin-left: 8px;
@@ -35,17 +49,23 @@
 		cursor: pointer;
 	}	
 	.graph-view-button {
-		background-size: 33px;
-		background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;
+
+		/*background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;*/
 		&.active {
 			background-image: url('../img/graph_view_active.png');
+		}	
+		&.inactive {
+			background-image: url('../img/graph_view_inactive.png');
 		}	
 	}
 	.grid-view-button {
 		background-size: 33px;
-		background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;
+		/*background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;*/
 		&.active {
 			background-image: url('../img/grid_view_active.png');
+		}	
+		&.inactive {
+			background-image: url('../img/grid_view_inactive.png');
 		}	
 	}
 	.period-select-container {
