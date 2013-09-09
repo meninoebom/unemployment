@@ -139,12 +139,92 @@
 .unemployment-graph {
 	position: relative;
 }
-.month-dial-popover, .detail-popover {
+.month-dial-popover , .detail-popover-test {
     @include popover($darkGrey, $white);
     display: block;
     width: 300px;
     position: absolute;
+    border-radius: 0;
+    h3 {
+    	@include font(18px, 24px, #fff);
+ 		margin-bottom: 16px;
+    }
 }
-.detail-popover {
+.month-dial-popover {
+	width: 270px;
+	&.left .arrow, &.right .arrow {
+		top: 75%;
+	}
+	&.right .arrow:after {
+        border-right-color: $darkGrey;
+    }
+    &.left .arrow:after {
+        border-left-color: $darkGrey;
+    }
+    &.top .arrow:after {
+        border-top-color: $darkGrey;
+    }
+    &.bottom .arrow:after {
+        border-bottom-color: $darkGrey;
+    }  
+	p {
+		height: 24px;
+		margin: 0 0 25px 0;
+		@include font(16px, 24px, #fff);
+	}
+	.order-num {
+		font-size: 20px;
+    	background: #fff;
+    	border: 2px solid black;
+		display: inline-block;
+    	height: 27px;
+    	margin: 0 10px 0 0;
+    	position: relative;
+    	text-align: center;
+    	width: 27px;
+    	.line-style {
+			background-size: contain;
+			display: block;
+			height: 5px;
+			position: absolute;
+			width: 27px;
+			bottom: -10px;
+			left: -2px;
+    	}
+		&.blue { 
+			color: $blue;
+			.line-style {
+				background-image: url('../img/month-dial-popover_line-style_3.png');
+				background-color: $lightBlue;
+			}  
+		}
+		&.purple { 
+			color: $purple;
+			.line-style {
+				background-image: url('../img/month-dial-popover_line-style_2.png');
+				background-color: $lightPurple;
+			}  
+		}
+		&.green { 
+			color: $green;
+			.line-style {
+				background-color: $lightGreen;
+			}  
+		}
+    }
+    .unemp-rate {
+    	display: inline-block;
+    	margin-right: 14px;
+    	text-align: right;
+    	width: 42px;
+    	&.blue { color: $lightBlue; }
+		&.purple { color: $lightPurple; }
+		&.green { color: $lightGreen; }
+    }
+    .month, .year {
+    	text-transform: capitalize;
+    }
+}
+.detail-popover-test {
 	width: 190px;
 }
