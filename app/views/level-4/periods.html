@@ -1,12 +1,12 @@
 <header>
-	<span class="switch-view-button grid-view-button">show grid view</span>
-	<span class="switch-view-button graph-view-button active">show graph view</span> 
+	<span class="switch-view-button grid-view-button" ng-click="toggleGridAndGraphViews('grid')" ng-class="{grid:'inactive', graph:'active'}[showGridOrGraph]">show grid view</span>
+	<span class="switch-view-button graph-view-button" ng-click="toggleGridAndGraphViews('graph')" ng-class="{grid:'active', graph:'inactive'}[showGridOrGraph]">show graph view</span> 
 	<span class="switch-view-button-label">Data View: </span>
 </header>
 
-<div class="period-select-header">
+<div class="period-select-header" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed">
 <h2>Recessionary Periods</h2>
-<span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[recessionsIsCollapsed]" ng-click="recessionsIsCollapsed = !recessionsIsCollapsed"></span>
+<span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[recessionsIsCollapsed]"></span>
 </div>
 <div class="period-select-container" ue-collapse="recessionsIsCollapsed" target-height="377">
 	<div class="period" ng-class="period.color" ng-repeat="period in recessions" ng-click="toggleSelectedPeriod(period, recessions, $index)">
@@ -18,9 +18,9 @@
 	</div>
 </div>
 
-<div class="period-select-header">
+<div class="period-select-header" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed">
 <h2>Expansionary Periods</h2>
-<span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[expansionsIsCollapsed]" ng-click="expansionsIsCollapsed = !expansionsIsCollapsed"></span>
+<span class="open-collapse-button" ng-class="{true:'expand', false:'collapse'}[expansionsIsCollapsed]"></span>
 </div>
 <div class="period-select-container" ue-collapse="expansionsIsCollapsed" target-height="377">
 	<div class="period" ng-class="period.color" ng-repeat="period in expansions" ng-click="toggleSelectedPeriod(period, expansions, $index)">

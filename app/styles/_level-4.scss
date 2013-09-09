@@ -10,6 +10,17 @@
 		margin: 42px 0 25px;
 	}
 }
+.level-4-grid-container {
+	float: left;
+	height: 535px;
+	width: 690px;
+	padding: 0 0 20px 42px;
+	text-align: center;
+	h2 {
+		@include font(24px, 18px);
+		margin: 42px 0 25px;
+	}
+}
 .level-4-periods {
 	float: left;
 	height: 535px;
@@ -25,7 +36,10 @@
 		margin-top: 5px;
 	}
 	.switch-view-button {
-		background-color: #000;
+		background-size: 33px;
+		background-color: transparent;
+		background-repeat: no-repeat;
+		background-size: 33px;
 		float: right;
 		height: 33px;
 		margin-left: 8px;
@@ -35,17 +49,23 @@
 		cursor: pointer;
 	}	
 	.graph-view-button {
-		background-size: 33px;
-		background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;
+
+		/*background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;*/
 		&.active {
 			background-image: url('../img/graph_view_active.png');
+		}	
+		&.inactive {
+			background-image: url('../img/graph_view_inactive.png');
 		}	
 	}
 	.grid-view-button {
 		background-size: 33px;
-		background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;
+		/*background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;*/
 		&.active {
 			background-image: url('../img/grid_view_active.png');
+		}	
+		&.inactive {
+			background-image: url('../img/grid_view_inactive.png');
 		}	
 	}
 	.period-select-container {
@@ -139,7 +159,7 @@
 .unemployment-graph {
 	position: relative;
 }
-.month-dial-popover , .detail-popover-test {
+.month-dial-popover , .detail-popover {
     @include popover($darkGrey, $white);
     display: block;
     width: 300px;
@@ -147,15 +167,12 @@
     border-radius: 0;
     h3 {
     	@include font(18px, 24px, #fff);
- 		margin-bottom: 16px;
+    	font-family: 'open_sansregular';
     }
-}
-.month-dial-popover {
-	width: 270px;
-	&.left .arrow, &.right .arrow {
-		top: 75%;
+    &.left .arrow, &.right .arrow {
+		/*top: 75%;*/
 	}
-	&.right .arrow:after {
+    &.right .arrow:after {
         border-right-color: $darkGrey;
     }
     &.left .arrow:after {
@@ -167,6 +184,41 @@
     &.bottom .arrow:after {
         border-bottom-color: $darkGrey;
     }  
+}
+.detail-popover {
+	width: 310px;
+	.detail-popover-piechart-container {
+		float: left;
+		width: 50%;
+		.detail-popover-piechart {
+			margin: 15px 0 10px 0;
+		}
+		.unemp-rate {
+			@include font(24px, 30px);
+			text-align: center;
+			&.blue { 
+				color: $lightBlue;
+			}
+			&.purple { 
+				color: $lightPurple;
+			}
+			&.green { 
+				color: $lightGreen;
+			}
+		}
+		.percentage-label {
+			@include font(16px, 20px, #fff);
+			font-family: 'open_sanslight';
+			text-align: center;
+			margin-bottom: 10px;
+		}
+	}
+}
+.month-dial-popover {
+	width: 270px;
+    h3 {
+ 		margin-bottom: 16px;
+    }
 	p {
 		height: 24px;
 		margin: 0 0 25px 0;
@@ -224,7 +276,4 @@
     .month, .year {
     	text-transform: capitalize;
     }
-}
-.detail-popover-test {
-	width: 190px;
 }

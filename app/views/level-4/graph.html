@@ -21,44 +21,26 @@
 </style>
 <h2>Unemployment Rates in the United States</h2>
 <div class="unemployment-graph">
-
-<!-- 	<div class="popover month-dial-popover-test left" ng-show="showMonthDialPopover">
-		<div class="arrow"></div>
-		<div class="popover-content">
-			<h3>Month 11<br />Unemployment Rate</h3>
-			<p>
-				<span class="order-num blue">1<span class="line-style"></span></span> 
-				<span class="unemp-rate blue">7.45%</span> 
-				<span class="month">September</span> 
-				<span class="year">1977</span>
-			</p>
-			<p>
-				<span class="order-num purple">2<span class="line-style"></span></span> 
-				<span class="unemp-rate purple">3.90%</span> 
-				<span class="month">October</span> 
-				<span class="year">1977</span>
-			</p>
-			<p>
-				<span class="order-num green">3<span class="line-style"></span></span> 
-				<span class="unemp-rate green">5.7%</span> 
-				<span class="month">November</span> 
-				<span class="year">1977</span>
-			</p>
-		</div>
-	</div>
 	<div class="popover detail-popover" ng-show="showDetailPopover" >
 		<div class="arrow"></div>
 		<div class="popover-content">
-			<p>{{detailPeriod.name}}</p>
-			<p>Month {{detailPopCurMonth}} 
+			<h3>{{detailPeriod.name}}</h3>
+			<h3>Month {{detailPopCurMonth}}: 
 				<span class="month">{{detailPeriod.currentMonthName}}</span> 
 				<span class="year">{{detailPeriod.currentYear}}</span>
-			</p>
-			<div detail-popover-piechart current-unemp-rate="detailPeriod.currentUnempRate"></div>
-			<span class="unemp-rate">{{detailPeriod.currentUnempRate}}</span> Unemployment Rate
+			</h3>
+			<div class="detail-popover-piechart-container">
+				<div class="detail-popover-piechart {{detailPeriod.color}}" current-unemp-rate="detailPeriod.currentUnempRate" color="{{detailPeriod.color}}"></div>
+				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentUnempRate}}%</p> 
+				<p class="percentage-label">Unemployment Rate</p>
+			</div>
+			<div class="detail-popover-piechart-container">
+				<div class="detail-popover-piechart {{detailPeriod.color}}" current-unemp-rate="detailPeriod.currentUnempRate" color="{{detailPeriod.color}}"></div>
+				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentUnempRate}}%</p> 
+				<p class="percentage-label">Unemployment Rate</p>
+			</div>
 		</div>
-	</div> -->
-
+	</div>
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
@@ -71,17 +53,4 @@
 			</p>
 		</div>
 	</div>
-	<div class="popover detail-popover" ng-show="showDetailPopover" >
-		<div class="arrow"></div>
-		<div class="popover-content">
-			<p>{{detailPeriod.name}}</p>
-			<p>Month {{detailPopCurMonth}} 
-				<span class="month">{{detailPeriod.currentMonthName}}</span> 
-				<span class="year">{{detailPeriod.currentYear}}</span>
-			</p>
-			<div detail-popover-piechart current-unemp-rate="detailPeriod.currentUnempRate"></div>
-			<span class="unemp-rate">{{detailPeriod.currentUnempRate}}</span> Unemployment Rate
-		</div>
-	</div>
-
 </div>

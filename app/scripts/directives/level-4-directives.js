@@ -140,6 +140,7 @@ angular.module('directives.ue.level-4', [])
                 var t = d3.select(this);
                 return {x: t.attr("x1"), y: t.attr("y")};
             })
+            //TODO only getting position on drag so a click shows popover in wrong position
             .on("drag", function(d,i) {
               var newX;
               if(d3.event.x > 0 && d3.event.x < width){
@@ -159,16 +160,12 @@ angular.module('directives.ue.level-4', [])
                   .attr("x2", newX);
 
                 var center =  $('.main-unemp-graph').width()/2;
-                console.log("newX ="+ newX);
-                console.log("center ="+ center);
+                var $popover = $('.month-dial-popover');
                 if (newX <= center) {
-                  console.log("newX <= center");
-                  $('.month-dial-popover').css("left", newX+margin.left).removeClass("left").addClass("right");                  
+                  $popover.css("left", newX+margin.left).removeClass("left").addClass("right");                  
                 } else {
-                  console.log("newX > center");
-                  $('.month-dial-popover').css("left", newX-$('.month-dial-popover').width()+margin.left).removeClass("right").addClass("left");
+                  $popover.css("left", newX-$popover.width()+margin.left).removeClass("right").addClass("left");
                 }
-                  
 
                 //TODO understand why you need apply in this case
                 scope.dialPopCurMonth = convertXPosToMonth(newX);
@@ -211,7 +208,20 @@ angular.module('directives.ue.level-4', [])
               .attr("marker-end", "url(#triangle-start)")
                .call(drag);
 
-          $(".month-dial").on("mousedown", function(){
+          $(".month-dial").on("mousedown", function(e){
+              var $popover = $('.month-dial-popover');
+              var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
+              var relativeY = e.pageY - $(this).parent().parent().offset().top - margin.top;
+              var popoverHeight = $popover.height();
+              var popoverWidth = $popover.width();
+              var center =  $('.main-unemp-graph').width()/2;
+              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
+              $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.5);
+              if (relativeX <= center) {
+                $popover.css("left", relativeX + margin.left).removeClass("left").addClass("right");                  
+              } else {
+                $popover.css("left", relativeX - $popover.width()+margin.left).removeClass("right").addClass("left");
+              }
               if(scope.selectedPeriods.length) scope.$apply(scope.showMonthDialPopover = true);
           })
           $("body").on('mouseup.hideMonthDialPopover', function () { 
@@ -242,23 +252,34 @@ angular.module('directives.ue.level-4', [])
               var $popover = $('.detail-popover');
               var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
               var relativeY = e.pageY - $(this).parent().parent().offset().top - margin.top;
-              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
               var popoverHeight = $popover.height();
               var popoverWidth = $popover.width();
-              $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.75);
-              
+              var center =  $('.main-unemp-graph').width()/2;
+
+              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
+              $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.5);
+              if (relativeX <= center) {
+                $popover.css("left", relativeX + margin.left).removeClass("left").addClass("right");                  
+              } else {
+                $popover.css("left", relativeX - $popover.width()+margin.left).removeClass("right").addClass("left");
+              }
+
               var index = $(this).attr("index");
               var period = {};
+              period.name = scope.selectedPeriods[index].name;
               var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth);
               var monthsBefore = scope.selectedPeriods[index].monthsBefore || 12;
               var currentDataArrayIndex = scope.detailPopCurMonth + monthsBefore;
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
               period.currentUnempRate = scope.selectedPeriods[index].data[currentDataArrayIndex][1];
+              period.color = scope.selectedPeriods[index].color;
               scope.detailPeriod = {
+                'name': period.name,
                 'currentMonthName': period.currentMonthName, 
                 'currentYear': period.currentYear, 
-                'currentUnempRate': period.currentUnempRate
+                'currentUnempRate': period.currentUnempRate,
+                'color': period.color
               };
 
               scope.$apply( scope.showDetailPopover = true ); 
@@ -288,7 +309,7 @@ angular.module('directives.ue.level-4', [])
 }])
 .directive('detailPopoverPiechart', [function() {
   return {
-    restrict: 'A',
+    restrict: 'C',
     link: function(scope, element, attrs) {
      
       scope.$watch(attrs.currentUnempRate, function(currentUnempRate) {
@@ -301,11 +322,17 @@ angular.module('directives.ue.level-4', [])
           {"category": "Employed", "population": empRate, "className": "employed"},
           {"category": "Unemployed", "population": unempRate, "className": "unemployed"}
         ]
+
+        var colorMap = {
+          'blue': ["#0d5b92", "#70caf2"],
+          'purple': ["#660066", "#dcb3ff"],
+          'green': ["#0f673a", "#8ec859"]
+        }
         
         var options = {
-          diameter: 150,
+          diameter: 140,
           rotation: 12,
-          colors: ["#0d5b92", "#70caf2"]
+          colors: colorMap[attrs.color]
         };
         
         var diameter = options.diameter,
