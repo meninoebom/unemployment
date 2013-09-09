@@ -42,7 +42,7 @@ services.factory('unemploymentDataService', function($http) {
 			var ym2 = d2.split('-');
 			return 12*(ym2[0]-ym1[0]) + (ym2[1]-ym1[1]);
 		},
-		getDataFromDataset: function(dataset, d1, d2, months_before) {
+		_getDataFromDataset: function(dataset, d1, d2, months_before) {
 			if (!dataset.hasOwnProperty('values')) {
 				// hasn't finished loading data yet...
 				return [];
@@ -57,11 +57,29 @@ services.factory('unemploymentDataService', function($http) {
 			}
 			return data;
 		},
-		getData: function(d1, d2, months_before) {
-			return this.getDataFromDataset(this.unemployment, d1, d2, months_before);
+		getUnemploymentData: function(d1, d2, months_before) {
+			return this._getDataFromDataset(this.unemployment, d1, d2, months_before);
 		},
-		getLaborData: function(d1, d2, months_before) {
-			return this.getDataFromDataset(this.labor_force, d1, d2, months_before);
+		getLaborForceData: function(d1, d2, months_before) {
+			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
+		},
+		// deprecated because bad naming in light of labor force data; should be removed
+		getData: function(d1, d2, months_before) {
+			return this.getUnemploymentData(d1, d2, months_before);
+		},
+		interpolateDataSeries: function(series_points, x) {
+			var ix = 0;
+			while (ix<series_points.length && series_points[ix][0]<x) { ix++};
+			if (ix>=series_points.length) return NaN;
+			if (series_points[ix][0]==x) return series_points[ix][1];
+			if (ix==0) return NaN;
+			
+			var v1 = series_points[ix-1][1];
+			var v2 = series_points[ix][1];
+			
+			var k = (x - series_points[ix-1][0])*1.0/(series_points[ix][0] - series_points[ix-1][0]);
+		
+			return v1 + (v2-v1)*k;
 		},
 	  getCurrentMonthYearFormatted: function(startDate, offset) {
 	    var currentDateFormatted = {};
