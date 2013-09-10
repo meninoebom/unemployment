@@ -168,26 +168,28 @@ angular.module('directives.ue.level-4', [])
                 }
 
                 //TODO understand why you need apply in this case
-                scope.dialPopCurMonth = convertXPosToMonth(newX);
-                _.each(scope.selectedPeriods, function(period, index, list){
-                  var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.dialPopCurMonth);
-                  period.currentMonthName = currentDateFormatted.monthName;
-                  period.currentYear = currentDateFormatted.fullYear;
-                  var monthsBefore = period.monthsBefore || 11;
-                  var currentDataArrayIndex = scope.dialPopCurMonth + monthsBefore + 1;
-                  if(period.data[currentDataArrayIndex]){
-                    period.showInPopover = true; 
-                    period.currentUnempRate = period.data[currentDataArrayIndex][1];
-                    scope.$apply( scope.showInPopover = true );
-                  } else {
-                    period.showInPopover = false;
-                    scope.$apply( scope.showInPopover = false );
-                  }
+                scope.$apply(function(){
+                  scope.dialPopCurMonth.val = convertXPosToMonth(newX);
+                  _.each(scope.selectedPeriods, function(period, index, list){
+                    var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.dialPopCurMonth.val);
+                    var monthsBefore = period.monthsBefore || 11;
+                    var currentDataArrayIndex = scope.dialPopCurMonth.val + monthsBefore + 1;
+                    period.currentMonthName = currentDateFormatted.monthName;
+                    period.currentYear = currentDateFormatted.fullYear;
+                    if(period.data[currentDataArrayIndex]){
+                      period.showInPopover = true; 
+                      period.currentUnempRate = period.data[currentDataArrayIndex][1];
+                      scope.showInPopover = true;
+                    } else {
+                      period.showInPopover = false;
+                      scope.showInPopover = false;
+                    }
+                  });
                 });
             })
             .on("dragend", function(d,i) {
-              var snapToPosDistance = xScale(scope.dialPopCurMonth) - d3.event.x;
-              var newX = xScale(scope.dialPopCurMonth);
+              var snapToPosDistance = xScale(scope.dialPopCurMonth.val) - d3.event.x;
+              var newX = xScale(scope.dialPopCurMonth.val);
               d3.select(this)
                   .attr("transform", function(d,i){
                       return "translate(" + [ snapToPosDistance,0 ] + ")"
@@ -215,7 +217,7 @@ angular.module('directives.ue.level-4', [])
               var popoverHeight = $popover.height();
               var popoverWidth = $popover.width();
               var center =  $('.main-unemp-graph').width()/2;
-              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
+              scope.detailPopCurMonth.val  = convertXPosToMonth(relativeX);
               $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.5);
               if (relativeX <= center) {
                 $popover.css("left", relativeX + margin.left).removeClass("left").addClass("right");                  
@@ -256,7 +258,7 @@ angular.module('directives.ue.level-4', [])
               var popoverWidth = $popover.width();
               var center =  $('.main-unemp-graph').width()/2;
 
-              scope.detailPopCurMonth  = convertXPosToMonth(relativeX);
+              scope.detailPopCurMonth.val  = convertXPosToMonth(relativeX);
               $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.5);
               if (relativeX <= center) {
                 $popover.css("left", relativeX + margin.left).removeClass("left").addClass("right");                  
@@ -267,9 +269,9 @@ angular.module('directives.ue.level-4', [])
               var index = $(this).attr("index");
               var period = {};
               period.name = scope.selectedPeriods[index].name;
-              var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth);
+              var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(scope.selectedPeriods[index].startDate, scope.detailPopCurMonth.val);
               var monthsBefore = scope.selectedPeriods[index].monthsBefore || 12;
-              var currentDataArrayIndex = scope.detailPopCurMonth + monthsBefore;
+              var currentDataArrayIndex = scope.detailPopCurMonth.val + monthsBefore;
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
               period.currentUnempRate = scope.selectedPeriods[index].data[currentDataArrayIndex][1];
@@ -289,18 +291,19 @@ angular.module('directives.ue.level-4', [])
         }// end of redraw()
 
         scope.$watch("selectedPeriods.length", function() {
-          var periodsSortedByLongest = _.sortBy(scope.selectedPeriods, function(period) {
-            return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
-          });
-          var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
-          var xAxisMax = longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
-          var highestUnempRates = [];
-          _.each(scope.selectedPeriods, function(period, index, list) {
-            var arrayWithHighestVal = _.max(period.data, function(member) { return member[1]; })
-            highestUnempRates.push(arrayWithHighestVal[1]);
-          })
-          var yAxisMax = (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
-          redraw(xAxisMax, yAxisMax);
+          // var periodsSortedByLongest = _.sortBy(scope.selectedPeriods, function(period) {
+          //   return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
+          // });
+          // var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
+          // var xAxisMax = longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
+          // var highestUnempRates = [];
+          // _.each(scope.selectedPeriods, function(period, index, list) {
+          //   var arrayWithHighestVal = _.max(period.data, function(member) { return member[1]; })
+          //   highestUnempRates.push(arrayWithHighestVal[1]);
+          // })
+          // var yAxisMax = (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
+          // redraw(xAxisMax, yAxisMax);
+          redraw(scope.lastMonthNumOfSelectedPeriods(), scope.highestUnempRateOfSelectedPeriods());
         });
 
         //redraw();
