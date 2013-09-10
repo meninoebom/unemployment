@@ -1,0 +1,38 @@
+<h2 class="level-4-main-header">Unemployment Rates in the United States</h2>
+<div class="data-table-container">
+<table>
+	<thead>
+		<tr>
+			<td colspan="2" class="month-picker">
+				
+				<span class="previous-month"><b class="horiz-caret left-caret"></b></span>
+				<span class="white-space"></span>
+				<div class="dropdown">
+					<div class="dropdown-toggle" role="button">
+						<span>Month {{dialPopCurMonth.val}}</span><b class="caret"></b>
+					</div>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li ng-repeat="n in monthDropDown" ><a ng-click="setCurrentMonth(n)">Month {{n}}</a></li>
+					</ul>
+				</div>
+				<span class="white-space"></span>
+				<span class="next-month"><b class="horiz-caret right-caret"></b></span>
+
+
+			</td>
+			<td colspan="2" class="comparison-header">Rate Comparisons</td></tr>
+		<tr>
+			<th class="selection-num"><strong>Selection</strong></th>
+			<th class="date"><strong>Date</strong></th>
+			<th class="unemp-rate"><strong>Unemployment Rate</strong></th>
+			<th class="lfp-rate"><strong>Labor Force Participation Rate</strong></th></tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="period in selectedPeriods" ng-class-even="'even'">
+			<td class="selection-num">{{period.selectedOrderNum}}</td>
+			<td class="date">{{period.currentMonthName}} {{period.currentYear}}</td>
+			<td class="unemp-rate">{{period.currentUnempRate}}%</td>
+			<td class="lfp-rate"></td>
+	</tbody>
+</table>
+</div>
