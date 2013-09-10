@@ -46,17 +46,12 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 
 	$scope.showGridOrGraph = "grid";
 	$scope.toggleGridAndGraphViews = function(view) {
-		console.log(view);
         if (view === "graph") {
         	$scope.showGridOrGraph = "graph";
         } else if (view === "grid") {
         	$scope.showGridOrGraph = "grid";        	
         }
     };
-
-    $scope.foo = function(view) {
-    	console.log(view);
-    }
 
 	$scope.showMonthDialPopover = false;
 	$scope.toggleShowMonthDialPopover = function(state) {
@@ -145,6 +140,19 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 
 	$scope.setCurrentMonth = function(month) {
 		$scope.dialPopCurMonth.val = month;
+		$scope.$broadcast("moveMonthDial");
+	}
+
+	$scope.prevMonth = function() {
+		if($scope.dialPopCurMonth.val <= -12) return;
+		$scope.dialPopCurMonth.val -= 1;
+		$scope.$broadcast("moveMonthDial");		
+	}
+
+	$scope.nextMonth = function() {
+		if($scope.dialPopCurMonth.val >= $scope.lastMonthNumOfSelectedPeriods()) return;
+		$scope.dialPopCurMonth.val += 1;
+		$scope.$broadcast("moveMonthDial");
 	}
 
 }]);

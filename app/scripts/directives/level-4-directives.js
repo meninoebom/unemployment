@@ -198,17 +198,22 @@ angular.module('directives.ue.level-4', [])
                   .attr("x2", newX);
             });
 
-          var monthScroller = svg.append("line")
+          var drawMonthDial = function(month) {
+              d3.select(".month-dial").remove();
+              var dial = svg.append("line")
               .attr("class", "month-dial")
-              .attr("x1", xScale(0))
+              .attr("x1", xScale(month))
               .attr("y1", height)
-              .attr("x2", xScale(0))
+              .attr("x2", xScale(month))
               .attr("y2", -5)
               .attr("fill","none")
               .attr("stroke","#F00")
               .attr("stroke-width",3)
               .attr("marker-end", "url(#triangle-start)")
-               .call(drag);
+              .call(drag);
+          }
+          drawMonthDial(1);
+
 
           $(".month-dial").on("mousedown", function(e){
               var $popover = $('.month-dial-popover');
@@ -229,6 +234,11 @@ angular.module('directives.ue.level-4', [])
           $("body").on('mouseup.hideMonthDialPopover', function () { 
             scope.$apply(scope.showMonthDialPopover = false) 
           });
+
+          scope.$on('moveMonthDial', function() {
+            console.log('moveMonthDial');
+            drawMonthDial(scope.dialPopCurMonth.val);
+          })
 
           var drawGraphLine = function(data, color, lineStyle, index) {
             var line = d3.svg.line()
