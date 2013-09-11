@@ -5,6 +5,14 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
 	$scope.currentQuestion = {val: 1};
+	$scope.recessionsIsCollapsed = true;
+	$scope.expansionsIsCollapsed = true;
+	$scope.selectedPeriods = [];
+	$scope.currentSelectionList;
+	$scope.showGridOrGraph = "graph";
+	
+	$scope.availableSelectionColors = ['purple','green','blue'];
+
 	$scope.recessions = [
 		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", monthsBefore: 4},
 		{name: "May 1937 - June 1938", startDate: "1937-05", endDate: "1938-06"},
@@ -38,13 +46,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		$scope.currentQuestion.val++; 
 	}
 
-	$scope.recessionsIsCollapsed = true;
-	$scope.expansionsIsCollapsed = true;
-	$scope.availableSelectionColors = ['purple','green','blue'];
-	$scope.selectedPeriods = [];
-	$scope.currentSelectionList;
-
-	$scope.showGridOrGraph = "grid";
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {
         	$scope.showGridOrGraph = "graph";
@@ -91,8 +92,11 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, 0);
         period.currentMonthName = currentDateFormatted.monthName;
         period.currentYear = currentDateFormatted.fullYear;
-        period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
-        period.currentUnempRate = period.data[11][1]; 
+        period.unemploymentData = unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, 12);
+        period.currentUnempRate = period.unemploymentData[11][1]; 
+        period.laborForceData = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
+        //period.currentLFPRate = period.laborForceData[11][1]; 
+        period.currentLFPRate = (period.laborForceData[11]) ? period.unemploymentData[11][1] : '';  
         period.showInPopover = true;  	
 	}
 
@@ -116,7 +120,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
             return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
-          return longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 1;
+          return longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
 	}
 
 	$scope.highestUnempRateOfSelectedPeriods = function() {

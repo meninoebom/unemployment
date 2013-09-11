@@ -31,8 +31,8 @@
 		<tr ng-repeat="period in selectedPeriods" ng-class-even="'even'">
 			<td class="selection-num">{{period.selectedOrderNum}}</td>
 			<td class="date">{{period.currentMonthName}} {{period.currentYear}}</td>
-			<td class="unemp-rate">{{period.currentUnempRate}}%</td>
-			<td class="lfp-rate"></td>
+			<td class="unemp-rate">{{period.currentUnempRate | percentageFilter}}</td>
+			<td class="lfp-rate">{{period.currentLFPRate | percentageFilter}}</td>
 	</tbody>
 </table>
 </div>
