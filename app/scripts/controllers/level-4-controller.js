@@ -140,7 +140,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.$watch('selectedPeriods.length', function() {
 		$scope.highestUnempRateOfSelectedPeriods();
 		$scope.lastMonthNumOfSelectedPeriods();
-		$scope.monthDropDown = $scope.makeCollectionFromRange(-12, $scope.lastMonthNumOfSelectedPeriods());
 	});
 
 	$scope.$watch('lastMonthVisible', function() {
