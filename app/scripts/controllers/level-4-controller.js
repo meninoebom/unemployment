@@ -1,10 +1,17 @@
 'use strict';
 
 unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
-	
-	$scope.dialPopCurMonth = 0;
-	$scope.detailPopCurMonth = 0;
+	$scope.dialPopCurMonth = {val: 0};
+	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
+	$scope.currentQuestion = {val: 1};
+	$scope.recessionsIsCollapsed = true;
+	$scope.expansionsIsCollapsed = true;
+	$scope.selectedPeriods = [];
+	$scope.currentSelectionList;
+	$scope.showGridOrGraph = "graph";
+	
+	$scope.availableSelectionColors = ['purple','green','blue'];
 
 	$scope.recessions = [
 		{name: "Great Depression: August 1929 - March 1933", startDate: "1929-08", endDate: "1933-03", monthsBefore: 4},
@@ -31,35 +38,21 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		{name: "Feb 1961 - December 1969", startDate: "1961-02", endDate: "1969-12"}
 	];
 
-	$scope.currentQuestion = 1;
-
 	$scope.showQuestion = function(num) {
-		return ($scope.currentQuestion == num) ? true : false; 
+		return ($scope.currentQuestion.val == num) ? true : false; 
 	}
 
 	$scope.submitResponse = function() {
-		$scope.currentQuestion++; 
+		$scope.currentQuestion.val++; 
 	}
 
-	$scope.recessionsIsCollapsed = true;
-	$scope.expansionsIsCollapsed = true;
-	$scope.availableSelectionColors = ['purple','green','blue'];
-	$scope.selectedPeriods = [];
-	$scope.currentSelectionList;
-
-	$scope.showGridOrGraph = "graph";
 	$scope.toggleGridAndGraphViews = function(view) {
-		console.log(view);
         if (view === "graph") {
         	$scope.showGridOrGraph = "graph";
         } else if (view === "grid") {
         	$scope.showGridOrGraph = "grid";        	
         }
     };
-
-    $scope.foo = function(view) {
-    	console.log(view);
-    }
 
 	$scope.showMonthDialPopover = false;
 	$scope.toggleShowMonthDialPopover = function(state) {
@@ -99,8 +92,10 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, 0);
         period.currentMonthName = currentDateFormatted.monthName;
         period.currentYear = currentDateFormatted.fullYear;
-        period.data = unemploymentDataService.getData(period.startDate, period.endDate, 12);
-        period.currentUnempRate = period.data[11][1]; 
+        period.unemploymentData = unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, 12);
+        period.currentUnempRate = period.unemploymentData[11][1]; 
+        period.laborForceData = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
+        period.currentLFPRate = (period.laborForceData[11]) ? period.unemploymentData[11][1] : '';  
         period.showInPopover = true;  	
 	}
 
@@ -118,4 +113,74 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
     		$scope.deselectPeriod(period);
     	});
 	}
+
+	$scope.lastMonthNumOfSelectedPeriods = function() {
+		  var periodsSortedByLongest = _.sortBy($scope.selectedPeriods, function(period) {
+            return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
+          });
+          var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
+          $scope.lastMonthVisible =(longestPeriod) ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
+	}
+
+	$scope.highestUnempRateOfSelectedPeriods = function() {
+          var highestUnempRates = [];
+          _.each($scope.selectedPeriods, function(period, index, list) {
+            var arrayWithHighestVal = _.max(period.unemploymentData, function(member) { return member[1]; })
+            highestUnempRates.push(arrayWithHighestVal[1]);
+          })
+          $scope.highestVisibleRate = (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
+	}
+
+	$scope.makeCollectionFromRange = function(min, max){
+		var input = [];
+		for (var i=min; i<=max; i++) input.push(i);
+		return input;
+	};
+
+	$scope.$watch('selectedPeriods.length', function() {
+		$scope.highestUnempRateOfSelectedPeriods();
+		$scope.lastMonthNumOfSelectedPeriods();
+	});
+
+	$scope.$watch('lastMonthVisible', function() {
+		$scope.monthDropDown = $scope.makeCollectionFromRange(-12, $scope.lastMonthVisible);
+	});
+
+	$scope.setCurrentMonth = function(month) {
+		$scope.dialPopCurMonth.val = month;
+		$scope.$broadcast("moveMonthDial");
+	}
+
+	$scope.prevMonth = function() {
+		if($scope.dialPopCurMonth.val <= -12) return;
+		$scope.dialPopCurMonth.val -= 1;
+		$scope.$broadcast("moveMonthDial");		
+	}
+
+	$scope.nextMonth = function() {
+		if($scope.dialPopCurMonth.val >= $scope.lastMonthNumOfSelectedPeriods()) return;
+		$scope.dialPopCurMonth.val += 1;
+		$scope.$broadcast("moveMonthDial");
+	}
+
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

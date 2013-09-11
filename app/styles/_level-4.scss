@@ -1,25 +1,23 @@
 
+.level-4-main-header {
+	@include font(24px, 18px);
+	position: absolute;
+	top: 42px;
+	left: 50px;
+}
 .level-4-graph-container {
 	float: left;
 	height: 535px;
-	width: 690px;
-	padding: 0 0 20px 42px;
-	text-align: center;
-	h2 {
-		@include font(24px, 18px);
-		margin: 42px 0 25px;
-	}
+	width: 685px;
+	padding: 100px 42px 20px 5px;
+	position: relative;
 }
 .level-4-grid-container {
 	float: left;
 	height: 535px;
-	width: 690px;
-	padding: 0 0 20px 42px;
-	text-align: center;
-	h2 {
-		@include font(24px, 18px);
-		margin: 42px 0 25px;
-	}
+	width: 685px;
+	padding: 100px 0 20px 47px;
+	position: relative;
 }
 .level-4-periods {
 	float: left;
@@ -276,4 +274,96 @@
     .month, .year {
     	text-transform: capitalize;
     }
+}
+.data-table-container {
+	.comparison-header {
+		@include font(18px, 25px, $darkGrey);
+		font-weight: bold;
+		text-align: center;
+	}
+	thead {
+		tr {
+			background-color: $grey;
+		}
+	}
+	th {
+		border: 4px solid $white;
+		height: 42px;
+	}
+	tr {
+
+	}
+	td {
+		border: 4px solid $white;
+		height: 25px;
+	}
+	.month-picker {
+		padding: 0;
+		.prev-month, .next-month{
+			display: block;
+			float: left;
+			height: 25px;
+			line-height: 25px;
+			width: 30px;
+			text-align: center;
+			cursor: pointer;
+		}
+		.horiz-caret {
+		    border-bottom: 4px solid transparent;
+		    border-top: 4px solid transparent;
+		    display: inline-block;
+		    height: 0;
+		    width: 0;
+		}
+		.left-caret {
+		    border-right: 4px solid #000000;
+		}
+		.right-caret {
+		    border-left: 4px solid #000000;
+		}
+		.white-space {
+			display: block;
+			float: left;
+			height: 100%;
+			width: 4px;
+			background-color: $white;
+		}
+		.dropdown {
+			float: left;
+			height: 100%;
+			.dropdown-toggle {
+				@include font(16px, 25px, $darkGrey);
+				width: 159px;
+				height: 100%;
+				border: 2px solid #000;
+				padding-left: 10px;
+				position: relative;
+				text-align: left;
+				background: $white;
+			}
+			.caret {
+				float: right;
+				margin-top: 10px;
+				margin-right: 10px;
+			}
+		}
+	}
+	.selection-num {
+		text-align: center;
+		width: 86px;
+	}
+	.date {
+		width: 145px;
+	}
+	.unemp-rate {
+		text-align: center;
+		width: 142px;
+	}
+	.lfp-rate {
+		text-align: center;
+		width: 157px;
+	}
+	tr.even {
+		background-color: $lightGrey;
+	}
 }

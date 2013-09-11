@@ -19,35 +19,35 @@
 	  stroke: #000;
 	}
 </style>
-<h2>Unemployment Rates in the United States</h2>
+<h2 class="level-4-main-header">Unemployment Rates in the United States</h2>
 <div class="unemployment-graph">
 	<div class="popover detail-popover" ng-show="showDetailPopover" >
 		<div class="arrow"></div>
 		<div class="popover-content">
 			<h3>{{detailPeriod.name}}</h3>
-			<h3>Month {{detailPopCurMonth}}: 
+			<h3>Month {{detailPopCurMonth.val}}: 
 				<span class="month">{{detailPeriod.currentMonthName}}</span> 
 				<span class="year">{{detailPeriod.currentYear}}</span>
 			</h3>
 			<div class="detail-popover-piechart-container">
-				<div class="detail-popover-piechart {{detailPeriod.color}}" current-unemp-rate="detailPeriod.currentUnempRate" color="{{detailPeriod.color}}"></div>
-				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentUnempRate}}%</p> 
+				<div class="detail-popover-piechart {{detailPeriod.color}}" rate="detailPeriod.currentUnempRate" color="{{detailPeriod.color}}"></div>
+				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentUnempRate | percentageFilter}}</p> 
 				<p class="percentage-label">Unemployment Rate</p>
 			</div>
 			<div class="detail-popover-piechart-container">
-				<div class="detail-popover-piechart {{detailPeriod.color}}" current-unemp-rate="detailPeriod.currentUnempRate" color="{{detailPeriod.color}}"></div>
-				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentUnempRate}}%</p> 
-				<p class="percentage-label">Unemployment Rate</p>
+				<div class="detail-popover-piechart {{detailPeriod.color}}" rate="detailPeriod.currentLFPRate" color="{{detailPeriod.color}}"></div>
+				<p class="unemp-rate {{detailPeriod.color}}">{{detailPeriod.currentLFPRate | percentageFilter}}</p> 
+				<p class="percentage-label">Labor Force Participation Rate</p>
 			</div>
 		</div>
 	</div>
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
-			<h3>Month {{dialPopCurMonth}}<br />Unemployment Rate</h3>
+			<h3>Month {{dialPopCurMonth.val}}<br />Unemployment Rate</h3>
 			<p ng-repeat="period in selectedPeriods" ng-show="period.showInPopover">
 				<span class="order-num {{period.color}}">{{period.selectedOrderNum}}<span class="line-style"></span></span> 
-				<span class="unemp-rate {{period.color}}">{{period.currentUnempRate}}%</span> 
+				<span class="unemp-rate {{period.color}}">{{period.currentUnempRate | percentageFilter}}</span> 
 				<span class="month">{{period.currentMonthName}}</span> 
 				<span class="year">{{period.currentYear}}</span>
 			</p>
