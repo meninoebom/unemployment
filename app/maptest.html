@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="unemploymentApp">
+<head>
+  <meta charset="utf-8">
+  <title>My AngularJS App</title>
+
+  <!-- Including jQuery and jQuery UI from Google's CDN -->
+    <script src="bower_components/jquery/jquery.js"></script>
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/underscore/underscore-min.js"></script>
+
+
+</head>
+
+<body ng-controller="rootController">
+
+	<div>
+ 	 <span>Date </span>
+   <select ng-model="year" ng-init="year=2000" ng-options="y for y in years"></select>
+   <select ng-model="month" ng-init="month=1"ng-options="m for m in months"></select>
+  </div>
+  
+  <div>
+  	<span>Region </span>
+    <select ng-model="regionName" ng-init"United States" ng-options="region for region in regions"></select>
+  </div>
+  <div ng-hide="regionName=='United States'">
+  	<div>
+      <span><b>Select 2 counties</b></span>
+      <select ng-model="county1" ng-options="c for c in countyList"></select>  
+      <select ng-model="county2" ng-options="c for c in countyList"></select>  
+		</div>
+    <div ng-show="county1!='' && county2!=''">
+    	<hr/>
+    	<div><b>Now that we have a state and two counties, the chart data would be...</b></div>
+    	<div> US: {{usChartData[0]}}, {{usChartData[1]}}, {{usChartData[2]}}, {{usChartData[3]}}, {{usChartData[4]}}, ...</div>
+      <div> US (same as above, formatted using Date.dateFromFloat()): {{usChartData[0] | pointFormat}}, {{usChartData[1]  | pointFormat}}, {{usChartData[2] | pointFormat}}, {{usChartData[3] | pointFormat}}, {{usChartData[4] | pointFormat}}, ...</div>
+    	<div> {{regionName}}: {{stateChartData[0]}}, {{stateChartData[1]}}, {{stateChartData[2]}}, {{stateChartData[3]}}, {{stateChartData[4]}}, ...</div>
+    	<div> {{county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
+    	<div> {{county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
+    </div>
+  </div>
+  
+  <hr/>
+  <div><b>US unemployment</b> : {{usValue}}</div>
+  <div ng-hide='subRegionType=="States"'><b>State unemployment</b> : {{regionName}} : {{regionValue}}</div>
+  <div><b>{{subRegionType}}</b> (name : id : value; id is something that the maps need, but the table view doesn't really care about...)</div>
+    <div ng-repeat="subRegion in subRegionData">
+  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
+  </div>
+
+  <script src="scripts/maptest/app.js"></script>
+  <script src="scripts/maptest/filters.js"></script>
+  <script src="scripts/services/fredDataServices.js"></script>
+  <script src="scripts/maptest/controllers.js"></script>
+</body>
+</html>
