@@ -32,7 +32,7 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.month = '01';
 	$scope.years = [];
 	$scope.months = [];
-	for (var y=2000; y<=2012; y++) {$scope.years.push(y)};
+	for (var y=2000; y<=2013; y++) {$scope.years.push(y)};
 	for (var m=1; m<=12; m++) {$scope.months.push(m)};
 	
 	$scope.regionName = "United States";
@@ -42,6 +42,14 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.countyList = [];
 	$scope.county1 = '';
 	$scope.county2 = '';
+	
+	$scope.dataForCounty = function(countyName) {
+		for (var i=0; i<$scope.subRegionData.length; i++) {
+			if ($scope.subRegionData[i].name==countyName) {
+				return $scope.subRegionData[i].value;
+			}
+		}
+	}
 	
 	$scope.updateData = function(regionChanged) {
 		mapDataService.getRegionalDataForDate($scope.regionName, $scope.year+'-'+$scope.month+'-01', function(data) {
@@ -58,7 +66,14 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 				$scope.county1 = '';
 				$scope.county2 = '';
 			}
-		});
+			if ($scope.county1!='') {
+				$scope.county1Value = $scope.dataForCounty($scope.county1);
+				console.log($scope.county1Value);
+			}
+			if ($scope.county2!='') {
+				$scope.county2Value = $scope.dataForCounty($scope.county2);
+			}
+	});
 	};
 	
 	$scope.$watch('regionName', function() {
@@ -76,6 +91,13 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.county2ChartData = [];
 	
 	$scope.$watch('county1+" "+county2', function() {
+		if ($scope.county1!='') {
+			$scope.county1Value = $scope.dataForCounty($scope.county1);
+			console.log($scope.county1Value);
+		}
+		if ($scope.county2!='') {
+			$scope.county2Value = $scope.dataForCounty($scope.county2);
+		}
 		if ($scope.county1=='' || $scope.county2=='') {
 			$scope.usChartData = [];
 			$scope.stateChartData = [];
