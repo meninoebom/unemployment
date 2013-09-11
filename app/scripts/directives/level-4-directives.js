@@ -175,10 +175,9 @@ angular.module('directives.ue.level-4', [])
                     var currentDataArrayIndex = scope.dialPopCurMonth.val + monthsBefore + 1;
                     period.currentMonthName = currentDateFormatted.monthName;
                     period.currentYear = currentDateFormatted.fullYear;
-                    if(period.data[currentDataArrayIndex]){
+                    if(period.unemploymentData[currentDataArrayIndex]){
                       period.showInPopover = true; 
                       period.currentUnempRate = period.unemploymentData[currentDataArrayIndex][1];
-                      //period.currentLFPRate = period.laborForceData[currentDataArrayIndex][1];
                       period.currentLFPRate = (period.laborForceData[currentDataArrayIndex]) ? period.laborForceData[currentDataArrayIndex][1] : '';
                       scope.showInPopover = true;
                     } else {
@@ -236,7 +235,6 @@ angular.module('directives.ue.level-4', [])
           });
 
           scope.$on('moveMonthDial', function() {
-            console.log('moveMonthDial');
             drawMonthDial(scope.dialPopCurMonth.val);
           })
 
@@ -256,8 +254,8 @@ angular.module('directives.ue.level-4', [])
           }
 
           _.each(scope.selectedPeriods, function(period, index, list) {
-            period.data = unemploymentDataService.getData(period.startDate, period.endDate, period.monthsBefore);
-            drawGraphLine(period.data, colorMap[period.color], lineStyleMap[period.color], index );
+            period.unemploymentData = unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, period.monthsBefore);
+            drawGraphLine(period.unemploymentData, colorMap[period.color], lineStyleMap[period.color], index );
           });
           
           $(".graph-line").on("mousemove", function(e){ 
@@ -285,7 +283,6 @@ angular.module('directives.ue.level-4', [])
               period.currentMonthName = currentDateFormatted.monthName;
               period.currentYear = currentDateFormatted.fullYear;
               period.currentUnempRate = scope.selectedPeriods[index].unemploymentData[currentDataArrayIndex][1];
-              //period.currentLFPRate = scope.selectedPeriods[index].laborForceData[currentDataArrayIndex][1];
               period.currentLFPRate = (scope.selectedPeriods[index].laborForceData[currentDataArrayIndex]) ? scope.selectedPeriods[index].laborForceData[currentDataArrayIndex][1] : '';
               period.color = scope.selectedPeriods[index].color;
               scope.detailPeriod = {
@@ -303,8 +300,8 @@ angular.module('directives.ue.level-4', [])
           });
         }// end of redrawEntireGraph()
 
-        scope.$watch("selectedPeriods.length", function() {
-          redrawEntireGraph(scope.lastMonthNumOfSelectedPeriods(), scope.highestUnempRateOfSelectedPeriods());
+        scope.$watch("lastMonthVisible + highestVisibleRate + selectedPeriods.length", function() {
+          redrawEntireGraph(scope.lastMonthVisible, scope.highestVisibleRate);
         });
 
   		}// end link function

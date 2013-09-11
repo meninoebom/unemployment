@@ -95,7 +95,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
         period.unemploymentData = unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, 12);
         period.currentUnempRate = period.unemploymentData[11][1]; 
         period.laborForceData = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
-        //period.currentLFPRate = period.laborForceData[11][1]; 
         period.currentLFPRate = (period.laborForceData[11]) ? period.unemploymentData[11][1] : '';  
         period.showInPopover = true;  	
 	}
@@ -120,16 +119,16 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
             return unemploymentDataService.calculateMonthsBetween(period.startDate, period.endDate);
           });
           var longestPeriod = periodsSortedByLongest.length ? periodsSortedByLongest[periodsSortedByLongest.length-1] : undefined;
-          return longestPeriod ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
+          $scope.lastMonthVisible =(longestPeriod) ? unemploymentDataService.calculateMonthsBetween(longestPeriod.startDate, longestPeriod.endDate) : 12;
 	}
 
 	$scope.highestUnempRateOfSelectedPeriods = function() {
           var highestUnempRates = [];
           _.each($scope.selectedPeriods, function(period, index, list) {
-            var arrayWithHighestVal = _.max(period.data, function(member) { return member[1]; })
+            var arrayWithHighestVal = _.max(period.unemploymentData, function(member) { return member[1]; })
             highestUnempRates.push(arrayWithHighestVal[1]);
           })
-          return (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
+          $scope.highestVisibleRate = (_.max(highestUnempRates) > 0) ? _.max(highestUnempRates) : 10;
 	}
 
 	$scope.makeCollectionFromRange = function(min, max){
@@ -139,7 +138,13 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	};
 
 	$scope.$watch('selectedPeriods.length', function() {
+		$scope.highestUnempRateOfSelectedPeriods();
+		$scope.lastMonthNumOfSelectedPeriods();
 		$scope.monthDropDown = $scope.makeCollectionFromRange(-12, $scope.lastMonthNumOfSelectedPeriods());
+	});
+
+	$scope.$watch('lastMonthVisible', function() {
+		$scope.monthDropDown = $scope.makeCollectionFromRange(-12, $scope.lastMonthVisible);
 	});
 
 	$scope.setCurrentMonth = function(month) {
