@@ -47,12 +47,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		{question: "During which of the following expansionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
 	];
 
-	// $scope.showQuestion = function(num) {
-	// 	return ($scope.currentQuestion.val == num) ? true : false; 
-	// }
-
-
-
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {
         	$scope.showGridOrGraph = "graph";

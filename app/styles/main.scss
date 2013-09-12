@@ -314,7 +314,6 @@ div, ul, li, p, h1, h2, h3, h4 {
     box-shadow: inset 1px 4px 9px -6px;
     float: left;
     min-height: 172px;
-    width: 721px;
     position: relative;
     .question-area-indicator {
         width: 52px;
@@ -332,4 +331,5 @@ div, ul, li, p, h1, h2, h3, h4 {
 
 @import "level-1";
 @import "level-2";
+@import "level-3";
 @import "level-4";

@@ -1,4 +1,14 @@
 <div class="level-3-container clearfix">
 	<div ng-include src="'views/main-header.html'"></div>
-	Level 3 goes here...
+	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
+	<div class="level-3-nation-map-container" ng-show="curentViewScale=='country'" ng-include src="'views/level-3/nation.html'"></div>
+	<div class="level-3-state-map-container" ng-show="currentViewScale=='state'" ng-include src="'views/level-3/state.html'"></div>
+	<div class="level-3-graph-container" ng-show="currentViewScale=='county'" ng-include="'views/level-3/graph.html'"></div>
+	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
+</div>
+
+<div id="choose-answers-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    <strong>Try again</strong>
+  </div>
 </div>
