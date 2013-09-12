@@ -1,14 +1,90 @@
 <div class="level-3-container clearfix">
 	<div ng-include src="'views/main-header.html'"></div>
-	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
-	<div class="level-3-nation-map-container" ng-show="curentViewScale=='country'" ng-include src="'views/level-3/nation.html'"></div>
-	<div class="level-3-state-map-container" ng-show="currentViewScale=='state'" ng-include src="'views/level-3/state.html'"></div>
-	<div class="level-3-graph-container" ng-show="currentViewScale=='county'" ng-include="'views/level-3/graph.html'"></div>
-	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
+	<div class="level-3-secondary-header clearfix">
+
+
+
+
+<div>
+ 	 <span><b>Date</b> </span>
+   <select ng-model="year" ng-init="year=2000" ng-options="y for y in years"></select>
+   <select ng-model="month" ng-init="month=1"ng-options="m for m in months"></select>
+  </div>
+  
+ <!--  <div>
+  	<span><b>Region</b> </span>
+    <select ng-model="regionName" ng-init"United States" ng-options="region for region in regions"></select>
+  </div> -->
+
+
+<div class="dropdown"  >
+	<div class="dropdown-toggle" role="button">
+		<span>{{{true: 'Choose a State', false: regionName}[regionName == 'United States']}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li  ng-repeat="region in regions" ><a ng-click="setRegionName(region)">{{region}}</a></li>
+	</ul>
 </div>
 
-<div id="choose-answers-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
-    <strong>Try again</strong>
+
+<div class="dropdown" ng-hide="regionName=='United States'">
+	<div class="dropdown-toggle" role="button">
+		<span>{{county1 || 'Choose County 1'}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="c in countyList" ><a ng-click="setCounty1(c)">{{c}}</a></li>
+	</ul>
+</div>
+<div class="dropdown" ng-hide="regionName=='United States'">
+	<div class="dropdown-toggle" role="button">
+		<span>{{county2 || 'Choose County 2'}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="c in countyList" ><a ng-click="setCounty2(c)">{{c}}</a></li>
+	</ul>
+</div>
+
+
+<!--   <div ng-hide="regionName=='United States'">
+  	<div>
+      <span><b>Select 2 counties in {{regionName}}</b></span>
+      <select ng-model="county1" ng-options="c for c in countyList"></select>  
+      <select ng-model="county2" ng-options="c for c in countyList"></select>  
+	</div>
+
+    <div ng-show="county1!='' && county2!=''">
+    	<hr/>
+    	<div><b>Now that we have a state and two counties, the chart data for the last screen of level 3 would be...</b></div>
+    	<div> US: {{usChartData[0]}}, {{usChartData[1]}}, {{usChartData[2]}}, {{usChartData[3]}}, {{usChartData[4]}}, ...</div>
+      <div> US (same as above, x-value formatted using Date.dateFromFloat()): {{usChartData[0] | pointFormat}}, {{usChartData[1]  | pointFormat}}, {{usChartData[2] | pointFormat}}, {{usChartData[3] | pointFormat}}, {{usChartData[4] | pointFormat}}, ...</div>
+    	<div> {{regionName}}: {{stateChartData[0]}}, {{stateChartData[1]}}, {{stateChartData[2]}}, {{stateChartData[3]}}, {{stateChartData[4]}}, ...</div>
+    	<div> {{county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
+    	<div> {{county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
+    </div>
+  </div> -->
+  
+  <hr/>
+  <div><b>US unemployment</b> : {{usValue}}</div>
+  <div ng-hide='subRegionType=="States"'>
+  	<div><b>State unemployment</b> : {{regionName}} : {{regionValue}}</div>
+    <div ng-hide='county1==""'><b>County1 Unemployment</b> : {{county1}} : {{county1Value}}</div>
+    <div ng-hide='county2==""'><b>County2 Unemployment</b> : {{county2}} : {{county2Value}}</div>
   </div>
+  <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
+    <div ng-repeat="subRegion in subRegionData">
+  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
+  </div>
+
+
+
+
+
+
+
+	</div>
+	<!-- <div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div> -->
+	<div class="main-content-area level-3-nation-map-container" ng-show="currentScale.val=='nation' && currentStep.val<4" ng-click="setCurrentScale('state')" ng-include src="'views/level-3/nation.html'"></div>
+	<div class="main-content-area level-3-state-map-container" ng-show="currentScale.val=='state' && currentStep.val<4" ng-include src="'views/level-3/state.html'"></div>
+	<div class="main-content-area level-3-graph-container" ng-show="currentStep.val==4" ng-include="'views/level-3/graph.html'"></div>
+	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
 </div>

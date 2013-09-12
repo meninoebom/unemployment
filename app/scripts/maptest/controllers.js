@@ -8,21 +8,21 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	testing for level-4 data (unemploymentDataService)
 	***************************/
 	
-	$scope.monthsBetween = function(d1, d2) {
-		return unemploymentDataService.calculateMonthsBetween(d1, d2);
-	}
+	// $scope.monthsBetween = function(d1, d2) {
+	// 	return unemploymentDataService.calculateMonthsBetween(d1, d2);
+	// }
 	
-	$scope.unemployment = unemploymentDataService.unemployment;
-	$scope.data1 = unemploymentDataService.getData('1990-01-01', '1990-06-01', 0);
-	$scope.$watch('unemployment.values', function() {
-		$scope.data1 = unemploymentDataService.getData('1990-01-01', '1990-06-01', 0);
-	});
+	// $scope.unemployment = unemploymentDataService.unemployment;
+	// $scope.data1 = unemploymentDataService.getData('1990-01-01', '1990-06-01', 0);
+	// $scope.$watch('unemployment.values', function() {
+	// 	$scope.data1 = unemploymentDataService.getData('1990-01-01', '1990-06-01', 0);
+	// });
 
-	$scope.labor_force = unemploymentDataService.labor_force;
-	$scope.data2 = unemploymentDataService.getLaborData('1990-01-01', '1990-06-01', 0);
-	$scope.$watch('labor_force.values', function() {
-		$scope.data2 = unemploymentDataService.getLaborData('1990-01-01', '1990-06-01', 0);
-	});
+	// $scope.labor_force = unemploymentDataService.labor_force;
+	// $scope.data2 = unemploymentDataService.getLaborData('1990-01-01', '1990-06-01', 0);
+	// $scope.$watch('labor_force.values', function() {
+	// 	$scope.data2 = unemploymentDataService.getLaborData('1990-01-01', '1990-06-01', 0);
+	// });
 	
 	/**************************
 	testing for level-3 data (mapDataService)
@@ -78,10 +78,12 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	
 	$scope.$watch('regionName', function() {
 		$scope.updateData(true);
+		console.log("$scope.updateData(true);");
 		});
 	
 	$scope.$watch('year+"-"+month', function() {
 		$scope.updateData(false);
+		console.log("$scope.updateData(true);");
 		});
 		
 	// tools for charting the data...

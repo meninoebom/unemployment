@@ -69,6 +69,10 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		getLaborForceData: function(d1, d2, months_before) {
 			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
 		},
+		// deprecated because bad naming in light of labor force data; should be removed
+		getData: function(d1, d2, months_before) {
+			return this.getUnemploymentData(d1, d2, months_before);
+		},
 		interpolateDataSeries: function(series_points, x) {
 			var ix = 0;
 			while (ix<series_points.length && series_points[ix][0]<x) { ix++};
