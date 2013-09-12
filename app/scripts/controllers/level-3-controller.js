@@ -4,6 +4,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', 'mapDataService',  function(
 	$scope.currentState = "Choose a State";
 	$scope.currentCounty1 = "Choose County 1";
 	$scope.currentCounty2 = "Choose County 2";
+	$scope.currentScale = {val: "nation"};
+	$scope.currentView = {val: "graph"};
 	$scope.usStates = [
 	    { name: 'ALABAMA', abbreviation: 'AL'},
 	    { name: 'ALASKA', abbreviation: 'AK'},
@@ -69,5 +71,11 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', 'mapDataService',  function(
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
 		$scope.currentStep += 1; 
+	}
+	$scope.setCurrentScale = function(scale) {
+		$scope.currentScale.val = scale;
+	}
+	$scope.setCurrentView = function(view) {
+		$scope.currentView.val = view;
 	}
 }]);
