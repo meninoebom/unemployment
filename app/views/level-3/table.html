@@ -5,16 +5,6 @@
 				<span class="prev-month" ng-click="prevMonth()"><b class="horiz-caret left-caret"></b></span>
 				<span class="white-space"></span>
 				<div class="dropdown month-dropdown">
-
-
-
-
-<div style="position: absolute; top: 540px;">
-	<select ng-model="year.val" ng-init="year.val=2000" ng-options="y for y in years"></select>
-	<select ng-model="month.val" ng-init="month.val=1"ng-options="m for m in months"></select>
-</div>
-
-
 					<div class="dropdown-toggle" role="button">
 						<span>{{getMonthName(month.val)}}</span><b class="caret"></b>
 					</div>

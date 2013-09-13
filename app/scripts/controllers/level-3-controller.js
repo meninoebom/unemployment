@@ -1,73 +1,10 @@
 'use strict';
 
 unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService',  function($scope, $timeout, mapDataService) {
-	// $scope.currentState = "Choose a State";
-	// $scope.currentCounty1 = "Choose County 1";
-	// $scope.currentCounty2 = "Choose County 2";
+
 	$scope.currentStep = {val: 1};
 	$scope.currentScale = {val: "nation"};
 	$scope.currentView = {val: "table"};
-	// $scope.usStates = [
-	//     { name: 'ALABAMA', abbreviation: 'AL'},
-	//     { name: 'ALASKA', abbreviation: 'AK'},
-	//     { name: 'AMERICAN SAMOA', abbreviation: 'AS'},
-	//     { name: 'ARIZONA', abbreviation: 'AZ'},
-	//     { name: 'ARKANSAS', abbreviation: 'AR'},
-	//     { name: 'CALIFORNIA', abbreviation: 'CA'},
-	//     { name: 'COLORADO', abbreviation: 'CO'},
-	//     { name: 'CONNECTICUT', abbreviation: 'CT'},
-	//     { name: 'DELAWARE', abbreviation: 'DE'},
-	//     { name: 'DISTRICT OF COLUMBIA', abbreviation: 'DC'},
-	//     { name: 'FEDERATED STATES OF MICRONESIA', abbreviation: 'FM'},
-	//     { name: 'FLORIDA', abbreviation: 'FL'},
-	//     { name: 'GEORGIA', abbreviation: 'GA'},
-	//     { name: 'GUAM', abbreviation: 'GU'},
-	//     { name: 'HAWAII', abbreviation: 'HI'},
-	//     { name: 'IDAHO', abbreviation: 'ID'},
-	//     { name: 'ILLINOIS', abbreviation: 'IL'},
-	//     { name: 'INDIANA', abbreviation: 'IN'},
-	//     { name: 'IOWA', abbreviation: 'IA'},
-	//     { name: 'KANSAS', abbreviation: 'KS'},
-	//     { name: 'KENTUCKY', abbreviation: 'KY'},
-	//     { name: 'LOUISIANA', abbreviation: 'LA'},
-	//     { name: 'MAINE', abbreviation: 'ME'},
-	//     { name: 'MARSHALL ISLANDS', abbreviation: 'MH'},
-	//     { name: 'MARYLAND', abbreviation: 'MD'},
-	//     { name: 'MASSACHUSETTS', abbreviation: 'MA'},
-	//     { name: 'MICHIGAN', abbreviation: 'MI'},
-	//     { name: 'MINNESOTA', abbreviation: 'MN'},
-	//     { name: 'MISSISSIPPI', abbreviation: 'MS'},
-	//     { name: 'MISSOURI', abbreviation: 'MO'},
-	//     { name: 'MONTANA', abbreviation: 'MT'},
-	//     { name: 'NEBRASKA', abbreviation: 'NE'},
-	//     { name: 'NEVADA', abbreviation: 'NV'},
-	//     { name: 'NEW HAMPSHIRE', abbreviation: 'NH'},
-	//     { name: 'NEW JERSEY', abbreviation: 'NJ'},
-	//     { name: 'NEW MEXICO', abbreviation: 'NM'},
-	//     { name: 'NEW YORK', abbreviation: 'NY'},
-	//     { name: 'NORTH CAROLINA', abbreviation: 'NC'},
-	//     { name: 'NORTH DAKOTA', abbreviation: 'ND'},
-	//     { name: 'NORTHERN MARIANA ISLANDS', abbreviation: 'MP'},
-	//     { name: 'OHIO', abbreviation: 'OH'},
-	//     { name: 'OKLAHOMA', abbreviation: 'OK'},
-	//     { name: 'OREGON', abbreviation: 'OR'},
-	//     { name: 'PALAU', abbreviation: 'PW'},
-	//     { name: 'PENNSYLVANIA', abbreviation: 'PA'},
-	//     { name: 'PUERTO RICO', abbreviation: 'PR'},
-	//     { name: 'RHODE ISLAND', abbreviation: 'RI'},
-	//     { name: 'SOUTH CAROLINA', abbreviation: 'SC'},
-	//     { name: 'SOUTH DAKOTA', abbreviation: 'SD'},
-	//     { name: 'TENNESSEE', abbreviation: 'TN'},
-	//     { name: 'TEXAS', abbreviation: 'TX'},
-	//     { name: 'UTAH', abbreviation: 'UT'},
-	//     { name: 'VERMONT', abbreviation: 'VT'},
-	//     { name: 'VIRGIN ISLANDS', abbreviation: 'VI'},
-	//     { name: 'VIRGINIA', abbreviation: 'VA'},
-	//     { name: 'WASHINGTON', abbreviation: 'WA'},
-	//     { name: 'WEST VIRGINIA', abbreviation: 'WV'},
-	//     { name: 'WISCONSIN', abbreviation: 'WI'},
-	//     { name: 'WYOMING', abbreviation: 'WY' }
-	// ];
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
 		$scope.currentStep.val += 1; 
@@ -85,30 +22,50 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	$scope.setYear = function(year) {
 		$scope.year.val = year;
 	}
+	$scope.prevMonth = function() {
+		if($scope.month.val === 1) {
+			$scope.month.val = 12;
+			$scope.prevYear();
+		} else {
+			$scope.month.val -=1;
+		}
+	}
+	$scope.nextMonth = function() {
+		if($scope.month.val === 12) {
+			$scope.month.val = 1;
+			$scope.nextYear();
+		} else {
+			$scope.month.val +=1;
+		}
+	}
+	$scope.prevYear = function() {
+		if($scope.year.val === 2000) {
+			$scope.year.val = 2013;
+		} else {
+			$scope.year.val -=1;
+		}
+	}
+	$scope.nextYear = function() {
+		if($scope.year.val === 2013) {
+			$scope.year.val = 2000;
+		} else {
+			$scope.year.val +=1;
+		}
+	}
 
-
-
-	//$scope.year = '2000';
 	$scope.year = {val: '2000'};
-	//$scope.month = '01';
 	$scope.month = {val: '01'};
 	$scope.years = [];
 	$scope.months = [];
 	for (var y=2000; y<=2013; y++) {$scope.years.push(y)};
 	for (var m=1; m<=12; m++) {$scope.months.push(m)};
 	
-	//$scope.regionName = "United States";
 	$scope.regionName = {val: "United States"};
-	$scope.subRegionData = 'Waiting';
-	//$scope.subRegionData = {val: 'Waiting'};
-	
+	$scope.subRegionData = 'Waiting';	
 	$scope.regions = ['United States'];
 	$scope.countyList = [];
-	//$scope.county1 = '';
 	$scope.county1 = {val: ''};
-	//$scope.county2 = '';
 	$scope.county2 = {val: ''};
-
 
 	// to handle some date formatting issues...
 	$scope.monthNames = [
