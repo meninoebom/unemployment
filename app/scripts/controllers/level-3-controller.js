@@ -6,7 +6,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	// $scope.currentCounty2 = "Choose County 2";
 	$scope.currentStep = {val: 1};
 	$scope.currentScale = {val: "nation"};
-	// $scope.currentView = {val: "graph"};
+	$scope.currentView = {val: "table"};
 	// $scope.usStates = [
 	//     { name: 'ALABAMA', abbreviation: 'AL'},
 	//     { name: 'ALASKA', abbreviation: 'AK'},
@@ -76,9 +76,15 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	$scope.setCurrentScale = function(scale) {
 		$scope.currentScale.val = scale;
 	}
-	// $scope.setCurrentView = function(view) {
-	// 	$scope.currentView.val = view;
-	// }
+	$scope.setCurrentView = function(view) {
+		$scope.currentView.val = view;
+	}
+	$scope.setMonth = function(month) {
+		$scope.month.val = month;
+	}
+	$scope.setYear = function(year) {
+		$scope.year.val = year;
+	}
 
 
 
@@ -102,6 +108,19 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	$scope.county1 = {val: ''};
 	//$scope.county2 = '';
 	$scope.county2 = {val: ''};
+
+
+	// to handle some date formatting issues...
+	$scope.monthNames = [
+	    "January", "February", "March",
+	    "April", "May", "June",
+	    "July", "August", "September",
+	    "October", "November", "December"
+	];
+
+	$scope.getMonthName = function(monthNum) {
+		return $scope.monthNames[monthNum - 1];
+	}
 	
 	$scope.setRegionName = function(region) {
 		$scope.regionName.val = region;

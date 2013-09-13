@@ -1,9 +1,17 @@
 <div class="level-3-container clearfix">
 	<div ng-include src="'views/main-header.html'"></div>
 	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
-	<div class="main-content-area level-3-nation-map-container" ng-show="currentScale.val=='nation' && currentStep.val<4" ng-click="setCurrentScale('state')" ng-include src="'views/level-3/nation.html'"></div>
-	<div class="main-content-area level-3-state-map-container" ng-show="currentScale.val=='state' && currentStep.val<4" ng-include src="'views/level-3/state.html'"></div>
+	<!-- MAIN CONTENT //////////////////////////////////////////////////////////////////////////////// -->
+
+	<div class="main-content-area level-3-table-container" ng-show="currentView.val=='table' && currentStep.val<4" ng-click="setCurrentScale('state')" ng-include src="'views/level-3/table.html'"></div>
+	
+	<div class="main-content-area level-3-nation-map-container" ng-show="currentScale.val=='nation' && currentStep.val<4 && currentView.val=='graph' " ng-click="setCurrentScale('state')" ng-include src="'views/level-3/nation.html'"></div>
+
+
+	<div class="main-content-area level-3-state-map-container" ng-show="currentScale.val=='state' && currentStep.val<4 && currentView.val=='graph'" ng-include src="'views/level-3/state.html'"></div>
+
 	<div class="main-content-area level-3-graph-container" ng-show="currentStep.val==4" ng-include="'views/level-3/graph.html'"></div>
+
 	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
 	  <!-- TEST DATA //////////////////////////////////////////////////////////////////////////////// -->
 	<hr/>
