@@ -125,9 +125,17 @@
 }
 
 .level-3-table-container {
-	table {
-		margin: 64px 0 0 180px;
+	> table {
 		width: 418px;
+		margin: 64px 0 0 180px;
+	}
+	.repeated-data-row-container {
+		overflow-y: scroll;
+		height: 206px;
+		width: 100%;
+		table {
+			width: 100%;
+		}
 	}
 	.comparison-header {
 		@include font(18px, 25px, $darkGrey);
@@ -141,7 +149,7 @@
 	}
 	th {
 		border: 4px solid $white;
-		height: 42px;
+		height: 32px;
 	}
 	tr {
 

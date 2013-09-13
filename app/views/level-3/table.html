@@ -25,15 +25,37 @@
 				<span class="next-month" ng-click="nextMonth()"><b class="horiz-caret right-caret"></b></span>
 			</td>
 		</tr>
-		<tr><td colspan="2" class="comparison-header">Region</td></tr>
+		<tr><td colspan="2" class="comparison-header">{{regionName.val}}</td></tr>
 		<tr>
-			<th class="region-name-column-header"><strong>Sub Region Kind</strong></th>
+			<th class="region-name-column-header"><strong>{{subRegionType}}</strong></th>
 			<th class="percentage-column-header"><strong>Percentage</strong></th>
 		</tr>
 	</thead>
 	<tbody>
-		<tr ng-repeat="period in selectedPeriods" ng-class-even="'even'">
-			<td class="region-name">{{period.selectedOrderNum}}</td>
-			<td class="percentage">{{period.currentMonthName}} {{period.currentYear}}</td>
+		<tr>
+			<td colspan="2">
+				<div class="repeated-data-row-container">
+					<table>
+						<tr ng-repeat="subRegion in subRegionData" ng-class-even="'even'">
+							<td class="region-name">{{subRegion.name}}</td>
+							<td class="percentage">{{subRegion.value}}</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
 	</tbody>
 </table>
+
+	<!-- <div>
+	  <div><b>US unemployment</b> : {{usValue}}</div>
+	  <div ng-hide='subRegionType=="States"'>
+	  	<div><b>State unemployment</b> : {{regionName.val}} : {{regionValue}}</div>
+	    <div ng-hide='county1.val==""'><b>County1 Unemployment</b> : {{county1.val}} : {{county1Value}}</div>
+	    <div ng-hide='county2.val==""'><b>County2 Unemployment</b> : {{county2.val}} : {{county2Value}}</div>
+	  </div>
+	  <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
+	   <div ng-repeat="subRegion in subRegionData">
+	  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
+	  </div>
+	</div> -->
