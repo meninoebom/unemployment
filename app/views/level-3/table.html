@@ -46,27 +46,4 @@
 		</tr>
 	</tbody>
 </table>
-
-
-<div class="stat-reader">
-	<div>	
-		<p class="stat-reader-percentage">{{usValue.val}}%</p>
-		<p class="stat-reader-date">{{getMonthName(month.val)}} {{year.val}}</p>
-		<h3 class="stat-reader-region">United States</h3>
-		<p class="stat-reader-label">Unemployment Rate</p>
-		<span class="stat-reader-horiz-line"></span>
-	</div>	
-</div>
-
-	<!-- <div>
-	  <div><b>US unemployment</b> : {{usValue}}</div>
-	  <div ng-hide='subRegionType=="States"'>
-	  	<div><b>State unemployment</b> : {{regionName.val}} : {{regionValue}}</div>
-	    <div ng-hide='county1.val==""'><b>County1 Unemployment</b> : {{county1.val}} : {{county1Value}}</div>
-	    <div ng-hide='county2.val==""'><b>County2 Unemployment</b> : {{county2.val}} : {{county2Value}}</div>
-	  </div>
-	  <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
-	   <div ng-repeat="subRegion in subRegionData">
-	  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
-	  </div>
-	</div> -->
+<div ng-include src="'views/level-3/stat-reader.html'"></div>
