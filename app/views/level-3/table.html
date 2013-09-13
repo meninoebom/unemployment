@@ -1,0 +1,49 @@
+<table>
+	<thead>
+		<tr>
+			<td colspan="2" class="month-picker">
+				<span class="prev-month" ng-click="prevMonth()"><b class="horiz-caret left-caret"></b></span>
+				<span class="white-space"></span>
+				<div class="dropdown month-dropdown">
+
+
+
+
+<div style="position: absolute; top: 540px;">
+	<select ng-model="year.val" ng-init="year.val=2000" ng-options="y for y in years"></select>
+	<select ng-model="month.val" ng-init="month.val=1"ng-options="m for m in months"></select>
+</div>
+
+
+					<div class="dropdown-toggle" role="button">
+						<span>{{getMonthName(month.val)}}</span><b class="caret"></b>
+					</div>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li ng-repeat="m in months" ><a ng-click="setMonth(m)">{{getMonthName(m)}}</a></li>
+					</ul>
+				</div>
+				<span class="white-space"></span>
+				<div class="dropdown year-dropdown">
+					<div class="dropdown-toggle" role="button">
+						<span>{{year.val}}</span><b class="caret"></b>
+					</div>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li ng-repeat="y in years" ><a ng-click="setYear(y)">{{y}}</a></li>
+					</ul>
+				</div>
+				<span class="white-space"></span>
+				<span class="next-month" ng-click="nextMonth()"><b class="horiz-caret right-caret"></b></span>
+			</td>
+		</tr>
+		<tr><td colspan="2" class="comparison-header">Region</td></tr>
+		<tr>
+			<th class="region-name-column-header"><strong>Sub Region Kind</strong></th>
+			<th class="percentage-column-header"><strong>Percentage</strong></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr ng-repeat="period in selectedPeriods" ng-class-even="'even'">
+			<td class="region-name">{{period.selectedOrderNum}}</td>
+			<td class="percentage">{{period.currentMonthName}} {{period.currentYear}}</td>
+	</tbody>
+</table>
