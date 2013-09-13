@@ -128,10 +128,12 @@
 	> table {
 		width: 418px;
 		margin: 64px 0 0 180px;
+		float: left;
 	}
 	.repeated-data-row-container {
+		overflow: -moz-scrollbars-vertical; 
 		overflow-y: scroll;
-		height: 206px;
+		height: 306px;
 		width: 100%;
 		table {
 			width: 100%;
@@ -237,6 +239,24 @@
 	}
 }
 
+.stat-reader {
+	float: right;
+	margin: 64px 30px 0 0;
+	width: 225px;
+	.stat-reader-percentage {
+		@include font(30px, 42px, $red);
+	}
+	.stat-reader-date, .stat-reader-region, .stat-reader-label {
+		@include font(18px, 22px, $darkGrey);
+	}
+	.stat-reader-horiz-line {
+		display: block;
+		height: 1px;
+		width: 100%;
+		background: $darkGrey;
+		margin: 10px 0;
+	}
+}
 
 .level-3-nation-map-container {
 	background: transparent url('../img/dupe-nation-map.gif') no-repeat top left;

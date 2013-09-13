@@ -3,6 +3,7 @@
 unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService',  function($scope, $timeout, mapDataService) {
 
 	$scope.currentStep = {val: 1};
+	$scope.usValue = {val: 0};
 	$scope.currentScale = {val: "nation"};
 	$scope.currentView = {val: "table"};
 	$scope.submitResponse = function() {
@@ -101,7 +102,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	
 	$scope.updateData = function(regionChanged) {
 		mapDataService.getRegionalDataForDate($scope.regionName.val, $scope.year.val+'-'+$scope.month.val+'-01', function(data) {
-			$scope.usValue = data.us.value;
+			$scope.usValue.val = data.us.value;
 			$scope.regionName.val = data.region.name;
 			$scope.regionValue = data.region.value;
 			$scope.subRegionData = data.subRegions;
