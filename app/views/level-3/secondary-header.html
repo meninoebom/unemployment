@@ -1,0 +1,43 @@
+
+<h2>Unemployment Rates</h2>
+<div class="dropdown"  >
+	<div class="dropdown-toggle" role="button">
+		<span>{{{true: 'Choose a State', false: regionName.val}[regionName.val == 'United States']}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li  ng-repeat="region in regions" ><a ng-click="setRegionName(region)">{{region}}</a></li>
+	</ul>
+</div>
+
+
+<div class="dropdown" ng-hide="regionName.val=='United States'">
+	<div class="dropdown-toggle" role="button">
+		<span>{{county1.val || 'Choose County 1'}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="c in countyList" ><a ng-click="setCounty1(c)">{{c}}</a></li>
+	</ul>
+</div>
+
+<div class="dropdown" ng-hide="regionName.val=='United States'">
+	<div class="dropdown-toggle" role="button">
+		<span>{{county2.val || 'Choose County 2'}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="c in countyList" ><a ng-click="setCounty2(c)">{{c}}</a></li>
+	</ul>
+</div>
+
+<div class="scale-control">
+	<span class="scale-button county-scale-button" ng-class="{on:currentScale.val == 'county'}">county view</span> 
+	<span class="scale-button state-scale-button" ng-class="{on:currentScale.val == 'state'}">state view</span> 
+	<span class="scale-button nation-scale-button" ng-class="{on:currentScale.val == 'nation'}">nation view</span>
+	<span class="scale-button-label">View: </span>
+</div>
+
+<div class="view-control" ng-show="currentStep.val != 'county'">
+	<span class="view-button table-view-button" ng-click="setCurrentView('table')" ng-class="{on:currentView.val == 'table'}">table view</span> 
+	<span class="view-button graph-view-button" ng-click="setCurrentView('graph')" ng-class="{on:currentView.val == 'graph'}">graph view</span> 
+	<span class="view-button-label">Data View: </span>
+</div>
+

@@ -1,0 +1,44 @@
+<div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
+<div class="question" ng-show="currentStep.val=='1'">
+	<p>What happened to the national unemployment rate between March 2011 and March 2010</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="labor-force" value="decrease" />
+			It decreased
+		</li>
+		<li>
+			<input type="radio" name="labor-force" value="increase" />
+			It increased
+		</li>
+		<li>
+			<input type="radio" name="labor-force" value="same" />
+			It stayed the same
+		</li>
+	</ul>
+
+</div>
+<div class="question" ng-show="currentStep.val=='2'">
+	<p>Choose a State to explore then click Next.</p>
+</div>
+<div class="question" ng-show="currentStep.val=='3'">
+	<p>Choose two counties within Michagan to compare then click Next.</p>
+</div>
+<div class="question" ng-show="currentStep.val=='4'">
+	<p>In March 2010, how does the unemployment rate in Kent compare to the unemployemnt rate in Livingston?</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="labor-force" value="higher" />
+			It is higher than the unemployment rate in Livingston.
+		</li>
+		<li>
+			<input type="radio" name="labor-force" value="lower" />
+			It is lower than the unemployment rate in Livingston.
+		</li>
+		<li>
+			<input type="radio" name="labor-force" value="same" />
+			It is the same as the unemployment rate in Livingston.
+		</li>
+	</ul>
+
+</div>
+<button class="button-link blue" ng-click="submitResponse()" type="button">Next</button>
