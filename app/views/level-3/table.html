@@ -37,7 +37,7 @@
 				<div class="repeated-data-row-container">
 					<table>
 						<tr ng-repeat="subRegion in subRegionData" ng-class-even="'even'">
-							<td class="region-name">{{subRegion.name}}</td>
+							<td ng-click="selectSubRegion(subRegion.name)" class="region-name" ng-class="{'selected': subRegion.name == county1.val || subRegion.name == county2.val}">{{subRegion.name}}</td>
 							<td class="percentage">{{subRegion.value}}</td>
 						</tr>
 					</table>

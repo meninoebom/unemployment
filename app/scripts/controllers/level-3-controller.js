@@ -117,6 +117,21 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 		$scope.county2.val = county;
 	}
 
+	$scope.selectSubRegion = function(region) {
+		if (region === $scope.county1.val || region === $scope.county2.val) return;
+		if ($scope.regionName.val === 'United States') {
+			console.log(region);
+			$scope.setRegionName(region);
+		} else if ($scope.county1.val === '') {
+			$scope.setCounty1(region);
+		} else if ($scope.county2.val === '') { 
+			$scope.setCounty2(region);
+		} else {
+			$scope.setCounty2($scope.county1.val);
+			$scope.setCounty1(region);
+		}
+	}
+
 	$scope.dataForCounty = function(countyName) {
 		for (var i=0; i<$scope.subRegionData.length; i++) {
 			if ($scope.subRegionData[i].name==countyName) {

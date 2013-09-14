@@ -229,6 +229,12 @@
 		padding-left: 5px;
 		text-align: left;
 		width: 50%;
+		cursor: pointer;
+		&.selected {
+			background: $purple;
+			color: $white;
+			cursor: default;
+		}
 	}
 	.percentage {
 		text-align: center;

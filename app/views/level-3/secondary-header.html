@@ -15,7 +15,7 @@
 		<span>{{county1.val || 'Choose County 1'}}</span><b class="caret"></b>
 	</div>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		<li ng-repeat="c in countyList" ><a ng-click="setCounty1(c)">{{c}}</a></li>
+		<li ng-repeat="c in countyList" ng-hide="c == county1.val || c == county2.val"><a ng-click="setCounty1(c)">{{c}}</a></li>
 	</ul>
 </div>
 
@@ -24,7 +24,7 @@
 		<span>{{county2.val || 'Choose County 2'}}</span><b class="caret"></b>
 	</div>
 	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-		<li ng-repeat="c in countyList" ><a ng-click="setCounty2(c)">{{c}}</a></li>
+		<li ng-repeat="c in countyList" ng-hide="c == county1.val || c == county2.val"><a ng-click="setCounty2(c)">{{c}}</a></li>
 	</ul>
 </div>
 
