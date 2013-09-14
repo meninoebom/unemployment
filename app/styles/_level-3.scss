@@ -6,7 +6,7 @@
 	height: 49px;
 	overflow: visible;
 	position: relative;
-	z-index: 9999;
+	z-index: 10;
 	.dropdown {
 		float: left;
 		height: 25px;
@@ -259,17 +259,17 @@
 }
 
 .level-3-nation-map-container {
-	background: transparent url('../img/dupe-nation-map.gif') no-repeat top left;
+/*	background: transparent url('../img/dupe-nation-map.gif') no-repeat top left;
 	&:hover {
 		background-image: url('../img/dupe-nation-map-hover.gif');
-	}
+	}*/
 }
 
 .level-3-state-map-container {
-	background: transparent url('../img/dupe-state-map.gif') no-repeat top left;
+/*	background: transparent url('../img/dupe-state-map.gif') no-repeat top left;
 	&:hover {
 		background-image: url('../img/dupe-state-map-hover.gif');
-	}
+	}*/
 }
 
 .level-3-graph-container {

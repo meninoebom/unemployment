@@ -329,6 +329,10 @@ div, ul, li, p, h1, h2, h3, h4 {
     }
 }
 
+.modal-body {
+    color: $white;
+}
+
 @import "level-1";
 @import "level-2";
 @import "level-3";

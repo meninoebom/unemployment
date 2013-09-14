@@ -1,6 +1,6 @@
 <div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
 <div class="question" ng-show="currentStep.val=='1'">
-	<p>What happened to the national unemployment rate between March 2011 and March 2010</p>
+	<p>What happened to the national unemployment rate between March 2010 and March 2011</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="labor-force" value="decrease" />
@@ -21,10 +21,10 @@
 	<p>Choose a State to explore then click Next.</p>
 </div>
 <div class="question" ng-show="currentStep.val=='3'">
-	<p>Choose two counties within Michagan to compare then click Next.</p>
+	<p>Choose two counties within {{regionName.val}} to compare then click Next.</p>
 </div>
 <div class="question" ng-show="currentStep.val=='4'">
-	<p>In March 2010, how does the unemployment rate in Kent compare to the unemployemnt rate in Livingston?</p>
+	<p>In March 2010, how does the unemployment rate in {{county1.val}} compare to the unemployemnt rate in {{county2.val}}?</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="labor-force" value="higher" />

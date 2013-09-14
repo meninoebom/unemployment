@@ -6,10 +6,35 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	$scope.usValue = {val: 0};
 	$scope.currentScale = {val: "nation"};
 	$scope.currentView = {val: "table"};
+	$scope.feedbackMessage = {val: ''};
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
-		$scope.currentStep.val += 1; 
+		switch ($scope.currentStep.val) {
+			case 2:
+				if ($scope.regionName.val == 'United States') {
+					$scope.showFeedbackMessage('You must choose a state before going to the next step.');
+					return;
+				} else {
+					$scope.currentStep.val += 1; 
+				}
+				break;
+			case 3:
+				if ($scope.county1.val == '' || $scope.county2.val == '') {
+					$scope.showFeedbackMessage('You must choose two counties before going to the next step.');
+					return;
+				} else {
+					$scope.currentStep.val += 1; 
+				}
+				break;			
+			default:
+				$scope.currentStep.val += 1; 
+		}
 		//TODO after step 4 go to level 4
+	}
+	$scope.showFeedbackMessage = function(message) {
+		console.log('showFeedbackMessage');
+		$scope.feedbackMessage.val = message;
+		angular.element('#incorrect-modal').modal('show');
 	}
 	$scope.setCurrentScale = function(scale) {
 		$scope.currentScale.val = scale;
