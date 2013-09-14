@@ -44,11 +44,7 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.county2 = '';
 	
 	$scope.dataForCounty = function(countyName) {
-		for (var i=0; i<$scope.subRegionData.length; i++) {
-			if ($scope.subRegionData[i].name==countyName) {
-				return $scope.subRegionData[i].value;
-			}
-		}
+		return _.findWhere($scope.subRegionData, {name:countyName}).value;
 	}
 	
 	$scope.updateData = function(regionChanged) {
