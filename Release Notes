@@ -1,0 +1,7 @@
+General 
+- Grading not implemented
+- Progress bar is implemented in a simplified way only using the circular level icons
+
+Level 3
+- State and county dropdown/search box is hard coded for Michagan/Kent/Livingston
+- Bread crumbs are not navigable (should they be?)

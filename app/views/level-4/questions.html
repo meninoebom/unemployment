@@ -1,72 +1,18 @@
 <div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
-<div class="question" ng-show="showQuestion(1)">
-	<p>During which of the recessionary periods did the United States Unemployement Rate reach the highest level?</p>
+<div class="question">
+	<p>{{currentQuestion.question}}</p>
 	<ul class="clearfix">
 		<li>
-			<input type="radio" name="labor-force" value="decrease" />
-			Great Depression: August 1929 - March 1933
+			<input type="radio" name="labor-force" value="a" />
+			{{currentQuestion.a}}
 		</li>
 		<li>
-			<input type="radio" name="labor-force" value="increase" />
-			{{randRecession_1}}
+			<input type="radio" name="labor-force" value="b" />
+			{{currentQuestion.b}}
 		</li>
 		<li>
-			<input type="radio" name="labor-force" value="same" />
-			Great Recession: December 2007 - June 2009
-		</li>
-	</ul>
-
-</div>
-<div class="question" ng-show="showQuestion(2)">
-	<p>During which of the recessionary periods did the United States Unemployement Rate increase the most from lowest to highest?</p>
-	<ul class="clearfix">
-		<li>
-			<input type="radio" name="labor-force" value="decrease" />
-			Great Depression: August 1929 - March 1933
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="increase" />
-			{{randRecession_2}}
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="same" />
-			Great Recession: December 2007 - June 2009
-		</li>
-	</ul>
-
-</div>
-<div class="question" ng-show="showQuestion(3)">
-	<p>During which of the recessionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?</p>
-	<ul class="clearfix">
-		<li>
-			<input type="radio" name="labor-force" value="decrease" />
-			Great Depression: August 1929 - March 1933
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="increase" />
-			{{randRecession_3}}
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="same" />
-			Great Recession: December 2007 - June 2009
-		</li>
-	</ul>
-
-</div>
-<div class="question" ng-show="showQuestion(4)">
-	<p>During which of the expansionary periods did the United States Unemployement Rate reach the lowest level?</p>
-	<ul class="clearfix">
-		<li>
-			<input type="radio" name="labor-force" value="decrease" />
-			{{randExpansion_1}}
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="increase" />
-			{{randExpansion_2}}
-		</li>
-		<li>
-			<input type="radio" name="labor-force" value="same" />
-			{{randRecession_3}}
+			<input type="radio" name="labor-force" value="c" />
+			{{currentQuestion.c}}
 		</li>
 	</ul>
 

@@ -22,15 +22,10 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 	Date.prototype.getShortMonthName = function () {
 	    return this.getMonthName().substr(0, 3);
 	};
-	Date.dateFromFloat = function(val) {
-		var y = Math.floor(val);
-		var m = Math.floor(val*12) % 12;
-		return new Date(y, m, 1);
-	};
 
 	var dataservice = {
 		// given two dates in YYYY-MM format, and a number of months before d1 to start the range at, return an array of
-		// [x,y] array pairs, where x is the offset in months between start_date and d1 and y is the unemployment (or labor force) rate.
+		// [x,y] array pairs, where x is the offset in months between d1 and y is the unemployment(or labor force) rate.
 		
 		unemployment: {},
 		labor_force: {},
@@ -53,7 +48,7 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 			var ym2 = d2.split('-');
 			return 12*(ym2[0]-ym1[0]) + (ym2[1]-ym1[1]);
 		},
-		getDataFromDataset: function(dataset, d1, d2, months_before) {
+		_getDataFromDataset: function(dataset, d1, d2, months_before) {
 			if (!dataset.hasOwnProperty('values')) {
 				// hasn't finished loading data yet...
 				return [];
@@ -68,11 +63,25 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 			}
 			return data;
 		},
-		getData: function(d1, d2, months_before) {
-			return this.getDataFromDataset(this.unemployment, d1, d2, months_before);
+		getUnemploymentData: function(d1, d2, months_before) {
+			return this._getDataFromDataset(this.unemployment, d1, d2, months_before);
 		},
-		getLaborData: function(d1, d2, months_before) {
-			return this.getDataFromDataset(this.labor_force, d1, d2, months_before);
+		getLaborForceData: function(d1, d2, months_before) {
+			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
+		},
+		interpolateDataSeries: function(series_points, x) {
+			var ix = 0;
+			while (ix<series_points.length && series_points[ix][0]<x) { ix++};
+			if (ix>=series_points.length) return NaN;
+			if (series_points[ix][0]==x) return series_points[ix][1];
+			if (ix==0) return NaN;
+			
+			var v1 = series_points[ix-1][1];
+			var v2 = series_points[ix][1];
+			
+			var k = (x - series_points[ix-1][0])*1.0/(series_points[ix][0] - series_points[ix-1][0]);
+		
+			return v1 + (v2-v1)*k;
 		},
 	  getCurrentMonthYearFormatted: function(startDate, offset) {
 	    var currentDateFormatted = {};

@@ -4,7 +4,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 	$scope.dialPopCurMonth = {val: 0};
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
-	$scope.currentQuestion = {val: 1};
+	$scope.currentQuestionNum = {val: 0};
 	$scope.recessionsIsCollapsed = true;
 	$scope.expansionsIsCollapsed = true;
 	$scope.selectedPeriods = [];
@@ -38,13 +38,20 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		{name: "Feb 1961 - December 1969", startDate: "1961-02", endDate: "1969-12"}
 	];
 
-	$scope.showQuestion = function(num) {
-		return ($scope.currentQuestion.val == num) ? true : false; 
-	}
+	$scope.questions = [
+		{question: "During which of the recessionary periods did the United States Unemployement Rate reach the highest level?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{question: "During which of the recessionary periods did the United States Unemployement Rate increase the most from its lowest to its highest?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{question: "During which of the recessionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{question: "During which of the expansionary periods did the United States Unemployement Rate reach the lowest level?", a: "", b: "", c: ""},
+		{question: "During which of the following expansionary periods did the United States Unemployement Rate decrease the most from its highest to its lowest rate?", a: "", b: "", c: ""},
+		{question: "During which of the following expansionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
+	];
 
-	$scope.submitResponse = function() {
-		$scope.currentQuestion.val++; 
-	}
+	// $scope.showQuestion = function(num) {
+	// 	return ($scope.currentQuestion.val == num) ? true : false; 
+	// }
+
+
 
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {
@@ -161,6 +168,38 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 		if($scope.dialPopCurMonth.val >= $scope.lastMonthNumOfSelectedPeriods()) return;
 		$scope.dialPopCurMonth.val += 1;
 		$scope.$broadcast("moveMonthDial");
+	}
+
+	$scope.initQuestions = function() {
+		var randomizedRecessions = [];
+		
+		_.each($scope.recessions, function(item, index, list){
+			if(item.name !== "Great Depression: August 1929 - March 1933" && item.name !== "Great Recession: December 2007 - June 2009") {
+				randomizedRecessions.push(item.name);
+			}
+		});
+		randomizedRecessions = _.shuffle(randomizedRecessions);
+		for (var i = 0; i < 3; i++) {
+			$scope.questions[i].b = randomizedRecessions[i];
+		}
+		for (var j = 0; j < 3; j++) {
+			var randomizedExpansions = [];
+			_.each($scope.expansions, function(item, index, list){
+				randomizedExpansions.push(item.name);
+			});
+			randomizedExpansions = _.shuffle(randomizedExpansions);
+			$scope.questions[j+3].a = randomizedRecessions[j];
+			$scope.questions[j+3].b = randomizedRecessions[j+1];
+			$scope.questions[j+3].c = randomizedRecessions[j+2];
+		}
+		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val];
+	}
+
+	$scope.initQuestions();
+
+	$scope.submitResponse = function() {
+		//TODO grading and feedback happen here
+		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val += 1]; 
 	}
 
 }]);
