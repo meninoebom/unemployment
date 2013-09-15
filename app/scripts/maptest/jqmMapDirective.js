@@ -29,7 +29,15 @@ angular.module('directives.mapping', [])
 
 				scope.$watch('dataSelector.regionName', function() {
 					console.log('region changed');
-					console.log(scope.subRegionData);
+					var regionName = scope.dataSelector.regionName;
+					if (regionName=="United States") {
+						if (jqmMap.getCurrentLevel()>0) {
+							jqmMap.getBackToPreviousLevel();
+						}
+					} else {
+						var region_id = 'us_'+mapDataService.stateAbbreviations[regionName].toLowerCase();
+						jqmMap.loadChildTheme(region_id, 'jquerymaps/themes/state_'+region_id+'.xml');
+					}
 				});
 
 				var onJqmSystemEvent = function(obj) {
@@ -42,6 +50,9 @@ angular.module('directives.mapping', [])
 							var feature = features[i];
 							feature.popup = 'Id is '+feature.id;
 						}
+					} else if (obj.event=="levelBack" && obj.level==0) {
+						scope.dataSelector.regionName = "United States";
+						scope.$apply();
 					}
 					console.log('Map is ready? '+jqmMap.checkIfMapIsReady());
 				}
@@ -53,6 +64,7 @@ angular.module('directives.mapping', [])
 					scope.dataSelector.regionName = obj.label;
 					scope.$apply();
 					console.log(scope.dataSelector);
+					// jqmMap.loadChildTheme(obj.id, 'jquerymaps/themes/state_'+obj.id+'.xml');
 				}
 				window['stateClicked'] = onStateClicked; // I HATE THIS!!!!! but that's how it must be done for now...				
 
