@@ -348,7 +348,7 @@ function JQueryMaps() {
         var cbcjj = new Object();
         var cbbhg = new Object();
         var cbgbc = 0;
-        var cbbdj = new Object();
+        var cbbdj = new Object(); // config?
         var cbfia = new Array();
         var cbgdh;
         var cbgda = new Array();
@@ -1270,6 +1270,7 @@ function JQueryMaps() {
         }
 
         function cbgeg(cccia) {
+						console.log('cbgeg: load theme '+cccia);
             if (cbhjc('001')) ccdfe('Loading theme from ' + cccia);
             clearTimeout(cbahg.cccic);
             $.ajax({
@@ -7861,6 +7862,39 @@ function JQueryMaps() {
             cbfee();
             cbgeg(cccia);
         };
+				this.loadChildTheme = function(featureId, feature_xml) {
+            if (cbbji) {
+                console.log("loadChildFeature "+featureId+" "+feature_xml);
+            }
+						ccdbf.cbbbj = feature_xml;
+						this.focusOnFeature(featureId);
+        };
+				/*
+        this.setTheme = function(ccchc) {
+            if (cbbji) {
+                console.log("setTheme");
+                console.log(ccchc);
+            }
+            cbfic = undefined;
+            ccaig();
+            cbfee();
+            ccbfh();
+            ccbgg(ccchc);
+        };
+				
+				this.setChildTheme = function(ccchc) {
+            if (cbbji) {
+                console.log("setChildTheme");
+            }
+            cbfic = undefined;
+            cbgbc++;
+            ccdbf.cbgbf = true;
+            cbfee();
+            ccbfh();
+            ccbgg(ccchc);
+        };
+
+				*/
         this.mapIsReady = function() {
             if (cbbji) {
                 console.log("mapIsReady");
@@ -8349,7 +8383,7 @@ function JQueryMaps() {
         this.check = function(cbbaf) {
             checkDisplay(cbbaf);
         };
-        this.cbdaa = function(cbcjh, cbidf, cbfhi, cajjf) {
+        this.cbdaa = function(cbcjh, cbidf, cbfhi, cajjf) { // handle event eventType, featureOrMarker, index, level
             cbcjh = cbcjh.toLowerCase();
             if (cbcjh == 'onclick') {
                 if (cbfgd()) return;
