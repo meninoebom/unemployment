@@ -1,0 +1,35 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_nm_35001" category="county_5" label="Bernalillo" popup="2010 Population: 662,564" />
+<feature id="us_nm_35003" category="county_1" label="Catron" popup="2010 Population: 3,725" />
+<feature id="us_nm_35005" category="county_2" label="Chaves" popup="2010 Population: 65,645" />
+<feature id="us_nm_35006" category="county_1" label="Cibola" popup="2010 Population: 27,213" />
+<feature id="us_nm_35007" category="county_1" label="Colfax" popup="2010 Population: 13,750" />
+<feature id="us_nm_35009" category="county_1" label="Curry" popup="2010 Population: 48,376" />
+<feature id="us_nm_35011" category="county_1" label="De Baca" popup="2010 Population: 2,022" />
+<feature id="us_nm_35013" category="county_3" label="Dona Ana" popup="2010 Population: 209,233" />
+<feature id="us_nm_35015" category="county_2" label="Eddy" popup="2010 Population: 53,829" />
+<feature id="us_nm_35017" category="county_1" label="Grant" popup="2010 Population: 29,514" />
+<feature id="us_nm_35019" category="county_1" label="Guadalupe" popup="2010 Population: 4,687" />
+<feature id="us_nm_35021" category="county_1" label="Harding" popup="2010 Population: 695" />
+<feature id="us_nm_35023" category="county_1" label="Hidalgo" popup="2010 Population: 4,894" />
+<feature id="us_nm_35025" category="county_2" label="Lea" popup="2010 Population: 64,727" />
+<feature id="us_nm_35027" category="county_1" label="Lincoln" popup="2010 Population: 20,497" />
+<feature id="us_nm_35028" category="county_1" label="Los Alamos" popup="2010 Population: 17,950" />
+<feature id="us_nm_35029" category="county_1" label="Luna" popup="2010 Population: 25,095" />
+<feature id="us_nm_35031" category="county_2" label="McKinley" popup="2010 Population: 71,492" />
+<feature id="us_nm_35033" category="county_1" label="Mora" popup="2010 Population: 4,881" />
+<feature id="us_nm_35035" category="county_2" label="Otero" popup="2010 Population: 63,797" />
+<feature id="us_nm_35037" category="county_1" label="Quay" popup="2010 Population: 9,041" />
+<feature id="us_nm_35039" category="county_1" label="Rio Arriba" popup="2010 Population: 40,246" />
+<feature id="us_nm_35041" category="county_1" label="Roosevelt" popup="2010 Population: 19,846" />
+<feature id="us_nm_35043" category="county_3" label="Sandoval" popup="2010 Population: 131,561" />
+<feature id="us_nm_35045" category="county_3" label="San Juan" popup="2010 Population: 130,044" />
+<feature id="us_nm_35047" category="county_1" label="San Miguel" popup="2010 Population: 29,393" />
+<feature id="us_nm_35049" category="county_3" label="Santa Fe" popup="2010 Population: 144,170" />
+<feature id="us_nm_35051" category="county_1" label="Sierra" popup="2010 Population: 11,988" />
+<feature id="us_nm_35053" category="county_1" label="Socorro" popup="2010 Population: 17,866" />
+<feature id="us_nm_35055" category="county_1" label="Taos" popup="2010 Population: 32,937" />
+<feature id="us_nm_35057" category="county_1" label="Torrance" popup="2010 Population: 16,383" />
+<feature id="us_nm_35059" category="county_1" label="Union" popup="2010 Population: 4,549" />
+<feature id="us_nm_35061" category="county_2" label="Valencia" popup="2010 Population: 76,569" />
+</jqm_features>

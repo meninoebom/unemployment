@@ -1,0 +1,89 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_mn_27001" category="county_1" label="Aitkin" popup="2010 Population: 16,202" />
+<feature id="us_mn_27003" category="county_4" label="Anoka" popup="2010 Population: 330,844" />
+<feature id="us_mn_27005" category="county_1" label="Becker" popup="2010 Population: 32,504" />
+<feature id="us_mn_27007" category="county_1" label="Beltrami" popup="2010 Population: 44,442" />
+<feature id="us_mn_27009" category="county_1" label="Benton" popup="2010 Population: 38,451" />
+<feature id="us_mn_27011" category="county_1" label="Big Stone" popup="2010 Population: 5,269" />
+<feature id="us_mn_27013" category="county_2" label="Blue Earth" popup="2010 Population: 64,013" />
+<feature id="us_mn_27015" category="county_1" label="Brown" popup="2010 Population: 25,893" />
+<feature id="us_mn_27017" category="county_1" label="Carlton" popup="2010 Population: 35,386" />
+<feature id="us_mn_27019" category="county_2" label="Carver" popup="2010 Population: 91,042" />
+<feature id="us_mn_27021" category="county_1" label="Cass" popup="2010 Population: 28,567" />
+<feature id="us_mn_27023" category="county_1" label="Chippewa" popup="2010 Population: 12,441" />
+<feature id="us_mn_27025" category="county_2" label="Chisago" popup="2010 Population: 53,887" />
+<feature id="us_mn_27027" category="county_2" label="Clay" popup="2010 Population: 58,999" />
+<feature id="us_mn_27029" category="county_1" label="Clearwater" popup="2010 Population: 8,695" />
+<feature id="us_mn_27031" category="county_1" label="Cook" popup="2010 Population: 5,176" />
+<feature id="us_mn_27033" category="county_1" label="Cottonwood" popup="2010 Population: 11,687" />
+<feature id="us_mn_27035" category="county_2" label="Crow Wing" popup="2010 Population: 62,500" />
+<feature id="us_mn_27037" category="county_4" label="Dakota" popup="2010 Population: 398,552" />
+<feature id="us_mn_27039" category="county_1" label="Dodge" popup="2010 Population: 20,087" />
+<feature id="us_mn_27041" category="county_1" label="Douglas" popup="2010 Population: 36,009" />
+<feature id="us_mn_27043" category="county_1" label="Faribault" popup="2010 Population: 14,553" />
+<feature id="us_mn_27045" category="county_1" label="Fillmore" popup="2010 Population: 20,866" />
+<feature id="us_mn_27047" category="county_1" label="Freeborn" popup="2010 Population: 31,255" />
+<feature id="us_mn_27049" category="county_1" label="Goodhue" popup="2010 Population: 46,183" />
+<feature id="us_mn_27051" category="county_1" label="Grant" popup="2010 Population: 6,018" />
+<feature id="us_mn_27053" category="county_6" label="Hennepin" popup="2010 Population: 1,152,425" />
+<feature id="us_mn_27055" category="county_1" label="Houston" popup="2010 Population: 19,027" />
+<feature id="us_mn_27057" category="county_1" label="Hubbard" popup="2010 Population: 20,428" />
+<feature id="us_mn_27059" category="county_1" label="Isanti" popup="2010 Population: 37,816" />
+<feature id="us_mn_27061" category="county_1" label="Itasca" popup="2010 Population: 45,058" />
+<feature id="us_mn_27063" category="county_1" label="Jackson" popup="2010 Population: 10,266" />
+<feature id="us_mn_27065" category="county_1" label="Kanabec" popup="2010 Population: 16,239" />
+<feature id="us_mn_27067" category="county_1" label="Kandiyohi" popup="2010 Population: 42,239" />
+<feature id="us_mn_27069" category="county_1" label="Kittson" popup="2010 Population: 4,552" />
+<feature id="us_mn_27071" category="county_1" label="Koochiching" popup="2010 Population: 13,311" />
+<feature id="us_mn_27073" category="county_1" label="Lac qui Parle" popup="2010 Population: 7,259" />
+<feature id="us_mn_27075" category="county_1" label="Lake" popup="2010 Population: 10,866" />
+<feature id="us_mn_27077" category="county_1" label="Lake of the Woods" popup="2010 Population: 4,045" />
+<feature id="us_mn_27079" category="county_1" label="Le Sueur" popup="2010 Population: 27,703" />
+<feature id="us_mn_27081" category="county_1" label="Lincoln" popup="2010 Population: 5,896" />
+<feature id="us_mn_27083" category="county_1" label="Lyon" popup="2010 Population: 25,857" />
+<feature id="us_mn_27085" category="county_1" label="McLeod" popup="2010 Population: 36,651" />
+<feature id="us_mn_27087" category="county_1" label="Mahnomen" popup="2010 Population: 5,413" />
+<feature id="us_mn_27089" category="county_1" label="Marshall" popup="2010 Population: 9,439" />
+<feature id="us_mn_27091" category="county_1" label="Martin" popup="2010 Population: 20,840" />
+<feature id="us_mn_27093" category="county_1" label="Meeker" popup="2010 Population: 23,300" />
+<feature id="us_mn_27095" category="county_1" label="Mille Lacs" popup="2010 Population: 26,097" />
+<feature id="us_mn_27097" category="county_1" label="Morrison" popup="2010 Population: 33,198" />
+<feature id="us_mn_27099" category="county_1" label="Mower" popup="2010 Population: 39,163" />
+<feature id="us_mn_27101" category="county_1" label="Murray" popup="2010 Population: 8,725" />
+<feature id="us_mn_27103" category="county_1" label="Nicollet" popup="2010 Population: 32,727" />
+<feature id="us_mn_27105" category="county_1" label="Nobles" popup="2010 Population: 21,378" />
+<feature id="us_mn_27107" category="county_1" label="Norman" popup="2010 Population: 6,852" />
+<feature id="us_mn_27109" category="county_3" label="Olmsted" popup="2010 Population: 144,248" />
+<feature id="us_mn_27111" category="county_2" label="Otter Tail" popup="2010 Population: 57,303" />
+<feature id="us_mn_27113" category="county_1" label="Pennington" popup="2010 Population: 13,930" />
+<feature id="us_mn_27115" category="county_1" label="Pine" popup="2010 Population: 29,750" />
+<feature id="us_mn_27117" category="county_1" label="Pipestone" popup="2010 Population: 9,596" />
+<feature id="us_mn_27119" category="county_1" label="Polk" popup="2010 Population: 31,600" />
+<feature id="us_mn_27121" category="county_1" label="Pope" popup="2010 Population: 10,995" />
+<feature id="us_mn_27123" category="county_5" label="Ramsey" popup="2010 Population: 508,640" />
+<feature id="us_mn_27125" category="county_1" label="Red Lake" popup="2010 Population: 4,089" />
+<feature id="us_mn_27127" category="county_1" label="Redwood" popup="2010 Population: 16,059" />
+<feature id="us_mn_27129" category="county_1" label="Renville" popup="2010 Population: 15,730" />
+<feature id="us_mn_27131" category="county_2" label="Rice" popup="2010 Population: 64,142" />
+<feature id="us_mn_27133" category="county_1" label="Rock" popup="2010 Population: 9,687" />
+<feature id="us_mn_27135" category="county_1" label="Roseau" popup="2010 Population: 15,629" />
+<feature id="us_mn_27137" category="county_3" label="St. Louis" popup="2010 Population: 200,226" />
+<feature id="us_mn_27139" category="county_3" label="Scott" popup="2010 Population: 129,928" />
+<feature id="us_mn_27141" category="county_2" label="Sherburne" popup="2010 Population: 88,499" />
+<feature id="us_mn_27143" category="county_1" label="Sibley" popup="2010 Population: 15,226" />
+<feature id="us_mn_27145" category="county_3" label="Stearns" popup="2010 Population: 150,642" />
+<feature id="us_mn_27147" category="county_1" label="Steele" popup="2010 Population: 36,576" />
+<feature id="us_mn_27149" category="county_1" label="Stevens" popup="2010 Population: 9,726" />
+<feature id="us_mn_27151" category="county_1" label="Swift" popup="2010 Population: 9,783" />
+<feature id="us_mn_27153" category="county_1" label="Todd" popup="2010 Population: 24,895" />
+<feature id="us_mn_27155" category="county_1" label="Traverse" popup="2010 Population: 3,558" />
+<feature id="us_mn_27157" category="county_1" label="Wabasha" popup="2010 Population: 21,676" />
+<feature id="us_mn_27159" category="county_1" label="Wadena" popup="2010 Population: 13,843" />
+<feature id="us_mn_27161" category="county_1" label="Waseca" popup="2010 Population: 19,136" />
+<feature id="us_mn_27163" category="county_3" label="Washington" popup="2010 Population: 238,136" />
+<feature id="us_mn_27165" category="county_1" label="Watonwan" popup="2010 Population: 11,211" />
+<feature id="us_mn_27167" category="county_1" label="Wilkin" popup="2010 Population: 6,576" />
+<feature id="us_mn_27169" category="county_2" label="Winona" popup="2010 Population: 51,461" />
+<feature id="us_mn_27171" category="county_3" label="Wright" popup="2010 Population: 124,700" />
+<feature id="us_mn_27173" category="county_1" label="Yellow Medicine" popup="2010 Population: 10,438" />
+</jqm_features>

@@ -1,0 +1,10 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ct_09001" category="county_5" label="Fairfield" popup="2010 Population: 916,829" />
+<feature id="us_ct_09003" category="county_5" label="Hartford" popup="2010 Population: 894,014" />
+<feature id="us_ct_09005" category="county_3" label="Litchfield" popup="2010 Population: 189,927" />
+<feature id="us_ct_09007" category="county_3" label="Middlesex" popup="2010 Population: 165,676" />
+<feature id="us_ct_09009" category="county_5" label="New Haven" popup="2010 Population: 862,477" />
+<feature id="us_ct_09011" category="county_4" label="New London" popup="2010 Population: 274,055" />
+<feature id="us_ct_09013" category="county_3" label="Tolland" popup="2010 Population: 152,691" />
+<feature id="us_ct_09015" category="county_3" label="Windham" popup="2010 Population: 118,428" />
+</jqm_features>

@@ -1,0 +1,16 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_vt_50001" category="county_1" label="Addison" popup="2010 Population: 36,821" />
+<feature id="us_vt_50003" category="county_1" label="Bennington" popup="2010 Population: 37,125" />
+<feature id="us_vt_50005" category="county_1" label="Caledonia" popup="2010 Population: 31,227" />
+<feature id="us_vt_50007" category="county_3" label="Chittenden" popup="2010 Population: 156,545" />
+<feature id="us_vt_50009" category="county_1" label="Essex" popup="2010 Population: 6,306" />
+<feature id="us_vt_50011" category="county_1" label="Franklin" popup="2010 Population: 47,746" />
+<feature id="us_vt_50013" category="county_1" label="Grand Isle" popup="2010 Population: 6,970" />
+<feature id="us_vt_50015" category="county_1" label="Lamoille" popup="2010 Population: 24,475" />
+<feature id="us_vt_50017" category="county_1" label="Orange" popup="2010 Population: 28,936" />
+<feature id="us_vt_50019" category="county_1" label="Orleans" popup="2010 Population: 27,231" />
+<feature id="us_vt_50021" category="county_2" label="Rutland" popup="2010 Population: 61,642" />
+<feature id="us_vt_50023" category="county_2" label="Washington" popup="2010 Population: 59,534" />
+<feature id="us_vt_50025" category="county_1" label="Windham" popup="2010 Population: 44,513" />
+<feature id="us_vt_50027" category="county_2" label="Windsor" popup="2010 Population: 56,670" />
+</jqm_features>

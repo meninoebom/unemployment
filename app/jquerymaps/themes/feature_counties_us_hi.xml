@@ -1,0 +1,7 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_hi_15001" category="county_3" label="Hawaii" popup="2010 Population: 185,079" />
+<feature id="us_hi_15003" category="county_5" label="Honolulu" popup="2010 Population: 953,207" />
+<feature id="us_hi_15005" category="county_1" label="Kalawao" popup="2010 Population: 90" />
+<feature id="us_hi_15007" category="county_2" label="Kauai" popup="2010 Population: 67,091" />
+<feature id="us_hi_15009" category="county_3" label="Maui" popup="2010 Population: 154,834" />
+</jqm_features>

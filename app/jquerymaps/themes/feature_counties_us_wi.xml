@@ -1,0 +1,74 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_wi_55001" category="county_1" label="Adams" popup="2010 Population: 20,875" />
+<feature id="us_wi_55003" category="county_1" label="Ashland" popup="2010 Population: 16,157" />
+<feature id="us_wi_55005" category="county_1" label="Barron" popup="2010 Population: 45,870" />
+<feature id="us_wi_55007" category="county_1" label="Bayfield" popup="2010 Population: 15,014" />
+<feature id="us_wi_55009" category="county_3" label="Brown" popup="2010 Population: 248,007" />
+<feature id="us_wi_55011" category="county_1" label="Buffalo" popup="2010 Population: 13,587" />
+<feature id="us_wi_55013" category="county_1" label="Burnett" popup="2010 Population: 15,457" />
+<feature id="us_wi_55015" category="county_1" label="Calumet" popup="2010 Population: 48,971" />
+<feature id="us_wi_55017" category="county_2" label="Chippewa" popup="2010 Population: 62,415" />
+<feature id="us_wi_55019" category="county_1" label="Clark" popup="2010 Population: 34,690" />
+<feature id="us_wi_55021" category="county_2" label="Columbia" popup="2010 Population: 56,833" />
+<feature id="us_wi_55023" category="county_1" label="Crawford" popup="2010 Population: 16,644" />
+<feature id="us_wi_55025" category="county_4" label="Dane" popup="2010 Population: 488,073" />
+<feature id="us_wi_55027" category="county_2" label="Dodge" popup="2010 Population: 88,759" />
+<feature id="us_wi_55029" category="county_1" label="Door" popup="2010 Population: 27,785" />
+<feature id="us_wi_55031" category="county_1" label="Douglas" popup="2010 Population: 44,159" />
+<feature id="us_wi_55033" category="county_1" label="Dunn" popup="2010 Population: 43,857" />
+<feature id="us_wi_55035" category="county_2" label="Eau Claire" popup="2010 Population: 98,736" />
+<feature id="us_wi_55037" category="county_1" label="Florence" popup="2010 Population: 4,423" />
+<feature id="us_wi_55039" category="county_3" label="Fond du Lac" popup="2010 Population: 101,633" />
+<feature id="us_wi_55041" category="county_1" label="Forest" popup="2010 Population: 9,304" />
+<feature id="us_wi_55043" category="county_2" label="Grant" popup="2010 Population: 51,208" />
+<feature id="us_wi_55045" category="county_1" label="Green" popup="2010 Population: 36,842" />
+<feature id="us_wi_55047" category="county_1" label="Green Lake" popup="2010 Population: 19,051" />
+<feature id="us_wi_55049" category="county_1" label="Iowa" popup="2010 Population: 23,687" />
+<feature id="us_wi_55051" category="county_1" label="Iron" popup="2010 Population: 5,916" />
+<feature id="us_wi_55053" category="county_1" label="Jackson" popup="2010 Population: 20,449" />
+<feature id="us_wi_55055" category="county_2" label="Jefferson" popup="2010 Population: 83,686" />
+<feature id="us_wi_55057" category="county_1" label="Juneau" popup="2010 Population: 26,664" />
+<feature id="us_wi_55059" category="county_3" label="Kenosha" popup="2010 Population: 166,426" />
+<feature id="us_wi_55061" category="county_1" label="Kewaunee" popup="2010 Population: 20,574" />
+<feature id="us_wi_55063" category="county_3" label="La Crosse" popup="2010 Population: 114,638" />
+<feature id="us_wi_55065" category="county_1" label="Lafayette" popup="2010 Population: 16,836" />
+<feature id="us_wi_55067" category="county_1" label="Langlade" popup="2010 Population: 19,977" />
+<feature id="us_wi_55069" category="county_1" label="Lincoln" popup="2010 Population: 28,743" />
+<feature id="us_wi_55071" category="county_2" label="Manitowoc" popup="2010 Population: 81,442" />
+<feature id="us_wi_55073" category="county_3" label="Marathon" popup="2010 Population: 134,063" />
+<feature id="us_wi_55075" category="county_1" label="Marinette" popup="2010 Population: 41,749" />
+<feature id="us_wi_55077" category="county_1" label="Marquette" popup="2010 Population: 15,404" />
+<feature id="us_wi_55078" category="county_1" label="Menominee" popup="2010 Population: 4,232" />
+<feature id="us_wi_55079" category="county_5" label="Milwaukee" popup="2010 Population: 947,735" />
+<feature id="us_wi_55081" category="county_1" label="Monroe" popup="2010 Population: 44,673" />
+<feature id="us_wi_55083" category="county_1" label="Oconto" popup="2010 Population: 37,660" />
+<feature id="us_wi_55085" category="county_1" label="Oneida" popup="2010 Population: 35,998" />
+<feature id="us_wi_55087" category="county_3" label="Outagamie" popup="2010 Population: 176,695" />
+<feature id="us_wi_55089" category="county_2" label="Ozaukee" popup="2010 Population: 86,395" />
+<feature id="us_wi_55091" category="county_1" label="Pepin" popup="2010 Population: 7,469" />
+<feature id="us_wi_55093" category="county_1" label="Pierce" popup="2010 Population: 41,019" />
+<feature id="us_wi_55095" category="county_1" label="Polk" popup="2010 Population: 44,205" />
+<feature id="us_wi_55097" category="county_2" label="Portage" popup="2010 Population: 70,019" />
+<feature id="us_wi_55099" category="county_1" label="Price" popup="2010 Population: 14,159" />
+<feature id="us_wi_55101" category="county_3" label="Racine" popup="2010 Population: 195,408" />
+<feature id="us_wi_55103" category="county_1" label="Richland" popup="2010 Population: 18,021" />
+<feature id="us_wi_55105" category="county_3" label="Rock" popup="2010 Population: 160,331" />
+<feature id="us_wi_55107" category="county_1" label="Rusk" popup="2010 Population: 14,755" />
+<feature id="us_wi_55109" category="county_2" label="St. Croix" popup="2010 Population: 84,345" />
+<feature id="us_wi_55111" category="county_2" label="Sauk" popup="2010 Population: 61,976" />
+<feature id="us_wi_55113" category="county_1" label="Sawyer" popup="2010 Population: 16,557" />
+<feature id="us_wi_55115" category="county_1" label="Shawano" popup="2010 Population: 41,949" />
+<feature id="us_wi_55117" category="county_3" label="Sheboygan" popup="2010 Population: 115,507" />
+<feature id="us_wi_55119" category="county_1" label="Taylor" popup="2010 Population: 20,689" />
+<feature id="us_wi_55121" category="county_1" label="Trempealeau" popup="2010 Population: 28,816" />
+<feature id="us_wi_55123" category="county_1" label="Vernon" popup="2010 Population: 29,773" />
+<feature id="us_wi_55125" category="county_1" label="Vilas" popup="2010 Population: 21,430" />
+<feature id="us_wi_55127" category="county_3" label="Walworth" popup="2010 Population: 102,228" />
+<feature id="us_wi_55129" category="county_1" label="Washburn" popup="2010 Population: 15,911" />
+<feature id="us_wi_55131" category="county_3" label="Washington" popup="2010 Population: 131,887" />
+<feature id="us_wi_55133" category="county_4" label="Waukesha" popup="2010 Population: 389,891" />
+<feature id="us_wi_55135" category="county_2" label="Waupaca" popup="2010 Population: 52,410" />
+<feature id="us_wi_55137" category="county_1" label="Waushara" popup="2010 Population: 24,496" />
+<feature id="us_wi_55139" category="county_3" label="Winnebago" popup="2010 Population: 166,994" />
+<feature id="us_wi_55141" category="county_2" label="Wood" popup="2010 Population: 74,749" />
+</jqm_features>

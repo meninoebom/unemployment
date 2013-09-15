@@ -1,0 +1,66 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_co_08001" category="county_4" label="Adams" popup="2010 Population: 441,603" />
+<feature id="us_co_08003" category="county_1" label="Alamosa" popup="2010 Population: 15,445" />
+<feature id="us_co_08005" category="county_5" label="Arapahoe" popup="2010 Population: 572,003" />
+<feature id="us_co_08007" category="county_1" label="Archuleta" popup="2010 Population: 12,084" />
+<feature id="us_co_08009" category="county_1" label="Baca" popup="2010 Population: 3,788" />
+<feature id="us_co_08011" category="county_1" label="Bent" popup="2010 Population: 6,499" />
+<feature id="us_co_08013" category="county_4" label="Boulder" popup="2010 Population: 294,567" />
+<feature id="us_co_08014" category="county_2" label="Broomfield" popup="2010 Population: 55,889" />
+<feature id="us_co_08015" category="county_1" label="Chaffee" popup="2010 Population: 17,809" />
+<feature id="us_co_08017" category="county_1" label="Cheyenne" popup="2010 Population: 1,836" />
+<feature id="us_co_08019" category="county_1" label="Clear Creek" popup="2010 Population: 9,088" />
+<feature id="us_co_08021" category="county_1" label="Conejos" popup="2010 Population: 8,256" />
+<feature id="us_co_08023" category="county_1" label="Costilla" popup="2010 Population: 3,524" />
+<feature id="us_co_08025" category="county_1" label="Crowley" popup="2010 Population: 5,823" />
+<feature id="us_co_08027" category="county_1" label="Custer" popup="2010 Population: 4,255" />
+<feature id="us_co_08029" category="county_1" label="Delta" popup="2010 Population: 30,952" />
+<feature id="us_co_08031" category="county_5" label="Denver" popup="2010 Population: 600,158" />
+<feature id="us_co_08033" category="county_1" label="Dolores" popup="2010 Population: 2,064" />
+<feature id="us_co_08035" category="county_4" label="Douglas" popup="2010 Population: 285,465" />
+<feature id="us_co_08037" category="county_2" label="Eagle" popup="2010 Population: 52,197" />
+<feature id="us_co_08039" category="county_1" label="Elbert" popup="2010 Population: 23,086" />
+<feature id="us_co_08041" category="county_5" label="El Paso" popup="2010 Population: 622,263" />
+<feature id="us_co_08043" category="county_1" label="Fremont" popup="2010 Population: 46,824" />
+<feature id="us_co_08045" category="county_2" label="Garfield" popup="2010 Population: 56,389" />
+<feature id="us_co_08047" category="county_1" label="Gilpin" popup="2010 Population: 5,441" />
+<feature id="us_co_08049" category="county_1" label="Grand" popup="2010 Population: 14,843" />
+<feature id="us_co_08051" category="county_1" label="Gunnison" popup="2010 Population: 15,324" />
+<feature id="us_co_08053" category="county_1" label="Hinsdale" popup="2010 Population: 843" />
+<feature id="us_co_08055" category="county_1" label="Huerfano" popup="2010 Population: 6,711" />
+<feature id="us_co_08057" category="county_1" label="Jackson" popup="2010 Population: 1,394" />
+<feature id="us_co_08059" category="county_5" label="Jefferson" popup="2010 Population: 534,543" />
+<feature id="us_co_08061" category="county_1" label="Kiowa" popup="2010 Population: 1,398" />
+<feature id="us_co_08063" category="county_1" label="Kit Carson" popup="2010 Population: 8,270" />
+<feature id="us_co_08065" category="county_1" label="Lake" popup="2010 Population: 7,310" />
+<feature id="us_co_08067" category="county_2" label="La Plata" popup="2010 Population: 51,334" />
+<feature id="us_co_08069" category="county_4" label="Larimer" popup="2010 Population: 299,630" />
+<feature id="us_co_08071" category="county_1" label="Las Animas" popup="2010 Population: 15,507" />
+<feature id="us_co_08073" category="county_1" label="Lincoln" popup="2010 Population: 5,467" />
+<feature id="us_co_08075" category="county_1" label="Logan" popup="2010 Population: 22,709" />
+<feature id="us_co_08077" category="county_3" label="Mesa" popup="2010 Population: 146,723" />
+<feature id="us_co_08079" category="county_1" label="Mineral" popup="2010 Population: 712" />
+<feature id="us_co_08081" category="county_1" label="Moffat" popup="2010 Population: 13,795" />
+<feature id="us_co_08083" category="county_1" label="Montezuma" popup="2010 Population: 25,535" />
+<feature id="us_co_08085" category="county_1" label="Montrose" popup="2010 Population: 41,276" />
+<feature id="us_co_08087" category="county_1" label="Morgan" popup="2010 Population: 28,159" />
+<feature id="us_co_08089" category="county_1" label="Otero" popup="2010 Population: 18,831" />
+<feature id="us_co_08091" category="county_1" label="Ouray" popup="2010 Population: 4,436" />
+<feature id="us_co_08093" category="county_1" label="Park" popup="2010 Population: 16,206" />
+<feature id="us_co_08095" category="county_1" label="Phillips" popup="2010 Population: 4,442" />
+<feature id="us_co_08097" category="county_1" label="Pitkin" popup="2010 Population: 17,148" />
+<feature id="us_co_08099" category="county_1" label="Prowers" popup="2010 Population: 12,551" />
+<feature id="us_co_08101" category="county_3" label="Pueblo" popup="2010 Population: 159,063" />
+<feature id="us_co_08103" category="county_1" label="Rio Blanco" popup="2010 Population: 6,666" />
+<feature id="us_co_08105" category="county_1" label="Rio Grande" popup="2010 Population: 11,982" />
+<feature id="us_co_08107" category="county_1" label="Routt" popup="2010 Population: 23,509" />
+<feature id="us_co_08109" category="county_1" label="Saguache" popup="2010 Population: 6,108" />
+<feature id="us_co_08111" category="county_1" label="San Juan" popup="2010 Population: 699" />
+<feature id="us_co_08113" category="county_1" label="San Miguel" popup="2010 Population: 7,359" />
+<feature id="us_co_08115" category="county_1" label="Sedgwick" popup="2010 Population: 2,379" />
+<feature id="us_co_08117" category="county_1" label="Summit" popup="2010 Population: 27,994" />
+<feature id="us_co_08119" category="county_1" label="Teller" popup="2010 Population: 23,350" />
+<feature id="us_co_08121" category="county_1" label="Washington" popup="2010 Population: 4,814" />
+<feature id="us_co_08123" category="county_4" label="Weld" popup="2010 Population: 252,825" />
+<feature id="us_co_08125" category="county_1" label="Yuma" popup="2010 Population: 10,043" />
+</jqm_features>

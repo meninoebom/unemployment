@@ -1,0 +1,60 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ca_06001" category="county_6" label="Alameda" popup="2010 Population: 1,510,271" />
+<feature id="us_ca_06003" category="county_1" label="Alpine" popup="2010 Population: 1,175" />
+<feature id="us_ca_06005" category="county_1" label="Amador" popup="2010 Population: 38,091" />
+<feature id="us_ca_06007" category="county_3" label="Butte" popup="2010 Population: 220,000" />
+<feature id="us_ca_06009" category="county_1" label="Calaveras" popup="2010 Population: 45,578" />
+<feature id="us_ca_06011" category="county_1" label="Colusa" popup="2010 Population: 21,419" />
+<feature id="us_ca_06013" category="county_6" label="Contra Costa" popup="2010 Population: 1,049,025" />
+<feature id="us_ca_06015" category="county_1" label="Del Norte" popup="2010 Population: 28,610" />
+<feature id="us_ca_06017" category="county_3" label="El Dorado" popup="2010 Population: 181,058" />
+<feature id="us_ca_06019" category="county_5" label="Fresno" popup="2010 Population: 930,450" />
+<feature id="us_ca_06021" category="county_1" label="Glenn" popup="2010 Population: 28,122" />
+<feature id="us_ca_06023" category="county_3" label="Humboldt" popup="2010 Population: 134,623" />
+<feature id="us_ca_06025" category="county_3" label="Imperial" popup="2010 Population: 174,528" />
+<feature id="us_ca_06027" category="county_1" label="Inyo" popup="2010 Population: 18,546" />
+<feature id="us_ca_06029" category="county_5" label="Kern" popup="2010 Population: 839,631" />
+<feature id="us_ca_06031" category="county_3" label="Kings" popup="2010 Population: 152,982" />
+<feature id="us_ca_06033" category="county_2" label="Lake" popup="2010 Population: 64,665" />
+<feature id="us_ca_06035" category="county_1" label="Lassen" popup="2010 Population: 34,895" />
+<feature id="us_ca_06037" category="county_6" label="Los Angeles" popup="2010 Population: 9,818,605" />
+<feature id="us_ca_06039" category="county_3" label="Madera" popup="2010 Population: 150,865" />
+<feature id="us_ca_06041" category="county_4" label="Marin" popup="2010 Population: 252,409" />
+<feature id="us_ca_06043" category="county_1" label="Mariposa" popup="2010 Population: 18,251" />
+<feature id="us_ca_06045" category="county_2" label="Mendocino" popup="2010 Population: 87,841" />
+<feature id="us_ca_06047" category="county_4" label="Merced" popup="2010 Population: 255,793" />
+<feature id="us_ca_06049" category="county_1" label="Modoc" popup="2010 Population: 9,686" />
+<feature id="us_ca_06051" category="county_1" label="Mono" popup="2010 Population: 14,202" />
+<feature id="us_ca_06053" category="county_4" label="Monterey" popup="2010 Population: 415,057" />
+<feature id="us_ca_06055" category="county_3" label="Napa" popup="2010 Population: 136,484" />
+<feature id="us_ca_06057" category="county_2" label="Nevada" popup="2010 Population: 98,764" />
+<feature id="us_ca_06059" category="county_6" label="Orange" popup="2010 Population: 3,010,232" />
+<feature id="us_ca_06061" category="county_4" label="Placer" popup="2010 Population: 348,432" />
+<feature id="us_ca_06063" category="county_1" label="Plumas" popup="2010 Population: 20,007" />
+<feature id="us_ca_06065" category="county_6" label="Riverside" popup="2010 Population: 2,189,641" />
+<feature id="us_ca_06067" category="county_6" label="Sacramento" popup="2010 Population: 1,418,788" />
+<feature id="us_ca_06069" category="county_2" label="San Benito" popup="2010 Population: 55,269" />
+<feature id="us_ca_06071" category="county_6" label="San Bernardino" popup="2010 Population: 2,035,210" />
+<feature id="us_ca_06073" category="county_6" label="San Diego" popup="2010 Population: 3,095,313" />
+<feature id="us_ca_06075" category="county_5" label="San Francisco" popup="2010 Population: 805,235" />
+<feature id="us_ca_06077" category="county_5" label="San Joaquin" popup="2010 Population: 685,306" />
+<feature id="us_ca_06079" category="county_4" label="San Luis Obispo" popup="2010 Population: 269,637" />
+<feature id="us_ca_06081" category="county_5" label="San Mateo" popup="2010 Population: 718,451" />
+<feature id="us_ca_06083" category="county_4" label="Santa Barbara" popup="2010 Population: 423,895" />
+<feature id="us_ca_06085" category="county_6" label="Santa Clara" popup="2010 Population: 1,781,642" />
+<feature id="us_ca_06087" category="county_4" label="Santa Cruz" popup="2010 Population: 262,382" />
+<feature id="us_ca_06089" category="county_3" label="Shasta" popup="2010 Population: 177,223" />
+<feature id="us_ca_06091" category="county_1" label="Sierra" popup="2010 Population: 3,240" />
+<feature id="us_ca_06093" category="county_1" label="Siskiyou" popup="2010 Population: 44,900" />
+<feature id="us_ca_06095" category="county_4" label="Solano" popup="2010 Population: 413,344" />
+<feature id="us_ca_06097" category="county_4" label="Sonoma" popup="2010 Population: 483,878" />
+<feature id="us_ca_06099" category="county_5" label="Stanislaus" popup="2010 Population: 514,453" />
+<feature id="us_ca_06101" category="county_2" label="Sutter" popup="2010 Population: 94,737" />
+<feature id="us_ca_06103" category="county_2" label="Tehama" popup="2010 Population: 63,463" />
+<feature id="us_ca_06105" category="county_1" label="Trinity" popup="2010 Population: 13,786" />
+<feature id="us_ca_06107" category="county_4" label="Tulare" popup="2010 Population: 442,179" />
+<feature id="us_ca_06109" category="county_2" label="Tuolumne" popup="2010 Population: 55,365" />
+<feature id="us_ca_06111" category="county_5" label="Ventura" popup="2010 Population: 823,318" />
+<feature id="us_ca_06113" category="county_3" label="Yolo" popup="2010 Population: 200,849" />
+<feature id="us_ca_06115" category="county_2" label="Yuba" popup="2010 Population: 72,155" />
+</jqm_features>

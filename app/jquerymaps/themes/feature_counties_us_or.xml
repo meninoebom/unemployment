@@ -1,0 +1,38 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_or_41001" category="county_1" label="Baker" popup="2010 Population: 16,134" />
+<feature id="us_or_41003" category="county_2" label="Benton" popup="2010 Population: 85,579" />
+<feature id="us_or_41005" category="county_4" label="Clackamas" popup="2010 Population: 375,992" />
+<feature id="us_or_41007" category="county_1" label="Clatsop" popup="2010 Population: 37,039" />
+<feature id="us_or_41009" category="county_1" label="Columbia" popup="2010 Population: 49,351" />
+<feature id="us_or_41011" category="county_2" label="Coos" popup="2010 Population: 63,043" />
+<feature id="us_or_41013" category="county_1" label="Crook" popup="2010 Population: 20,978" />
+<feature id="us_or_41015" category="county_1" label="Curry" popup="2010 Population: 22,364" />
+<feature id="us_or_41017" category="county_3" label="Deschutes" popup="2010 Population: 157,733" />
+<feature id="us_or_41019" category="county_3" label="Douglas" popup="2010 Population: 107,667" />
+<feature id="us_or_41021" category="county_1" label="Gilliam" popup="2010 Population: 1,871" />
+<feature id="us_or_41023" category="county_1" label="Grant" popup="2010 Population: 7,445" />
+<feature id="us_or_41025" category="county_1" label="Harney" popup="2010 Population: 7,422" />
+<feature id="us_or_41027" category="county_1" label="Hood River" popup="2010 Population: 22,346" />
+<feature id="us_or_41029" category="county_3" label="Jackson" popup="2010 Population: 203,206" />
+<feature id="us_or_41031" category="county_1" label="Jefferson" popup="2010 Population: 21,720" />
+<feature id="us_or_41033" category="county_2" label="Josephine" popup="2010 Population: 82,713" />
+<feature id="us_or_41035" category="county_2" label="Klamath" popup="2010 Population: 66,380" />
+<feature id="us_or_41037" category="county_1" label="Lake" popup="2010 Population: 7,895" />
+<feature id="us_or_41039" category="county_4" label="Lane" popup="2010 Population: 351,715" />
+<feature id="us_or_41041" category="county_1" label="Lincoln" popup="2010 Population: 46,034" />
+<feature id="us_or_41043" category="county_3" label="Linn" popup="2010 Population: 116,672" />
+<feature id="us_or_41045" category="county_1" label="Malheur" popup="2010 Population: 31,313" />
+<feature id="us_or_41047" category="county_4" label="Marion" popup="2010 Population: 315,335" />
+<feature id="us_or_41049" category="county_1" label="Morrow" popup="2010 Population: 11,173" />
+<feature id="us_or_41051" category="county_5" label="Multnomah" popup="2010 Population: 735,334" />
+<feature id="us_or_41053" category="county_2" label="Polk" popup="2010 Population: 75,403" />
+<feature id="us_or_41055" category="county_1" label="Sherman" popup="2010 Population: 1,765" />
+<feature id="us_or_41057" category="county_1" label="Tillamook" popup="2010 Population: 25,250" />
+<feature id="us_or_41059" category="county_2" label="Umatilla" popup="2010 Population: 75,889" />
+<feature id="us_or_41061" category="county_1" label="Union" popup="2010 Population: 25,748" />
+<feature id="us_or_41063" category="county_1" label="Wallowa" popup="2010 Population: 7,008" />
+<feature id="us_or_41065" category="county_1" label="Wasco" popup="2010 Population: 25,213" />
+<feature id="us_or_41067" category="county_5" label="Washington" popup="2010 Population: 529,710" />
+<feature id="us_or_41069" category="county_1" label="Wheeler" popup="2010 Population: 1,441" />
+<feature id="us_or_41071" category="county_2" label="Yamhill" popup="2010 Population: 99,193" />
+</jqm_features>

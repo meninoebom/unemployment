@@ -1,0 +1,66 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_la_22001" category="county_2" label="Acadia" popup="2010 Population: 61,773" />
+<feature id="us_la_22003" category="county_1" label="Allen" popup="2010 Population: 25,764" />
+<feature id="us_la_22005" category="county_3" label="Ascension" popup="2010 Population: 107,215" />
+<feature id="us_la_22007" category="county_1" label="Assumption" popup="2010 Population: 23,421" />
+<feature id="us_la_22009" category="county_1" label="Avoyelles" popup="2010 Population: 42,073" />
+<feature id="us_la_22011" category="county_1" label="Beauregard" popup="2010 Population: 35,654" />
+<feature id="us_la_22013" category="county_1" label="Bienville" popup="2010 Population: 14,353" />
+<feature id="us_la_22015" category="county_3" label="Bossier" popup="2010 Population: 116,979" />
+<feature id="us_la_22017" category="county_4" label="Caddo" popup="2010 Population: 254,969" />
+<feature id="us_la_22019" category="county_3" label="Calcasieu" popup="2010 Population: 192,768" />
+<feature id="us_la_22021" category="county_1" label="Caldwell" popup="2010 Population: 10,132" />
+<feature id="us_la_22023" category="county_1" label="Cameron" popup="2010 Population: 6,839" />
+<feature id="us_la_22025" category="county_1" label="Catahoula" popup="2010 Population: 10,407" />
+<feature id="us_la_22027" category="county_1" label="Claiborne" popup="2010 Population: 17,195" />
+<feature id="us_la_22029" category="county_1" label="Concordia" popup="2010 Population: 20,822" />
+<feature id="us_la_22031" category="county_1" label="De Soto" popup="2010 Population: 26,656" />
+<feature id="us_la_22033" category="county_4" label="East Baton Rouge" popup="2010 Population: 440,171" />
+<feature id="us_la_22035" category="county_1" label="East Carroll" popup="2010 Population: 7,759" />
+<feature id="us_la_22037" category="county_1" label="East Feliciana" popup="2010 Population: 20,267" />
+<feature id="us_la_22039" category="county_1" label="Evangeline" popup="2010 Population: 33,984" />
+<feature id="us_la_22041" category="county_1" label="Franklin" popup="2010 Population: 20,767" />
+<feature id="us_la_22043" category="county_1" label="Grant" popup="2010 Population: 22,309" />
+<feature id="us_la_22045" category="county_2" label="Iberia" popup="2010 Population: 73,240" />
+<feature id="us_la_22047" category="county_1" label="Iberville" popup="2010 Population: 33,387" />
+<feature id="us_la_22049" category="county_1" label="Jackson" popup="2010 Population: 16,274" />
+<feature id="us_la_22051" category="county_4" label="Jefferson" popup="2010 Population: 432,552" />
+<feature id="us_la_22053" category="county_1" label="Jefferson Davis" popup="2010 Population: 31,594" />
+<feature id="us_la_22055" category="county_3" label="Lafayette" popup="2010 Population: 221,578" />
+<feature id="us_la_22057" category="county_2" label="Lafourche" popup="2010 Population: 96,318" />
+<feature id="us_la_22059" category="county_1" label="La Salle" popup="2010 Population: 14,890" />
+<feature id="us_la_22061" category="county_1" label="Lincoln" popup="2010 Population: 46,735" />
+<feature id="us_la_22063" category="county_3" label="Livingston" popup="2010 Population: 128,026" />
+<feature id="us_la_22065" category="county_1" label="Madison" popup="2010 Population: 12,093" />
+<feature id="us_la_22067" category="county_1" label="Morehouse" popup="2010 Population: 27,979" />
+<feature id="us_la_22069" category="county_1" label="Natchitoches" popup="2010 Population: 39,566" />
+<feature id="us_la_22071" category="county_4" label="Orleans" popup="2010 Population: 343,829" />
+<feature id="us_la_22073" category="county_3" label="Ouachita" popup="2010 Population: 153,720" />
+<feature id="us_la_22075" category="county_1" label="Plaquemines" popup="2010 Population: 23,042" />
+<feature id="us_la_22077" category="county_1" label="Pointe Coupee" popup="2010 Population: 22,802" />
+<feature id="us_la_22079" category="county_3" label="Rapides" popup="2010 Population: 131,613" />
+<feature id="us_la_22081" category="county_1" label="Red River" popup="2010 Population: 9,091" />
+<feature id="us_la_22083" category="county_1" label="Richland" popup="2010 Population: 20,725" />
+<feature id="us_la_22085" category="county_1" label="Sabine" popup="2010 Population: 24,233" />
+<feature id="us_la_22087" category="county_1" label="St. Bernard" popup="2010 Population: 35,897" />
+<feature id="us_la_22089" category="county_2" label="St. Charles" popup="2010 Population: 52,780" />
+<feature id="us_la_22091" category="county_1" label="St. Helena" popup="2010 Population: 11,203" />
+<feature id="us_la_22093" category="county_1" label="St. James" popup="2010 Population: 22,102" />
+<feature id="us_la_22095" category="county_1" label="St. John the Baptist" popup="2010 Population: 45,924" />
+<feature id="us_la_22097" category="county_2" label="St. Landry" popup="2010 Population: 83,384" />
+<feature id="us_la_22099" category="county_2" label="St. Martin" popup="2010 Population: 52,160" />
+<feature id="us_la_22101" category="county_2" label="St. Mary" popup="2010 Population: 54,650" />
+<feature id="us_la_22103" category="county_3" label="St. Tammany" popup="2010 Population: 233,740" />
+<feature id="us_la_22105" category="county_3" label="Tangipahoa" popup="2010 Population: 121,097" />
+<feature id="us_la_22107" category="county_1" label="Tensas" popup="2010 Population: 5,252" />
+<feature id="us_la_22109" category="county_3" label="Terrebonne" popup="2010 Population: 111,860" />
+<feature id="us_la_22111" category="county_1" label="Union" popup="2010 Population: 22,721" />
+<feature id="us_la_22113" category="county_2" label="Vermilion" popup="2010 Population: 57,999" />
+<feature id="us_la_22115" category="county_2" label="Vernon" popup="2010 Population: 52,334" />
+<feature id="us_la_22117" category="county_1" label="Washington" popup="2010 Population: 47,168" />
+<feature id="us_la_22119" category="county_1" label="Webster" popup="2010 Population: 41,207" />
+<feature id="us_la_22121" category="county_1" label="West Baton Rouge" popup="2010 Population: 23,788" />
+<feature id="us_la_22123" category="county_1" label="West Carroll" popup="2010 Population: 11,604" />
+<feature id="us_la_22125" category="county_1" label="West Feliciana" popup="2010 Population: 15,625" />
+<feature id="us_la_22127" category="county_1" label="Winn" popup="2010 Population: 15,313" />
+</jqm_features>

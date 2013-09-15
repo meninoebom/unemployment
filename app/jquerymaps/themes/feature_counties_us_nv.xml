@@ -1,0 +1,19 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_nv_32001" category="county_1" label="Churchill" popup="2010 Population: 24,877" />
+<feature id="us_nv_32003" category="county_6" label="Clark" popup="2010 Population: 1,951,269" />
+<feature id="us_nv_32005" category="county_1" label="Douglas" popup="2010 Population: 46,997" />
+<feature id="us_nv_32007" category="county_1" label="Elko" popup="2010 Population: 48,818" />
+<feature id="us_nv_32009" category="county_1" label="Esmeralda" popup="2010 Population: 783" />
+<feature id="us_nv_32011" category="county_1" label="Eureka" popup="2010 Population: 1,987" />
+<feature id="us_nv_32013" category="county_1" label="Humboldt" popup="2010 Population: 16,528" />
+<feature id="us_nv_32015" category="county_1" label="Lander" popup="2010 Population: 5,775" />
+<feature id="us_nv_32017" category="county_1" label="Lincoln" popup="2010 Population: 5,345" />
+<feature id="us_nv_32019" category="county_2" label="Lyon" popup="2010 Population: 51,980" />
+<feature id="us_nv_32021" category="county_1" label="Mineral" popup="2010 Population: 4,772" />
+<feature id="us_nv_32023" category="county_1" label="Nye" popup="2010 Population: 43,946" />
+<feature id="us_nv_32027" category="county_1" label="Pershing" popup="2010 Population: 6,753" />
+<feature id="us_nv_32029" category="county_1" label="Storey" popup="2010 Population: 4,010" />
+<feature id="us_nv_32031" category="county_4" label="Washoe" popup="2010 Population: 421,407" />
+<feature id="us_nv_32033" category="county_1" label="White Pine" popup="2010 Population: 10,030" />
+<feature id="us_nv_32510" category="county_2" label="Carson City" popup="2010 Population: 55,274" />
+</jqm_features>

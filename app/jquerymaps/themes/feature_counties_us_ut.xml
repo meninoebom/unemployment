@@ -1,0 +1,31 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ut_49001" category="county_1" label="Beaver" popup="2010 Population: 6,629" />
+<feature id="us_ut_49003" category="county_1" label="Box Elder" popup="2010 Population: 49,975" />
+<feature id="us_ut_49005" category="county_3" label="Cache" popup="2010 Population: 112,656" />
+<feature id="us_ut_49007" category="county_1" label="Carbon" popup="2010 Population: 21,403" />
+<feature id="us_ut_49009" category="county_1" label="Daggett" popup="2010 Population: 1,059" />
+<feature id="us_ut_49011" category="county_4" label="Davis" popup="2010 Population: 306,479" />
+<feature id="us_ut_49013" category="county_1" label="Duchesne" popup="2010 Population: 18,607" />
+<feature id="us_ut_49015" category="county_1" label="Emery" popup="2010 Population: 10,976" />
+<feature id="us_ut_49017" category="county_1" label="Garfield" popup="2010 Population: 5,172" />
+<feature id="us_ut_49019" category="county_1" label="Grand" popup="2010 Population: 9,225" />
+<feature id="us_ut_49021" category="county_1" label="Iron" popup="2010 Population: 46,163" />
+<feature id="us_ut_49023" category="county_1" label="Juab" popup="2010 Population: 10,246" />
+<feature id="us_ut_49025" category="county_1" label="Kane" popup="2010 Population: 7,125" />
+<feature id="us_ut_49027" category="county_1" label="Millard" popup="2010 Population: 12,503" />
+<feature id="us_ut_49029" category="county_1" label="Morgan" popup="2010 Population: 9,469" />
+<feature id="us_ut_49031" category="county_1" label="Piute" popup="2010 Population: 1,556" />
+<feature id="us_ut_49033" category="county_1" label="Rich" popup="2010 Population: 2,264" />
+<feature id="us_ut_49035" category="county_6" label="Salt Lake" popup="2010 Population: 1,029,655" />
+<feature id="us_ut_49037" category="county_1" label="San Juan" popup="2010 Population: 14,746" />
+<feature id="us_ut_49039" category="county_1" label="Sanpete" popup="2010 Population: 27,822" />
+<feature id="us_ut_49041" category="county_1" label="Sevier" popup="2010 Population: 20,802" />
+<feature id="us_ut_49043" category="county_1" label="Summit" popup="2010 Population: 36,324" />
+<feature id="us_ut_49045" category="county_2" label="Tooele" popup="2010 Population: 58,218" />
+<feature id="us_ut_49047" category="county_1" label="Uintah" popup="2010 Population: 32,588" />
+<feature id="us_ut_49049" category="county_5" label="Utah" popup="2010 Population: 516,564" />
+<feature id="us_ut_49051" category="county_1" label="Wasatch" popup="2010 Population: 23,530" />
+<feature id="us_ut_49053" category="county_3" label="Washington" popup="2010 Population: 138,115" />
+<feature id="us_ut_49055" category="county_1" label="Wayne" popup="2010 Population: 2,778" />
+<feature id="us_ut_49057" category="county_3" label="Weber" popup="2010 Population: 231,236" />
+</jqm_features>

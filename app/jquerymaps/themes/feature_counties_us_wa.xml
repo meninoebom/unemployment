@@ -1,0 +1,41 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_wa_53001" category="county_1" label="Adams" popup="2010 Population: 18,728" />
+<feature id="us_wa_53003" category="county_1" label="Asotin" popup="2010 Population: 21,623" />
+<feature id="us_wa_53005" category="county_3" label="Benton" popup="2010 Population: 175,177" />
+<feature id="us_wa_53007" category="county_2" label="Chelan" popup="2010 Population: 72,453" />
+<feature id="us_wa_53009" category="county_2" label="Clallam" popup="2010 Population: 71,404" />
+<feature id="us_wa_53011" category="county_4" label="Clark" popup="2010 Population: 425,363" />
+<feature id="us_wa_53013" category="county_1" label="Columbia" popup="2010 Population: 4,078" />
+<feature id="us_wa_53015" category="county_3" label="Cowlitz" popup="2010 Population: 102,410" />
+<feature id="us_wa_53017" category="county_1" label="Douglas" popup="2010 Population: 38,431" />
+<feature id="us_wa_53019" category="county_1" label="Ferry" popup="2010 Population: 7,551" />
+<feature id="us_wa_53021" category="county_2" label="Franklin" popup="2010 Population: 78,163" />
+<feature id="us_wa_53023" category="county_1" label="Garfield" popup="2010 Population: 2,266" />
+<feature id="us_wa_53025" category="county_2" label="Grant" popup="2010 Population: 89,120" />
+<feature id="us_wa_53027" category="county_2" label="Grays Harbor" popup="2010 Population: 72,797" />
+<feature id="us_wa_53029" category="county_2" label="Island" popup="2010 Population: 78,506" />
+<feature id="us_wa_53031" category="county_1" label="Jefferson" popup="2010 Population: 29,872" />
+<feature id="us_wa_53033" category="county_6" label="King" popup="2010 Population: 1,931,249" />
+<feature id="us_wa_53035" category="county_4" label="Kitsap" popup="2010 Population: 251,133" />
+<feature id="us_wa_53037" category="county_1" label="Kittitas" popup="2010 Population: 40,915" />
+<feature id="us_wa_53039" category="county_1" label="Klickitat" popup="2010 Population: 20,318" />
+<feature id="us_wa_53041" category="county_2" label="Lewis" popup="2010 Population: 75,455" />
+<feature id="us_wa_53043" category="county_1" label="Lincoln" popup="2010 Population: 10,570" />
+<feature id="us_wa_53045" category="county_2" label="Mason" popup="2010 Population: 60,699" />
+<feature id="us_wa_53047" category="county_1" label="Okanogan" popup="2010 Population: 41,120" />
+<feature id="us_wa_53049" category="county_1" label="Pacific" popup="2010 Population: 20,920" />
+<feature id="us_wa_53051" category="county_1" label="Pend Oreille" popup="2010 Population: 13,001" />
+<feature id="us_wa_53053" category="county_5" label="Pierce" popup="2010 Population: 795,225" />
+<feature id="us_wa_53055" category="county_1" label="San Juan" popup="2010 Population: 15,769" />
+<feature id="us_wa_53057" category="county_3" label="Skagit" popup="2010 Population: 116,901" />
+<feature id="us_wa_53059" category="county_1" label="Skamania" popup="2010 Population: 11,066" />
+<feature id="us_wa_53061" category="county_5" label="Snohomish" popup="2010 Population: 713,335" />
+<feature id="us_wa_53063" category="county_4" label="Spokane" popup="2010 Population: 471,221" />
+<feature id="us_wa_53065" category="county_1" label="Stevens" popup="2010 Population: 43,531" />
+<feature id="us_wa_53067" category="county_4" label="Thurston" popup="2010 Population: 252,264" />
+<feature id="us_wa_53069" category="county_1" label="Wahkiakum" popup="2010 Population: 3,978" />
+<feature id="us_wa_53071" category="county_2" label="Walla Walla" popup="2010 Population: 58,781" />
+<feature id="us_wa_53073" category="county_3" label="Whatcom" popup="2010 Population: 201,140" />
+<feature id="us_wa_53075" category="county_1" label="Whitman" popup="2010 Population: 44,776" />
+<feature id="us_wa_53077" category="county_3" label="Yakima" popup="2010 Population: 243,231" />
+</jqm_features>

@@ -1,0 +1,18 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_me_23001" category="county_3" label="Androscoggin" popup="2010 Population: 107,702" />
+<feature id="us_me_23003" category="county_2" label="Aroostook" popup="2010 Population: 71,870" />
+<feature id="us_me_23005" category="county_4" label="Cumberland" popup="2010 Population: 281,674" />
+<feature id="us_me_23007" category="county_1" label="Franklin" popup="2010 Population: 30,768" />
+<feature id="us_me_23009" category="county_2" label="Hancock" popup="2010 Population: 54,418" />
+<feature id="us_me_23011" category="county_3" label="Kennebec" popup="2010 Population: 122,151" />
+<feature id="us_me_23013" category="county_1" label="Knox" popup="2010 Population: 39,736" />
+<feature id="us_me_23015" category="county_1" label="Lincoln" popup="2010 Population: 34,457" />
+<feature id="us_me_23017" category="county_2" label="Oxford" popup="2010 Population: 57,833" />
+<feature id="us_me_23019" category="county_3" label="Penobscot" popup="2010 Population: 153,923" />
+<feature id="us_me_23021" category="county_1" label="Piscataquis" popup="2010 Population: 17,535" />
+<feature id="us_me_23023" category="county_1" label="Sagadahoc" popup="2010 Population: 35,293" />
+<feature id="us_me_23025" category="county_2" label="Somerset" popup="2010 Population: 52,228" />
+<feature id="us_me_23027" category="county_1" label="Waldo" popup="2010 Population: 38,786" />
+<feature id="us_me_23029" category="county_1" label="Washington" popup="2010 Population: 32,856" />
+<feature id="us_me_23031" category="county_3" label="York" popup="2010 Population: 197,131" />
+</jqm_features>

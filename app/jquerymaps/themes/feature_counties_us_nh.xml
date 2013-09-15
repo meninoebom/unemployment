@@ -1,0 +1,12 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_nh_33001" category="county_2" label="Belknap" popup="2010 Population: 60,088" />
+<feature id="us_nh_33003" category="county_1" label="Carroll" popup="2010 Population: 47,818" />
+<feature id="us_nh_33005" category="county_2" label="Cheshire" popup="2010 Population: 77,117" />
+<feature id="us_nh_33007" category="county_1" label="Coos" popup="2010 Population: 33,055" />
+<feature id="us_nh_33009" category="county_2" label="Grafton" popup="2010 Population: 89,118" />
+<feature id="us_nh_33011" category="county_4" label="Hillsborough" popup="2010 Population: 400,721" />
+<feature id="us_nh_33013" category="county_3" label="Merrimack" popup="2010 Population: 146,445" />
+<feature id="us_nh_33015" category="county_4" label="Rockingham" popup="2010 Population: 295,223" />
+<feature id="us_nh_33017" category="county_3" label="Strafford" popup="2010 Population: 123,143" />
+<feature id="us_nh_33019" category="county_1" label="Sullivan" popup="2010 Population: 43,742" />
+</jqm_features>

@@ -1,0 +1,17 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_az_04001" category="county_2" label="Apache" popup="2010 Population: 71,518" />
+<feature id="us_az_04003" category="county_3" label="Cochise" popup="2010 Population: 131,346" />
+<feature id="us_az_04005" category="county_3" label="Coconino" popup="2010 Population: 134,421" />
+<feature id="us_az_04007" category="county_2" label="Gila" popup="2010 Population: 53,597" />
+<feature id="us_az_04009" category="county_1" label="Graham" popup="2010 Population: 37,220" />
+<feature id="us_az_04011" category="county_1" label="Greenlee" popup="2010 Population: 8,437" />
+<feature id="us_az_04012" category="county_1" label="La Paz" popup="2010 Population: 20,489" />
+<feature id="us_az_04013" category="county_6" label="Maricopa" popup="2010 Population: 3,817,117" />
+<feature id="us_az_04015" category="county_3" label="Mohave" popup="2010 Population: 200,186" />
+<feature id="us_az_04017" category="county_3" label="Navajo" popup="2010 Population: 107,449" />
+<feature id="us_az_04019" category="county_5" label="Pima" popup="2010 Population: 980,263" />
+<feature id="us_az_04021" category="county_4" label="Pinal" popup="2010 Population: 375,770" />
+<feature id="us_az_04023" category="county_1" label="Santa Cruz" popup="2010 Population: 47,420" />
+<feature id="us_az_04025" category="county_3" label="Yavapai" popup="2010 Population: 211,033" />
+<feature id="us_az_04027" category="county_3" label="Yuma" popup="2010 Population: 195,751" />
+</jqm_features>

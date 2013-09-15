@@ -1,0 +1,3 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_dc_11001" category="county_5" label="District of Columbia" popup="2010 Population: 601,723" />
+</jqm_features>

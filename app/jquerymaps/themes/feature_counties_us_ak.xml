@@ -1,0 +1,29 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ak_02013" category="county_1" label="Aleutians East" popup="2010 Population: 3,141" />
+<feature id="us_ak_02016" category="county_1" label="Aleutians West" popup="2010 Population: 5,561" />
+<feature id="us_ak_02020" category="county_4" label="Anchorage" popup="2010 Population: 291,826" />
+<feature id="us_ak_02050" category="county_1" label="Bethel" popup="2010 Population: 17,013" />
+<feature id="us_ak_02060" category="county_1" label="Bristol Bay" popup="2010 Population: 997" />
+<feature id="us_ak_02068" category="county_1" label="Denali" popup="2010 Population: 1,826" />
+<feature id="us_ak_02070" category="county_1" label="Dillingham" popup="2010 Population: 4,847" />
+<feature id="us_ak_02090" category="county_2" label="Fairbanks North Star" popup="2010 Population: 97,581" />
+<feature id="us_ak_02100" category="county_1" label="Haines" popup="2010 Population: 2,508" />
+<feature id="us_ak_02110" category="county_1" label="Juneau" popup="2010 Population: 31,275" />
+<feature id="us_ak_02122" category="county_2" label="Kenai Peninsula" popup="2010 Population: 55,400" />
+<feature id="us_ak_02130" category="county_1" label="Ketchikan Gateway" popup="2010 Population: 13,477" />
+<feature id="us_ak_02150" category="county_1" label="Kodiak Island" popup="2010 Population: 13,592" />
+<feature id="us_ak_02164" category="county_1" label="Lake and Peninsula" popup="2010 Population: 1,631" />
+<feature id="us_ak_02170" category="county_2" label="Matanuska-Susitna" popup="2010 Population: 88,995" />
+<feature id="us_ak_02180" category="county_1" label="Nome" popup="2010 Population: 9,492" />
+<feature id="us_ak_02185" category="county_1" label="North Slope" popup="2010 Population: 9,430" />
+<feature id="us_ak_02188" category="county_1" label="Northwest Arctic" popup="2010 Population: 7,523" />
+<feature id="us_ak_02201" category="county_1" label="Prince of Wales-Outer Ketchikan" popup="2010 Population: 5,559" />
+<feature id="us_ak_02220" category="county_1" label="Sitka" popup="2010 Population: 8,881" />
+<feature id="us_ak_02232" category="county_1" label="Skagway-Hoonah-Angoon" popup="2010 Population: 968" />
+<feature id="us_ak_02240" category="county_1" label="Southeast Fairbanks" popup="2010 Population: 7,029" />
+<feature id="us_ak_02261" category="county_1" label="Valdez-Cordova" popup="2010 Population: 9,636" />
+<feature id="us_ak_02270" category="county_1" label="Wade Hampton" popup="2010 Population: 7,459" />
+<feature id="us_ak_02280" category="county_1" label="Wrangell-Petersburg" popup="2010 Population: 2,369" />
+<feature id="us_ak_02282" category="county_1" label="Yakutat" popup="2010 Population: 662" />
+<feature id="us_ak_02290" category="county_1" label="Yukon-Koyukuk" popup="2010 Population: 5,588" />
+</jqm_features>

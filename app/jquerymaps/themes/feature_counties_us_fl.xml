@@ -1,0 +1,69 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_fl_12001" category="county_3" label="Alachua" popup="2010 Population: 247,336" />
+<feature id="us_fl_12003" category="county_1" label="Baker" popup="2010 Population: 27,115" />
+<feature id="us_fl_12005" category="county_3" label="Bay" popup="2010 Population: 168,852" />
+<feature id="us_fl_12007" category="county_1" label="Bradford" popup="2010 Population: 28,520" />
+<feature id="us_fl_12009" category="county_5" label="Brevard" popup="2010 Population: 543,376" />
+<feature id="us_fl_12011" category="county_6" label="Broward" popup="2010 Population: 1,748,066" />
+<feature id="us_fl_12013" category="county_1" label="Calhoun" popup="2010 Population: 14,625" />
+<feature id="us_fl_12015" category="county_3" label="Charlotte" popup="2010 Population: 159,978" />
+<feature id="us_fl_12017" category="county_3" label="Citrus" popup="2010 Population: 141,236" />
+<feature id="us_fl_12019" category="county_3" label="Clay" popup="2010 Population: 190,865" />
+<feature id="us_fl_12021" category="county_4" label="Collier" popup="2010 Population: 321,520" />
+<feature id="us_fl_12023" category="county_2" label="Columbia" popup="2010 Population: 67,531" />
+<feature id="us_fl_12027" category="county_1" label="DeSoto" popup="2010 Population: 34,862" />
+<feature id="us_fl_12029" category="county_1" label="Dixie" popup="2010 Population: 16,422" />
+<feature id="us_fl_12031" category="county_5" label="Duval" popup="2010 Population: 864,263" />
+<feature id="us_fl_12033" category="county_4" label="Escambia" popup="2010 Population: 297,619" />
+<feature id="us_fl_12035" category="county_2" label="Flagler" popup="2010 Population: 95,696" />
+<feature id="us_fl_12037" category="county_1" label="Franklin" popup="2010 Population: 11,549" />
+<feature id="us_fl_12039" category="county_1" label="Gadsden" popup="2010 Population: 46,389" />
+<feature id="us_fl_12041" category="county_1" label="Gilchrist" popup="2010 Population: 16,939" />
+<feature id="us_fl_12043" category="county_1" label="Glades" popup="2010 Population: 12,884" />
+<feature id="us_fl_12045" category="county_1" label="Gulf" popup="2010 Population: 15,863" />
+<feature id="us_fl_12047" category="county_1" label="Hamilton" popup="2010 Population: 14,799" />
+<feature id="us_fl_12049" category="county_1" label="Hardee" popup="2010 Population: 27,731" />
+<feature id="us_fl_12051" category="county_1" label="Hendry" popup="2010 Population: 39,140" />
+<feature id="us_fl_12053" category="county_3" label="Hernando" popup="2010 Population: 172,778" />
+<feature id="us_fl_12055" category="county_2" label="Highlands" popup="2010 Population: 98,786" />
+<feature id="us_fl_12057" category="county_6" label="Hillsborough" popup="2010 Population: 1,229,226" />
+<feature id="us_fl_12059" category="county_1" label="Holmes" popup="2010 Population: 19,927" />
+<feature id="us_fl_12061" category="county_3" label="Indian River" popup="2010 Population: 138,028" />
+<feature id="us_fl_12063" category="county_1" label="Jackson" popup="2010 Population: 49,746" />
+<feature id="us_fl_12065" category="county_1" label="Jefferson" popup="2010 Population: 14,761" />
+<feature id="us_fl_12067" category="county_1" label="Lafayette" popup="2010 Population: 8,870" />
+<feature id="us_fl_12069" category="county_4" label="Lake" popup="2010 Population: 297,052" />
+<feature id="us_fl_12071" category="county_5" label="Lee" popup="2010 Population: 618,754" />
+<feature id="us_fl_12073" category="county_4" label="Leon" popup="2010 Population: 275,487" />
+<feature id="us_fl_12075" category="county_1" label="Levy" popup="2010 Population: 40,801" />
+<feature id="us_fl_12077" category="county_1" label="Liberty" popup="2010 Population: 8,365" />
+<feature id="us_fl_12079" category="county_1" label="Madison" popup="2010 Population: 19,224" />
+<feature id="us_fl_12081" category="county_4" label="Manatee" popup="2010 Population: 322,833" />
+<feature id="us_fl_12083" category="county_4" label="Marion" popup="2010 Population: 331,298" />
+<feature id="us_fl_12085" category="county_3" label="Martin" popup="2010 Population: 146,318" />
+<feature id="us_fl_12086" category="county_6" label="Miami-Dade" popup="2010 Population: 2,496,435" />
+<feature id="us_fl_12087" category="county_2" label="Monroe" popup="2010 Population: 73,090" />
+<feature id="us_fl_12089" category="county_2" label="Nassau" popup="2010 Population: 73,314" />
+<feature id="us_fl_12091" category="county_3" label="Okaloosa" popup="2010 Population: 180,822" />
+<feature id="us_fl_12093" category="county_1" label="Okeechobee" popup="2010 Population: 39,996" />
+<feature id="us_fl_12095" category="county_6" label="Orange" popup="2010 Population: 1,145,956" />
+<feature id="us_fl_12097" category="county_4" label="Osceola" popup="2010 Population: 268,685" />
+<feature id="us_fl_12099" category="county_6" label="Palm Beach" popup="2010 Population: 1,320,134" />
+<feature id="us_fl_12101" category="county_4" label="Pasco" popup="2010 Population: 464,697" />
+<feature id="us_fl_12103" category="county_5" label="Pinellas" popup="2010 Population: 916,542" />
+<feature id="us_fl_12105" category="county_5" label="Polk" popup="2010 Population: 602,095" />
+<feature id="us_fl_12107" category="county_2" label="Putnam" popup="2010 Population: 74,364" />
+<feature id="us_fl_12109" category="county_3" label="St. Johns" popup="2010 Population: 190,039" />
+<feature id="us_fl_12111" category="county_4" label="St. Lucie" popup="2010 Population: 277,789" />
+<feature id="us_fl_12113" category="county_3" label="Santa Rosa" popup="2010 Population: 151,372" />
+<feature id="us_fl_12115" category="county_4" label="Sarasota" popup="2010 Population: 379,448" />
+<feature id="us_fl_12117" category="county_4" label="Seminole" popup="2010 Population: 422,718" />
+<feature id="us_fl_12119" category="county_2" label="Sumter" popup="2010 Population: 93,420" />
+<feature id="us_fl_12121" category="county_1" label="Suwannee" popup="2010 Population: 41,551" />
+<feature id="us_fl_12123" category="county_1" label="Taylor" popup="2010 Population: 22,570" />
+<feature id="us_fl_12125" category="county_1" label="Union" popup="2010 Population: 15,535" />
+<feature id="us_fl_12127" category="county_4" label="Volusia" popup="2010 Population: 494,593" />
+<feature id="us_fl_12129" category="county_1" label="Wakulla" popup="2010 Population: 30,776" />
+<feature id="us_fl_12131" category="county_2" label="Walton" popup="2010 Population: 55,043" />
+<feature id="us_fl_12133" category="county_1" label="Washington" popup="2010 Population: 24,896" />
+</jqm_features>

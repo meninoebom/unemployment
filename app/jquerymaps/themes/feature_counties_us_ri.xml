@@ -1,0 +1,7 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ri_44001" category="county_1" label="Bristol" popup="2010 Population: 49,875" />
+<feature id="us_ri_44003" category="county_3" label="Kent" popup="2010 Population: 166,158" />
+<feature id="us_ri_44005" category="county_2" label="Newport" popup="2010 Population: 82,888" />
+<feature id="us_ri_44007" category="county_5" label="Providence" popup="2010 Population: 626,667" />
+<feature id="us_ri_44009" category="county_3" label="Washington" popup="2010 Population: 126,979" />
+</jqm_features>

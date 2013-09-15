@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jqm_theme xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_theme.xsd" 
+		id="us" shapesUrl="../maps/states/fm-us_tn.xml" backgroundImageUrl="../maps/states/fm-us_tn.png" 
+		reloadInterval="" reloadFeatures="false" reloadFeatureCategories="false" reloadMarkers="false" reloadMarkerCategories="false" 
+		featuresUrl="feature_counties_us_tn.xml" featureCategoriesUrl="feature_categories.xml" 
+		x_markersURL="marker_counties.php?id=tn" x_mmarkerCategoriesUrl="marker_categories.php"><platformFunctionality id="default" calculatedMapAreas="false" onMouseOverCalculateInterval="" displayPolygons="true" /></jqm_theme>

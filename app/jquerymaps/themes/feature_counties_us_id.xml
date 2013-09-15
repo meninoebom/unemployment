@@ -1,0 +1,46 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_id_16001" category="county_4" label="Ada" popup="2010 Population: 392,365" />
+<feature id="us_id_16003" category="county_1" label="Adams" popup="2010 Population: 3,976" />
+<feature id="us_id_16005" category="county_2" label="Bannock" popup="2010 Population: 82,839" />
+<feature id="us_id_16007" category="county_1" label="Bear Lake" popup="2010 Population: 5,986" />
+<feature id="us_id_16009" category="county_1" label="Benewah" popup="2010 Population: 9,285" />
+<feature id="us_id_16011" category="county_1" label="Bingham" popup="2010 Population: 45,607" />
+<feature id="us_id_16013" category="county_1" label="Blaine" popup="2010 Population: 21,376" />
+<feature id="us_id_16015" category="county_1" label="Boise" popup="2010 Population: 7,028" />
+<feature id="us_id_16017" category="county_1" label="Bonner" popup="2010 Population: 40,877" />
+<feature id="us_id_16019" category="county_3" label="Bonneville" popup="2010 Population: 104,234" />
+<feature id="us_id_16021" category="county_1" label="Boundary" popup="2010 Population: 10,972" />
+<feature id="us_id_16023" category="county_1" label="Butte" popup="2010 Population: 2,891" />
+<feature id="us_id_16025" category="county_1" label="Camas" popup="2010 Population: 1,117" />
+<feature id="us_id_16027" category="county_3" label="Canyon" popup="2010 Population: 188,923" />
+<feature id="us_id_16029" category="county_1" label="Caribou" popup="2010 Population: 6,963" />
+<feature id="us_id_16031" category="county_1" label="Cassia" popup="2010 Population: 22,952" />
+<feature id="us_id_16033" category="county_1" label="Clark" popup="2010 Population: 982" />
+<feature id="us_id_16035" category="county_1" label="Clearwater" popup="2010 Population: 8,761" />
+<feature id="us_id_16037" category="county_1" label="Custer" popup="2010 Population: 4,368" />
+<feature id="us_id_16039" category="county_1" label="Elmore" popup="2010 Population: 27,038" />
+<feature id="us_id_16041" category="county_1" label="Franklin" popup="2010 Population: 12,786" />
+<feature id="us_id_16043" category="county_1" label="Fremont" popup="2010 Population: 13,242" />
+<feature id="us_id_16045" category="county_1" label="Gem" popup="2010 Population: 16,719" />
+<feature id="us_id_16047" category="county_1" label="Gooding" popup="2010 Population: 15,464" />
+<feature id="us_id_16049" category="county_1" label="Idaho" popup="2010 Population: 16,267" />
+<feature id="us_id_16051" category="county_1" label="Jefferson" popup="2010 Population: 26,140" />
+<feature id="us_id_16053" category="county_1" label="Jerome" popup="2010 Population: 22,374" />
+<feature id="us_id_16055" category="county_3" label="Kootenai" popup="2010 Population: 138,494" />
+<feature id="us_id_16057" category="county_1" label="Latah" popup="2010 Population: 37,244" />
+<feature id="us_id_16059" category="county_1" label="Lemhi" popup="2010 Population: 7,936" />
+<feature id="us_id_16061" category="county_1" label="Lewis" popup="2010 Population: 3,821" />
+<feature id="us_id_16063" category="county_1" label="Lincoln" popup="2010 Population: 5,208" />
+<feature id="us_id_16065" category="county_1" label="Madison" popup="2010 Population: 37,536" />
+<feature id="us_id_16067" category="county_1" label="Minidoka" popup="2010 Population: 20,069" />
+<feature id="us_id_16069" category="county_1" label="Nez Perce" popup="2010 Population: 39,265" />
+<feature id="us_id_16071" category="county_1" label="Oneida" popup="2010 Population: 4,286" />
+<feature id="us_id_16073" category="county_1" label="Owyhee" popup="2010 Population: 11,526" />
+<feature id="us_id_16075" category="county_1" label="Payette" popup="2010 Population: 22,623" />
+<feature id="us_id_16077" category="county_1" label="Power" popup="2010 Population: 7,817" />
+<feature id="us_id_16079" category="county_1" label="Shoshone" popup="2010 Population: 12,765" />
+<feature id="us_id_16081" category="county_1" label="Teton" popup="2010 Population: 10,170" />
+<feature id="us_id_16083" category="county_2" label="Twin Falls" popup="2010 Population: 77,230" />
+<feature id="us_id_16085" category="county_1" label="Valley" popup="2010 Population: 9,862" />
+<feature id="us_id_16087" category="county_1" label="Washington" popup="2010 Population: 10,198" />
+</jqm_features>

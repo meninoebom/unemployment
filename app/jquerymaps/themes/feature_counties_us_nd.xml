@@ -1,0 +1,55 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_nd_38001" category="county_1" label="Adams" popup="2010 Population: 2,343" />
+<feature id="us_nd_38003" category="county_1" label="Barnes" popup="2010 Population: 11,066" />
+<feature id="us_nd_38005" category="county_1" label="Benson" popup="2010 Population: 6,660" />
+<feature id="us_nd_38007" category="county_1" label="Billings" popup="2010 Population: 783" />
+<feature id="us_nd_38009" category="county_1" label="Bottineau" popup="2010 Population: 6,429" />
+<feature id="us_nd_38011" category="county_1" label="Bowman" popup="2010 Population: 3,151" />
+<feature id="us_nd_38013" category="county_1" label="Burke" popup="2010 Population: 1,968" />
+<feature id="us_nd_38015" category="county_2" label="Burleigh" popup="2010 Population: 81,308" />
+<feature id="us_nd_38017" category="county_3" label="Cass" popup="2010 Population: 149,778" />
+<feature id="us_nd_38019" category="county_1" label="Cavalier" popup="2010 Population: 3,993" />
+<feature id="us_nd_38021" category="county_1" label="Dickey" popup="2010 Population: 5,289" />
+<feature id="us_nd_38023" category="county_1" label="Divide" popup="2010 Population: 2,071" />
+<feature id="us_nd_38025" category="county_1" label="Dunn" popup="2010 Population: 3,536" />
+<feature id="us_nd_38027" category="county_1" label="Eddy" popup="2010 Population: 2,385" />
+<feature id="us_nd_38029" category="county_1" label="Emmons" popup="2010 Population: 3,550" />
+<feature id="us_nd_38031" category="county_1" label="Foster" popup="2010 Population: 3,343" />
+<feature id="us_nd_38033" category="county_1" label="Golden Valley" popup="2010 Population: 1,680" />
+<feature id="us_nd_38035" category="county_2" label="Grand Forks" popup="2010 Population: 66,861" />
+<feature id="us_nd_38037" category="county_1" label="Grant" popup="2010 Population: 2,394" />
+<feature id="us_nd_38039" category="county_1" label="Griggs" popup="2010 Population: 2,420" />
+<feature id="us_nd_38041" category="county_1" label="Hettinger" popup="2010 Population: 2,477" />
+<feature id="us_nd_38043" category="county_1" label="Kidder" popup="2010 Population: 2,435" />
+<feature id="us_nd_38045" category="county_1" label="LaMoure" popup="2010 Population: 4,139" />
+<feature id="us_nd_38047" category="county_1" label="Logan" popup="2010 Population: 1,990" />
+<feature id="us_nd_38049" category="county_1" label="McHenry" popup="2010 Population: 5,395" />
+<feature id="us_nd_38051" category="county_1" label="McIntosh" popup="2010 Population: 2,809" />
+<feature id="us_nd_38053" category="county_1" label="McKenzie" popup="2010 Population: 6,360" />
+<feature id="us_nd_38055" category="county_1" label="McLean" popup="2010 Population: 8,962" />
+<feature id="us_nd_38057" category="county_1" label="Mercer" popup="2010 Population: 8,424" />
+<feature id="us_nd_38059" category="county_1" label="Morton" popup="2010 Population: 27,471" />
+<feature id="us_nd_38061" category="county_1" label="Mountrail" popup="2010 Population: 7,673" />
+<feature id="us_nd_38063" category="county_1" label="Nelson" popup="2010 Population: 3,126" />
+<feature id="us_nd_38065" category="county_1" label="Oliver" popup="2010 Population: 1,846" />
+<feature id="us_nd_38067" category="county_1" label="Pembina" popup="2010 Population: 7,413" />
+<feature id="us_nd_38069" category="county_1" label="Pierce" popup="2010 Population: 4,357" />
+<feature id="us_nd_38071" category="county_1" label="Ramsey" popup="2010 Population: 11,451" />
+<feature id="us_nd_38073" category="county_1" label="Ransom" popup="2010 Population: 5,457" />
+<feature id="us_nd_38075" category="county_1" label="Renville" popup="2010 Population: 2,470" />
+<feature id="us_nd_38077" category="county_1" label="Richland" popup="2010 Population: 16,321" />
+<feature id="us_nd_38079" category="county_1" label="Rolette" popup="2010 Population: 13,937" />
+<feature id="us_nd_38081" category="county_1" label="Sargent" popup="2010 Population: 3,829" />
+<feature id="us_nd_38083" category="county_1" label="Sheridan" popup="2010 Population: 1,321" />
+<feature id="us_nd_38085" category="county_1" label="Sioux" popup="2010 Population: 4,153" />
+<feature id="us_nd_38087" category="county_1" label="Slope" popup="2010 Population: 727" />
+<feature id="us_nd_38089" category="county_1" label="Stark" popup="2010 Population: 24,199" />
+<feature id="us_nd_38091" category="county_1" label="Steele" popup="2010 Population: 1,975" />
+<feature id="us_nd_38093" category="county_1" label="Stutsman" popup="2010 Population: 21,100" />
+<feature id="us_nd_38095" category="county_1" label="Towner" popup="2010 Population: 2,246" />
+<feature id="us_nd_38097" category="county_1" label="Traill" popup="2010 Population: 8,121" />
+<feature id="us_nd_38099" category="county_1" label="Walsh" popup="2010 Population: 11,119" />
+<feature id="us_nd_38101" category="county_2" label="Ward" popup="2010 Population: 61,675" />
+<feature id="us_nd_38103" category="county_1" label="Wells" popup="2010 Population: 4,207" />
+<feature id="us_nd_38105" category="county_1" label="Williams" popup="2010 Population: 22,398" />
+</jqm_features>

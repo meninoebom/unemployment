@@ -1,0 +1,136 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_va_51001" category="county_1" label="Accomack" popup="2010 Population: 33,164" />
+<feature id="us_va_51003" category="county_2" label="Albemarle" popup="2010 Population: 98,970" />
+<feature id="us_va_51005" category="county_1" label="Alleghany" popup="2010 Population: 16,250" />
+<feature id="us_va_51007" category="county_1" label="Amelia" popup="2010 Population: 12,690" />
+<feature id="us_va_51009" category="county_1" label="Amherst" popup="2010 Population: 32,353" />
+<feature id="us_va_51011" category="county_1" label="Appomattox" popup="2010 Population: 14,973" />
+<feature id="us_va_51013" category="county_3" label="Arlington" popup="2010 Population: 207,627" />
+<feature id="us_va_51015" category="county_2" label="Augusta" popup="2010 Population: 73,750" />
+<feature id="us_va_51017" category="county_1" label="Bath" popup="2010 Population: 4,731" />
+<feature id="us_va_51019" category="county_2" label="Bedford" popup="2010 Population: 68,676" />
+<feature id="us_va_51021" category="county_1" label="Bland" popup="2010 Population: 6,824" />
+<feature id="us_va_51023" category="county_1" label="Botetourt" popup="2010 Population: 33,148" />
+<feature id="us_va_51025" category="county_1" label="Brunswick" popup="2010 Population: 17,434" />
+<feature id="us_va_51027" category="county_1" label="Buchanan" popup="2010 Population: 24,098" />
+<feature id="us_va_51029" category="county_1" label="Buckingham" popup="2010 Population: 17,146" />
+<feature id="us_va_51031" category="county_2" label="Campbell" popup="2010 Population: 54,842" />
+<feature id="us_va_51033" category="county_1" label="Caroline" popup="2010 Population: 28,545" />
+<feature id="us_va_51035" category="county_1" label="Carroll" popup="2010 Population: 30,042" />
+<feature id="us_va_51036" category="county_1" label="Charles City" popup="2010 Population: 7,256" />
+<feature id="us_va_51037" category="county_1" label="Charlotte" popup="2010 Population: 12,586" />
+<feature id="us_va_51041" category="county_4" label="Chesterfield" popup="2010 Population: 316,236" />
+<feature id="us_va_51043" category="county_1" label="Clarke" popup="2010 Population: 14,034" />
+<feature id="us_va_51045" category="county_1" label="Craig" popup="2010 Population: 5,190" />
+<feature id="us_va_51047" category="county_1" label="Culpeper" popup="2010 Population: 46,689" />
+<feature id="us_va_51049" category="county_1" label="Cumberland" popup="2010 Population: 10,052" />
+<feature id="us_va_51051" category="county_1" label="Dickenson" popup="2010 Population: 15,903" />
+<feature id="us_va_51053" category="county_1" label="Dinwiddie" popup="2010 Population: 28,001" />
+<feature id="us_va_51057" category="county_1" label="Essex" popup="2010 Population: 11,151" />
+<feature id="us_va_51059" category="county_6" label="Fairfax" popup="2010 Population: 1,081,726" />
+<feature id="us_va_51061" category="county_2" label="Fauquier" popup="2010 Population: 65,203" />
+<feature id="us_va_51063" category="county_1" label="Floyd" popup="2010 Population: 15,279" />
+<feature id="us_va_51065" category="county_1" label="Fluvanna" popup="2010 Population: 25,691" />
+<feature id="us_va_51067" category="county_2" label="Franklin" popup="2010 Population: 56,159" />
+<feature id="us_va_51069" category="county_2" label="Frederick" popup="2010 Population: 78,305" />
+<feature id="us_va_51071" category="county_1" label="Giles" popup="2010 Population: 17,286" />
+<feature id="us_va_51073" category="county_1" label="Gloucester" popup="2010 Population: 36,858" />
+<feature id="us_va_51075" category="county_1" label="Goochland" popup="2010 Population: 21,717" />
+<feature id="us_va_51077" category="county_1" label="Grayson" popup="2010 Population: 15,533" />
+<feature id="us_va_51079" category="county_1" label="Greene" popup="2010 Population: 18,403" />
+<feature id="us_va_51081" category="county_1" label="Greensville" popup="2010 Population: 12,243" />
+<feature id="us_va_51083" category="county_1" label="Halifax" popup="2010 Population: 36,241" />
+<feature id="us_va_51085" category="county_2" label="Hanover" popup="2010 Population: 99,863" />
+<feature id="us_va_51087" category="county_4" label="Henrico" popup="2010 Population: 306,935" />
+<feature id="us_va_51089" category="county_2" label="Henry" popup="2010 Population: 54,151" />
+<feature id="us_va_51091" category="county_1" label="Highland" popup="2010 Population: 2,321" />
+<feature id="us_va_51093" category="county_1" label="Isle of Wight" popup="2010 Population: 35,270" />
+<feature id="us_va_51095" category="county_2" label="James City" popup="2010 Population: 67,009" />
+<feature id="us_va_51097" category="county_1" label="King and Queen" popup="2010 Population: 6,945" />
+<feature id="us_va_51099" category="county_1" label="King George" popup="2010 Population: 23,584" />
+<feature id="us_va_51101" category="county_1" label="King William" popup="2010 Population: 15,935" />
+<feature id="us_va_51103" category="county_1" label="Lancaster" popup="2010 Population: 11,391" />
+<feature id="us_va_51105" category="county_1" label="Lee" popup="2010 Population: 25,587" />
+<feature id="us_va_51107" category="county_4" label="Loudoun" popup="2010 Population: 312,311" />
+<feature id="us_va_51109" category="county_1" label="Louisa" popup="2010 Population: 33,153" />
+<feature id="us_va_51111" category="county_1" label="Lunenburg" popup="2010 Population: 12,914" />
+<feature id="us_va_51113" category="county_1" label="Madison" popup="2010 Population: 13,308" />
+<feature id="us_va_51115" category="county_1" label="Mathews" popup="2010 Population: 8,978" />
+<feature id="us_va_51117" category="county_1" label="Mecklenburg" popup="2010 Population: 32,727" />
+<feature id="us_va_51119" category="county_1" label="Middlesex" popup="2010 Population: 10,959" />
+<feature id="us_va_51121" category="county_2" label="Montgomery" popup="2010 Population: 94,392" />
+<feature id="us_va_51125" category="county_1" label="Nelson" popup="2010 Population: 15,020" />
+<feature id="us_va_51127" category="county_1" label="New Kent" popup="2010 Population: 18,429" />
+<feature id="us_va_51131" category="county_1" label="Northampton" popup="2010 Population: 12,389" />
+<feature id="us_va_51133" category="county_1" label="Northumberland" popup="2010 Population: 12,330" />
+<feature id="us_va_51135" category="county_1" label="Nottoway" popup="2010 Population: 15,853" />
+<feature id="us_va_51137" category="county_1" label="Orange" popup="2010 Population: 33,481" />
+<feature id="us_va_51139" category="county_1" label="Page" popup="2010 Population: 24,042" />
+<feature id="us_va_51141" category="county_1" label="Patrick" popup="2010 Population: 18,490" />
+<feature id="us_va_51143" category="county_2" label="Pittsylvania" popup="2010 Population: 63,506" />
+<feature id="us_va_51145" category="county_1" label="Powhatan" popup="2010 Population: 28,046" />
+<feature id="us_va_51147" category="county_1" label="Prince Edward" popup="2010 Population: 23,368" />
+<feature id="us_va_51149" category="county_1" label="Prince George" popup="2010 Population: 35,725" />
+<feature id="us_va_51153" category="county_4" label="Prince William" popup="2010 Population: 402,002" />
+<feature id="us_va_51155" category="county_1" label="Pulaski" popup="2010 Population: 34,872" />
+<feature id="us_va_51157" category="county_1" label="Rappahannock" popup="2010 Population: 7,373" />
+<feature id="us_va_51159" category="county_1" label="Richmond" popup="2010 Population: 9,254" />
+<feature id="us_va_51161" category="county_2" label="Roanoke" popup="2010 Population: 92,376" />
+<feature id="us_va_51163" category="county_1" label="Rockbridge" popup="2010 Population: 22,307" />
+<feature id="us_va_51165" category="county_2" label="Rockingham" popup="2010 Population: 76,314" />
+<feature id="us_va_51167" category="county_1" label="Russell" popup="2010 Population: 28,897" />
+<feature id="us_va_51169" category="county_1" label="Scott" popup="2010 Population: 23,177" />
+<feature id="us_va_51171" category="county_1" label="Shenandoah" popup="2010 Population: 41,993" />
+<feature id="us_va_51173" category="county_1" label="Smyth" popup="2010 Population: 32,208" />
+<feature id="us_va_51175" category="county_1" label="Southampton" popup="2010 Population: 18,570" />
+<feature id="us_va_51177" category="county_3" label="Spotsylvania" popup="2010 Population: 122,397" />
+<feature id="us_va_51179" category="county_3" label="Stafford" popup="2010 Population: 128,961" />
+<feature id="us_va_51181" category="county_1" label="Surry" popup="2010 Population: 7,058" />
+<feature id="us_va_51183" category="county_1" label="Sussex" popup="2010 Population: 12,087" />
+<feature id="us_va_51185" category="county_1" label="Tazewell" popup="2010 Population: 45,078" />
+<feature id="us_va_51187" category="county_1" label="Warren" popup="2010 Population: 37,575" />
+<feature id="us_va_51191" category="county_2" label="Washington" popup="2010 Population: 54,876" />
+<feature id="us_va_51193" category="county_1" label="Westmoreland" popup="2010 Population: 17,454" />
+<feature id="us_va_51195" category="county_1" label="Wise" popup="2010 Population: 41,452" />
+<feature id="us_va_51197" category="county_1" label="Wythe" popup="2010 Population: 29,235" />
+<feature id="us_va_51199" category="county_2" label="York" popup="2010 Population: 65,464" />
+<feature id="us_va_51510" category="county_3" label="Alexandria" popup="2010 Population: 139,966" />
+<feature id="us_va_51515" category="county_1" label="Bedford" popup="2010 Population: 6,222" />
+<feature id="us_va_51520" category="county_1" label="Bristol" popup="2010 Population: 17,835" />
+<feature id="us_va_51530" category="county_1" label="Buena Vista" popup="2010 Population: 6,650" />
+<feature id="us_va_51540" category="county_1" label="Charlottesville" popup="2010 Population: 43,475" />
+<feature id="us_va_51550" category="county_3" label="Chesapeake" popup="2010 Population: 222,209" />
+<feature id="us_va_51570" category="county_1" label="Colonial Heights" popup="2010 Population: 17,411" />
+<feature id="us_va_51580" category="county_1" label="Covington" popup="2010 Population: 5,961" />
+<feature id="us_va_51590" category="county_1" label="Danville" popup="2010 Population: 43,055" />
+<feature id="us_va_51595" category="county_1" label="Emporia" popup="2010 Population: 5,927" />
+<feature id="us_va_51600" category="county_1" label="Fairfax" popup="2010 Population: 22,565" />
+<feature id="us_va_51610" category="county_1" label="Falls Church" popup="2010 Population: 12,332" />
+<feature id="us_va_51620" category="county_1" label="Franklin" popup="2010 Population: 8,582" />
+<feature id="us_va_51630" category="county_1" label="Fredericksburg" popup="2010 Population: 24,286" />
+<feature id="us_va_51640" category="county_1" label="Galax" popup="2010 Population: 7,042" />
+<feature id="us_va_51650" category="county_3" label="Hampton" popup="2010 Population: 137,436" />
+<feature id="us_va_51660" category="county_1" label="Harrisonburg" popup="2010 Population: 48,914" />
+<feature id="us_va_51670" category="county_1" label="Hopewell" popup="2010 Population: 22,591" />
+<feature id="us_va_51678" category="county_1" label="Lexington" popup="2010 Population: 7,042" />
+<feature id="us_va_51680" category="county_2" label="Lynchburg" popup="2010 Population: 75,568" />
+<feature id="us_va_51683" category="county_1" label="Manassas" popup="2010 Population: 37,821" />
+<feature id="us_va_51685" category="county_1" label="Manassas Park" popup="2010 Population: 14,273" />
+<feature id="us_va_51690" category="county_1" label="Martinsville" popup="2010 Population: 13,821" />
+<feature id="us_va_51700" category="county_3" label="Newport News" popup="2010 Population: 180,719" />
+<feature id="us_va_51710" category="county_3" label="Norfolk" popup="2010 Population: 242,803" />
+<feature id="us_va_51720" category="county_1" label="Norton" popup="2010 Population: 3,958" />
+<feature id="us_va_51730" category="county_1" label="Petersburg" popup="2010 Population: 32,420" />
+<feature id="us_va_51735" category="county_1" label="Poquoson" popup="2010 Population: 12,150" />
+<feature id="us_va_51740" category="county_2" label="Portsmouth" popup="2010 Population: 95,535" />
+<feature id="us_va_51750" category="county_1" label="Radford" popup="2010 Population: 16,408" />
+<feature id="us_va_51760" category="county_3" label="Richmond" popup="2010 Population: 204,214" />
+<feature id="us_va_51770" category="county_2" label="Roanoke" popup="2010 Population: 97,032" />
+<feature id="us_va_51775" category="county_1" label="Salem" popup="2010 Population: 24,802" />
+<feature id="us_va_51790" category="county_1" label="Staunton" popup="2010 Population: 23,746" />
+<feature id="us_va_51800" category="county_2" label="Suffolk" popup="2010 Population: 84,585" />
+<feature id="us_va_51810" category="county_4" label="Virginia Beach" popup="2010 Population: 437,994" />
+<feature id="us_va_51820" category="county_1" label="Waynesboro" popup="2010 Population: 21,006" />
+<feature id="us_va_51830" category="county_1" label="Williamsburg" popup="2010 Population: 14,068" />
+<feature id="us_va_51840" category="county_1" label="Winchester" popup="2010 Population: 26,203" />
+</jqm_features>

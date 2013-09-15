@@ -1,0 +1,16 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ma_25001" category="county_3" label="Barnstable" popup="2010 Population: 215,888" />
+<feature id="us_ma_25003" category="county_3" label="Berkshire" popup="2010 Population: 131,219" />
+<feature id="us_ma_25005" category="county_5" label="Bristol" popup="2010 Population: 548,285" />
+<feature id="us_ma_25007" category="county_1" label="Dukes" popup="2010 Population: 16,535" />
+<feature id="us_ma_25009" category="county_5" label="Essex" popup="2010 Population: 743,159" />
+<feature id="us_ma_25011" category="county_2" label="Franklin" popup="2010 Population: 71,372" />
+<feature id="us_ma_25013" category="county_4" label="Hampden" popup="2010 Population: 463,490" />
+<feature id="us_ma_25015" category="county_3" label="Hampshire" popup="2010 Population: 158,080" />
+<feature id="us_ma_25017" category="county_6" label="Middlesex" popup="2010 Population: 1,503,085" />
+<feature id="us_ma_25019" category="county_1" label="Nantucket" popup="2010 Population: 10,172" />
+<feature id="us_ma_25021" category="county_5" label="Norfolk" popup="2010 Population: 670,850" />
+<feature id="us_ma_25023" category="county_4" label="Plymouth" popup="2010 Population: 494,919" />
+<feature id="us_ma_25025" category="county_5" label="Suffolk" popup="2010 Population: 722,023" />
+<feature id="us_ma_25027" category="county_5" label="Worcester" popup="2010 Population: 798,552" />
+</jqm_features>

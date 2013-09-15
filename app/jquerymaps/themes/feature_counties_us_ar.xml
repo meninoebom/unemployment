@@ -1,0 +1,77 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ar_05001" category="county_1" label="Arkansas" popup="2010 Population: 19,019" />
+<feature id="us_ar_05003" category="county_1" label="Ashley" popup="2010 Population: 21,853" />
+<feature id="us_ar_05005" category="county_1" label="Baxter" popup="2010 Population: 41,513" />
+<feature id="us_ar_05007" category="county_3" label="Benton" popup="2010 Population: 221,339" />
+<feature id="us_ar_05009" category="county_1" label="Boone" popup="2010 Population: 36,903" />
+<feature id="us_ar_05011" category="county_1" label="Bradley" popup="2010 Population: 11,508" />
+<feature id="us_ar_05013" category="county_1" label="Calhoun" popup="2010 Population: 5,368" />
+<feature id="us_ar_05015" category="county_1" label="Carroll" popup="2010 Population: 27,446" />
+<feature id="us_ar_05017" category="county_1" label="Chicot" popup="2010 Population: 11,800" />
+<feature id="us_ar_05019" category="county_1" label="Clark" popup="2010 Population: 22,995" />
+<feature id="us_ar_05021" category="county_1" label="Clay" popup="2010 Population: 16,083" />
+<feature id="us_ar_05023" category="county_1" label="Cleburne" popup="2010 Population: 25,970" />
+<feature id="us_ar_05025" category="county_1" label="Cleveland" popup="2010 Population: 8,689" />
+<feature id="us_ar_05027" category="county_1" label="Columbia" popup="2010 Population: 24,552" />
+<feature id="us_ar_05029" category="county_1" label="Conway" popup="2010 Population: 21,273" />
+<feature id="us_ar_05031" category="county_2" label="Craighead" popup="2010 Population: 96,443" />
+<feature id="us_ar_05033" category="county_2" label="Crawford" popup="2010 Population: 61,948" />
+<feature id="us_ar_05035" category="county_2" label="Crittenden" popup="2010 Population: 50,902" />
+<feature id="us_ar_05037" category="county_1" label="Cross" popup="2010 Population: 17,870" />
+<feature id="us_ar_05039" category="county_1" label="Dallas" popup="2010 Population: 8,116" />
+<feature id="us_ar_05041" category="county_1" label="Desha" popup="2010 Population: 13,008" />
+<feature id="us_ar_05043" category="county_1" label="Drew" popup="2010 Population: 18,509" />
+<feature id="us_ar_05045" category="county_3" label="Faulkner" popup="2010 Population: 113,237" />
+<feature id="us_ar_05047" category="county_1" label="Franklin" popup="2010 Population: 18,125" />
+<feature id="us_ar_05049" category="county_1" label="Fulton" popup="2010 Population: 12,245" />
+<feature id="us_ar_05051" category="county_2" label="Garland" popup="2010 Population: 96,024" />
+<feature id="us_ar_05053" category="county_1" label="Grant" popup="2010 Population: 17,853" />
+<feature id="us_ar_05055" category="county_1" label="Greene" popup="2010 Population: 42,090" />
+<feature id="us_ar_05057" category="county_1" label="Hempstead" popup="2010 Population: 22,609" />
+<feature id="us_ar_05059" category="county_1" label="Hot Spring" popup="2010 Population: 32,923" />
+<feature id="us_ar_05061" category="county_1" label="Howard" popup="2010 Population: 13,789" />
+<feature id="us_ar_05063" category="county_1" label="Independence" popup="2010 Population: 36,647" />
+<feature id="us_ar_05065" category="county_1" label="Izard" popup="2010 Population: 13,696" />
+<feature id="us_ar_05067" category="county_1" label="Jackson" popup="2010 Population: 17,997" />
+<feature id="us_ar_05069" category="county_2" label="Jefferson" popup="2010 Population: 77,435" />
+<feature id="us_ar_05071" category="county_1" label="Johnson" popup="2010 Population: 25,540" />
+<feature id="us_ar_05073" category="county_1" label="Lafayette" popup="2010 Population: 7,645" />
+<feature id="us_ar_05075" category="county_1" label="Lawrence" popup="2010 Population: 17,415" />
+<feature id="us_ar_05077" category="county_1" label="Lee" popup="2010 Population: 10,424" />
+<feature id="us_ar_05079" category="county_1" label="Lincoln" popup="2010 Population: 14,134" />
+<feature id="us_ar_05081" category="county_1" label="Little River" popup="2010 Population: 13,171" />
+<feature id="us_ar_05083" category="county_1" label="Logan" popup="2010 Population: 22,353" />
+<feature id="us_ar_05085" category="county_2" label="Lonoke" popup="2010 Population: 68,356" />
+<feature id="us_ar_05087" category="county_1" label="Madison" popup="2010 Population: 15,717" />
+<feature id="us_ar_05089" category="county_1" label="Marion" popup="2010 Population: 16,653" />
+<feature id="us_ar_05091" category="county_1" label="Miller" popup="2010 Population: 43,462" />
+<feature id="us_ar_05093" category="county_1" label="Mississippi" popup="2010 Population: 46,480" />
+<feature id="us_ar_05095" category="county_1" label="Monroe" popup="2010 Population: 8,149" />
+<feature id="us_ar_05097" category="county_1" label="Montgomery" popup="2010 Population: 9,487" />
+<feature id="us_ar_05099" category="county_1" label="Nevada" popup="2010 Population: 8,997" />
+<feature id="us_ar_05101" category="county_1" label="Newton" popup="2010 Population: 8,330" />
+<feature id="us_ar_05103" category="county_1" label="Ouachita" popup="2010 Population: 26,120" />
+<feature id="us_ar_05105" category="county_1" label="Perry" popup="2010 Population: 10,445" />
+<feature id="us_ar_05107" category="county_1" label="Phillips" popup="2010 Population: 21,757" />
+<feature id="us_ar_05109" category="county_1" label="Pike" popup="2010 Population: 11,291" />
+<feature id="us_ar_05111" category="county_1" label="Poinsett" popup="2010 Population: 24,583" />
+<feature id="us_ar_05113" category="county_1" label="Polk" popup="2010 Population: 20,662" />
+<feature id="us_ar_05115" category="county_2" label="Pope" popup="2010 Population: 61,754" />
+<feature id="us_ar_05117" category="county_1" label="Prairie" popup="2010 Population: 8,715" />
+<feature id="us_ar_05119" category="county_4" label="Pulaski" popup="2010 Population: 382,748" />
+<feature id="us_ar_05121" category="county_1" label="Randolph" popup="2010 Population: 17,969" />
+<feature id="us_ar_05123" category="county_1" label="St. Francis" popup="2010 Population: 28,258" />
+<feature id="us_ar_05125" category="county_3" label="Saline" popup="2010 Population: 107,118" />
+<feature id="us_ar_05127" category="county_1" label="Scott" popup="2010 Population: 11,233" />
+<feature id="us_ar_05129" category="county_1" label="Searcy" popup="2010 Population: 8,195" />
+<feature id="us_ar_05131" category="county_3" label="Sebastian" popup="2010 Population: 125,744" />
+<feature id="us_ar_05133" category="county_1" label="Sevier" popup="2010 Population: 17,058" />
+<feature id="us_ar_05135" category="county_1" label="Sharp" popup="2010 Population: 17,264" />
+<feature id="us_ar_05137" category="county_1" label="Stone" popup="2010 Population: 12,394" />
+<feature id="us_ar_05139" category="county_1" label="Union" popup="2010 Population: 41,639" />
+<feature id="us_ar_05141" category="county_1" label="Van Buren" popup="2010 Population: 17,295" />
+<feature id="us_ar_05143" category="county_3" label="Washington" popup="2010 Population: 203,065" />
+<feature id="us_ar_05145" category="county_2" label="White" popup="2010 Population: 77,076" />
+<feature id="us_ar_05147" category="county_1" label="Woodruff" popup="2010 Population: 7,260" />
+<feature id="us_ar_05149" category="county_1" label="Yell" popup="2010 Population: 22,185" />
+</jqm_features>

@@ -1,0 +1,25 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_wy_56001" category="county_1" label="Albany" popup="2010 Population: 36,299" />
+<feature id="us_wy_56003" category="county_1" label="Big Horn" popup="2010 Population: 11,668" />
+<feature id="us_wy_56005" category="county_1" label="Campbell" popup="2010 Population: 46,133" />
+<feature id="us_wy_56007" category="county_1" label="Carbon" popup="2010 Population: 15,885" />
+<feature id="us_wy_56009" category="county_1" label="Converse" popup="2010 Population: 13,833" />
+<feature id="us_wy_56011" category="county_1" label="Crook" popup="2010 Population: 7,083" />
+<feature id="us_wy_56013" category="county_1" label="Fremont" popup="2010 Population: 40,123" />
+<feature id="us_wy_56015" category="county_1" label="Goshen" popup="2010 Population: 13,249" />
+<feature id="us_wy_56017" category="county_1" label="Hot Springs" popup="2010 Population: 4,812" />
+<feature id="us_wy_56019" category="county_1" label="Johnson" popup="2010 Population: 8,569" />
+<feature id="us_wy_56021" category="county_2" label="Laramie" popup="2010 Population: 91,738" />
+<feature id="us_wy_56023" category="county_1" label="Lincoln" popup="2010 Population: 18,106" />
+<feature id="us_wy_56025" category="county_2" label="Natrona" popup="2010 Population: 75,450" />
+<feature id="us_wy_56027" category="county_1" label="Niobrara" popup="2010 Population: 2,484" />
+<feature id="us_wy_56029" category="county_1" label="Park" popup="2010 Population: 28,205" />
+<feature id="us_wy_56031" category="county_1" label="Platte" popup="2010 Population: 8,667" />
+<feature id="us_wy_56033" category="county_1" label="Sheridan" popup="2010 Population: 29,116" />
+<feature id="us_wy_56035" category="county_1" label="Sublette" popup="2010 Population: 10,247" />
+<feature id="us_wy_56037" category="county_1" label="Sweetwater" popup="2010 Population: 43,806" />
+<feature id="us_wy_56039" category="county_1" label="Teton" popup="2010 Population: 21,294" />
+<feature id="us_wy_56041" category="county_1" label="Uinta" popup="2010 Population: 21,118" />
+<feature id="us_wy_56043" category="county_1" label="Washakie" popup="2010 Population: 8,533" />
+<feature id="us_wy_56045" category="county_1" label="Weston" popup="2010 Population: 7,208" />
+</jqm_features>

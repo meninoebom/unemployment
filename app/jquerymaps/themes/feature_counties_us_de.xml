@@ -1,0 +1,5 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_de_10001" category="county_3" label="Kent" popup="2010 Population: 162,310" />
+<feature id="us_de_10003" category="county_5" label="New Castle" popup="2010 Population: 538,479" />
+<feature id="us_de_10005" category="county_3" label="Sussex" popup="2010 Population: 197,145" />
+</jqm_features>

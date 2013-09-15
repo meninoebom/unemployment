@@ -1,0 +1,85 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_mi_26001" category="county_1" label="Alcona" popup="2010 Population: 10,942" />
+<feature id="us_mi_26003" category="county_1" label="Alger" popup="2010 Population: 9,601" />
+<feature id="us_mi_26005" category="county_3" label="Allegan" popup="2010 Population: 111,408" />
+<feature id="us_mi_26007" category="county_1" label="Alpena" popup="2010 Population: 29,598" />
+<feature id="us_mi_26009" category="county_1" label="Antrim" popup="2010 Population: 23,580" />
+<feature id="us_mi_26011" category="county_1" label="Arenac" popup="2010 Population: 15,899" />
+<feature id="us_mi_26013" category="county_1" label="Baraga" popup="2010 Population: 8,860" />
+<feature id="us_mi_26015" category="county_2" label="Barry" popup="2010 Population: 59,173" />
+<feature id="us_mi_26017" category="county_3" label="Bay" popup="2010 Population: 107,771" />
+<feature id="us_mi_26019" category="county_1" label="Benzie" popup="2010 Population: 17,525" />
+<feature id="us_mi_26021" category="county_3" label="Berrien" popup="2010 Population: 156,813" />
+<feature id="us_mi_26023" category="county_1" label="Branch" popup="2010 Population: 45,248" />
+<feature id="us_mi_26025" category="county_3" label="Calhoun" popup="2010 Population: 136,146" />
+<feature id="us_mi_26027" category="county_2" label="Cass" popup="2010 Population: 52,293" />
+<feature id="us_mi_26029" category="county_1" label="Charlevoix" popup="2010 Population: 25,949" />
+<feature id="us_mi_26031" category="county_1" label="Cheboygan" popup="2010 Population: 26,152" />
+<feature id="us_mi_26033" category="county_1" label="Chippewa" popup="2010 Population: 38,520" />
+<feature id="us_mi_26035" category="county_1" label="Clare" popup="2010 Population: 30,926" />
+<feature id="us_mi_26037" category="county_2" label="Clinton" popup="2010 Population: 75,382" />
+<feature id="us_mi_26039" category="county_1" label="Crawford" popup="2010 Population: 14,074" />
+<feature id="us_mi_26041" category="county_1" label="Delta" popup="2010 Population: 37,069" />
+<feature id="us_mi_26043" category="county_1" label="Dickinson" popup="2010 Population: 26,168" />
+<feature id="us_mi_26045" category="county_3" label="Eaton" popup="2010 Population: 107,759" />
+<feature id="us_mi_26047" category="county_1" label="Emmet" popup="2010 Population: 32,694" />
+<feature id="us_mi_26049" category="county_4" label="Genesee" popup="2010 Population: 425,790" />
+<feature id="us_mi_26051" category="county_1" label="Gladwin" popup="2010 Population: 25,692" />
+<feature id="us_mi_26053" category="county_1" label="Gogebic" popup="2010 Population: 16,427" />
+<feature id="us_mi_26055" category="county_2" label="Grand Traverse" popup="2010 Population: 86,986" />
+<feature id="us_mi_26057" category="county_1" label="Gratiot" popup="2010 Population: 42,476" />
+<feature id="us_mi_26059" category="county_1" label="Hillsdale" popup="2010 Population: 46,688" />
+<feature id="us_mi_26061" category="county_1" label="Houghton" popup="2010 Population: 36,628" />
+<feature id="us_mi_26063" category="county_1" label="Huron" popup="2010 Population: 33,118" />
+<feature id="us_mi_26065" category="county_4" label="Ingham" popup="2010 Population: 280,895" />
+<feature id="us_mi_26067" category="county_2" label="Ionia" popup="2010 Population: 63,905" />
+<feature id="us_mi_26069" category="county_1" label="Iosco" popup="2010 Population: 25,887" />
+<feature id="us_mi_26071" category="county_1" label="Iron" popup="2010 Population: 11,817" />
+<feature id="us_mi_26073" category="county_2" label="Isabella" popup="2010 Population: 70,311" />
+<feature id="us_mi_26075" category="county_3" label="Jackson" popup="2010 Population: 160,248" />
+<feature id="us_mi_26077" category="county_4" label="Kalamazoo" popup="2010 Population: 250,331" />
+<feature id="us_mi_26079" category="county_1" label="Kalkaska" popup="2010 Population: 17,153" />
+<feature id="us_mi_26081" category="county_5" label="Kent" popup="2010 Population: 602,622" />
+<feature id="us_mi_26083" category="county_1" label="Keweenaw" popup="2010 Population: 2,156" />
+<feature id="us_mi_26085" category="county_1" label="Lake" popup="2010 Population: 11,539" />
+<feature id="us_mi_26087" category="county_2" label="Lapeer" popup="2010 Population: 88,319" />
+<feature id="us_mi_26089" category="county_1" label="Leelanau" popup="2010 Population: 21,708" />
+<feature id="us_mi_26091" category="county_2" label="Lenawee" popup="2010 Population: 99,892" />
+<feature id="us_mi_26093" category="county_3" label="Livingston" popup="2010 Population: 180,967" />
+<feature id="us_mi_26095" category="county_1" label="Luce" popup="2010 Population: 6,631" />
+<feature id="us_mi_26097" category="county_1" label="Mackinac" popup="2010 Population: 11,113" />
+<feature id="us_mi_26099" category="county_5" label="Macomb" popup="2010 Population: 840,978" />
+<feature id="us_mi_26101" category="county_1" label="Manistee" popup="2010 Population: 24,733" />
+<feature id="us_mi_26103" category="county_2" label="Marquette" popup="2010 Population: 67,077" />
+<feature id="us_mi_26105" category="county_1" label="Mason" popup="2010 Population: 28,705" />
+<feature id="us_mi_26107" category="county_1" label="Mecosta" popup="2010 Population: 42,798" />
+<feature id="us_mi_26109" category="county_1" label="Menominee" popup="2010 Population: 24,029" />
+<feature id="us_mi_26111" category="county_2" label="Midland" popup="2010 Population: 83,629" />
+<feature id="us_mi_26113" category="county_1" label="Missaukee" popup="2010 Population: 14,849" />
+<feature id="us_mi_26115" category="county_3" label="Monroe" popup="2010 Population: 152,021" />
+<feature id="us_mi_26117" category="county_2" label="Montcalm" popup="2010 Population: 63,342" />
+<feature id="us_mi_26119" category="county_1" label="Montmorency" popup="2010 Population: 9,765" />
+<feature id="us_mi_26121" category="county_3" label="Muskegon" popup="2010 Population: 172,188" />
+<feature id="us_mi_26123" category="county_1" label="Newaygo" popup="2010 Population: 48,460" />
+<feature id="us_mi_26125" category="county_6" label="Oakland" popup="2010 Population: 1,202,362" />
+<feature id="us_mi_26127" category="county_1" label="Oceana" popup="2010 Population: 26,570" />
+<feature id="us_mi_26129" category="county_1" label="Ogemaw" popup="2010 Population: 21,699" />
+<feature id="us_mi_26131" category="county_1" label="Ontonagon" popup="2010 Population: 6,780" />
+<feature id="us_mi_26133" category="county_1" label="Osceola" popup="2010 Population: 23,528" />
+<feature id="us_mi_26135" category="county_1" label="Oscoda" popup="2010 Population: 8,640" />
+<feature id="us_mi_26137" category="county_1" label="Otsego" popup="2010 Population: 24,164" />
+<feature id="us_mi_26139" category="county_4" label="Ottawa" popup="2010 Population: 263,801" />
+<feature id="us_mi_26141" category="county_1" label="Presque Isle" popup="2010 Population: 13,376" />
+<feature id="us_mi_26143" category="county_1" label="Roscommon" popup="2010 Population: 24,449" />
+<feature id="us_mi_26145" category="county_3" label="Saginaw" popup="2010 Population: 200,169" />
+<feature id="us_mi_26147" category="county_3" label="St. Clair" popup="2010 Population: 163,040" />
+<feature id="us_mi_26149" category="county_2" label="St. Joseph" popup="2010 Population: 61,295" />
+<feature id="us_mi_26151" category="county_1" label="Sanilac" popup="2010 Population: 43,114" />
+<feature id="us_mi_26153" category="county_1" label="Schoolcraft" popup="2010 Population: 8,485" />
+<feature id="us_mi_26155" category="county_2" label="Shiawassee" popup="2010 Population: 70,648" />
+<feature id="us_mi_26157" category="county_2" label="Tuscola" popup="2010 Population: 55,729" />
+<feature id="us_mi_26159" category="county_2" label="Van Buren" popup="2010 Population: 76,258" />
+<feature id="us_mi_26161" category="county_4" label="Washtenaw" popup="2010 Population: 344,791" />
+<feature id="us_mi_26163" category="county_6" label="Wayne" popup="2010 Population: 1,820,584" />
+<feature id="us_mi_26165" category="county_1" label="Wexford" popup="2010 Population: 32,735" />
+</jqm_features>

@@ -1,0 +1,23 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_nj_34001" category="county_4" label="Atlantic" popup="2010 Population: 274,549" />
+<feature id="us_nj_34003" category="county_5" label="Bergen" popup="2010 Population: 905,116" />
+<feature id="us_nj_34005" category="county_4" label="Burlington" popup="2010 Population: 448,734" />
+<feature id="us_nj_34007" category="county_5" label="Camden" popup="2010 Population: 513,657" />
+<feature id="us_nj_34009" category="county_2" label="Cape May" popup="2010 Population: 97,265" />
+<feature id="us_nj_34011" category="county_3" label="Cumberland" popup="2010 Population: 156,898" />
+<feature id="us_nj_34013" category="county_5" label="Essex" popup="2010 Population: 783,969" />
+<feature id="us_nj_34015" category="county_4" label="Gloucester" popup="2010 Population: 288,288" />
+<feature id="us_nj_34017" category="county_5" label="Hudson" popup="2010 Population: 634,266" />
+<feature id="us_nj_34019" category="county_3" label="Hunterdon" popup="2010 Population: 128,349" />
+<feature id="us_nj_34021" category="county_4" label="Mercer" popup="2010 Population: 366,513" />
+<feature id="us_nj_34023" category="county_5" label="Middlesex" popup="2010 Population: 809,858" />
+<feature id="us_nj_34025" category="county_5" label="Monmouth" popup="2010 Population: 630,380" />
+<feature id="us_nj_34027" category="county_4" label="Morris" popup="2010 Population: 492,276" />
+<feature id="us_nj_34029" category="county_5" label="Ocean" popup="2010 Population: 576,567" />
+<feature id="us_nj_34031" category="county_5" label="Passaic" popup="2010 Population: 501,226" />
+<feature id="us_nj_34033" category="county_2" label="Salem" popup="2010 Population: 66,083" />
+<feature id="us_nj_34035" category="county_4" label="Somerset" popup="2010 Population: 323,444" />
+<feature id="us_nj_34037" category="county_3" label="Sussex" popup="2010 Population: 149,265" />
+<feature id="us_nj_34039" category="county_5" label="Union" popup="2010 Population: 536,499" />
+<feature id="us_nj_34041" category="county_3" label="Warren" popup="2010 Population: 108,692" />
+</jqm_features>

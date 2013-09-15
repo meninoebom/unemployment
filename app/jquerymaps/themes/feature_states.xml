@@ -1,0 +1,54 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_ak" category="state_1" label="Alaska" label_map="AK" popup="2010 Population: 710,231" />
+<feature id="us_al" category="state_4" label="Alabama" label_map="AL" popup="2010 Population: 4,779,736" />
+<feature id="us_ar" category="state_3" label="Arkansas" label_map="AR" popup="2010 Population: 2,915,918" />
+<feature id="us_az" category="state_4" label="Arizona" label_map="AZ" popup="2010 Population: 6,392,017" />
+<feature id="us_ca" category="state_1" label="California" label_map="CA" popup="2010 Population: 37,253,956" />
+<feature id="us_co" category="state_4" label="Colorado" label_map="CO" popup="2010 Population: 5,029,196" />
+<feature id="us_ct" category="state_3" label="Connecticut" label_map="CT" popup="2010 Population: 3,574,097" />
+<feature id="us_dc" category="state_1" label="D. Columbia" label_map="DC" popup="2010 Population: 601,723" />
+<feature id="us_de" category="state_1" label="Delaware" label_map="DE" popup="2010 Population: 897,934" />
+<feature id="us_fl" category="state_6" label="Florida" label_map="FL" popup="2010 Population: 18,801,310" />
+<feature id="us_ga" category="state_5" label="Georgia" label_map="GA" popup="2010 Population: 9,687,653" />
+<feature id="us_hi" category="state_2" label="Hawaii" label_map="HI" popup="2010 Population: 1,360,301" />
+<feature id="us_ia" category="state_3" label="Iowa" label_map="IA" popup="2010 Population: 3,046,355" />
+<feature id="us_id" category="state_2" label="Idaho" label_map="ID" popup="2010 Population: 1,567,582" />
+<feature id="us_il" category="state_5" label="Illinois" label_map="IL" popup="2010 Population: 12,830,632" />
+<feature id="us_in" category="state_4" label="Indiana" label_map="IN" popup="2010 Population: 6,483,802" />
+<feature id="us_ks" category="state_3" label="Kansas" label_map="KS" popup="2010 Population: 2,853,118" />
+<feature id="us_ky" category="state_4" label="Kentucky" label_map="KY" popup="2010 Population: 4,339,367" />
+<feature id="us_la" category="state_4" label="Louisiana" label_map="LA" popup="2010 Population: 4,533,372" />
+<feature id="us_ma" category="state_4" label="Massachusetts" label_map="MA" popup="2010 Population: 6,547,629" />
+<feature id="us_md" category="state_4" label="Maryland" label_map="MD" popup="2010 Population: 5,773,552" />
+<feature id="us_me" category="state_2" label="Maine" label_map="ME" popup="2010 Population: 1,328,361" />
+<feature id="us_mi" category="state_5" label="Michigan" label_map="MI" popup="2010 Population: 9,883,640" />
+<feature id="us_mn" category="state_4" label="Minnesota" label_map="MN" popup="2010 Population: 5,303,925" />
+<feature id="us_mo" category="state_4" label="Missouri" label_map="MO" popup="2010 Population: 5,988,927" />
+<feature id="us_ms" category="state_3" label="Mississippi" label_map="MS" popup="2010 Population: 2,967,297" />
+<feature id="us_mt" category="state_1" label="Montana" label_map="MT" popup="2010 Population: 989,415" />
+<feature id="us_nc" category="state_5" label="North Carolina" label_map="NC" popup="2010 Population: 9,535,483" />
+<feature id="us_nd" category="state_1" label="North Dakota" label_map="ND" popup="2010 Population: 672,591" />
+<feature id="us_ne" category="state_2" label="Nebraska" label_map="NE" popup="2010 Population: 1,826,341" />
+<feature id="us_nh" category="state_2" label="New Hampshire" label_map="NH" popup="2010 Population: 1,316,470" />
+<feature id="us_nj" category="state_5" label="New Jersey" label_map="NJ" popup="2010 Population: 8,791,894" />
+<feature id="us_nm" category="state_3" label="New Mexico" label_map="NM" popup="2010 Population: 2,059,179" />
+<feature id="us_nv" category="state_3" label="Nevada" label_map="NV" popup="2010 Population: 2,700,551" />
+<feature id="us_ny" category="state_6" label="New York" label_map="NY" popup="2010 Population: 19,378,102" />
+<feature id="us_oh" category="state_5" label="Ohio" label_map="OH" popup="2010 Population: 11,536,504" />
+<feature id="us_ok" category="state_3" label="Oklahoma" label_map="OK" popup="2010 Population: 3,751,351" />
+<feature id="us_or" category="state_3" label="Oregon" label_map="OR" popup="2010 Population: 3,831,074" />
+<feature id="us_pa" category="state_5" label="Pennsylvania" label_map="PA" popup="2010 Population: 12,702,379" />
+<feature id="us_pr" category="state_3" label="Puerto Rico" label_map="PR" popup="2010 Population: 3,725,789" />
+<feature id="us_ri" category="state_2" label="Rhode Island" label_map="RI" popup="2010 Population: 1,052,567" />
+<feature id="us_sc" category="state_4" label="South Carolina" label_map="SC" popup="2010 Population: 4,625,364" />
+<feature id="us_sd" category="state_1" label="South Dakota" label_map="SD" popup="2010 Population: 814,180" />
+<feature id="us_tn" category="state_4" label="Tennessee" label_map="TN" popup="2010 Population: 6,346,105" />
+<feature id="us_tx" category="state_6" label="Texas" label_map="TX" popup="2010 Population: 25,145,561" />
+<feature id="us_ut" category="state_3" label="Utah" label_map="UT" popup="2010 Population: 2,763,885" />
+<feature id="us_va" category="state_5" label="Virginia" label_map="VA" popup="2010 Population: 8,001,024" />
+<feature id="us_vt" category="state_1" label="Vermont" label_map="VT" popup="2010 Population: 625,741" />
+<feature id="us_wa" category="state_4" label="Washington" label_map="WA" popup="2010 Population: 6,724,540" />
+<feature id="us_wi" category="state_4" label="Wisconsin" label_map="WI" popup="2010 Population: 5,686,986" />
+<feature id="us_wv" category="state_2" label="West Virginia" label_map="WV" popup="2010 Population: 1,852,994" />
+<feature id="us_wy" category="state_1" label="Wyoming" label_map="WY" popup="2010 Population: 563,626" />
+</jqm_features>

@@ -1,0 +1,26 @@
+<jqm_features xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="../xsd/jqm_features.xsd">
+<feature id="us_md_24001" category="county_2" label="Allegany" popup="2010 Population: 75,087" />
+<feature id="us_md_24003" category="county_5" label="Anne Arundel" popup="2010 Population: 537,656" />
+<feature id="us_md_24005" category="county_5" label="Baltimore" popup="2010 Population: 805,029" />
+<feature id="us_md_24009" category="county_2" label="Calvert" popup="2010 Population: 88,737" />
+<feature id="us_md_24011" category="county_1" label="Caroline" popup="2010 Population: 33,066" />
+<feature id="us_md_24013" category="county_3" label="Carroll" popup="2010 Population: 167,134" />
+<feature id="us_md_24015" category="county_3" label="Cecil" popup="2010 Population: 101,108" />
+<feature id="us_md_24017" category="county_3" label="Charles" popup="2010 Population: 146,551" />
+<feature id="us_md_24019" category="county_1" label="Dorchester" popup="2010 Population: 32,618" />
+<feature id="us_md_24021" category="county_3" label="Frederick" popup="2010 Population: 233,385" />
+<feature id="us_md_24023" category="county_1" label="Garrett" popup="2010 Population: 30,097" />
+<feature id="us_md_24025" category="county_3" label="Harford" popup="2010 Population: 244,826" />
+<feature id="us_md_24027" category="county_4" label="Howard" popup="2010 Population: 287,085" />
+<feature id="us_md_24029" category="county_1" label="Kent" popup="2010 Population: 20,197" />
+<feature id="us_md_24031" category="county_5" label="Montgomery" popup="2010 Population: 971,777" />
+<feature id="us_md_24033" category="county_5" label="Prince George's" popup="2010 Population: 863,420" />
+<feature id="us_md_24035" category="county_1" label="Queen Anne's" popup="2010 Population: 47,798" />
+<feature id="us_md_24037" category="county_3" label="St. Mary's" popup="2010 Population: 105,151" />
+<feature id="us_md_24039" category="county_1" label="Somerset" popup="2010 Population: 26,470" />
+<feature id="us_md_24041" category="county_1" label="Talbot" popup="2010 Population: 37,782" />
+<feature id="us_md_24043" category="county_3" label="Washington" popup="2010 Population: 147,430" />
+<feature id="us_md_24045" category="county_2" label="Wicomico" popup="2010 Population: 98,733" />
+<feature id="us_md_24047" category="county_2" label="Worcester" popup="2010 Population: 51,454" />
+<feature id="us_md_24510" category="county_5" label="Baltimore" popup="2010 Population: 620,961" />
+</jqm_features>
