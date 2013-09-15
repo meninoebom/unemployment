@@ -1,32 +1,32 @@
 <div class="stat-reader">
 	<div>	
-		<p class="stat-reader-percentage">{{usValue.val}}%</p>
-		<p class="stat-reader-date">{{getMonthName(month.val)}} {{year.val}}</p>
+		<p class="stat-reader-percentage">{{dataSpec.usValue}}%</p>
+		<p class="stat-reader-date">{{getMonthName(dataSpec.month)}} {{dataSpec.year}}</p>
 		<h3 class="stat-reader-region">United States</h3>
 		<p class="stat-reader-label">Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
 
-	<div ng-hide="regionName.val=='United States'">	
+	<div ng-hide="dataSpec.regionName=='United States'">	
 		<p class="stat-reader-percentage">{{regionValue}}%</p>
-		<p class="stat-reader-date">{{getMonthName(month.val)}} {{year.val}}</p>
-		<h3 class="stat-reader-region">{{regionName.val}} </h3>
+		<p class="stat-reader-date">{{getMonthName(dataSpec.month)}} {{dataSpec.year}}</p>
+		<h3 class="stat-reader-region">{{dataSpec.regionName}} </h3>
 		<p class="stat-reader-label">Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
 
-	<div ng-hide='county1.val==""'>	
+	<div ng-hide='dataSpec.county1==""'>	
 		<p class="stat-reader-percentage">{{county1Value}}%</p>
-		<p class="stat-reader-date">{{getMonthName(month.val)}} {{year.val}}</p>
-		<h3 class="stat-reader-region">{{county1.val}}</h3>
+		<p class="stat-reader-date">{{getMonthName(dataSpec.month)}} {{dataSpec.year}}</p>
+		<h3 class="stat-reader-region">{{dataSpec.county1}}</h3>
 		<p class="stat-reader-label">Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
 
-	<div ng-hide='county2.val==""'>	
+	<div ng-hide='dataSpec.county2==""'>	
 		<p class="stat-reader-percentage">{{county2Value}}%</p>
-		<p class="stat-reader-date">{{getMonthName(month.val)}} {{year.val}}</p>
-		<h3 class="stat-reader-region">{{county2.val}}</h3>
+		<p class="stat-reader-date">{{getMonthName(dataSpec.month)}} {{dataSpec.year}}</p>
+		<h3 class="stat-reader-region">{{dataSpec.county2}}</h3>
 		<p class="stat-reader-label">Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
@@ -36,12 +36,12 @@
 	<!-- <div>
 	  <div><b>US unemployment</b> : {{usValue}}</div>
 	  <div ng-hide='subRegionType=="States"'>
-	  	<div><b>State unemployment</b> : {{regionName.val}} : {{regionValue}}</div>
-	    <div ng-hide='county1.val==""'><b>County1 Unemployment</b> : {{county1.val}} : {{county1Value}}</div>
-	    <div ng-hide='county2.val==""'><b>County2 Unemployment</b> : {{county2.val}} : {{county2Value}}</div>
+	  	<div><b>State unemployment</b> : {{dataSpec.regionName}} : {{regionValue}}</div>
+	    <div ng-hide='dataSpec.county1==""'><b>County1 Unemployment</b> : {{dataSpec.county1}} : {{county1Value}}</div>
+	    <div ng-hide='dataSpec.county2==""'><b>County2 Unemployment</b> : {{dataSpec.county2}} : {{county2Value}}</div>
 	  </div>
 	  <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
-	   <div ng-repeat="subRegion in subRegionData">
+	   <div ng-repeat="subRegion in dataSpec.subRegionData">
 	  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
 	  </div>
 	</div> -->

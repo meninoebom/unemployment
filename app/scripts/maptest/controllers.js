@@ -36,7 +36,7 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	for (var m=1; m<=12; m++) {$scope.months.push(m)};
 	
 	$scope.regionName = "United States";
-	$scope.subRegionData = 'Waiting';
+	$scope.dataSpec.subRegionData = 'Waiting';
 	
 	$scope.regions = ['United States'];
 	$scope.countyList = [];
@@ -44,9 +44,9 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.county2 = '';
 	
 	$scope.dataForCounty = function(countyName) {
-		for (var i=0; i<$scope.subRegionData.length; i++) {
-			if ($scope.subRegionData[i].name==countyName) {
-				return $scope.subRegionData[i].value;
+		for (var i=0; i<$scope.dataSpec.subRegionData.length; i++) {
+			if ($scope.dataSpec.subRegionData[i].name==countyName) {
+				return $scope.dataSpec.subRegionData[i].value;
 			}
 		}
 	}
@@ -56,7 +56,7 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 			$scope.usValue = data.us.value;
 			$scope.regionName = data.region.name;
 			$scope.regionValue = data.region.value;
-			$scope.subRegionData = data.subRegions;
+			$scope.dataSpec.subRegionData = data.subRegions;
 			if ($scope.regionName=='United States') {
 				$scope.regions = ['United States'].concat(data.subRegionNames);
 				$scope.subRegionType = 'States';

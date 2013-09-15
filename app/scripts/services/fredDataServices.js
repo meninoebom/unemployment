@@ -249,7 +249,7 @@ services.factory('mapDataService',['$http', function($http) {
 			var that = this;
 			var result = {};
 			that._prefetchRegion('United States', function() {
-				
+
 				that._prefetchRegion(stateName, function() {
 					
 					result['us'] = that._getChartableDataset(that.allRegionData['United States'].region.values, that.allRegionData['United States'].start_date);
