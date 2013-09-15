@@ -8,23 +8,27 @@
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
+
+    <!-- jQueryMaps library -->
+    <script src="jquerymaps/libs/jquerymaps/jQueryMaps-beauty.js"></script>
+    
 </head>
 
 <body ng-controller="rootController">
 
 	<div>
  	 <span><b>Date</b> </span>
-   <select ng-model="year" ng-init="year=2000" ng-options="y for y in years"></select>
-   <select ng-model="month" ng-init="month=1"ng-options="m for m in months"></select>
+   <select ng-model="dataSelector.year" ng-init="dataSelector.year=2000" ng-options="y for y in years"></select>
+   <select ng-model="dataSelector.month" ng-init="dataSelector.month=1"ng-options="m for m in months"></select>
   </div>
   
   <div>
   	<span><b>Region</b> </span>
-    <select ng-model="regionName" ng-init"United States" ng-options="region for region in regions"></select>
+    <select ng-model="dataSelector.regionName" ng-init"United States" ng-options="region for region in regions"></select>
   </div>
-  <div ng-hide="regionName=='United States'">
+  <div ng-hide="dataSelector.regionName=='United States'">
   	<div>
-      <span><b>Select 2 counties in {{regionName}}</b></span>
+      <span><b>Select 2 counties in {{dataSelector.regionName}}</b></span>
       <select ng-model="county1" ng-options="c for c in countyList"></select>  
       <select ng-model="county2" ng-options="c for c in countyList"></select>  
 		</div>
@@ -42,9 +46,20 @@
   <hr/>
   <div><b>US unemployment</b> : {{usValue}}</div>
   <div ng-hide='subRegionType=="States"'>
-  	<div><b>State unemployment</b> : {{regionName}} : {{regionValue}}</div>
+  	<div><b>State unemployment</b> : {{dataSelector.regionName}} : {{regionValue}}</div>
     <div ng-hide='county1==""'><b>County1 Unemployment</b> : {{county1}} : {{county1Value}}</div>
     <div ng-hide='county2==""'><b>County2 Unemployment</b> : {{county2}} : {{county2Value}}</div>
+  </div>
+  
+  <div id="mappingContent" jqm-map style="position: relative;">
+    <!-- The DIV that will contain the map -->
+    <div id="mapDiv" style="position: relative; margin: 0; padding: 0; border: none; width: 780px; height: 400px; overflow: hidden;"></div>
+    <!-- The DIV to display close to the mouse pointer when the user hovers over an state -->
+    <div id="jqm_popup_feature" class="map_popup_feature" style="z-index: 500; position: absolute; display: none; left: 546px; top: 169px;">
+          <div class="title">##label##</div>
+          <div class="popup">##popup##</div>
+    </div>
+    <div id="jqm_loader" class="map_loader"></div>
   </div>
   <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
     <div ng-repeat="subRegion in subRegionData">
@@ -55,5 +70,7 @@
   <script src="scripts/maptest/filters.js"></script>
   <script src="scripts/services/fredDataServices.js"></script>
   <script src="scripts/maptest/controllers.js"></script>
+  <script src="scripts/maptest/jqmMapDirective.js"></script>
+
 </body>
 </html>

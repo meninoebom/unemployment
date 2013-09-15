@@ -1,0 +1,62 @@
+<!DOCTYPE html> <!-- Declare this page as HTML5 -->
+<html>
+    <head>
+        <!-- Internet Explorer 8 and lower HTML5 support via Google ExplorerCanvas -->
+        <!--[if lt IE 9]><script src="jquerymaps/libs/excanvas/excanvas_tagcanvas.js"></script><![endif]-->
+        <!-- Some basic styling -->
+        <link href="css/basic.css" rel="stylesheet" type="text/css" />
+        <!-- jQuery and jQuery-UI libraries -->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8/jquery-ui.min.js"></script>
+        <!-- jQueryMaps library -->
+        <script src="jquerymaps/libs/jquerymaps/jQueryMaps-beauty.js"></script>
+        <script>
+            // Declare the map object here, so it can be used anywhere
+            var jqmMap;
+            // When everything is loaded, create the map
+            $(document).ready(function(){ 
+                // Set the parameters to create the map
+                var params = {
+                    // The DIV that will contain the map
+                    mapDivId: "mapDiv",
+                    // The general configuration XML file
+                    configUrl: "jquerymaps/jqm_config_test.xml", //_basic.xml",
+                    // The initial theme (children themes may be loaded later on)
+                    initialThemeUrl: "jquerymaps/themes/us.xml"
+                };
+                // Create the map by instancing the Map class
+                jqmMap = new JQueryMaps.Map(params);
+            });
+
+            function stateClicked(obj) {
+								console.log('Region clicked');
+								console.log(obj);
+            }
+            function jqmJsMap(obj) {
+							console.log('General Event');
+								console.log(obj);
+								console.log(obj.lastClickedObject);
+            }
+        </script>
+    </head>
+    <body>
+        <!-- The DIV that will contain the map -->
+        <div id="mapDiv" style="margin: 0; padding: 0; border: none; width: 780px; height: 400px; overflow: hidden;"></div>
+        <!-- The DIV to display close to the mouse pointer when the user hovers over an state -->
+        <div id="onMouseOverInfoWindowDiv" class="onMouseOver">You are hovering over ##label##!</div>
+        <div id="jqm_popup_feature" class="map_popup_feature" style="z-index: 500; position: absolute; display: none; left: 546px; top: 169px;">
+        			<div class="title">##label##</div>
+              <div class="popup">##popup##</div>
+        </div>
+        <div id="jqm_loader" class="map_loader"></div>
+        <div id="jqm_popup" class="map_popup"><div class="title">##label##</div><div class="popup">##popup##</div></div>
+        <div id="jqm_popup_world" class="map_popup_world"><div class="title">##label##</div></div>
+        <div id="jqm_popup_world_airport" class="map_popup_world"><div class="title">##label##</div><div class="popup">##popup##</div></div>
+    
+        <div id="jqm_dialog" title="">
+	        <div id="jqm_box_dialog" class="map_dialog"></div>
+  		  </div>
+    </body>
+    
+
+</html>
