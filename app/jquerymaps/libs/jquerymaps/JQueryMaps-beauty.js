@@ -7864,8 +7864,11 @@ function JQueryMaps() {
         };
 				this.loadChildTheme = function(featureId, feature_xml) {
             if (cbbji) {
-                console.log("loadChildFeature "+featureId+" "+feature_xml);
+                console.log("loadChildTheme "+featureId+" "+feature_xml);
             }
+						if (this.getCurrentLevel()==1) {
+							cbgbd();
+						}
 						ccdbf.cbbbj = feature_xml;
 						this.focusOnFeature(featureId);
         };
