@@ -13,7 +13,8 @@ angular.module('unemploymentApp.filters', ['unemploymentApp.services']).
   }])
   .filter('percentageFilter', [function() {
     return function (input) {
-    	if(input === undefined || input === 'undefined' || input === null || input <= 0) return 'NA';
+    	if(input === undefined || input === 'undefined' || input === 'null' || input === null || input <= 0 || isNaN(input) || input === false || input === '') return 'NA';
+      console.log(input);
       return input + '%';
     };
   }]);

@@ -1,30 +1,9 @@
-<style>
-	/* tell the SVG path to be a thin blue line without any area fill */
-	path {
-	  fill: none;
-	}
-	.axis {
-	  shape-rendering: crispEdges;
-	}
-	.x.axis .minor {
-	  stroke-opacity: .5;
-	  stroke-dasharray: 3, 3;
-	}
-	.x.axis line, .x.axis path {
-	  fill: none;
-	  stroke: #000;
-	} 
-	.y.axis line, .y.axis path {
-	  fill: none;
-	  stroke: #000;
-	}
-</style>
 <div class="level-3-graph" >
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
-			<h3>{{monthNames[dataSpec.month]}} {{dataSpec.year}}<br />Unemployment Rates</h3>
-			<p ng-repeat="region in selectedRegions">
+			<h3>{{monthNames[dataSpec.month - 1]}} {{dataSpec.year}}<br />Unemployment Rates</h3>
+			<p ng-repeat="region in selectedRegions" class="clearfix">
 				<span class="unemp-rate {{region.color}}">{{unemploymentRateMap[region.name] | percentageFilter}}</span> 
 				<span class="name">{{region.name}}</span>
 			</p>
@@ -41,30 +20,6 @@
 			</span>
 			<div class="vert-center-wrapper region-name"><div class="vert-center">{{region.name}}</div></div>
 		</div>
-		<!-- <div class="region" ng-click="toggleGraphLine(1)">
-			<span class="color-box blue">
-				<span class="line-style-icon us-line-style" ></span>
-			</span>
-			<div class="vert-center-wrapper region-name"><div class="vert-center">United States</div></div>
-		</div>
-		<div class="region" ng-click="toggleGraphLine(2)">
-			<span class="color-box green">
-				<span class="line-style-icon state-line-style" ></span>
-			</span>
-			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.regionName}}</div></div>
-		</div>
-		<div class="region" ng-click="toggleGraphLine(3)">
-			<span class="color-box purple">
-				<span class="line-style-icon county1-line-style" ></span>
-			</span>
-			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.county1}}</div></div>
-		</div>
-		<div class="region" ng-click="toggleGraphLine(4)">
-			<span class="color-box purple">
-				<span class="line-style-icon county2-line-style" ></span>
-			</span>
-			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.county2}}</div></div>
-		</div> -->
 	</div>
 </div>
 

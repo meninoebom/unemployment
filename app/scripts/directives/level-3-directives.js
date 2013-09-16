@@ -68,7 +68,7 @@ angular.module('directives.ue.level-3', [])
 		        }
 
 		        var stepsBetweenTicks = (function(){
-		          return Math.round((xAxisMax - xAxisMin) / 12);
+		          return Math.round((xAxisMax - xAxisMin) / 13);
 		        })();
 
 		        //Take out tickmarks near 0 because they are visually disruptive
@@ -155,18 +155,18 @@ angular.module('directives.ue.level-3', [])
 		            .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
 				var drawGraphLine = function(data, color, lineStyle, index) {
-				var line = d3.svg.line()
-				  .x(function(d) { return xScale(d[0]); })
-				  .y(function(d) { return yScale(d[1]); }); 
-				svg.append("svg:path")
-				   .datum(data)
-				   .attr("index", index)
-				   .attr("class", "line graph-line")
-				   .attr("d", line)
-				   .attr("fill","none")
-				   .attr("stroke", color)
-				   .attr("stroke-width",4)
-				   .style("stroke-dasharray", (lineStyle));
+					var line = d3.svg.line()
+					  .x(function(d) { return xScale(d[0]); })
+					  .y(function(d) { return yScale(d[1]); }); 
+					svg.append("svg:path")
+					   .datum(data)
+					   .attr("index", index)
+					   .attr("class", "line graph-line")
+					   .attr("d", line)
+					   .attr("fill","none")
+					   .attr("stroke", color)
+					   .attr("stroke-width",4)
+					   .style("stroke-dasharray", (lineStyle));
 				}
 
 				_.each(scope.selectedRegions, function(element, index, list){
@@ -257,13 +257,12 @@ angular.module('directives.ue.level-3', [])
 						  if(scope.selectedRegions.length) scope.$apply(scope.showMonthDialPopover = true);
 					})
 					$("body").on('mouseup.hideMonthDialPopover', function () { 
-						scope.$apply(scope.showMonthDialPopover = false) 
+						scope.$apply(scope.showMonthDialPopover = true) 
 					});
-
 		    }// end of redrawEntireGraph()
 	         
 	        scope.$watch("selectedRegions", function() {
-	          redrawEntireGraph(2013, scope.highestVisibleRate);
+	          redrawEntireGraph(2014, scope.highestVisibleRate);
 	        });
 
 	  	}// end link function

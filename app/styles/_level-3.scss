@@ -286,64 +286,68 @@
 	position: relative;
 	float: left;
 	margin-top: 64px;
+	.month-dial-popover {
+	    @include popover($darkGrey, $white);
+	    display: block;
+	    width: 300px;
+	    position: absolute;
+	    border-radius: 0;
+	    h3 {
+	    	@include font(18px, 24px, #fff);
+	    	font-family: 'open_sansregular';
+	    }
+	    &.left .arrow, &.right .arrow {
+			top: 20%;
+		}
+	    &.right .arrow:after {
+	        border-right-color: $darkGrey;
+	    }
+	    &.left .arrow:after {
+	        border-left-color: $darkGrey;
+	    }
+	    &.top .arrow:after {
+	        border-top-color: $darkGrey;
+	    }
+	    &.bottom .arrow:after {
+	        border-bottom-color: $darkGrey;
+	    }  
+	    h3 {
+	 		margin-bottom: 16px;
+	    }
+		p {
+			height: 24px;
+			margin: 0 0 20px 0;
+			@include font(16px, 24px, #fff);
+		}
+		&.blue { 
+			color: $blue;
+		}
+		&.purple { 
+			color: $purple;
+		}
+		&.green { 
+			color: $green;
+		}
+	    .unemp-rate {
+	    	display: block;
+	    	float: left;
+	    	margin-right: 14px;
+	    	text-align: right;
+	    	width: 42px;
+	    	&.blue { color: $lightBlue; }
+			&.purple { color: $lightPurple; }
+			&.green { color: $lightGreen; }
+	    }
+	    .name {
+	    	display: block;
+	    	float: left;
+	    	width: 180px;
+	    }
+	    .month, .year {
+	    	text-transform: capitalize;
+	    }
+	}
 }
-.month-dial-popover {
-    @include popover($darkGrey, $white);
-    display: block;
-    width: 300px;
-    position: absolute;
-    border-radius: 0;
-    width: 270px;
-    h3 {
-    	@include font(18px, 24px, #fff);
-    	font-family: 'open_sansregular';
-    }
-    &.left .arrow, &.right .arrow {
-		top: 20%;
-	}
-    &.right .arrow:after {
-        border-right-color: $darkGrey;
-    }
-    &.left .arrow:after {
-        border-left-color: $darkGrey;
-    }
-    &.top .arrow:after {
-        border-top-color: $darkGrey;
-    }
-    &.bottom .arrow:after {
-        border-bottom-color: $darkGrey;
-    }  
-    h3 {
- 		margin-bottom: 16px;
-    }
-	p {
-		height: 24px;
-		margin: 0 0 25px 0;
-		@include font(16px, 24px, #fff);
-	}
-	&.blue { 
-		color: $blue;
-	}
-	&.purple { 
-		color: $purple;
-	}
-	&.green { 
-		color: $green;
-	}
-    .unemp-rate {
-    	display: inline-block;
-    	margin-right: 14px;
-    	text-align: right;
-    	width: 42px;
-    	&.blue { color: $lightBlue; }
-		&.purple { color: $lightPurple; }
-		&.green { color: $lightGreen; }
-    }
-    .month, .year {
-    	text-transform: capitalize;
-    }
-}
-
 .region-picker {
 	float: left;
 	height: 535px;
