@@ -11,6 +11,7 @@
 	<category id="county_1" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#E9E7D2" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 	<category id="state_2" enabled="true" zoom="false" >
@@ -23,6 +24,7 @@
 	<category id="county_2" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#D3CCB6" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 	<category id="state_3" enabled="true" zoom="false" >
@@ -35,6 +37,7 @@
 	<category id="county_3" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#BEB29B" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 	<category id="state_4" enabled="true" zoom="false" >
@@ -46,6 +49,7 @@
 	<category id="county_4" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#AC9C84" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 	<category id="state_5" enabled="true" zoom="false" >
@@ -58,6 +62,7 @@
 	<category id="county_5" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#988369" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 	<category id="state_6" enabled="true" zoom="false" >
@@ -70,6 +75,7 @@
 	<category id="county_6" enabled="true" zoom="false" >
 		<style event="onMouseOut" fillColor="#866C51" strokeColor="#ffffff" strokeWidth="1" />
 		<action event="onMouseOver" target="infowindow" infoWindowDiv="jqm_popup_feature" align="mouse,10,10" />
+		<action event="onClick" jsFunction="countyClicked" target="js" url="state_##id##.xml" />
 	</category>
 	
 </jqm_featureCategories>

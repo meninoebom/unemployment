@@ -11,6 +11,12 @@
 		#mappingContent img {
 			max-width: none;
 		}
+		
+		.map_popup_feature {
+			background-color: white;
+			border: solid 1px black;
+			padding: 10px;
+		}
 		</style>
 		 <!-- Including jQuery and jQuery UI from Google's CDN -->
     <script src="bower_components/jquery/jquery.js"></script>
@@ -73,7 +79,7 @@
  -->
  
   <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
-    <div ng-repeat="subRegion in subRegionData">
+    <div ng-repeat="subRegion in dataSpec.subRegionData">
   	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
   </div>
 
