@@ -27,22 +27,22 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	/**************************
 	testing for level-3 data (mapDataService)
 	***************************/
-	$scope.dataSelector = {};
-	$scope.dataSelector.year = '2000';
-	$scope.dataSelector.month = '01';
+	$scope.dataSpec = {};
+	$scope.dataSpec.year = '2000';
+	$scope.dataSpec.month = '01';
 	$scope.years = [];
 	$scope.months = [];
 	for (var y=2000; y<=2013; y++) {$scope.years.push(y)};
 	for (var m=1; m<=12; m++) {$scope.months.push(m)};
 	
-	$scope.dataSelector.regionName = "United States";
+	$scope.dataSpec.regionName = "United States";
 	
 	$scope.subRegionData = 'Waiting';
 	
 	$scope.regions = ['United States'];
 	$scope.countyList = [];
-	$scope.dataSelector.county1 = '';
-	$scope.dataSelector.county2 = '';
+	$scope.dataSpec.county1 = '';
+	$scope.dataSpec.county2 = '';
 	
 	$scope.dataForCounty = function(countyName) {
 		for (var i=0; i<$scope.subRegionData.length; i++) {
@@ -53,36 +53,36 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	}
 	
 	$scope.updateData = function(regionChanged) {
-		mapDataService.getRegionalDataForDate($scope.dataSelector.regionName, $scope.dataSelector.year+'-'+$scope.dataSelector.month+'-01', function(data) {
+		mapDataService.getRegionalDataForDate($scope.dataSpec.regionName, $scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.usValue = data.us.value;
-			$scope.dataSelector.regionName = data.region.name;
+			$scope.dataSpec.regionName = data.region.name;
 			$scope.regionValue = data.region.value;
 			$scope.subRegionData = data.subRegions;
-			if ($scope.dataSelector.regionName=='United States') {
+			if ($scope.dataSpec.regionName=='United States') {
 				$scope.regions = ['United States'].concat(data.subRegionNames);
 				$scope.subRegionType = 'States';
 			} else if (regionChanged) {
 				$scope.subRegionType = 'Counties';
 				$scope.countyList = data.subRegionNames;
-				$scope.dataSelector.county1 = '';
-				$scope.dataSelector.county2 = '';
+				$scope.dataSpec.county1 = '';
+				$scope.dataSpec.county2 = '';
 			}
-			if ($scope.dataSelector.county1!='') {
-				$scope.county1Value = $scope.dataForCounty($scope.dataSelector.county1);
+			if ($scope.dataSpec.county1!='') {
+				$scope.county1Value = $scope.dataForCounty($scope.dataSpec.county1);
 				console.log($scope.county1Value);
 			}
-			if ($scope.dataSelector.county2!='') {
-				$scope.county2Value = $scope.dataForCounty($scope.dataSelector.county2);
+			if ($scope.dataSpec.county2!='') {
+				$scope.county2Value = $scope.dataForCounty($scope.dataSpec.county2);
 			}
 	});
 	};
 	
-	$scope.$watch('dataSelector.regionName', function() {
+	$scope.$watch('dataSpec.regionName', function() {
 		$scope.updateData(true);
 		console.log("$scope.updateData(true);");
 		});
 	
-	$scope.$watch('dataSelector.year+"-"+dataSelector.month', function() {
+	$scope.$watch('dataSpec.year+"-"+dataSpec.month', function() {
 		$scope.updateData(false);
 		console.log("$scope.updateData(true);");
 		});
@@ -93,21 +93,21 @@ function rootController($scope, $timeout, unemploymentDataService, mapDataServic
 	$scope.county1ChartData = [];
 	$scope.county2ChartData = [];
 	
-	$scope.$watch('dataSelector.county1+" "+dataSelector.county2', function() {
-		if ($scope.dataSelector.county1!='') {
-			$scope.county1Value = $scope.dataForCounty($scope.dataSelector.county1);
+	$scope.$watch('dataSpec.county1+" "+dataSpec.county2', function() {
+		if ($scope.dataSpec.county1!='') {
+			$scope.county1Value = $scope.dataForCounty($scope.dataSpec.county1);
 			console.log($scope.county1Value);
 		}
-		if ($scope.dataSelector.county2!='') {
-			$scope.county2Value = $scope.dataForCounty($scope.dataSelector.county2);
+		if ($scope.dataSpec.county2!='') {
+			$scope.county2Value = $scope.dataForCounty($scope.dataSpec.county2);
 		}
-		if ($scope.dataSelector.county1=='' || $scope.dataSelector.county2=='') {
+		if ($scope.dataSpec.county1=='' || $scope.dataSpec.county2=='') {
 			$scope.usChartData = [];
 			$scope.stateChartData = [];
 			$scope.county1ChartData = [];
 			$scope.county2ChartData = [];
 		} else {
-			mapDataService.getChartableData($scope.dataSelector.regionName, $scope.dataSelector.county1, $scope.dataSelector.county2, function(result) {
+			mapDataService.getChartableData($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.county2, function(result) {
 				$scope.usChartData = result.us;
 				$scope.stateChartData = result.state;
 				$scope.county1ChartData = result.county1;

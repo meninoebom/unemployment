@@ -4,10 +4,19 @@
   <meta charset="utf-8">
   <title>My AngularJS App</title>
 
-  <!-- Including jQuery and jQuery UI from Google's CDN -->
+    <!-- build:css({.tmp,app}) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <!-- endbuild -->
+		<style>
+		#mappingContent img {
+			max-width: none;
+		}
+		</style>
+		 <!-- Including jQuery and jQuery UI from Google's CDN -->
     <script src="bower_components/jquery/jquery.js"></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
+    <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
 
     <!-- jQueryMaps library -->
     <script src="jquerymaps/libs/jquerymaps/jQueryMaps-beauty.js"></script>
@@ -16,51 +25,53 @@
 
 <body ng-controller="rootController">
 
-	<div>
+	<ui-view>
+  <div>
  	 <span><b>Date</b> </span>
-   <select ng-model="dataSelector.year" ng-init="dataSelector.year=2000" ng-options="y for y in years"></select>
-   <select ng-model="dataSelector.month" ng-init="dataSelector.month=1"ng-options="m for m in months"></select>
+   <select ng-model="dataSpec.year" ng-init="dataSpec.year=2000" ng-options="y for y in years"></select>
+   <select ng-model="dataSpec.month" ng-init="dataSpec.month=1"ng-options="m for m in months"></select>
   </div>
   
   <div>
   	<span><b>Region</b> </span>
-    <select ng-model="dataSelector.regionName" ng-init"United States" ng-options="region for region in regions"></select>
+    <select ng-model="dataSpec.regionName" ng-init"United States" ng-options="region for region in regions"></select>
   </div>
-  <div ng-hide="dataSelector.regionName=='United States'">
+  <div ng-hide="dataSpec.regionName=='United States'">
   	<div>
-      <span><b>Select 2 counties in {{dataSelector.regionName}}</b></span>
-      <select ng-model="dataSelector.county1" ng-options="c for c in countyList"></select>  
-      <select ng-model="dataSelector.county2" ng-options="c for c in countyList"></select>  
+      <span><b>Select 2 counties in {{dataSpec.regionName}}</b></span>
+      <select ng-model="dataSpec.county1" ng-options="c for c in countyList"></select>  
+      <select ng-model="dataSpec.county2" ng-options="c for c in countyList"></select>  
 		</div>
-    <div ng-show="dataSelector.county1!='' && dataSelector.county2!=''">
+    <div ng-show="dataSpec.county1!='' && dataSpec.county2!=''">
     	<hr/>
     	<div><b>Now that we have a state and two counties, the chart data for the last screen of level 3 would be...</b></div>
     	<div> US: {{usChartData[0]}}, {{usChartData[1]}}, {{usChartData[2]}}, {{usChartData[3]}}, {{usChartData[4]}}, ...</div>
       <div> US (same as above, x-value formatted using Date.dateFromFloat()): {{usChartData[0] | pointFormat}}, {{usChartData[1]  | pointFormat}}, {{usChartData[2] | pointFormat}}, {{usChartData[3] | pointFormat}}, {{usChartData[4] | pointFormat}}, ...</div>
     	<div> {{regionName}}: {{stateChartData[0]}}, {{stateChartData[1]}}, {{stateChartData[2]}}, {{stateChartData[3]}}, {{stateChartData[4]}}, ...</div>
-    	<div> {{dataSelector.county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
-    	<div> {{dataSelector.county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
+    	<div> {{dataSpec.county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
+    	<div> {{dataSpec.county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
     </div>
   </div>
   
   <hr/>
   <div><b>US unemployment</b> : {{usValue}}</div>
   <div ng-hide='subRegionType=="States"'>
-  	<div><b>State unemployment</b> : {{dataSelector.regionName}} : {{regionValue}}</div>
-    <div ng-hide='dataSelector.county1==""'><b>County1 Unemployment</b> : {{dataSelector.county1}} : {{county1Value}}</div>
-    <div ng-hide='dataSelector.county2==""'><b>County2 Unemployment</b> : {{dataSelector.county2}} : {{county2Value}}</div>
+  	<div><b>State unemployment</b> : {{dataSpec.regionName}} : {{regionValue}}</div>
+    <div ng-hide='dataSpec.county1==""'><b>County1 Unemployment</b> : {{dataSpec.county1}} : {{county1Value}}</div>
+    <div ng-hide='dataSpec.county2==""'><b>County2 Unemployment</b> : {{dataSpec.county2}} : {{county2Value}}</div>
   </div>
   
-  <div id="mappingContent" jqm-map style="position: relative;">
-    <!-- The DIV that will contain the map -->
+  <div ng-include src="'views/level-3/mapping.html'"></div>
+<!--  <div id="mappingContent" jqm-map style="position: relative;">
     <div id="mapDiv" style="position: relative; margin: 0; padding: 0; border: none; width: 780px; height: 400px; overflow: hidden;"></div>
-    <!-- The DIV to display close to the mouse pointer when the user hovers over an state -->
     <div id="jqm_popup_feature" class="map_popup_feature" style="z-index: 500; position: absolute; display: none; left: 546px; top: 169px;">
           <div class="title">##label##</div>
           <div class="popup">##popup##</div>
     </div>
     <div id="jqm_loader" class="map_loader"></div>
   </div>
+ -->
+ 
   <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
     <div ng-repeat="subRegion in subRegionData">
   	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
@@ -70,7 +81,7 @@
   <script src="scripts/maptest/filters.js"></script>
   <script src="scripts/services/fredDataServices.js"></script>
   <script src="scripts/maptest/controllers.js"></script>
-  <script src="scripts/maptest/jqmMapDirective.js"></script>
-
+  <script src="scripts/directives/jqmMapDirective.js"></script>
+	</ui-view>
 </body>
 </html>

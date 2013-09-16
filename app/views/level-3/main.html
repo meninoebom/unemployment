@@ -1,14 +1,18 @@
 <div class="level-3-container clearfix">
+	
 	<div ng-include src="'views/main-header.html'"></div>
 	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
 	<!-- MAIN CONTENT //////////////////////////////////////////////////////////////////////////////// -->
 
-	<div class="main-content-area level-3-table-container" ng-show="dataSpec.view=='table' && dataSpec.currentStep<4" ng-click="setDataScale('state')" ng-include src="'views/level-3/table.html'"></div>
-	
-	<div class="main-content-area level-3-nation-map-container" ng-show="dataSpec.scale=='nation' && dataSpec.currentStep<4 && dataSpec.view=='graph' " ng-click="setDataScale('state')" ng-include src="'views/level-3/nation.html'"></div>
+		<div ng-include src="'views/level-3/mapping.html'"></div>
+	  <div class="main-content-area level-3-table-container" ng-show="dataSpec.view=='table' && dataSpec.currentStep<4" ng-click="setDataScale('state')" ng-include src="'views/level-3/table.html'"></div>
+  
+  
+  <div class="main-content-area level-3-nation-map-container" ng-show="dataSpec.scale=='nation' && dataSpec.currentStep<4 && dataSpec.view=='graph' " ng-click="setDataScale('state')" ng-include src="'views/level-3/nation.html'"></div>
 
 
 	<div class="main-content-area level-3-state-map-container" ng-show="dataSpec.scale=='state' && dataSpec.currentStep<4 && dataSpec.view=='graph'" ng-include src="'views/level-3/state.html'"></div>
+
 
 	<div class="main-content-area level-3-graph-container" ng-show="dataSpec.currentStep==4" ng-include="'views/level-3/graph.html'"></div>
 
