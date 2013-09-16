@@ -20,5 +20,5 @@
 	<filter id="shadowGrey" type="shadow" offsetX="2" offsetY="2" blur="2" fillColor="rgba(63, 63, 63, 1)" />
 	<textStyle id="label" filterId="" fontName="Verdana" fontSize="10" fontBold="no" fontItalic="no" align="center" fillColor="rgba(0,0,0,1)" strokeColor="" lineWidth="" />
 	<style event="onMouseOver" fillColor="rgba(255,255,255,0.3)" strokeColor="#666666" strokeWidth="2" />
-	<style event="onhighlighted" fillColor='rgba(255, 0, 0, 0.5)' strokeColor='#ffffff' strokeWidth='2' />
+	<style event="onhighlighted" fillColor='rgba(255, 0, 255, 0.5)' strokeColor='#ffffff' strokeWidth='2' />
 </jqm_config>
