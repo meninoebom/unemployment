@@ -35,6 +35,25 @@ angular.module('directives.ue.level-3', [])
 		          .range([xAxisMin, xAxisMax])
 		          .domain([0, width]);
 
+		        var convertXPosToFormattedDate = function(xPos) {
+		        	var formattedDate = {};
+		        	var dateAsDecimal = convertXPosToMonth(xPos);
+	                var dateArray = String(dateAsDecimal).split(".") 
+	                var y = dateArray[0];
+	                var rawMonthOffset = dateAsDecimal - y;
+	                var interpolatedMonthOffset = Math.floor(rawMonthOffset*12);
+					var epoch = y*12;
+					epoch += interpolatedMonthOffset;
+					var m1 = epoch % 12;
+					formattedDate.year = (epoch - m1)/12;
+					formattedDate.month = m1+1;
+					return formattedDate;
+		        }
+
+		        var getDateAsDecimal = function() {
+		        	return scope.dataSpec.year + (scope.dataSpec.month/12);
+		        }
+
 		        var colorMap = {
 		          'purple': '#660066',
 		          'blue': '#0d5b92',
@@ -186,32 +205,24 @@ angular.module('directives.ue.level-3', [])
 		                  $popover.css("left", newX-$popover.width()+margin.left).removeClass("right").addClass("left");
 		                }
 
-		                var dateAsDecimal = convertXPosToMonth(newX);
-		                var dateArray = String(dateAsDecimal).split(".") 
-		                var y = dateArray[0];
-		                var rawMonthOffset = dateAsDecimal - y;
-		                var interpolatedMonthOffset = Math.floor(rawMonthOffset*12);
-						var epoch = y*12;
-						epoch += interpolatedMonthOffset;
-						var m1 = epoch % 12;
-						var y1 = (epoch - m1)/12;
-						m1+=1;
+		                var formattedDate = convertXPosToFormattedDate(newX);
 
 		                scope.$apply(function(){
-		                	scope.dataSpec.month = m1;
-		                	scope.dataSpec.year = y1;
+		                	scope.dataSpec.month = formattedDate.month;
+		                	scope.dataSpec.year = formattedDate.year;
 		                });
+		            })
+		            .on("dragend", function(d,i) {
+		              var rawDateNum = getDateAsDecimal();
+		              var newX = xScale(rawDateNum);
+		              var snapToPosDistance = newX - d3.event.x;
+		              d3.select(this)
+		                  .attr("transform", function(d,i){
+		                      return "translate(" + [ snapToPosDistance,0 ] + ")"
+		                  })
+		                  .attr("x1", newX)
+		                  .attr("x2", newX);
 		            });
-		            // .on("dragend", function(d,i) {
-		            //   var snapToPosDistance = xScale(scope.dialPopCurMonth.val) - d3.event.x;
-		            //   var newX = xScale(scope.dialPopCurMonth.val);
-		            //   d3.select(this)
-		            //       .attr("transform", function(d,i){
-		            //           return "translate(" + [ snapToPosDistance,0 ] + ")"
-		            //       })
-		            //       .attr("x1", newX)
-		            //       .attr("x2", newX);
-		            // });
 
 					var drawMonthDial = function(month) {
 						  d3.select(".month-dial").remove();
@@ -227,7 +238,7 @@ angular.module('directives.ue.level-3', [])
 						  .attr("marker-end", "url(#triangle-start)")
 						  .call(drag);
 					}
-					drawMonthDial(2006);
+					drawMonthDial(getDateAsDecimal());
 
 					$(".month-dial").on("mousedown", function(e){
 						  var $popover = $('.month-dial-popover');
@@ -236,10 +247,8 @@ angular.module('directives.ue.level-3', [])
 						  var popoverHeight = $popover.height();
 						  var popoverWidth = $popover.width();
 						  var center =  $('.main-unemp-graph').width()/2;
-
-						  //scope.detailPopCurMonth.val  = convertXPosToMonth(relativeX);
 						  
-						  $popover.css("left", relativeX - popoverWidth + 60).css("top", relativeY - popoverHeight*.5);
+						  $popover.css("left", relativeX - popoverWidth + 60).css("top", 20);
 						  if (relativeX <= center) {
 						    $popover.css("left", relativeX + margin.left).removeClass("left").addClass("right");                  
 						  } else {
@@ -250,10 +259,6 @@ angular.module('directives.ue.level-3', [])
 					$("body").on('mouseup.hideMonthDialPopover', function () { 
 						scope.$apply(scope.showMonthDialPopover = false) 
 					});
-
-					scope.$on('moveMonthDial', function() {
-						drawMonthDial(scope.dialPopCurMonth.val);
-					})
 
 		    }// end of redrawEntireGraph()
 	         
