@@ -9,7 +9,6 @@
 	</ul>
 </div>
 
-
 <div class="dropdown" ng-hide="dataSpec.regionName=='United States'">
 	<div class="dropdown-toggle" role="button">
 		<span>{{dataSpec.county1 || 'Choose County 1'}}</span><b class="caret"></b>
@@ -36,8 +35,7 @@
 </div>
 
 <div class="view-control" ng-show="dataSpec.currentStep != 4">
-	<span class="view-button table-view-button" ng-click="setCurrentView('table')" ng-class="{on:dataSpec.currentView == 'table'}">table view</span> 
-	<span class="view-button graph-view-button" ng-click="setCurrentView('graph')" ng-class="{on:dataSpec.currentView == 'graph'}">graph view</span> 
+	<span class="view-button table-view-button" ng-click="setDataView('table')" ng-class="{on:dataSpec.view == 'table'}">table view</span> 
+	<span class="view-button graph-view-button" ng-click="setDataView('graph')" ng-class="{on:dataSpec.view == 'graph'}">graph view</span> 
 	<span class="view-button-label">Data View: </span>
 </div>
-

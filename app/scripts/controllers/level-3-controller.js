@@ -5,8 +5,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	$scope.dataSpec = {};
 	$scope.dataSpec.currentStep = 4;
 	$scope.dataSpec.usValue = 0;
-	$scope.dataSpec.currentScale = "nation";
-	$scope.dataSpec.currentView = "table";
+	$scope.dataSpec.scale = "nation";
+	$scope.dataSpec.view = "table";
 	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
 	$scope.dataSpec.month = '01';
@@ -59,12 +59,12 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 		angular.element('#incorrect-modal').modal('show');
 	}
 
-	$scope.setCurrentScale = function(scale) {
-		$scope.dataSpec.currentScale = scale;
+	$scope.setDataScale = function(scale) {
+		$scope.dataSpec.scale = scale;
 	}
 
-	$scope.setCurrentView = function(view) {
-		$scope.dataSpec.currentView = view;
+	$scope.setDataView = function(view) {
+		$scope.dataSpec.view = view;
 	}
 
 	$scope.setMonth = function(month) {
@@ -208,7 +208,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	});
 
 	//Graphing tools...
-
 	$scope.selectedRegions = [];
 	$scope.highestVisibleRate = 10;
 
@@ -231,28 +230,32 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 				data: $scope.usChartData,
 				color: 'blue',
 				lineStyle: '4,2',
-				selected: false
+				selected: false,
+				unemploymentRate: $scope.dataSpec.usValue
 			},{
 				name: $scope.dataSpec.regionName,
 				data: $scope.stateChartData,
 				color: 'green',
 				lineStyle: '4,2',
-				selected: false
+				selected: false,
+				unemploymentRate: $scope.regionValue
 			},{
 				name: $scope.dataSpec.county1,
 				data: $scope.county1ChartData,
 				color: 'purple',
 				lineStyle: '0',
-				selected: false
+				selected: false,
+				unemploymentRate: $scope.county1Value 
 			},{
 				name: $scope.dataSpec.county2,
 				data: $scope.county2ChartData,
 				color: 'purple',
 				lineStyle: '3,2',
-				selected: false
+				selected: false,
+				unemploymentRate: $scope.county2Value
 			}
 		];
-	}, true);
+	});
 
 	$scope.highestUnempRateOfSelectedPeriods = function() {
           var highestUnempRates = [];
@@ -268,25 +271,25 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 	});
 
 	$scope.showMonthDialPopover = false;
-	$scope.toggleShowMonthDialPopover = function(state) {
-        $scope.showMonthDialPopover = state;
-    };
+	// $scope.toggleShowMonthDialPopover = function(state) {
+ //        $scope.showMonthDialPopover = state;
+ //    };
 
-	$scope.setCurrentMonth = function(month) {
-		$scope.dialPopCurMonth.val = month;
-		$scope.$broadcast("moveMonthDial");
-	}
+	// $scope.setCurrentMonth = function(month) {
+	// 	$scope.dialPopCurMonth.val = month;
+	// 	$scope.$broadcast("moveMonthDial");
+	// }
 
-	$scope.prevMonth = function() {
-		if($scope.dialPopCurMonth.val <= -12) return;
-		$scope.dialPopCurMonth.val -= 1;
-		$scope.$broadcast("moveMonthDial");		
-	}
+	// $scope.prevMonth = function() {
+	// 	if($scope.dialPopCurMonth.val <= -12) return;
+	// 	$scope.dialPopCurMonth.val -= 1;
+	// 	$scope.$broadcast("moveMonthDial");		
+	// }
 
-	$scope.nextMonth = function() {
-		if($scope.dialPopCurMonth.val >= $scope.lastMonthNumOfSelectedPeriods()) return;
-		$scope.dialPopCurMonth.val += 1;
-		$scope.$broadcast("moveMonthDial");
-	}
+	// $scope.nextMonth = function() {
+	// 	if($scope.dialPopCurMonth.val >= $scope.lastMonthNumOfSelectedPeriods()) return;
+	// 	$scope.dialPopCurMonth.val += 1;
+	// 	$scope.$broadcast("moveMonthDial");
+	// }
 
   }]);
