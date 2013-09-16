@@ -1,1 +1,8 @@
-State
+State map goes here
+
+<div ng-include src="'views/level-3/stat-reader.html'"></div>
+
+<div style="position: absolute; top: 540px;">
+	<select ng-model="dataSpec.year" ng-init="dataSpec.year=2000" ng-options="y for y in years"></select>
+	<select ng-model="dataSpec.month" ng-init="dataSpec.month=1"ng-options="m for m in months"></select>
+</div>

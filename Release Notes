@@ -5,3 +5,4 @@ General
 Level 3
 - State and county dropdown/search box is hard coded for Michagan/Kent/Livingston
 - Bread crumbs are not navigable (should they be?)
+- Right sidebar will not display labor force, employment, or natural unemployment percentages

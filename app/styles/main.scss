@@ -329,6 +329,29 @@ div, ul, li, p, h1, h2, h3, h4 {
     }
 }
 
+.modal-body {
+    color: $white;
+}
+
+path {
+  fill: none;
+}
+.axis {
+  shape-rendering: crispEdges;
+}
+.x.axis .minor {
+  stroke-opacity: .5;
+  stroke-dasharray: 3, 3;
+}
+.x.axis line, .x.axis path {
+  fill: none;
+  stroke: #000;
+} 
+.y.axis line, .y.axis path {
+  fill: none;
+  stroke: #000;
+}
+
 @import "level-1";
 @import "level-2";
 @import "level-3";

@@ -1,0 +1,49 @@
+<table>
+	<thead>
+		<tr>
+			<td colspan="2" class="month-picker">
+				<span class="prev-month" ng-click="prevMonth()"><b class="horiz-caret left-caret"></b></span>
+				<span class="white-space"></span>
+				<div class="dropdown month-dropdown">
+					<div class="dropdown-toggle" role="button">
+						<span>{{getMonthName(dataSpec.month)}}</span><b class="caret"></b>
+					</div>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li ng-repeat="m in months" ><a ng-click="setMonth(m)">{{getMonthName(m)}}</a></li>
+					</ul>
+				</div>
+				<span class="white-space"></span>
+				<div class="dropdown year-dropdown">
+					<div class="dropdown-toggle" role="button">
+						<span>{{dataSpec.year}}</span><b class="caret"></b>
+					</div>
+					<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+						<li ng-repeat="y in years" ><a ng-click="setYear(y)">{{y}}</a></li>
+					</ul>
+				</div>
+				<span class="white-space"></span>
+				<span class="next-month" ng-click="nextMonth()"><b class="horiz-caret right-caret"></b></span>
+			</td>
+		</tr>
+		<tr><td colspan="2" class="comparison-header">{{dataSpec.regionName}}</td></tr>
+		<tr>
+			<th class="region-name-column-header"><strong>{{subRegionType}}</strong></th>
+			<th class="percentage-column-header"><strong>Percentage</strong></th>
+		</tr>
+	</thead>
+	<tbody>
+		<tr>
+			<td colspan="2">
+				<div class="repeated-data-row-container">
+					<table>
+						<tr ng-repeat="subRegion in dataSpec.subRegionData" ng-class-even="'even'">
+							<td ng-click="selectSubRegion(subRegion.name)" class="region-name" ng-class="{'selected': subRegion.name == dataSpec.county1 || subRegion.name == dataSpec.county2}">{{subRegion.name}}</td>
+							<td class="percentage">{{subRegion.value}}</td>
+						</tr>
+					</table>
+				</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+<div ng-include src="'views/level-3/stat-reader.html'"></div>

@@ -1,24 +1,37 @@
 <div class="level-3-container clearfix">
 	<div ng-include src="'views/main-header.html'"></div>
 	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
-	<div class="main-content-area level-3-nation-map-container" ng-show="currentScale.val=='nation' && currentStep.val<4" ng-click="setCurrentScale('state')" ng-include src="'views/level-3/nation.html'"></div>
-	<div class="main-content-area level-3-state-map-container" ng-show="currentScale.val=='state' && currentStep.val<4" ng-include src="'views/level-3/state.html'"></div>
-	<div class="main-content-area level-3-graph-container" ng-show="currentStep.val==4" ng-include="'views/level-3/graph.html'"></div>
+	<!-- MAIN CONTENT //////////////////////////////////////////////////////////////////////////////// -->
+
+	<div class="main-content-area level-3-table-container" ng-show="dataSpec.view=='table' && dataSpec.currentStep<4" ng-click="setDataScale('state')" ng-include src="'views/level-3/table.html'"></div>
+	
+	<div class="main-content-area level-3-nation-map-container" ng-show="dataSpec.scale=='nation' && dataSpec.currentStep<4 && dataSpec.view=='graph' " ng-click="setDataScale('state')" ng-include src="'views/level-3/nation.html'"></div>
+
+
+	<div class="main-content-area level-3-state-map-container" ng-show="dataSpec.scale=='state' && dataSpec.currentStep<4 && dataSpec.view=='graph'" ng-include src="'views/level-3/state.html'"></div>
+
+	<div class="main-content-area level-3-graph-container" ng-show="dataSpec.currentStep==4" ng-include="'views/level-3/graph.html'"></div>
+
 	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
+	
+<div id="incorrect-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    {{dataSpec.feedbackMessage}}
+  </div>
+</div>
 	  <!-- TEST DATA //////////////////////////////////////////////////////////////////////////////// -->
-	<hr/>
+<!-- 	<hr/>
 	<div>
 	  <div><b>US unemployment</b> : {{usValue}}</div>
 	  <div ng-hide='subRegionType=="States"'>
-	  	<div><b>State unemployment</b> : {{regionName.val}} : {{regionValue}}</div>
-	    <div ng-hide='county1.val==""'><b>County1 Unemployment</b> : {{county1.val}} : {{county1Value}}</div>
-	    <div ng-hide='county2.val==""'><b>County2 Unemployment</b> : {{county2.val}} : {{county2Value}}</div>
+	  	<div><b>State unemployment</b> : {{dataSpec.regionName}} : {{regionValue}}</div>
+	    <div ng-hide='dataSpec.county1==""'><b>County1 Unemployment</b> : {{dataSpec.county1}} : {{county1Value}}</div>
+	    <div ng-hide='dataSpec.county2==""'><b>County2 Unemployment</b> : {{dataSpec.county2}} : {{county2Value}}</div>
 	  </div>
 	  <div><b>Table of {{subRegionType}}</b> (<i>name : id : value</i>; the map view needs the id, but the table view doesn't...)</div>
-	   <div ng-repeat="subRegion in subRegionData">
+	   <div ng-repeat="subRegion in dataSpec.subRegionData">
 	  	<div>{{subRegion.name}} : {{subRegion.id}} : {{subRegion.value}}</div>
 	  </div>
 	</div>
-
-
 </div>
+ -->
