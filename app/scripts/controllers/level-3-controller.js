@@ -1,9 +1,9 @@
 'use strict';
 
-unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService',  function($scope, $timeout, mapDataService) {
+unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService',  function($scope, $state ,$timeout, mapDataService) {
 
 	$scope.dataSpec = {};
-	$scope.dataSpec.currentStep = 4;
+	$scope.dataSpec.currentStep = 1;
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.scale = "nation";
 	$scope.dataSpec.view = "table";
@@ -31,7 +31,16 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
+		console.log("booyah");
 		switch ($scope.dataSpec.currentStep) {
+			case 1:
+				if (!$("input[name=firstQuestion]:checked").val()) {
+					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
+					return;
+				} else {
+					$scope.dataSpec.currentStep += 1; 
+				}
+				break;
 			case 2:
 				if ($scope.dataSpec.regionName == 'United States') {
 					$scope.showFeedbackMessage('You must choose a state before going to the next step.');
@@ -46,6 +55,14 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 					return;
 				} else {
 					$scope.dataSpec.currentStep += 1; 
+				}
+				break;	
+			case 4:
+				if (!$("input[name=lastQuestion]:checked").val()) {
+					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
+					return;
+				} else {
+					$state.transitionTo('level-4-intro'); 
 				}
 				break;			
 			default:
@@ -221,40 +238,31 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
     	_.each($scope.graphLines, function(element, index, list) {
     		if(element.selected === true) $scope.selectedRegions.push(element);
     	});
-    	console.log($scope.selectedRegions);
     }
 
     $scope.unemploymentRateMap = {};
-	// $scope.graphLines = {
-	// 	us: {
-	// 		name: 'United States',
-	// 		data: $scope.usChartData,
-	// 		color: 'blue',
-	// 		lineStyle: '4,2',
-	// 		selected: false
-	// 	},
-	// 	state: {
-	// 		name: $scope.dataSpec.regionName,
-	// 		data: $scope.stateChartData,
-	// 		color: 'green',
-	// 		lineStyle: '4,2',
-	// 		selected: false
-	// 	},
-	// 	county1: {
-	// 		name: $scope.dataSpec.county1,
-	// 		data: $scope.county1ChartData,
-	// 		color: 'purple',
-	// 		lineStyle: '0',
-	// 		selected: false
-	// 	},
-	// 	county2: {
-	// 		name: $scope.dataSpec.county2,
-	// 		data: $scope.county2ChartData,
-	// 		color: 'purple',
-	// 		lineStyle: '3,2',
-	// 		selected: false
-	// 	}
-	// };	
+
+    // function graphLine(name, dataSource, color, lineStyle) {
+    // 	this.name = name;
+    // 	this.color = color;
+    // 	this.lineStyle = lineStyle;
+    // 	this.dataSource = dataSource;
+    // 	this.selected = false;
+    // 	this.updateData = function() {
+    // 		this.data = dataSource;
+    // 	}
+    // 	this.updateName = function() {
+    // 		this.name = name;
+    // 	}
+    // }
+    
+    // var usLine = new graphLine('United States', $scope.usChartData, 'blue', '4,2');
+    // var stateLine = new graphLine($scope.dataSpec.regionName, $scope.stateChartData, 'green', '4,2,4,2,2,2');
+    // var county1Line = new graphLine($scope.dataSpec.county1, $scope.county1ChartData, 'purple', '0');
+    // var county2Line = new graphLine($scope.dataSpec.county2, $scope.county2ChartData, 'purple', '3,2');
+
+    // $scope.graphLines = [usLine, stateLine, county1Line, county2Line];
+
 	$scope.graphLines = [
 		{
 			name: 'United States',
@@ -262,7 +270,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 			color: 'blue',
 			lineStyle: '4,2',
 			selected: false,
-			updateData: function() {
+			update: function() {
 				this.data = $scope.usChartData;
 			}
 		},{
@@ -271,7 +279,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 			color: 'green',
 			lineStyle: '4,2',
 			selected: false,
-			updateData: function() {
+			update: function() {
 				this.data = $scope.stateChartData;
 				this.name = $scope.dataSpec.regionName;
 			}
@@ -281,7 +289,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 			color: 'purple',
 			lineStyle: '0',
 			selected: false,
-			updateData: function() {
+			update: function() {
 				this.data = $scope.county1ChartData;
 				this.name = $scope.dataSpec.county1;
 			}
@@ -291,7 +299,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 			color: 'purple',
 			lineStyle: '3,2',
 			selected: false,
-			updateData: function() {
+			update: function() {
 				this.data = $scope.county2ChartData;
 				this.name = $scope.dataSpec.county2;
 			}
@@ -304,13 +312,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 		$scope.unemploymentRateMap[$scope.dataSpec.county1] = $scope.county1Value;
 		$scope.unemploymentRateMap[$scope.dataSpec.county2] = $scope.county2Value;
 		_.each($scope.graphLines, function(element, index, list) {
-			element.updateData();
+			element.update();
 		});
-		// $scope.graphLines.us.data = $scope.usChartData;
-		// $scope.graphLines.state.data = $scope.stateChartData;
-		// $scope.graphLines.county1.data = $scope.county1ChartData;
-		// $scope.graphLines.county2.data = $scope.county2ChartData;
-
 	});
 
 	$scope.highestUnempRateOfSelectedPeriods = function() {

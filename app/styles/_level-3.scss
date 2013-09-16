@@ -17,7 +17,7 @@
 		@include font(24px, 30px, $darkGrey);
 		position: absolute;
 		bottom: -42px;
-		left: 276px; 
+		left: 240px; 
 	}
 }
 
@@ -350,9 +350,9 @@
 }
 .region-picker {
 	float: left;
-	height: 535px;
 	width: 312px;
 	overflow: hidden;
+	margin: 70px 0 0 30px;
 	header {
 		height: 71px;
 		padding-top: 8px;

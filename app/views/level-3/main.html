@@ -13,8 +13,14 @@
 	<div class="main-content-area level-3-graph-container" ng-show="dataSpec.currentStep==4" ng-include="'views/level-3/graph.html'"></div>
 
 	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
+	
+<div id="incorrect-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-body">
+    {{dataSpec.feedbackMessage}}
+  </div>
+</div>
 	  <!-- TEST DATA //////////////////////////////////////////////////////////////////////////////// -->
-	<hr/>
+<!-- 	<hr/>
 	<div>
 	  <div><b>US unemployment</b> : {{usValue}}</div>
 	  <div ng-hide='subRegionType=="States"'>
@@ -28,9 +34,4 @@
 	  </div>
 	</div>
 </div>
-
-<div id="incorrect-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-body">
-    {{dataSpec.feedbackMessage}}
-  </div>
-</div>
+ -->
