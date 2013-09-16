@@ -253,7 +253,6 @@ angular.module('directives.ue.level-3', [])
                .attr("stroke-width",4)
                .style("stroke-dasharray", (lineStyle));
           }
-
      
           $(".graph-line").on("mousemove", function(e){ 
               var $popover = $('.detail-popover');
@@ -296,23 +295,15 @@ angular.module('directives.ue.level-3', [])
               scope.$apply( scope.showDetailPopover = false ); 
           	});
 
-  			console.log(scope.selectedRegions);
 	  		_.each(scope.selectedRegions, function(element, index, list){
 	  			drawGraphLine(element.data, colorMap[element.color], element.lineStyle,1);
 	  		});
 
         }// end of redrawEntireGraph()
-
-        redrawEntireGraph(2013, 20);
-
-        	scope.$watch('graphLines', function() {
-          		redrawEntireGraph(2013, 20);
-			}, true);
          
-
-        // scope.$watch("lastMonthVisible + highestVisibleRate + selectedPeriods.length", function() {
-        //   redrawEntireGraph(scope.lastMonthVisible, scope.highestVisibleRate);
-        // });
+        scope.$watch("selectedRegions", function() {
+          redrawEntireGraph(2013, scope.highestVisibleRate);
+        });
 
   		}// end link function
 	  }// end returned object
