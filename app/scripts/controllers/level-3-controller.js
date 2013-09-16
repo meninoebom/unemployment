@@ -221,43 +221,96 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
     	_.each($scope.graphLines, function(element, index, list) {
     		if(element.selected === true) $scope.selectedRegions.push(element);
     	});
+    	console.log($scope.selectedRegions);
     }
 
     $scope.unemploymentRateMap = {};
+	// $scope.graphLines = {
+	// 	us: {
+	// 		name: 'United States',
+	// 		data: $scope.usChartData,
+	// 		color: 'blue',
+	// 		lineStyle: '4,2',
+	// 		selected: false
+	// 	},
+	// 	state: {
+	// 		name: $scope.dataSpec.regionName,
+	// 		data: $scope.stateChartData,
+	// 		color: 'green',
+	// 		lineStyle: '4,2',
+	// 		selected: false
+	// 	},
+	// 	county1: {
+	// 		name: $scope.dataSpec.county1,
+	// 		data: $scope.county1ChartData,
+	// 		color: 'purple',
+	// 		lineStyle: '0',
+	// 		selected: false
+	// 	},
+	// 	county2: {
+	// 		name: $scope.dataSpec.county2,
+	// 		data: $scope.county2ChartData,
+	// 		color: 'purple',
+	// 		lineStyle: '3,2',
+	// 		selected: false
+	// 	}
+	// };	
+	$scope.graphLines = [
+		{
+			name: 'United States',
+			data: $scope.usChartData,
+			color: 'blue',
+			lineStyle: '4,2',
+			selected: false,
+			updateData: function() {
+				this.data = $scope.usChartData;
+			}
+		},{
+			name: $scope.dataSpec.regionName,
+			data: $scope.stateChartData,
+			color: 'green',
+			lineStyle: '4,2',
+			selected: false,
+			updateData: function() {
+				this.data = $scope.stateChartData;
+				this.name = $scope.dataSpec.regionName;
+			}
+		},{
+			name: $scope.dataSpec.county1,
+			data: $scope.county1ChartData,
+			color: 'purple',
+			lineStyle: '0',
+			selected: false,
+			updateData: function() {
+				this.data = $scope.county1ChartData;
+				this.name = $scope.dataSpec.county1;
+			}
+		},{
+			name: $scope.dataSpec.county2,
+			data: $scope.county2ChartData,
+			color: 'purple',
+			lineStyle: '3,2',
+			selected: false,
+			updateData: function() {
+				this.data = $scope.county2ChartData;
+				this.name = $scope.dataSpec.county2;
+			}
+		}
+	];
 
 	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year', function() {
 		$scope.unemploymentRateMap['United States'] = $scope.dataSpec.usValue;
 		$scope.unemploymentRateMap[$scope.dataSpec.regionName] = $scope.regionValue;
 		$scope.unemploymentRateMap[$scope.dataSpec.county1] = $scope.county1Value;
 		$scope.unemploymentRateMap[$scope.dataSpec.county2] = $scope.county2Value;
+		_.each($scope.graphLines, function(element, index, list) {
+			element.updateData();
+		});
+		// $scope.graphLines.us.data = $scope.usChartData;
+		// $scope.graphLines.state.data = $scope.stateChartData;
+		// $scope.graphLines.county1.data = $scope.county1ChartData;
+		// $scope.graphLines.county2.data = $scope.county2ChartData;
 
-		$scope.graphLines = [
-			{
-				name: 'United States',
-				data: $scope.usChartData,
-				color: 'blue',
-				lineStyle: '4,2',
-				selected: false
-			},{
-				name: $scope.dataSpec.regionName,
-				data: $scope.stateChartData,
-				color: 'green',
-				lineStyle: '4,2',
-				selected: false
-			},{
-				name: $scope.dataSpec.county1,
-				data: $scope.county1ChartData,
-				color: 'purple',
-				lineStyle: '0',
-				selected: false
-			},{
-				name: $scope.dataSpec.county2,
-				data: $scope.county2ChartData,
-				color: 'purple',
-				lineStyle: '3,2',
-				selected: false
-			}
-		];
 	});
 
 	$scope.highestUnempRateOfSelectedPeriods = function() {
@@ -273,6 +326,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 		$scope.highestUnempRateOfSelectedPeriods();
 	});
 
-	$scope.showMonthDialPopover = true;
+	$scope.showMonthDialPopover = false;
 
   }]);

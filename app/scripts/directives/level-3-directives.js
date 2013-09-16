@@ -178,7 +178,6 @@ angular.module('directives.ue.level-3', [])
 		                var t = d3.select(this);
 		                return {x: t.attr("x1"), y: t.attr("y")};
 		            })
-
 		            .on("drag", function(d,i) {
 		              var newX;
 		              if(d3.event.x > 0 && d3.event.x < width){
@@ -257,7 +256,7 @@ angular.module('directives.ue.level-3', [])
 						  if(scope.selectedRegions.length) scope.$apply(scope.showMonthDialPopover = true);
 					})
 					$("body").on('mouseup.hideMonthDialPopover', function () { 
-						scope.$apply(scope.showMonthDialPopover = true) 
+						scope.$apply(scope.showMonthDialPopover = false) 
 					});
 		    }// end of redrawEntireGraph()
 	         
