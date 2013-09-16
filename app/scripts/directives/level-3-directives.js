@@ -254,10 +254,7 @@ angular.module('directives.ue.level-3', [])
                .style("stroke-dasharray", (lineStyle));
           }
 
-          		_.each(scope.selectedRegions, function(element, index, list){
-          			drawGraphLine(element.data, colorMap[element.color], element.lineStyle,1);
-          		});
-         
+     
           $(".graph-line").on("mousemove", function(e){ 
               var $popover = $('.detail-popover');
               var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
@@ -295,9 +292,15 @@ angular.module('directives.ue.level-3', [])
               };
 
               scope.$apply( scope.showDetailPopover = true ); 
-          }).on('mouseout', function () { 
+            }).on('mouseout', function () { 
               scope.$apply( scope.showDetailPopover = false ); 
-          });
+          	});
+
+  			console.log(scope.selectedRegions);
+	  		_.each(scope.selectedRegions, function(element, index, list){
+	  			drawGraphLine(element.data, colorMap[element.color], element.lineStyle,1);
+	  		});
+
         }// end of redrawEntireGraph()
 
         redrawEntireGraph(2013, 20);

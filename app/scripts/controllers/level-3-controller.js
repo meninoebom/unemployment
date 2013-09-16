@@ -219,7 +219,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
 
     	$scope.selectedRegions = [];
     	_.each($scope.graphLines, function(element, index, list) {
-    		if(element.selected) $scope.selectedRegions.push(region);
+    		if(element.selected) $scope.selectedRegions.push(element);
     	});
     }
 
