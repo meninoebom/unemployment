@@ -425,15 +425,15 @@
 			background-image: url('../img/grid_view_inactive.png');
 		}	
 	}
-	.period-select-container {
+	.region-select-container {
 		@include font(15px, 18px);
 		height: 377px;
 		overflow-y: scroll;
-		.period {
+		.region {
 			height: 45px;
 			border-bottom: 2px solid $white;
 			cursor: pointer;
-			.order-num {
+			.color-box {
 				border: 2px solid #000;
 				display: block;
 				float: left;
@@ -454,14 +454,14 @@
 					position: absolute;
 					width: 18px;
 				}
-				.line-style-purple {background-image: url('../img/level_4_selected_period_line_style_1.png');}
-				.line-style-green {background-image: url('../img/level_4_selected_period_line_style_2.png');}
-				.line-style-blue {background-image: url('../img/level_4_selected_period_line_style_3.png');}
+				&.purple {background-color: $purple; color: $white;}
+				&.blue {background-color: $blue; color: $white;}
+				&.green {background-color: $green; color: $white;}				.us-line-style {background-image: url('../img/level_4_selected_period_line_style_1.png');}
+				.state-line-style {background-image: url('../img/level_4_selected_period_line_style_2.png');}
+				.county1-line-style {background-image: url('../img/level_4_selected_period_line_style_3.png');}
+				.county2-line-style {background-image: url('../img/level_4_selected_period_line_style_3.png');}
 			}
-			.period-name {width: 260px;}
-			&.purple {background-color: $purple; color: $white;}
-			&.blue {background-color: $blue; color: $white;}
-			&.green {background-color: $green; color: $white;}
+			.region-name {width: 260px;}
 		}
 	}
 }

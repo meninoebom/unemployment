@@ -19,7 +19,7 @@
 	  stroke: #000;
 	}
 </style>
-<div class="level-3-graph" ng-controller="graph">
+<div class="level-3-graph" >
 	<div class="popover detail-popover" ng-show="showDetailPopover" >
 		<div class="arrow"></div>
 		<div class="popover-content">
@@ -56,31 +56,37 @@
 
 <div class="region-picker">
 	<p>Select an option to see its data</p>
-	<div class="period-select-container" ue-collapse="recessionsIsCollapsed" target-height="377">
-		<div class="period" ng-class="period.color" ng-click="toggleSelectedPeriod(period, recessions, $index)">
-			<span class="order-num">
-				<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+	<div class="region-select-container">
+		<div ng-repeat="region in graphLines" class="region" ng-click="toggleGraphLine(region)">
+			<span class="color-box" ng-class="region.color">
+				<span class="line-style-icon us-line-style" ></span>
 			</span>
-			<div class="vert-center-wrapper period-name"><div class="vert-center">United States</div></div>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">{{region.name}}</div></div>
 		</div>
-		<div class="period" ng-class="period.color" ng-click="toggleSelectedPeriod(period, recessions, $index)">
-			<span class="order-num">
-				<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+		<!-- <div class="region" ng-click="toggleGraphLine(1)">
+			<span class="color-box blue">
+				<span class="line-style-icon us-line-style" ></span>
 			</span>
-			<div class="vert-center-wrapper period-name"><div class="vert-center">{{dataSpec.regionName}}</div></div>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">United States</div></div>
 		</div>
-		<div class="period" ng-class="period.color" ng-click="toggleSelectedPeriod(period, recessions, $index)">
-			<span class="order-num">
-				<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+		<div class="region" ng-click="toggleGraphLine(2)">
+			<span class="color-box green">
+				<span class="line-style-icon state-line-style" ></span>
 			</span>
-			<div class="vert-center-wrapper period-name"><div class="vert-center">{{dataSpec.county1}}</div></div>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.regionName}}</div></div>
 		</div>
-		<div class="period" ng-class="period.color" ng-click="toggleSelectedPeriod(period, recessions, $index)">
-			<span class="order-num">
-				<span class="line-style-icon" ng-class="'line-style-'+period.color"></span>
+		<div class="region" ng-click="toggleGraphLine(3)">
+			<span class="color-box purple">
+				<span class="line-style-icon county1-line-style" ></span>
 			</span>
-			<div class="vert-center-wrapper period-name"><div class="vert-center">{{dataSpec.county2}}</div></div>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.county1}}</div></div>
 		</div>
+		<div class="region" ng-click="toggleGraphLine(4)">
+			<span class="color-box purple">
+				<span class="line-style-icon county2-line-style" ></span>
+			</span>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">{{dataSpec.county2}}</div></div>
+		</div> -->
 	</div>
 </div>
 

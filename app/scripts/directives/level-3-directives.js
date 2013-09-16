@@ -42,9 +42,10 @@ angular.module('directives.ue.level-3', [])
         }
 
         var lineStyleMap = {
-          'purple': '0',
-          'green': '4,2',
-          'blue': '4,2,4,2,2,2'
+          'us': '4,2',
+          'state': '4,2,4,2,2,2',
+          'county1': '0',
+          'county2': '3,2'
         }
 
         var stepsBetweenTicks = (function(){
@@ -212,7 +213,7 @@ angular.module('directives.ue.level-3', [])
               .attr("marker-end", "url(#triangle-start)")
               .call(drag);
           }
-          drawMonthDial(0);
+          drawMonthDial(2006);
 
           $(".month-dial").on("mousedown", function(e){
               var $popover = $('.month-dial-popover');
@@ -253,21 +254,10 @@ angular.module('directives.ue.level-3', [])
                .style("stroke-dasharray", (lineStyle));
           }
 
-          
-
-          	scope.$watch('usChartData', function() {
-          		//var dataArray = scope.usChartData.split(",");
-          		_.each(scope.usChartData, function(element, index, list){
-          				console.log(element);
+          		_.each(scope.selectedRegions, function(element, index, list){
+          			drawGraphLine(element.data, colorMap[element.color], element.lineStyle,1);
           		});
-				drawGraphLine(scope.usChartData, colorMap['purple'], lineStyleMap['purple'], 1 );
-			});
-
-          _.each(scope.selectedPeriods, function(period, index, list) {
-            period.unemploymentData = unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, period.monthsBefore);
-            drawGraphLine(period.unemploymentData, colorMap[period.color], lineStyleMap[period.color], index );
-          });
-          
+         
           $(".graph-line").on("mousemove", function(e){ 
               var $popover = $('.detail-popover');
               var relativeX = e.pageX - $(this).parent().parent().offset().left - margin.left;
@@ -311,6 +301,11 @@ angular.module('directives.ue.level-3', [])
         }// end of redrawEntireGraph()
 
         redrawEntireGraph(2013, 20);
+
+        	scope.$watch('graphLines', function() {
+          		redrawEntireGraph(2013, 20);
+			}, true);
+         
 
         // scope.$watch("lastMonthVisible + highestVisibleRate + selectedPeriods.length", function() {
         //   redrawEntireGraph(scope.lastMonthVisible, scope.highestVisibleRate);
