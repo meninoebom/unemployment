@@ -223,36 +223,39 @@ unemploymentApp.controller('Level3Ctrl', ['$scope', '$timeout', 'mapDataService'
     	});
     }
 
-	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData', function() { 
+    $scope.unemploymentRateMap = {};
+
+	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year', function() {
+		$scope.unemploymentRateMap['United States'] = $scope.dataSpec.usValue;
+		$scope.unemploymentRateMap[$scope.dataSpec.regionName] = $scope.regionValue;
+		$scope.unemploymentRateMap[$scope.dataSpec.county1] = $scope.county1Value;
+		$scope.unemploymentRateMap[$scope.dataSpec.county2] = $scope.county2Value;
+
 		$scope.graphLines = [
 			{
 				name: 'United States',
 				data: $scope.usChartData,
 				color: 'blue',
 				lineStyle: '4,2',
-				selected: false,
-				unemploymentRate: $scope.dataSpec.usValue
+				selected: false
 			},{
 				name: $scope.dataSpec.regionName,
 				data: $scope.stateChartData,
 				color: 'green',
 				lineStyle: '4,2',
-				selected: false,
-				unemploymentRate: $scope.regionValue
+				selected: false
 			},{
 				name: $scope.dataSpec.county1,
 				data: $scope.county1ChartData,
 				color: 'purple',
 				lineStyle: '0',
-				selected: false,
-				unemploymentRate: $scope.county1Value 
+				selected: false
 			},{
 				name: $scope.dataSpec.county2,
 				data: $scope.county2ChartData,
 				color: 'purple',
 				lineStyle: '3,2',
-				selected: false,
-				unemploymentRate: $scope.county2Value
+				selected: false
 			}
 		];
 	});

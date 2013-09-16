@@ -287,7 +287,7 @@
 	float: left;
 	margin-top: 64px;
 }
-.month-dial-popover , .detail-popover {
+.month-dial-popover {
     @include popover($darkGrey, $white);
     display: block;
     width: 300px;
@@ -324,46 +324,15 @@
 		margin: 0 0 25px 0;
 		@include font(16px, 24px, #fff);
 	}
-	.order-num {
-		font-size: 20px;
-    	background: #fff;
-    	border: 2px solid black;
-		display: inline-block;
-    	height: 27px;
-    	margin: 0 10px 0 0;
-    	position: relative;
-    	text-align: center;
-    	width: 27px;
-    	.line-style {
-			background-size: contain;
-			display: block;
-			height: 5px;
-			position: absolute;
-			width: 27px;
-			bottom: -10px;
-			left: -2px;
-    	}
-		&.blue { 
-			color: $blue;
-			.line-style {
-				background-image: url('../img/month-dial-popover_line-style_3.png');
-				background-color: $lightBlue;
-			}  
-		}
-		&.purple { 
-			color: $purple;
-			.line-style {
-				background-image: url('../img/month-dial-popover_line-style_2.png');
-				background-color: $lightPurple;
-			}  
-		}
-		&.green { 
-			color: $green;
-			.line-style {
-				background-color: $lightGreen;
-			}  
-		}
-    }
+	&.blue { 
+		color: $blue;
+	}
+	&.purple { 
+		color: $purple;
+	}
+	&.green { 
+		color: $green;
+	}
     .unemp-rate {
     	display: inline-block;
     	margin-right: 14px;

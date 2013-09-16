@@ -23,9 +23,9 @@
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
-			<h3>Month {{monthNames[dataSpec.month]}}{{dataSpec.year}}<br />Unemployment Rates</h3>
+			<h3>{{monthNames[dataSpec.month]}} {{dataSpec.year}}<br />Unemployment Rates</h3>
 			<p ng-repeat="region in selectedRegions">
-				<span class="unemp-rate {{region.color}}">{{region.unemploymentRate | percentageFilter}}</span> 
+				<span class="unemp-rate {{region.color}}">{{unemploymentRateMap[region.name] | percentageFilter}}</span> 
 				<span class="name">{{region.name}}</span>
 			</p>
 		</div>

@@ -196,29 +196,10 @@ angular.module('directives.ue.level-3', [])
 						var m1 = epoch % 12;
 						var y1 = (epoch - m1)/12;
 						m1+=1;
-						console.log(m1);
-
 
 		                scope.$apply(function(){
 		                	scope.dataSpec.month = m1;
 		                	scope.dataSpec.year = y1;
-		                  // scope.dialPopCurMonth.val = convertXPosToMonth(newX);
-		                  // _.each(scope.selectedPeriods, function(period, index, list){
-		                  //   var currentDateFormatted = unemploymentDataService.getCurrentMonthYearFormatted(period.startDate, scope.dialPopCurMonth.val);
-		                  //   var monthsBefore = period.monthsBefore || 11;
-		                  //   var currentDataArrayIndex = scope.dialPopCurMonth.val + monthsBefore + 1;
-		                  //   period.currentMonthName = currentDateFormatted.monthName;
-		                  //   period.currentYear = currentDateFormatted.fullYear;
-		                  //   if(period.unemploymentData[currentDataArrayIndex]){
-		                  //     period.showInPopover = true; 
-		                  //     period.currentUnempRate = period.unemploymentData[currentDataArrayIndex][1];
-		                  //     period.currentLFPRate = (period.laborForceData[currentDataArrayIndex]) ? period.laborForceData[currentDataArrayIndex][1] : '';
-		                  //     scope.showInPopover = true;
-		                  //   } else {
-		                  //     period.showInPopover = false;
-		                  //     scope.showInPopover = false;
-		                  //   }
-		                  // });
 		                });
 		            });
 		            // .on("dragend", function(d,i) {
