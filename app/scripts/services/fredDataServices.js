@@ -33,7 +33,7 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		calculateDateWithOffset: function(d, offset) {
 			var y = d.split('-')[0];
 			var m = d.split('-')[1];
-			
+			console.log(m);
 			var epoch = y*12 + (m-1);
 			epoch += offset;
 			

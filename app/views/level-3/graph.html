@@ -1,1 +1,25 @@
-Graph
+<div class="level-3-graph" >
+	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
+		<div class="arrow"></div>
+		<div class="popover-content">
+			<h3>{{monthNames[dataSpec.month - 1]}} {{dataSpec.year}}<br />Unemployment Rates</h3>
+			<p ng-repeat="region in selectedRegions" class="clearfix">
+				<span class="unemp-rate {{region.color}}">{{unemploymentRateMap[region.name] | percentageFilter}}</span> 
+				<span class="name">{{region.name}}</span>
+			</p>
+		</div>
+	</div>
+</div>
+
+<div class="region-picker">
+	<p>Select an option to see its data</p>
+	<div class="region-select-container">
+		<div ng-repeat="region in graphLines" class="region" ng-click="toggleGraphLine(region)">
+			<span class="color-box" ng-class="region.color">
+				<span class="line-style-icon us-line-style" ></span>
+			</span>
+			<div class="vert-center-wrapper region-name"><div class="vert-center">{{region.name}}</div></div>
+		</div>
+	</div>
+</div>
+
