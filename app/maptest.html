@@ -29,17 +29,17 @@
   <div ng-hide="dataSelector.regionName=='United States'">
   	<div>
       <span><b>Select 2 counties in {{dataSelector.regionName}}</b></span>
-      <select ng-model="county1" ng-options="c for c in countyList"></select>  
-      <select ng-model="county2" ng-options="c for c in countyList"></select>  
+      <select ng-model="dataSelector.county1" ng-options="c for c in countyList"></select>  
+      <select ng-model="dataSelector.county2" ng-options="c for c in countyList"></select>  
 		</div>
-    <div ng-show="county1!='' && county2!=''">
+    <div ng-show="dataSelector.county1!='' && dataSelector.county2!=''">
     	<hr/>
     	<div><b>Now that we have a state and two counties, the chart data for the last screen of level 3 would be...</b></div>
     	<div> US: {{usChartData[0]}}, {{usChartData[1]}}, {{usChartData[2]}}, {{usChartData[3]}}, {{usChartData[4]}}, ...</div>
       <div> US (same as above, x-value formatted using Date.dateFromFloat()): {{usChartData[0] | pointFormat}}, {{usChartData[1]  | pointFormat}}, {{usChartData[2] | pointFormat}}, {{usChartData[3] | pointFormat}}, {{usChartData[4] | pointFormat}}, ...</div>
     	<div> {{regionName}}: {{stateChartData[0]}}, {{stateChartData[1]}}, {{stateChartData[2]}}, {{stateChartData[3]}}, {{stateChartData[4]}}, ...</div>
-    	<div> {{county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
-    	<div> {{county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
+    	<div> {{dataSelector.county1}}: {{county1ChartData[0]}}, {{county1ChartData[1]}}, {{county1ChartData[2]}}, {{county1ChartData[3]}}, {{county1ChartData[4]}}, ...</div>
+    	<div> {{dataSelector.county2}}: {{county2ChartData[0]}}, {{county2ChartData[1]}}, {{county2ChartData[2]}}, {{county2ChartData[3]}}, {{county2ChartData[4]}}, ...</div>
     </div>
   </div>
   
@@ -47,8 +47,8 @@
   <div><b>US unemployment</b> : {{usValue}}</div>
   <div ng-hide='subRegionType=="States"'>
   	<div><b>State unemployment</b> : {{dataSelector.regionName}} : {{regionValue}}</div>
-    <div ng-hide='county1==""'><b>County1 Unemployment</b> : {{county1}} : {{county1Value}}</div>
-    <div ng-hide='county2==""'><b>County2 Unemployment</b> : {{county2}} : {{county2Value}}</div>
+    <div ng-hide='dataSelector.county1==""'><b>County1 Unemployment</b> : {{dataSelector.county1}} : {{county1Value}}</div>
+    <div ng-hide='dataSelector.county2==""'><b>County2 Unemployment</b> : {{dataSelector.county2}} : {{county2Value}}</div>
   </div>
   
   <div id="mappingContent" jqm-map style="position: relative;">

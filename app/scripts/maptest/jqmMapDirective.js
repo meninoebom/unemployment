@@ -3,7 +3,7 @@
 angular.module('directives.mapping', [])
 .directive('jqmMap',['mapDataService',function(mapDataService){
 		return {
-			restrict: 'A',
+			restrict: 'CA',
 			link: function(scope, element, attrs, ngModel) {
 				console.log('Linked');
 				
@@ -50,7 +50,7 @@ angular.module('directives.mapping', [])
 							var feature = features[i];
 							feature.popup = 'Id is '+feature.id;
 						}
-					} else if (obj.event=="levelBack" && obj.level==0) {
+					} else if (obj.event=="buttonClicked" && obj.button=="back" && obj.level==0) {
 						scope.dataSelector.regionName = "United States";
 						scope.$apply();
 					}
@@ -66,7 +66,11 @@ angular.module('directives.mapping', [])
 					console.log(scope.dataSelector);
 					// jqmMap.loadChildTheme(obj.id, 'jquerymaps/themes/state_'+obj.id+'.xml');
 				}
-				window['stateClicked'] = onStateClicked; // I HATE THIS!!!!! but that's how it must be done for now...				
+				window['stateClicked'] = onStateClicked; // I HATE THIS!!!!! but that's how it must be done for now...
+				
+				var onCountyClicked = function(obj) {
+				}
+				window['countyClicked'] = onCountyClicked; // I HATE THIS!!!!! but that's how it must be done for now...
 
 			}
 			
