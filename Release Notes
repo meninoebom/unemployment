@@ -2,6 +2,10 @@ General
 - Grading not implemented
 - Progress bar is implemented in a simplified way only using the circular level icons
 
+Level 2
+- The informational popovers are not displaying at an optimal position for readability in relation to the viewport
+- The percentages appearing on the piechart after the student answers a question correctly are not doing so in a way that grabs the students attention
+
 Level 3
 - State and county dropdown/search box is hard coded for Michagan/Kent/Livingston
 - Bread crumbs are not navigable (should they be?)
