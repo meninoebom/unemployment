@@ -6,7 +6,7 @@
 	height: 49px;
 	overflow: visible;
 	position: relative;
-	z-index: 10;
+	z-index: 1000;
 	.dropdown {
 		float: left;
 		height: 25px;
@@ -264,17 +264,10 @@
 	}
 }
 
-.level-3-nation-map-container {
+.level-3-map-container {
 /*	background: transparent url('../img/dupe-nation-map.gif') no-repeat top left;
 	&:hover {
 		background-image: url('../img/dupe-nation-map-hover.gif');
-	}*/
-}
-
-.level-3-state-map-container {
-/*	background: transparent url('../img/dupe-state-map.gif') no-repeat top left;
-	&:hover {
-		background-image: url('../img/dupe-state-map-hover.gif');
 	}*/
 }
 
@@ -398,7 +391,6 @@
 	.region-select-container {
 		@include font(15px, 18px);
 		height: 377px;
-		overflow-y: scroll;
 		.region {
 			height: 45px;
 			border-bottom: 2px solid $white;
@@ -457,6 +449,15 @@
     }
 }
 
+#mappingContent {
+	width: 600px;
+}
 #mappingContent img {
 	max-width: none;
+}
+
+.map_popup_feature {
+	background-color: white;
+	border: solid 1px black;
+	padding: 10px;
 }
