@@ -63,36 +63,6 @@
 	width: 33px;
 }	
 
-.nation-scale-button {
-	background-image: url('../img/icon-nation-scale-off.png');
-	&.on {
-		background-image: url('../img/icon-nation-scale-on.png');
-	}	
-	&.inactive {
-		background-image: url('../imgicon-nation-scale-inactive.png');
-	}	
-}
-
-.state-scale-button {
-	background-image: url('../img/icon-state-scale-off.png');
-	&.on {
-		background-image: url('../img/icon-state-scale-on.png');
-	}	
-	&.inactive {
-		background-image: url('../imgicon-state-scale-inactive.png');
-	}	
-}
-
-.county-scale-button {
-	background-image: url('../img/icon-county-scale-off.png');
-	&.on {
-		background-image: url('../img/icon-county-scale-on.png');
-	}	
-	&.inactive {
-		background-image: url('../imgicon-county-scale-inactive.png');
-	}	
-}
-
 .table-view-button {
 	background-image: url('../img/icon-table-view-off.png');
 	&.on {
@@ -115,7 +85,7 @@
 
 .main-content-area {
 	width: 1024px;
-	height: 488px;
+	height: 524px;
 }
 
 .level-3-table-container {
@@ -241,10 +211,11 @@
 
 .stat-reader {
 	float: right;
-	margin: 64px 0 0 0;
+	margin: 12px 0 0 0;
 	width: 225px;
 	.stat-reader-percentage {
-		@include font(30px, 42px, $red);
+		@include font(30px, 40px, $red);
+		margin-top: 9px;
 	}
 	.stat-reader-date, .stat-reader-region, .stat-reader-label {
 		@include font(18px, 22px, $darkGrey);
@@ -254,19 +225,8 @@
 		height: 1px;
 		width: 100%;
 		background: $darkGrey;
-		margin: 10px 0;
+		margin-top: 9px;
 	}
-}
-
-.level-3-map-container {
-/*	background: transparent url('../img/dupe-nation-map.gif') no-repeat top left;
-	&:hover {
-		background-image: url('../img/dupe-nation-map-hover.gif');
-	}*/
-}
-
-.level-3-graph-container {
-
 }
 
 .level-3-graph {
@@ -445,7 +405,7 @@
 
 #mappingContent {
 	float: left;
-	margin-top: 30px;
+	margin-top: 70px;
 	position: relative;
 	width: 760px;
 }
