@@ -96,7 +96,7 @@ angular.module('directives.mapping', [])
 								var subRData = _.findWhere(data.subRegions, {id: localId});
 								if (subRData) {
 									feature.popup = subRData.value+"%";
-									var catN = Math.min(Math.floor(subRData.value/2.5)+1,5);
+									var catN = Math.min(Math.floor(subRData.value/5.0)+1,5);
 									featureCats.push({id: feature.id, newCategory: catPfx+catN});
 								} else {
 									feature.popup = 'Data unavailable ['+localId+']';
