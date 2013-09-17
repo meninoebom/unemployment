@@ -1,5 +1,5 @@
 <div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
-<div class="question" ng-show="dataSpec.currentStep=='1'">
+<div class="question" ng-show="dataSpec.currentInstruction=='1'">
 	<p>What happened to the national unemployment rate between March 2010 and March 2011</p>
 	<ul class="clearfix">
 		<li>
@@ -17,13 +17,13 @@
 	</ul>
 
 </div>
-<div class="question" ng-show="dataSpec.currentStep=='2'">
+<div class="question" ng-show="dataSpec.currentInstruction=='2'">
 	<p>Choose a State to explore then click Next.</p>
 </div>
-<div class="question" ng-show="dataSpec.currentStep=='3'">
+<div class="question" ng-show="dataSpec.currentInstruction=='3'">
 	<p>Choose two counties within {{dataSpec.regionName}} to compare then click Next.</p>
 </div>
-<div class="question" ng-show="dataSpec.currentStep=='4'">
+<div class="question" ng-show="dataSpec.currentInstruction=='4'">
 	<p>In March 2010, how does the unemployment rate in {{dataSpec.county1}} compare to the unemployemnt rate in {{dataSpec.county2}}?</p>
 	<ul class="clearfix">
 		<li>

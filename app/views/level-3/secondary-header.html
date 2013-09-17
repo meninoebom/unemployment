@@ -27,8 +27,8 @@
 	</ul>
 </div>
 
-<div class="view-control" ng-show="dataSpec.currentStep != 4">
+<div class="view-control" ng-hide="dataSpec.view == 'graph'">
 	<span class="view-button table-view-button" ng-click="setDataView('table')" ng-class="{on:dataSpec.view == 'table'}">table view</span> 
-	<span class="view-button graph-view-button" ng-click="setDataView('graph')" ng-class="{on:dataSpec.view == 'graph'}">graph view</span> 
+	<span class="view-button graph-view-button" ng-click="setDataView('map')" ng-class="{on:dataSpec.view == 'map'}">graph view</span> 
 	<span class="view-button-label">Data View: </span>
 </div>

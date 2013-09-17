@@ -2,11 +2,11 @@
 	<div ng-include src="'views/main-header.html'"></div>
 	<div class="level-3-secondary-header clearfix" ng-include src="'views/level-3/secondary-header.html'"></div>
 	<!-- MAIN CONTENT //////////////////////////////////////////////////////////////////////////////// -->
-	<div class="main-content-area level-3-table-container" ng-show="dataSpec.view=='table' && dataSpec.currentStep<4" ng-click="setDataScale('state')" ng-include src="'views/level-3/table-view.html'"></div>
+	<div class="main-content-area level-3-table-container" ng-show="dataSpec.view=='table'" ng-include src="'views/level-3/table-view.html'"></div>
 
-	<div class="main-content-area level-3-map-container" ng-show="dataSpec.currentStep<4 && dataSpec.view=='graph' " ng-click="setDataScale('state')" ng-include src="'views/level-3/map-view.html'"></div>
+	<div class="main-content-area level-3-map-container" ng-show="dataSpec.view=='map'"  ng-include src="'views/level-3/map-view.html'"></div>
 
-	<div class="main-content-area level-3-graph-container" ng-show="dataSpec.currentStep==4" ng-include="'views/level-3/graph-view.html'"></div>
+	<div class="main-content-area level-3-graph-container" ng-show="dataSpec.view=='graph'" ng-include="'views/level-3/graph-view.html'"></div>
 	<!-- INSTRUCTIONS AND QUESTIONS //////////////////////////////////////////////////////////////////////////////// -->
 	<div class="level-3-instruction-area question-area" ng-include="'views/level-3/instructions.html'"></div>
 		
