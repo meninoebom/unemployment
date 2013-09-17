@@ -189,6 +189,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	};
 	
 	$scope.$watch('dataSpec.regionName', function() {
+		//if($scope.dataSpec.regionName !== 'United States' && $scope.dataSpec.currentStep === 1) $scope.dataSpec.currentStep = 2; 
 		$scope.updateData(true);
 		});
 	
@@ -241,27 +242,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
     }
 
     $scope.unemploymentRateMap = {};
-
-    // function graphLine(name, dataSource, color, lineStyle) {
-    // 	this.name = name;
-    // 	this.color = color;
-    // 	this.lineStyle = lineStyle;
-    // 	this.dataSource = dataSource;
-    // 	this.selected = false;
-    // 	this.updateData = function() {
-    // 		this.data = dataSource;
-    // 	}
-    // 	this.updateName = function() {
-    // 		this.name = name;
-    // 	}
-    // }
-    
-    // var usLine = new graphLine('United States', $scope.usChartData, 'blue', '4,2');
-    // var stateLine = new graphLine($scope.dataSpec.regionName, $scope.stateChartData, 'green', '4,2,4,2,2,2');
-    // var county1Line = new graphLine($scope.dataSpec.county1, $scope.county1ChartData, 'purple', '0');
-    // var county2Line = new graphLine($scope.dataSpec.county2, $scope.county2ChartData, 'purple', '3,2');
-
-    // $scope.graphLines = [usLine, stateLine, county1Line, county2Line];
 
 	$scope.graphLines = [
 		{

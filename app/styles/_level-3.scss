@@ -39,23 +39,17 @@
 	}
 }
 
-.scale-control {
+.view-control {
 	margin: 7px 22px;
 }
 
-.view-control {
-	bottom: -42px;
-	position: absolute;
-	right: 22px;
-}
-
-.scale-button-label, .view-button-label {
+.view-button-label {
 	@include font(16px, 24px);
 	float: right;
 	margin-top: 5px;
 }
 
-.scale-button, .view-button {
+.view-button {
 	background-size: 33px;
 	background-color: transparent;
 	background-repeat: no-repeat;
@@ -247,7 +241,7 @@
 
 .stat-reader {
 	float: right;
-	margin: 64px 30px 0 0;
+	margin: 64px 0 0 0;
 	width: 225px;
 	.stat-reader-percentage {
 		@include font(30px, 42px, $red);
@@ -450,14 +444,15 @@
 }
 
 #mappingContent {
-	width: 600px;
+	float: left;
+	margin-top: 30px;
+	position: relative;
+	width: 760px;
 }
 #mappingContent img {
 	max-width: none;
 }
-
 .map_popup_feature {
-	background-color: white;
-	border: solid 1px black;
+	@include popover($darkGrey, $white);
 	padding: 10px;
 }
