@@ -300,48 +300,6 @@
 	width: 312px;
 	overflow: hidden;
 	margin: 70px 0 0 30px;
-	header {
-		height: 71px;
-		padding-top: 8px;
-	}
-	.switch-view-button-label {
-		@include font(16px, 24px);
-		float: right;
-		margin-top: 5px;
-	}
-	.switch-view-button {
-		background-size: 33px;
-		background-color: transparent;
-		background-repeat: no-repeat;
-		background-size: 33px;
-		float: right;
-		height: 33px;
-		margin-left: 8px;
-		text-indent: -9999px;
-		width: 33px;
-		display: inline-block;
-		cursor: pointer;
-	}	
-	.graph-view-button {
-
-		/*background: transparent url('../img/graph_view_inactive.png') top left / 33px no-repeat;*/
-		&.active {
-			background-image: url('../img/graph_view_active.png');
-		}	
-		&.inactive {
-			background-image: url('../img/graph_view_inactive.png');
-		}	
-	}
-	.grid-view-button {
-		background-size: 33px;
-		/*background: transparent url('../img/grid_view_inactive.png') top left / 33px no-repeat;*/
-		&.active {
-			background-image: url('../img/grid_view_active.png');
-		}	
-		&.inactive {
-			background-image: url('../img/grid_view_inactive.png');
-		}	
-	}
 	.region-select-container {
 		@include font(15px, 18px);
 		height: 377px;
@@ -349,7 +307,7 @@
 			height: 45px;
 			border-bottom: 2px solid $white;
 			cursor: pointer;
-			.color-box {
+			.faux-check-box {
 				border: 2px solid #000;
 				display: block;
 				float: left;
@@ -370,14 +328,17 @@
 					position: absolute;
 					width: 18px;
 				}
-				&.purple {background-color: $purple; color: $white;}
-				&.blue {background-color: $blue; color: $white;}
-				&.green {background-color: $green; color: $white;}				.us-line-style {background-image: url('../img/level_4_selected_period_line_style_1.png');}
-				.state-line-style {background-image: url('../img/level_4_selected_period_line_style_2.png');}
-				.county1-line-style {background-image: url('../img/level_4_selected_period_line_style_3.png');}
-				.county2-line-style {background-image: url('../img/level_4_selected_period_line_style_3.png');}
+				.line-style-1 {background-image: url('../img/level_4_selected_period_line_style_1.png');}
+				.line-style-2 {background-image: url('../img/level_4_selected_period_line_style_2.png');}
+				.line-style-3 {background-image: url('../img/level_4_selected_period_line_style_3.png');}
+				.line-style-4 {background-image: url('../img/level_4_selected_period_line_style_3.png');}
 			}
 			.region-name {width: 260px;}
+			&.selected{
+				&.purple {background-color: $purple; color: $white;}
+				&.blue {background-color: $blue; color: $white;}
+				&.green {background-color: $green; color: $white;}	
+			}
 		}
 	}
 }

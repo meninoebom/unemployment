@@ -6,7 +6,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.dataSpec.currentInstruction = 1;
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.scale = "nation";
-	$scope.dataSpec.view = "map";
+	$scope.dataSpec.view = "graph";
 	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
 	$scope.dataSpec.month = '01';
