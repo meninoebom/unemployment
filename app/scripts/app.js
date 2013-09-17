@@ -58,9 +58,9 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
         controller: "Level4Ctrl",
         baseClass: "level-4"
       });
-  }]).run(function ($rootScope, $state, $stateParams) {
+  }]).run(["$rootScope", "$state", "$stateParams" ,function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;
     $rootScope.$stateParams = $stateParams;
-  });
+  }]);
 
 
