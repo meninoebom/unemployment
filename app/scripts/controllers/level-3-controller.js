@@ -249,7 +249,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			name: 'United States',
 			data: $scope.usChartData,
 			color: 'blue',
-			lineStyle: '4,2',
+			lineStyle: '10,3,5,3',
 			selected: false,
 			update: function() {
 				this.data = $scope.usChartData;
@@ -258,7 +258,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			name: $scope.dataSpec.regionName,
 			data: $scope.stateChartData,
 			color: 'green',
-			lineStyle: '4,2',
+			lineStyle: '6,2',
 			selected: false,
 			update: function() {
 				this.data = $scope.stateChartData;
