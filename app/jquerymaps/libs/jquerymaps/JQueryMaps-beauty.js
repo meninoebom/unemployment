@@ -891,18 +891,24 @@ function JQueryMaps() {
             if (cbjjg.cbfhc) ccbgi();
             if (cbjjg.cbehf) {
                 ccdcj.mousemove(function(cbche) {
+										console.log('mousemove');
                     ccdbf.cbfja = (new Date()).getTime();
                     ccdde = cbefj(cbche);
                     cbfdi();
-                    if (ccdbf.cbabb.length > 0) ccaej(true);
+                    if (ccdbf.cbabb.length > 0) {
+											console,log('call ccaej');
+											ccaej(true);
+										}
                 });
                 ccdcj.mousedown(function(cbche) {
+										console.log('mousedown');
                     ccaae = new Object();
                     ccaae.ccabe = cbefj(cbche);
                     ccaae.cccib = (new Date()).getTime();
                     ccdde = ccaae.ccabe;
                 });
                 ccdcj.mouseup(function(cbche) {
+										console.log('mouseup cbhhf '+cbhhf+' cbfgd: isAClick'+cbfgd());
                     if (cbhhf == 'regular') {
                         cbiea(cbche);
                         if (cbfgd()) {
@@ -1166,7 +1172,7 @@ function JQueryMaps() {
             cbgjc = $('#jqmMapsDiv' + cbfej);
             var cbife = 'jqmOnTopCanvasDiv' + cbfej;
             var cbiej = 'jqmOnTopCanvas' + cbfej;
-            ccdcj.append('<div id="' + cbife + '" style="position: absolute; top: 0px; left: 0px; width:1000; z-index: 200; cursor: crosshair; ">' + '</div>');
+            ccdcj.append('<div id="' + cbife + '" style="position: absolute; top: 0px; left: 0px; width:1000; z-index: 200; cursor: crosshair; " >' + '</div>');
             cbieh = $('#' + cbife);
             cbifd = document.createElement("canvas");
             cbifd['id'] = cbiej;
@@ -7866,7 +7872,7 @@ function JQueryMaps() {
             if (cbbji) {
                 console.log("loadChildTheme "+featureId+" "+feature_xml);
             }
-						if (this.getCurrentLevel()==1) {
+						while (this.getCurrentLevel()>0) {
 							cbgbd();
 						}
 						ccdbf.cbbbj = feature_xml;
