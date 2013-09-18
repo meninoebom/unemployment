@@ -10,14 +10,14 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
       angular.element('#incorrect-modal').modal('show');
     }
     $scope.profiles = [
-      {gender: "m", failedAttempts: 0, name: "John Doe", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Rhonda Pulkowski", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"},
-      {gender: "m", failedAttempts: 0, name: "Bill Green", description: "Works as a freelancer from home", employmentCategoryId: 3, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Mary Brown", description: "Works as a freelancer from home", employmentCategoryId: 4, active: "true"},
-      {gender: "m", failedAttempts: 0, name: "Davinder Paramkha", description: "Works as a freelancer from home", employmentCategoryId: 5, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Lucy Chang", description: "Works as a freelancer from home", employmentCategoryId: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Sue Smith", description: "Works as a freelancer from home", employmentCategoryId: 2, active: "true"},
-      {gender: "m", failedAttempts: 0, name: "Mike Rogers", description: "Works as a freelancer from home", employmentCategoryId: 3, active: "true"}
+      {gender: "f", failedAttempts: 0, name: "Sarah", description: "works 40 hours a week at the local retail shoe store", employmentCategoryId: 1, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Jim", description: "has recently accepted a new job, but he does not begin this job until 30 days from now", employmentCategoryId: 2, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Jiayi", description: "stays home cooking, cleaning and taking care of her home and her family", employmentCategoryId: 5, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Lauren", description: "volunteers 30 hours a week in a local soup kitchen", employmentCategoryId: 5, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Morgan", description: "works 20 hours each week at an on campus bookstore", employmentCategoryId: 1, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Amanda", description: "used to work at a travel agency that has closed recenly due to lack of business caused by online travel websites", employmentCategoryId: 3, active: "true"},
+      {gender: "m", failedAttempts: 0, name: "Eric", description: "needed a break from his job search and has not looked for a job in two weeks", employmentCategoryId: 2, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "LaShanna", description: "used to work at a real estate office, which recently laid off some of its workers, including LaShanna, due to the recession", employmentCategoryId: 4, active: "true"}
     ];
 
 $scope.employmentCategories = [
