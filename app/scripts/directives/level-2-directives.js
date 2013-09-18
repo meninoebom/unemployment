@@ -215,10 +215,11 @@ angular.module('directives.ue.level-2', [])
 				laborForceParticipation: '<img src="img/laborForceParticipationFormula.png" width="311" height="149" />',
 				employment: '<img src="img/employmentRateFormula.png" width="311" height="149" />',
 				unemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />',
-				naturalUnemployment: '<img src="img/unemploymentRateFormula.png" width="311" height="149" />'
+				naturalUnemployment: '<img src="img/naturalUnemploymentFormula.png" width="311" height="149" />'
 			}
 			var content = popverContent[attrs.content];
-			elem.popover({ content: content, trigger: "hover", html: true});
+			elem.popover({ content: content, trigger: "hover", html: true, placement: [attrs.placement]});
+			$(elem).hover(function(){$(".popover").css({"top": "-25px", "left": "-300px"});});
 		}
 	};
 }).directive('incorrectAnswerPopover', function(){

@@ -1,4 +1,4 @@
-<div class="level-3-graph" >
+<div class="level-3-graph">
 	<div class="popover month-dial-popover" ng-show="showMonthDialPopover">
 		<div class="arrow"></div>
 		<div class="popover-content">
@@ -10,13 +10,12 @@
 		</div>
 	</div>
 </div>
-
 <div class="region-picker">
 	<p>Select an option to see its data</p>
 	<div class="region-select-container">
-		<div ng-repeat="region in graphLines" class="region" ng-click="toggleGraphLine(region)">
-			<span class="color-box" ng-class="region.color">
-				<span class="line-style-icon us-line-style" ></span>
+		<div ng-repeat="region in graphLines" class="region {{region.color}}" ng-class="{selected: region.selected}" ng-click="toggleGraphLine(region)">
+			<span class="faux-check-box">
+				<span class="line-style-icon us-line-style" ng-class="'line-style-'+{{$index+1}}" ></span>
 			</span>
 			<div class="vert-center-wrapper region-name"><div class="vert-center">{{region.name}}</div></div>
 		</div>

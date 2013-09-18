@@ -11,9 +11,9 @@ angular.module('directives.ue.level-1', [])
 	       var empCategoryName = employmentCategoryObj.name;
 	       scope.$watch(attrs.profile, function(profile) {       	
 		       if(profile.active){        
-		         var content = "<h4>"+name+"</h4><p>"+description+"</p>";
+		         var content = "<div class='detail-content'><h4>"+name+"</h4><p>"+description+"</p></div>";
 		       } else {
-		         var content = "<h4>"+name+"</h4><p>"+description+"</p><span>"+empCategoryName+"</span>";
+		         var content = "<div class='detail-content'><h4>"+name+"</h4><p>"+description+"</p><span><strong>"+empCategoryName+"</strong></span></div>";
 		       }
 		       elem.bind('mouseenter', function(){
 			       elem.popover({content: content, placement: 'right', html: true});
