@@ -126,6 +126,8 @@ angular.module('directives.mapping', [])
 					} else if (obj.event=="buttonClicked" && obj.button=="back" && obj.level==0) {
 						console.log("went back");
 						scope.dataSpec.regionName = "United States";
+						scope.dataSpec.county1 = '';
+						scope.dataSpec.county2 = '';
 						scope.$apply();
 					}
 					console.log('Map is ready? '+jqmMap.checkIfMapIsReady());
