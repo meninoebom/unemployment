@@ -5,7 +5,7 @@
   <title>My AngularJS App</title>
 
     <!-- build:css({.tmp,app}) styles/main.css -->
-    <link rel="stylesheet" href="styles/main.css">
+    <!-- link rel="stylesheet" href="styles/main.css"-->
     <!-- endbuild -->
 		<style>
 		#mappingContent img {
@@ -18,8 +18,12 @@
 			padding: 10px;
 		}
 		</style>
+    
+     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.0/themes/smoothness/jquery-ui.css" />
+
 		 <!-- Including jQuery and jQuery UI from Google's CDN -->
     <script src="bower_components/jquery/jquery.js"></script>
+		<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.js" ></script>
     <script src="bower_components/angular/angular.min.js"></script>
     <script src="bower_components/underscore/underscore-min.js"></script>
     <script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.js"></script>
@@ -67,7 +71,7 @@
     <div ng-hide='dataSpec.county2==""'><b>County2 Unemployment</b> : {{dataSpec.county2}} : {{county2Value}}</div>
   </div>
   
-  <div ng-include src="'views/level-3/mapping.html'"></div>
+  <div ng-include src="'views/level-3/map.html'"></div>
 <!--  <div id="mappingContent" jqm-map style="position: relative;">
     <div id="mapDiv" style="position: relative; margin: 0; padding: 0; border: none; width: 780px; height: 400px; overflow: hidden;"></div>
     <div id="jqm_popup_feature" class="map_popup_feature" style="z-index: 500; position: absolute; display: none; left: 546px; top: 169px;">

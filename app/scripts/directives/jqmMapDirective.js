@@ -53,8 +53,8 @@ angular.module('directives.mapping', [])
 					if (regionName=="United States") {
 						if (jqmMap.getCurrentLevel()>0) {
 							jqmMap.getBackToPreviousLevel();
-							updateFeatureData();
 						}
+						updateFeatureData();
 					} else {
 						var region_id = 'us_'+mapDataService.stateAbbreviations[regionName].toLowerCase();
 						jqmMap.loadChildTheme(region_id, 'jquerymaps/themes/state_'+region_id+'.xml');
@@ -78,7 +78,9 @@ angular.module('directives.mapping', [])
 				};
 
 				function updateFeatureData() {
-					mapDataService.getRegionalDataForDate(scope.dataSpec.regionName, 
+					console.log('update feature data for level '+jqmMap.getCurrentLevel());
+					var regionName = (jqmMap.getCurrentLevel()==0 ? "United States" : scope.dataSpec.regionName);
+					mapDataService.getRegionalDataForDate(regionName, 
 						scope.dataSpec.year+'-'+scope.dataSpec.month,
 						function (data) {
 							console.log(data);
@@ -108,7 +110,7 @@ angular.module('directives.mapping', [])
 				}
 				
 				var onJqmSystemEvent = function(obj) {
-					console.log('General event');
+					console.log('General event'); 
 					console.log(obj);
 					if (obj.event=="allDataProcessed") {
 						hasHasInitialLoad = true;
@@ -122,7 +124,10 @@ angular.module('directives.mapping', [])
 						*/
 						updateFeatureData();
 					} else if (obj.event=="buttonClicked" && obj.button=="back" && obj.level==0) {
+						console.log("went back");
 						scope.dataSpec.regionName = "United States";
+						scope.dataSpec.county1 = '';
+						scope.dataSpec.county2 = '';
 						scope.$apply();
 					}
 					console.log('Map is ready? '+jqmMap.checkIfMapIsReady());
