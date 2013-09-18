@@ -64,7 +64,7 @@ $scope.employmentCategories = [
       }
     ];
 
-  $scope.fillInTheBlankAnswers = [100, 100, 100, 100];
+  $scope.fillInTheBlankAnswers = [64, 92, 8, 8];
 
   $scope.numAttempts = 0;
 

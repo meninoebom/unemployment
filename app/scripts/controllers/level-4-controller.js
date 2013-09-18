@@ -1,6 +1,6 @@
 'use strict';
 
-unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  function($scope, unemploymentDataService) {
+unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '$state',  function($scope, unemploymentDataService, $state) {
 	$scope.dialPopCurMonth = {val: 0};
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
@@ -182,9 +182,9 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 				randomizedExpansions.push(item.name);
 			});
 			randomizedExpansions = _.shuffle(randomizedExpansions);
-			$scope.questions[j+3].a = randomizedRecessions[j];
-			$scope.questions[j+3].b = randomizedRecessions[j+1];
-			$scope.questions[j+3].c = randomizedRecessions[j+2];
+			$scope.questions[j+3].a = randomizedExpansions[j];
+			$scope.questions[j+3].b = randomizedExpansions[j+1];
+			$scope.questions[j+3].c = randomizedExpansions[j+2];
 		}
 		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val];
 	}
@@ -193,7 +193,15 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService',  
 
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
-		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val += 1]; 
+		if ($scope.currentQuestionNum.val >= 5) $state.transitionTo('intro');
+		if (!$("input[name=answer]:checked").val()) $scope.showFeedbackMessage('Choose an answer the before clicking next.');
+		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val += 1];
+		$("input[name=answer]:checked").prop('checked',false); 
+	}
+
+	$scope.showFeedbackMessage = function(message) {
+		$scope.feedbackMessage = message;
+		angular.element('#incorrect-modal').modal('show');
 	}
 
 }]);

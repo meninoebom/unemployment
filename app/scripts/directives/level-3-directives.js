@@ -7,9 +7,9 @@ angular.module('directives.ue.level-3', [])
     	replace: true,
 		link: function(scope, element, attrs, ngModel) {
 	  			
-		     var redrawEntireGraph = function(xAxisMax, yAxisMax) {
+		     var redrawSlider = function(xAxisMax, yAxisMax) {
 		        d3.select(".month-slider-container").remove();
-		    	var margin = {top: 30, right: 0, bottom: 30, left:20},
+		    	var margin = {top: 30, right: 20, bottom: 30, left:20},
 		        outerWidth = 646,
 		        outerHeight = 60,
 		        width = outerWidth - margin.left - margin.right,
@@ -102,30 +102,6 @@ angular.module('directives.ue.level-3', [])
 		                .tickFormat("")
 		            );
 
-		        var defs = svg.append("defs");
-
-		        defs.append("marker")
-		            .attr("id", "triangle-start")
-		            .attr("viewBox", "0 0 10 10")
-		            .attr("refX", 10)
-		            .attr("refY", 5)
-		            .attr("markerWidth", -6)
-		            .attr("markerHeight", 6)
-		            .attr("orient", "auto")
-		          .append("path")
-		            .attr("d", "M 0 0 L 10 5 L 0 10 z");
-
-		        defs.append("marker")
-		            .attr("id", "triangle-end")
-		            .attr("viewBox", "0 0 10 10")
-		            .attr("refX", 10)
-		            .attr("refY", 5)
-		            .attr("markerWidth", 6)
-		            .attr("markerHeight", 6)
-		            .attr("orient", "auto")
-		          .append("path")
-		            .attr("d", "M 0 0 L 10 5 L 0 10 z");
-
 		        var drag = d3.behavior.drag()
 		            .origin(function() { 
 		                var t = d3.select(this);
@@ -176,6 +152,30 @@ angular.module('directives.ue.level-3', [])
 		                  .attr("x2", newX);
 		            });
 
+			        var defs = svg.append("defs");
+
+			        defs.append("marker")
+			            .attr("id", "triangle-start")
+			            .attr("viewBox", "0 0 10 10")
+			            .attr("refX", 10)
+			            .attr("refY", 5)
+			            .attr("markerWidth", -6)
+			            .attr("markerHeight", 6)
+			            .attr("orient", "auto")
+			          .append("path")
+			            .attr("d", "M 0 0 L 10 5 L 0 10 z");
+
+			        defs.append("marker")
+			            .attr("id", "triangle-end")
+			            .attr("viewBox", "0 0 10 10")
+			            .attr("refX", 10)
+			            .attr("refY", 5)
+			            .attr("markerWidth", 6)
+			            .attr("markerHeight", 6)
+			            .attr("orient", "auto")
+			          .append("path")
+			            .attr("d", "M 0 0 L 10 5 L 0 10 z");
+
 					var drawMonthDial = function(month) {
 						  d3.select(".month-slider").remove();
 						  var dial = svg.append("line")
@@ -211,10 +211,10 @@ angular.module('directives.ue.level-3', [])
 					$("body").on('mouseup.hideMonthDialPopover', function () { 
 						scope.$apply(scope.showMonthDialPopover = false) 
 					});
-		    }// end of redrawEntireGraph()
+		    }// end of redrawSlider()
 	         
 	        scope.$watch("selectedRegions", function() {
-	          redrawEntireGraph(2014, scope.highestVisibleRate);
+	          redrawSlider(2013.3, scope.highestVisibleRate);
 	        });
 
 	  	}// end link function
