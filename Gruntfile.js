@@ -244,8 +244,11 @@ module.exports = function (grunt) {
             '*.{ico,png,txt}',
             '.htaccess',
             'bower_components/**/*',
+            'data/**/*',
             'jquerymaps/**/*',
             'img/{,*/}*.{gif,webp,svg}',
+            'index.html',
+            'views/**/*.html',
             'styles/fonts/*'
           ]
         }, {
@@ -270,8 +273,8 @@ module.exports = function (grunt) {
       dist: [
         'coffee',
         'compass:dist',
-        'imagemin',
-        'htmlmin'
+        'imagemin'
+        //'htmlmin'
       ]
     },
     karma: {
