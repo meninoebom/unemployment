@@ -3,10 +3,10 @@
 unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService',  function($scope, $state ,$timeout, mapDataService) {
 
 	$scope.dataSpec = {};
-	$scope.dataSpec.currentStep = 1;
+	$scope.dataSpec.currentInstruction = 1;
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.scale = "nation";
-	$scope.dataSpec.view = "graph";
+	$scope.dataSpec.view = "map";
 	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
 	$scope.dataSpec.month = '01';
@@ -31,14 +31,15 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.submitResponse = function() {
 		//TODO grading and feedback happen here
-		console.log("booyah");
-		switch ($scope.dataSpec.currentStep) {
+		switch ($scope.dataSpec.currentInstruction) {
 			case 1:
 				if (!$("input[name=firstQuestion]:checked").val()) {
 					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
 					return;
 				} else {
-					$scope.dataSpec.currentStep += 1; 
+					$scope.dataSpec.currentInstruction +=1;
+					if ($scope.dataSpec.regionName !== 'United States') $scope.dataSpec.currentInstruction += 1; 
+					if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
 				}
 				break;
 			case 2:
@@ -46,29 +47,30 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 					$scope.showFeedbackMessage('You must choose a state before going to the next step.');
 					return;
 				} else {
-					$scope.dataSpec.currentStep += 1; 
-				}
+					$scope.dataSpec.currentInstruction +=1;
+					if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
+				} 
 				break;
 			case 3:
 				if ($scope.dataSpec.county1 == '' || $scope.dataSpec.county2 == '') {
 					$scope.showFeedbackMessage('You must choose two counties before going to the next step.');
 					return;
 				} else {
-					$scope.dataSpec.currentStep += 1; 
-				}
+					$scope.dataSpec.currentInstruction +=1;
+				} 
 				break;	
 			case 4:
 				if (!$("input[name=lastQuestion]:checked").val()) {
 					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
 					return;
 				} else {
-					$state.transitionTo('level-4-intro'); 
+					$state.transitionTo('level-4-intro');
+					return; 
 				}
 				break;			
-			default:
-				$scope.dataSpec.currentStep += 1; 
 		}
-		//TODO after step 4 go to level 4
+		if ($scope.dataSpec.currentInstruction > 3) $scope.dataSpec.view = 'graph';
+		console.log($scope.dataSpec.currentInstruction);
 	}
 
 	$scope.showFeedbackMessage = function(message) {
@@ -190,11 +192,11 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	
 	$scope.$watch('dataSpec.regionName', function() {
 		$scope.updateData(true);
-		});
+	});
 	
 	$scope.$watch('dataSpec.year+"-"+dataSpec.month', function() {
 		$scope.updateData(false);
-		});
+	});
 		
 	// tools for charting the data...
 	$scope.usChartData = [];
@@ -241,27 +243,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
     }
 
     $scope.unemploymentRateMap = {};
-
-    // function graphLine(name, dataSource, color, lineStyle) {
-    // 	this.name = name;
-    // 	this.color = color;
-    // 	this.lineStyle = lineStyle;
-    // 	this.dataSource = dataSource;
-    // 	this.selected = false;
-    // 	this.updateData = function() {
-    // 		this.data = dataSource;
-    // 	}
-    // 	this.updateName = function() {
-    // 		this.name = name;
-    // 	}
-    // }
-    
-    // var usLine = new graphLine('United States', $scope.usChartData, 'blue', '4,2');
-    // var stateLine = new graphLine($scope.dataSpec.regionName, $scope.stateChartData, 'green', '4,2,4,2,2,2');
-    // var county1Line = new graphLine($scope.dataSpec.county1, $scope.county1ChartData, 'purple', '0');
-    // var county2Line = new graphLine($scope.dataSpec.county2, $scope.county2ChartData, 'purple', '3,2');
-
-    // $scope.graphLines = [usLine, stateLine, county1Line, county2Line];
 
 	$scope.graphLines = [
 		{

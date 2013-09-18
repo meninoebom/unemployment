@@ -27,15 +27,8 @@
 	</ul>
 </div>
 
-<div class="scale-control">
-	<span class="scale-button county-scale-button" ng-class="{on:dataSpec.currentStep == 4}">county view</span> 
-	<span class="scale-button state-scale-button" ng-class="{on:dataSpec.currentStep == 3 }">state view</span> 
-	<span class="scale-button nation-scale-button" ng-class="{on:dataSpec.currentStep < 3}">nation view</span>
-	<span class="scale-button-label">View: </span>
-</div>
-
-<div class="view-control" ng-show="dataSpec.currentStep != 4">
+<div class="view-control" ng-hide="dataSpec.view == 'graph'">
 	<span class="view-button table-view-button" ng-click="setDataView('table')" ng-class="{on:dataSpec.view == 'table'}">table view</span> 
-	<span class="view-button graph-view-button" ng-click="setDataView('graph')" ng-class="{on:dataSpec.view == 'graph'}">graph view</span> 
+	<span class="view-button graph-view-button" ng-click="setDataView('map')" ng-class="{on:dataSpec.view == 'map'}">graph view</span> 
 	<span class="view-button-label">Data View: </span>
 </div>
