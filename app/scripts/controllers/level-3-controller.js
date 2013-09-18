@@ -5,11 +5,10 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.dataSpec = {};
 	$scope.dataSpec.currentInstruction = 1;
 	$scope.dataSpec.usValue = 0;
-	$scope.dataSpec.scale = "nation";
-	$scope.dataSpec.view = "graph";
+	$scope.dataSpec.view = "map";
 	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
-	$scope.dataSpec.month = '01';
+	$scope.dataSpec.month = '1';
 	$scope.years = [];
 	$scope.months = [];
 	for (var y=2000; y<=2013; y++) {$scope.years.push(y)};
@@ -76,10 +75,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.showFeedbackMessage = function(message) {
 		$scope.dataSpec.feedbackMessage = message;
 		angular.element('#incorrect-modal').modal('show');
-	}
-
-	$scope.setDataScale = function(scale) {
-		$scope.dataSpec.scale = scale;
 	}
 
 	$scope.setDataView = function(view) {

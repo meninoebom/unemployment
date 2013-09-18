@@ -85,7 +85,17 @@
 
 .main-content-area {
 	width: 1024px;
-	height: 524px;
+	height: 530px;
+}
+
+.level-3-map-container {
+	position: relative;
+	.level-3-month-slider {
+		position: absolute;
+		top: 460px;
+		left: 90px;
+		z-index: 10000;
+	}
 }
 
 .level-3-table-container {
@@ -366,7 +376,7 @@
 
 #mappingContent {
 	float: left;
-	margin-top: 70px;
+	margin-top: 56px;
 	position: relative;
 	width: 760px;
 }
