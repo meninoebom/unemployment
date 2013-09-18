@@ -57,7 +57,7 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 			var range_start = this.calculateMonthsBetween(dataset.start_date, d1);
 			var ixStart = Math.max(0, range_start - months_before);
 			var ixEnd = Math.min(this.calculateMonthsBetween(dataset.start_date, d2), dataset.values.length);
-			data = [];
+			var data = [];
 			for (var i = ixStart; i<=ixEnd; i++) {
 					data.push([i - range_start, dataset.values[i]]);
 			}
