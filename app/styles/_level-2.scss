@@ -193,3 +193,12 @@
 .level-2-question-area {
     width: 721px;
 }
+
+#scenario-feedback-modal {
+    .modal-body {
+        text-align: left;
+        p {
+            font-family: 'open_sansregular';
+        }
+    }
+}

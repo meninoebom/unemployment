@@ -20,7 +20,7 @@ angular.module('directives.ue.level-3', [])
 		        .attr("class", "month-slider-container")
 		        .attr("width", width + margin.left + margin.right)
 		        .attr("height", height + margin.top + margin.bottom)
-		        .append("g")
+				.append("g")
 		        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
 
 		        var xScale = d3.scale.linear()
@@ -152,28 +152,28 @@ angular.module('directives.ue.level-3', [])
 		                  .attr("x2", newX);
 		            });
 
-			        var defs = svg.append("defs");
+			        var defs = d3.select("svg").append("defs")
 
 			        defs.append("marker")
-			            .attr("id", "triangle-start")
+			            .attr("id", "map-dial-triangle-start")
 			            .attr("viewBox", "0 0 10 10")
 			            .attr("refX", 10)
 			            .attr("refY", 5)
 			            .attr("markerWidth", -6)
 			            .attr("markerHeight", 6)
 			            .attr("orient", "auto")
-			          .append("path")
+			          	.append("path")
 			            .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
 			        defs.append("marker")
-			            .attr("id", "triangle-end")
+			            .attr("id", "map-dial-triangle-end")
 			            .attr("viewBox", "0 0 10 10")
 			            .attr("refX", 10)
 			            .attr("refY", 5)
 			            .attr("markerWidth", 6)
 			            .attr("markerHeight", 6)
 			            .attr("orient", "auto")
-			          .append("path")
+			          	.append("path")
 			            .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
 					var drawMonthDial = function(month) {
@@ -187,7 +187,7 @@ angular.module('directives.ue.level-3', [])
 						  .attr("fill","none")
 						  .attr("stroke","#F00")
 						  .attr("stroke-width",10)
-						  .attr("marker-end", "url(#triangle-start)")
+						  .attr("marker-end", "url(#map-dial-triangle-end)")
 						  .call(drag);
 					}
 					drawMonthDial(getDateAsDecimal());
@@ -349,28 +349,28 @@ angular.module('directives.ue.level-3', [])
 		            .selectAll(".tick")
 		            .style("stroke-dasharray", ("2, 2"));
 
-		        var defs = svg.append("defs");
+		        var defs = d3.select("svg").append("defs")
 
 		        defs.append("marker")
-		            .attr("id", "triangle-start")
+		            .attr("id", "graph-dial-triangle-start")
 		            .attr("viewBox", "0 0 10 10")
 		            .attr("refX", 10)
 		            .attr("refY", 5)
 		            .attr("markerWidth", -6)
 		            .attr("markerHeight", 6)
 		            .attr("orient", "auto")
-		          .append("path")
+		          	.append("path")
 		            .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
 		        defs.append("marker")
-		            .attr("id", "triangle-end")
+		            .attr("id", "graph-dial-triangle-end")
 		            .attr("viewBox", "0 0 10 10")
 		            .attr("refX", 10)
 		            .attr("refY", 5)
 		            .attr("markerWidth", 6)
 		            .attr("markerHeight", 6)
 		            .attr("orient", "auto")
-		          .append("path")
+		          	.append("path")
 		            .attr("d", "M 0 0 L 10 5 L 0 10 z");
 
 				var drawGraphLine = function(data, color, lineStyle, index) {
@@ -385,6 +385,7 @@ angular.module('directives.ue.level-3', [])
 					   .attr("fill","none")
 					   .attr("stroke", color)
 					   .attr("stroke-width",4)
+					   .attr("marker-end", "url(#graph-dial-triangle-end)")
 					   .style("stroke-dasharray", (lineStyle));
 				}
 

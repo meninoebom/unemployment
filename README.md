@@ -23,6 +23,15 @@ bc. Grunt Build
 
 h3. Drag and Drop
 
+h3. Level 2 Popovers and Modals
+
+"showFormula" directive
+-this directive creates a popover when you hover over links such as "labor force partricipation rate"
+
+"incorrect-answer-popover"
+- these are the red popovers that show when the user clicks "Next" on question 1 - 3 but has not answered question correctly. The popover shows different hints depending on how many times the user has clicked "Next for that question"
+
+
 h3. D3 Popover Pattern
 
 In the view
