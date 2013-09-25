@@ -27,10 +27,14 @@ h3. Level 2 Popovers and Modals
 
 "showFormula" directive
 -this directive creates a popover when you hover over links such as "labor force partricipation rate"
+-triggers popover method on when "hover" is fired for the link
 
 "incorrect-answer-popover"
 - these are the red popovers that show when the user clicks "Next" on question 1 - 3 but has not answered question correctly. The popover shows different hints depending on how many times the user has clicked "Next for that question"
+-shows when "showHint" event is fired
 
+"info-button"
+-uses the "infoButton" directive which creates a tooltip when the button is clicked that contains a calculator for solving equations
 
 h3. D3 Popover Pattern
 

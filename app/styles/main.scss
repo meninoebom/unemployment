@@ -329,6 +329,32 @@ div, ul, li, p, h1, h2, h3, h4 {
     }
 }
 
+.popover .alert-icon {
+    float: left;
+    margin: 5px 14px 0 5px;
+}
+
+.incorrect-popover,.correct-popover, .instruction-popover {
+    display: none;
+    width: 500px;
+    padding: 10px;
+    position: absolute;
+    top: 200px;
+    left: 287px;
+}
+
+.incorrect-popover {
+    @include popover($red, $white);
+}
+
+.correct-popover {
+    @include popover($green, $white);
+}
+
+.instruction-popover {
+    @include popover($grey, $white);
+}
+
 .modal-body {
     color: $white;
 }
