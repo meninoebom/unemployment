@@ -344,7 +344,7 @@ div, ul, li, p, h1, h2, h3, h4 {
         float: left;
         width: 380px;
         h4 {font-family: 'open_sansregular'; margin-bottom: 5px;}
-        p {font-family: 'open_sanslight';}
+        > div {font-family: 'open_sanslight';}
     }
 }
 

@@ -7,11 +7,16 @@ angular.module('directives.ue.popovers', [])
 		replace: false,
 		link: function(scope, element, attrs) {
 			var showEvent = attrs.showEvent;
+			var content = "";
 			var showing = false;
+			scope.$watch(attrs.content, function(newVal, oldVal) {
+				content = newVal;
+			})
 			scope.$on(showEvent, function() {
 				scope.$broadcast('closeOtherPopovers', element);
 				if(showing) return;
 				showing = true;
+				$(element).find('.popover-content div').html(content);
 				$(element).fadeIn('slow', function() {
 					$('body').bind('click.popover keyup.popover', function() {
 						$(element).fadeOut('slow');
