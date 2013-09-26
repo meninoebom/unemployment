@@ -1,28 +1,24 @@
 MAIN POPOVER INCLUDCE
 
-<div class="incorrect-popover red">
-	<div class="popover-inner">
-		<img src="img/indicator_alert.png" class="alert-icon" width="44" height="45" />
-		<div class="popover-content">
-			{{incorrectPopoverContent}}
-		</div>
+<div class="custom-popover incorrect-popover" show-event="showIncorrectPopover">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Incorrect.</h4>
+		<p>{{incorrectPopoverContent}}</p>
 	</div>
 </div>
 
-<div class="popover correct-popover green">
-	<div class="popover-inner">
-		<img src="img/indicator_alert.png" class="alert-icon" width="44" height="45" />
-		<div class="popover-content">
-			{{correctPopoverContent}}
-		</div>
+<div class="custom-popover correct-popover" show-event="showCorrectPopover">
+	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Correct.</h4>
+		<p>{{correctPopoverContent}}</p>
 	</div>
 </div>
 
-<div class="popover instruction-popover grey">
-	<div class="popover-inner">
-		<img src="img/indicator_alert.png" class="alert-icon" width="44" height="45" />
-		<div class="popover-content">
-			{{intructionPopoverContent}}
-		</div>
+<div class="custom-popover instruction-popover" show-event="showInstructionPopover">
+	<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<p>{{intructionPopoverContent}}</p>
 	</div>
 </div>

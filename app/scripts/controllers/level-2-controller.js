@@ -80,18 +80,19 @@ $scope.employmentCategories = [
   $scope.response = {value: 0};
   
   $scope.submitResponse = function(questionNum) {
-    console.log("submitResponse");
-    $scope.incorrectPopoverContent = "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
-    $scope.$broadcast('showIncorrectPopover');
-    // var answer = $scope.fillInTheBlankAnswers[questionNum-1];
-    // if($scope.response.value == answer) {
-    //   $scope.currentQuestion.num = questionNum + 1;
-    //   $scope.response.value = 0;
-    //   $scope.displayPieChartPercentage(questionNum);
-    //   $scope.numAttempts = 0;
-    // } else {
-    //   $scope.$broadcast('showHint');
-    // }  
+    var answer = $scope.fillInTheBlankAnswers[questionNum-1];
+    if($scope.response.value == answer) {
+      $scope.correctPopoverContent = "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
+      $scope.$broadcast('showCorrectPopover');
+      $scope.currentQuestion.num = questionNum + 1;
+      $scope.response.value = 0;
+      $scope.displayPieChartPercentage(questionNum);
+      $scope.numAttempts = 0;
+    } else {
+      //$scope.$broadcast('showHint');
+      $scope.incorrectPopoverContent = "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
+      $scope.$broadcast('showIncorrectPopover');
+    }  
   }
 
   $scope.displayPieChartPercentage = function(questionNum) {

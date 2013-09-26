@@ -1,13 +1,15 @@
 'use strict';
 
 angular.module('directives.ue.popovers', [])
-.directive('incorrectPopover',['$position', '$timeout', function($position, $timeout){
+.directive('customPopover',['$position', '$timeout', function($position, $timeout){
 	return {
 		restrict: 'AC',
 		replace: false,
 		link: function(scope, element, attrs) {
+			var showEvent = attrs.showEvent;
+			console.log(attrs);
 			var showing = false;
-			scope.$on('showIncorrectPopover', function() {
+			scope.$on(showEvent, function() {
 				if(showing) return;
 				showing = true;
 				$(element).fadeIn('slow', function() {
