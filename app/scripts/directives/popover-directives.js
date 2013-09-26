@@ -1,22 +1,22 @@
 'use strict';
 
 angular.module('directives.ue.popovers', [])
-.directive('customPopover',['$position', '$timeout', function($position, $timeout){
+.directive('uePopover',['$position', '$timeout', function($position, $timeout){
 	return {
-		restrict: 'C',
-		replace: false,
+		restrict: 'EA',
+		replace: true,
+		transclude: true,
+		template: '<div class="custom-popover"><div ng-transclude></div></div>',
 		link: function(scope, element, attrs) {
+			console.log(scope.numAttempts);
 			var showEvent = attrs.showEvent;
+			console.log(attrs);
 			var content = "";
 			var showing = false;
-			scope.$watch(attrs.content, function(newVal, oldVal) {
-				content = newVal;
-			})
 			scope.$on(showEvent, function() {
 				scope.$broadcast('closeOtherPopovers', element);
 				if(showing) return;
 				showing = true;
-				$(element).find('.popover-content div').html(content);
 				$(element).fadeIn('slow', function() {
 					$('body').bind('click.popover keyup.popover', function() {
 						$(element).fadeOut('slow');

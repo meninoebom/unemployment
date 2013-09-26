@@ -1,3 +1,15 @@
+ <ue-popover class="incorrect-popover" show-event="showIncorrectPopover">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Incorrect.</h4>
+		<p ng-show="numAttempts > 0">The employment rate is the percentage of the people in the labor force who are employed.</p>
+		<img ng-show="numAttempts > 1" src="img/level-2-hint-employment-rate.png" width="148" height="63">
+		<p ng-show="numAttempts > 2">{{employmentCategories[0].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[0].count / employmentCategories[6].count * 100 | number:2}}</p>
+	</div>
+</ue-popover>
+
+
+<!-- 
 <div class="custom-popover incorrect-popover" content="incorrectPopoverContent" show-event="showIncorrectPopover">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
@@ -19,4 +31,4 @@
 	<div class="popover-content">
 		<div>{{intructionPopoverContent}}</div>
 	</div>
-</div>
+</div> -->
