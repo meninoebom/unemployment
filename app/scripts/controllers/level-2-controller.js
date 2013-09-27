@@ -91,14 +91,14 @@ $scope.employmentCategories = [
     } else {
       $scope.numAttempts += 1;
       var eventName = "showQuestion"+questionNum+"IncorrectPopover";
-      $scope.$broadcast(eventName);
+      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
     }  
   }
   $scope.stageIsClear = true;
   $scope.lockPopoverStage = function() {
     $scope.stageIsClear = false;
   }
-  $scope.releasePopoverStage = function() {
+  $scope.unlockPopoverStage = function() {
     $scope.stageIsClear = true;
   }
 
