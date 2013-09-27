@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
-$scope.currentQuestion = {num: 5};//which question will display first
+$scope.currentQuestion = {num: 1};//which question will display first
 $scope.acceptingResponses = true;
 $scope.fillInTheBlankResponse = {value: 0};
 $scope.fillInTheBlankAnswers = [64, 92, 8, 8];
@@ -56,68 +56,6 @@ $scope.employmentCategories = [
         count: 252
       }
     ];
-
-  $scope.laborParticipationRate = function() {
-      return $scope.laborForce() / $scope.eqTool.nonInstitutional;
-  }
-  $scope.employmentRate = function() {
-      return parseInt($scope.eqTool.employed)  / $scope.laborForce();
-  }
-  $scope.unemploymentRate = function() {
-      return parseInt($scope.eqTool.unemployed)  / $scope.laborForce();
-  }
-  $scope.laborForce = function() {
-    return parseInt($scope.eqTool.employed) + parseInt($scope.eqTool.unemployed);
-  }
-
-  // $scope.whichAttempt = function(num) {
-  //   console.log("$scope.numAttempts = "+$scope.numAttempts);
-  //   if($scope.numAttempts == num) {
-  //     return true;
-  //   } else {
-  //     return false;
-  //   }
-  // }
-
-  $scope.submitResponse = function(questionNum) {
-    if (!$scope.acceptingResponses) return;
-    var answer = $scope.fillInTheBlankAnswers[questionNum-1];
-    if($scope.fillInTheBlankResponse.value == answer) {
-      $scope.$broadcast('showCorrectPopover');
-      $scope.currentQuestion.num = questionNum + 1;
-      $scope.fillInTheBlankResponse.value = 0;
-      $scope.displayPieChartPercentage(questionNum);
-      $scope.numAttempts = 0;
-    } else {
-      $scope.numAttempts += 1;
-      var eventName = "showQuestion"+questionNum+"IncorrectPopover";
-      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
-    }  
-  }
- 
-  $scope.lockPopoverStage = function() {
-    $scope.acceptingResponses = false;
-  }
-  $scope.unlockPopoverStage = function() {
-    $scope.acceptingResponses = true;
-  }
-
-  $scope.displayPieChartPercentage = function(questionNum) {
-    switch(questionNum){
-      case 1:
-        angular.element('.labor-force-percentage-label').fadeIn("slow");
-        angular.element('.not-labor-force-percentage-label').fadeIn("slow");
-        break;
-      case 2:
-        angular.element('.employed-percentage-label').fadeIn("slow");
-        break;     
-      case 3:
-        angular.element('.unemployed-percentage-label').fadeIn("slow");
-        break;
-        default:
-        break;
-    }
-  }
 
   $scope.notLaborCount = String($scope.employmentCategories[4].count);
   $scope.laborCount = String($scope.employmentCategories[6].count);
@@ -219,6 +157,66 @@ $scope.employmentCategories = [
       }
     }
   ];
+
+  $scope.laborParticipationRate = function() {
+      return $scope.laborForce() / $scope.eqTool.nonInstitutional;
+  }
+  $scope.employmentRate = function() {
+      return parseInt($scope.eqTool.employed)  / $scope.laborForce();
+  }
+  $scope.unemploymentRate = function() {
+      return parseInt($scope.eqTool.unemployed)  / $scope.laborForce();
+  }
+  $scope.laborForce = function() {
+    return parseInt($scope.eqTool.employed) + parseInt($scope.eqTool.unemployed);
+  }
+
+  $scope.submitFillInTheBlankResponse = function(questionNum) {
+    if (!$scope.acceptingResponses) return;
+    var answer = $scope.fillInTheBlankAnswers[questionNum-1];
+    if($scope.fillInTheBlankResponse.value == answer) {
+      $scope.$broadcast('showCorrectPopover', undefined, $scope.loadNextFillInTheBlankQuestion);
+      $scope.displayPieChartPercentage(questionNum);
+    } else {
+      $scope.numAttempts += 1;
+      var eventName = "showQuestion"+questionNum+"IncorrectPopover";
+      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
+    }  
+  }
+
+  $scope.loadNextFillInTheBlankQuestion = function() {
+    $scope.$apply(function() {
+      $scope.currentQuestion.num = $scope.currentQuestion.num + 1;
+      console.log($scope.currentQuestion.num);
+      $scope.fillInTheBlankResponse.value = 0;
+      $scope.numAttempts = 0;
+    })
+  }
+ 
+  $scope.lockPopoverStage = function() {
+    $scope.acceptingResponses = false;
+  }
+  $scope.unlockPopoverStage = function() {
+    $scope.acceptingResponses = true;
+  }
+
+  $scope.displayPieChartPercentage = function(questionNum) {
+    switch(questionNum){
+      case 1:
+        angular.element('.labor-force-percentage-label').fadeIn("slow");
+        angular.element('.not-labor-force-percentage-label').fadeIn("slow");
+        break;
+      case 2:
+        angular.element('.employed-percentage-label').fadeIn("slow");
+        break;     
+      case 3:
+        angular.element('.unemployed-percentage-label').fadeIn("slow");
+        break;
+        default:
+        break;
+    }
+  }
+
   $scope.submitScenarioResponses = function() {
     if (!$scope.acceptingResponses) return;
     if (!$("input[name=labor-force]:checked").val() 
@@ -230,6 +228,7 @@ $scope.employmentCategories = [
       $scope.showScenarioFeedback($scope.currentScenario);
     }
   }
+
   $scope.showScenarioFeedback = function(currentScenario) {
      $scope.acceptingResponses = false;
 
@@ -269,8 +268,8 @@ $scope.employmentCategories = [
       $('body').unbind('click.lock keyup.lock');
     }
     setTimeout(closePopover, 5000);
-    
   }
+
   $scope.createScenarioFeedbackForRate = function(studentResponse, correctAnswer, rateName) {
     var feedback = {};
     if (studentResponse === correctAnswer) {
