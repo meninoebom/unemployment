@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
-$scope.currentQuestion = {num: 1};//which question will display first
+$scope.currentQuestion = {num: 5};//which question will display first
 $scope.acceptingResponses = true;
 $scope.fillInTheBlankResponse = {value: 0};
 $scope.fillInTheBlankAnswers = [64, 92, 8, 8];

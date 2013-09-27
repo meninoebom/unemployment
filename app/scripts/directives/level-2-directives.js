@@ -222,29 +222,6 @@ angular.module('directives.ue.level-2', [])
 			$(elem).hover(function(){$(".popover").css({"top": "-25px", "left": "-300px"});});
 		}
 	};
-}).directive('incorrectAnswerPopover', function(){
-	return {
-		restrict: 'C',
-		replace: false,
-		link: function(scope, element, attrs, ctrl) {
-			var children = element.find('.popover-content').children();
-			children.css('display','none');
-			var showing = false;
-			scope.$on('showHint', function() {
-				if(showing) return;
-				element.toggle();
-				_.each(children, function(child, index, children) {
-					if(index <= scope.numAttempts) $(child).css('display','block');
-				});
-				scope.numAttempts++;
-				showing = true;
-			});
-			element.find('.popover-close-button').bind('click', function() {
-				element.toggle();
-				showing = false;
-			});	
-		}
-	}
 }).directive('eatClick', function() {
     return function(scope, element, attrs) {
         $(element).click(function(event) {
