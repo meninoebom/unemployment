@@ -2,12 +2,13 @@
 	<div ng-include src="'views/main-header.html'"></div>
 	<div class="level-2-pie-charts" ng-include src="'views/level-2/pie-charts.html'"></div>
 	<div class="tree" ng-include src="'views/level-2/tree.html'"></div>
-  <!-- <div class="level-2-question-area question-area" ng-include="'views/level-2/questions/question-' + currentQuestion.num + '.html'"></div> -->
   <div class="level-2-question-area question-area" ng-show="currentQuestion.num <= 4" ng-include="'views/level-2/fillInTheBlankQuestions.html'"></div>
 	<div class="level-2-question-area question-area" ng-show="currentQuestion.num > 4" ng-include="'views/level-2/scenarioQuestions.html'"></div>
 </div>
 
-<div id="choose-answers-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div ng-include src="'views/popovers.html'"></div>
+
+<!-- <div id="choose-answers-modal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-body">
     <strong>Choose one answer for each category</strong>
   </div>
@@ -20,7 +21,7 @@
     <p>{{empScenarioFeedback}}</p>
     <p>{{unempScenarioFeedback}}</p>
   </div>
-</div>
-<div ng-include src="'views/popovers.html'"></div>
+</div> -->
+
 
 

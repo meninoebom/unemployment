@@ -2,7 +2,8 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
-$scope.currentQuestion = {num: 1};//which question will display first
+$scope.currentQuestion = {num: 5};//which question will display first
+ $scope.stageIsClear = true;
 
 $scope.eqTool = {
   employed: "",
@@ -91,21 +92,16 @@ $scope.employmentCategories = [
     } else {
       $scope.numAttempts += 1;
       var eventName = "showQuestion"+questionNum+"IncorrectPopover";
-      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage, $scope.getPopoverContent);
+      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
     }  
   }
-  $scope.stageIsClear = true;
+ 
   $scope.lockPopoverStage = function() {
     $scope.stageIsClear = false;
   }
   $scope.unlockPopoverStage = function() {
     $scope.stageIsClear = true;
   }
-  $scope.getPopoverContent = function() {
-    return "FOO";
-  }
-
-  $scope.content = "BAR";
 
   $scope.displayPieChartPercentage = function(questionNum) {
     switch(questionNum){
@@ -225,38 +221,70 @@ $scope.employmentCategories = [
     }
   ];
   $scope.submitScenarioResponses = function() {
+    if (!$scope.stageIsClear) return;
     if (!$("input[name=labor-force]:checked").val() 
       || !$("input[name=employment]:checked").val() 
-      || !$("input[name=unemployment]:checked").val()) {      
-      angular.element('#choose-answers-modal').modal('show');
+      || !$("input[name=unemployment]:checked").val()) { 
+      $scope.$broadcast('chooseAnswersPopover', undefined, undefined, "Choose one answer for each category, then click 'Next'");     
     } else {
       //tally the score here
       $scope.showScenarioFeedback($scope.currentScenario);
     }
   }
   $scope.showScenarioFeedback = function(currentScenario) {
-    $scope.lfpScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=labor-force]:checked").val(), currentScenario.answers.laborForceParticipation, 'Labor Force Participation');
-    $scope.empScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=employment]:checked").val(), currentScenario.answers.employment, 'Employment');
-    $scope.unempScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=unemployment]:checked").val(), currentScenario.answers.unemployment, 'Unemployment');
-    angular.element('#scenario-feedback-modal').modal('show');
+     $scope.stageIsClear = false;
+
+    var answerStatus = [];
+
+    var lfpScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=labor-force]:checked").val(), currentScenario.answers.laborForceParticipation, 'Labor Force Participation');
+    $scope.lfpScenarioFeedback = lfpScenarioFeedback.content;
+    answerStatus.push(lfpScenarioFeedback.status);
+
+    var empScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=employment]:checked").val(), currentScenario.answers.employment, 'Employment');
+    $scope.empScenarioFeedback = empScenarioFeedback.content;
+    answerStatus.push(empScenarioFeedback.status);
+    
+
+    var unempScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=unemployment]:checked").val(), currentScenario.answers.unemployment, 'Unemployment');
+    $scope.unempScenarioFeedback = unempScenarioFeedback.content;
+    answerStatus.push(unempScenarioFeedback.status);
+
+    var allAnswersCorrect = true;
+    for(var i = 0; i < answerStatus.length; i++) {
+      if (answerStatus[i] != 'Correct. ') allAnswersCorrect = false;
+    }
+
+    if (allAnswersCorrect) {
+      $scope.$broadcast('showCorrectPopover');
+    } else {
+      $scope.$broadcast('showScenarioFeedbackPopover');
+    }
+
     function closeModal() {
-      angular.element('#scenario-feedback-modal').modal('hide');
+      $scope.$broadcast('closeAllPopovers');
       $scope.doAnimation(currentScenario);
+      $scope.stageIsClear = true;
     }
     setTimeout(closeModal, 5000);
+    
   }
   $scope.createScenarioFeedbackForRate = function(studentResponse, correctAnswer, rateName) {
-    var feedback = (studentResponse === correctAnswer) ? 'Correct. ': 'Incorrect. ';
-    feedback = feedback + "The " + rateName + " Rate ";
+    var feedback = {};
+    if (studentResponse === correctAnswer) {
+      feedback.status = 'Correct. ';
+    } else {
+      feedback.status = 'Incorrect. ';
+    }
+    feedback.content = feedback.status + "The " + rateName + " Rate ";
     switch(correctAnswer) {
       case "increase":
-        feedback += "increased.";
+        feedback.content += "increased.";
         break;     
       case "decrease":
-        feedback += "decreased.";
+        feedback.content += "decreased.";
         break;     
       case "same":
-        feedback += "stayed the same.";
+        feedback.content += "stayed the same.";
         break;
     }
     return feedback;

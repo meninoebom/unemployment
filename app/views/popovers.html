@@ -1,7 +1,6 @@
  <ue-popover class="incorrect-popover" show-event="showQuestion1IncorrectPopover">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
-		<h1>{{content}}</h1>
 		<h4>Incorrect.</h4>
 		<p ng-show="numAttempts > 0">The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.</p>
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-labor-force-participation.png" width="148" height="63">
@@ -46,28 +45,18 @@
 	</div>
 </ue-popover>
 
-
-
-<!-- 
-<div class="custom-popover incorrect-popover" content="incorrectPopoverContent" show-event="showIncorrectPopover">
-	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
-	<div class="popover-content">
-		<h4>Incorrect.</h4>
-		<div>{{incorrectPopoverContent}}</div>
-	</div>
-</div>
-
-<div class="custom-popover correct-popover" content="correctPopoverContent" show-event="showCorrectPopover">
-	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
-	<div class="popover-content">
-		<h4>Correct.</h4>
-		<div>{{correctPopoverContent}}</div>
-	</div>
-</div>
-
-<div class="custom-popover instruction-popover" content="instructionPopoverContent" show-event="showInstructionPopover">
+ <ue-popover class="instruction-popover" show-event="chooseAnswersPopover">
 	<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
-		<div>{{intructionPopoverContent}}</div>
+		<p>{{content}}</p>
 	</div>
-</div> -->
+</ue-popover>
+
+ <ue-popover class="incorrect-popover" show-event="showScenarioFeedbackPopover">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+	    <p>{{lfpScenarioFeedback}}</p>
+	    <p>{{empScenarioFeedback}}</p>
+	    <p>{{unempScenarioFeedback}}</p>
+	</div>
+</ue-popover>
