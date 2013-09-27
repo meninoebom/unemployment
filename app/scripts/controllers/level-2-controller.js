@@ -91,7 +91,7 @@ $scope.employmentCategories = [
     } else {
       $scope.numAttempts += 1;
       var eventName = "showQuestion"+questionNum+"IncorrectPopover";
-      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
+      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage, $scope.getPopoverContent);
     }  
   }
   $scope.stageIsClear = true;
@@ -101,6 +101,11 @@ $scope.employmentCategories = [
   $scope.unlockPopoverStage = function() {
     $scope.stageIsClear = true;
   }
+  $scope.getPopoverContent = function() {
+    return "FOO";
+  }
+
+  $scope.content = "BAR";
 
   $scope.displayPieChartPercentage = function(questionNum) {
     switch(questionNum){
