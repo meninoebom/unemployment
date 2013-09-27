@@ -55,8 +55,8 @@
  <ue-popover class="incorrect-popover" show-event="showScenarioFeedbackPopover">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
-	    <p>{{lfpScenarioFeedback}}</p>
-	    <p>{{empScenarioFeedback}}</p>
-	    <p>{{unempScenarioFeedback}}</p>
+	    <p ng-show="lfpScenarioFeedback != ''">{{lfpScenarioFeedback}}</p>
+	    <p ng-show="empScenarioFeedback != ''">{{empScenarioFeedback}}</p>
+	    <p ng-show="unempScenarioFeedback != ''">{{unempScenarioFeedback}}</p>
 	</div>
 </ue-popover>

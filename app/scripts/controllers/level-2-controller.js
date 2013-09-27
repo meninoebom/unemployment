@@ -3,25 +3,17 @@
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
 $scope.currentQuestion = {num: 5};//which question will display first
- $scope.stageIsClear = true;
+$scope.acceptingResponses = true;
+$scope.fillInTheBlankResponse = {value: 0};
+$scope.fillInTheBlankAnswers = [64, 92, 8, 8];
+$scope.numAttempts = 0;
 
 $scope.eqTool = {
   employed: "",
   unemployed: "",
   nonInstitutional: ""
 }
-$scope.laborParticipationRate = function() {
-    return $scope.laborForce() / $scope.eqTool.nonInstitutional;
-}
-$scope.employmentRate = function() {
-    return parseInt($scope.eqTool.employed)  / $scope.laborForce();
-}
-$scope.unemploymentRate = function() {
-    return parseInt($scope.eqTool.unemployed)  / $scope.laborForce();
-}
-$scope.laborForce = function() {
-  return parseInt($scope.eqTool.employed) + parseInt($scope.eqTool.unemployed);
-}
+
 $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
@@ -65,28 +57,35 @@ $scope.employmentCategories = [
       }
     ];
 
-  $scope.fillInTheBlankAnswers = [64, 92, 8, 8];
-
-  $scope.numAttempts = 0;
-
-  $scope.whichAttempt = function(num) {
-    console.log("$scope.numAttempts = "+$scope.numAttempts);
-    if($scope.numAttempts == num) {
-      return true;
-    } else {
-      return false;
-    }
+  $scope.laborParticipationRate = function() {
+      return $scope.laborForce() / $scope.eqTool.nonInstitutional;
+  }
+  $scope.employmentRate = function() {
+      return parseInt($scope.eqTool.employed)  / $scope.laborForce();
+  }
+  $scope.unemploymentRate = function() {
+      return parseInt($scope.eqTool.unemployed)  / $scope.laborForce();
+  }
+  $scope.laborForce = function() {
+    return parseInt($scope.eqTool.employed) + parseInt($scope.eqTool.unemployed);
   }
 
-  $scope.response = {value: 0};
-  
+  // $scope.whichAttempt = function(num) {
+  //   console.log("$scope.numAttempts = "+$scope.numAttempts);
+  //   if($scope.numAttempts == num) {
+  //     return true;
+  //   } else {
+  //     return false;
+  //   }
+  // }
+
   $scope.submitResponse = function(questionNum) {
-    if (!$scope.stageIsClear) return;
+    if (!$scope.acceptingResponses) return;
     var answer = $scope.fillInTheBlankAnswers[questionNum-1];
-    if($scope.response.value == answer) {
+    if($scope.fillInTheBlankResponse.value == answer) {
       $scope.$broadcast('showCorrectPopover');
       $scope.currentQuestion.num = questionNum + 1;
-      $scope.response.value = 0;
+      $scope.fillInTheBlankResponse.value = 0;
       $scope.displayPieChartPercentage(questionNum);
       $scope.numAttempts = 0;
     } else {
@@ -97,10 +96,10 @@ $scope.employmentCategories = [
   }
  
   $scope.lockPopoverStage = function() {
-    $scope.stageIsClear = false;
+    $scope.acceptingResponses = false;
   }
   $scope.unlockPopoverStage = function() {
-    $scope.stageIsClear = true;
+    $scope.acceptingResponses = true;
   }
 
   $scope.displayPieChartPercentage = function(questionNum) {
@@ -221,7 +220,7 @@ $scope.employmentCategories = [
     }
   ];
   $scope.submitScenarioResponses = function() {
-    if (!$scope.stageIsClear) return;
+    if (!$scope.acceptingResponses) return;
     if (!$("input[name=labor-force]:checked").val() 
       || !$("input[name=employment]:checked").val() 
       || !$("input[name=unemployment]:checked").val()) { 
@@ -232,7 +231,11 @@ $scope.employmentCategories = [
     }
   }
   $scope.showScenarioFeedback = function(currentScenario) {
-     $scope.stageIsClear = false;
+     $scope.acceptingResponses = false;
+
+     $('body').bind('click.lock keyup.lock', function(e) {
+        e.preventDefault();
+     });
 
     var answerStatus = [];
 
@@ -244,14 +247,13 @@ $scope.employmentCategories = [
     $scope.empScenarioFeedback = empScenarioFeedback.content;
     answerStatus.push(empScenarioFeedback.status);
     
-
     var unempScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=unemployment]:checked").val(), currentScenario.answers.unemployment, 'Unemployment');
     $scope.unempScenarioFeedback = unempScenarioFeedback.content;
     answerStatus.push(unempScenarioFeedback.status);
 
     var allAnswersCorrect = true;
     for(var i = 0; i < answerStatus.length; i++) {
-      if (answerStatus[i] != 'Correct. ') allAnswersCorrect = false;
+      if (answerStatus[i] != 'correct') allAnswersCorrect = false;
     }
 
     if (allAnswersCorrect) {
@@ -260,35 +262,38 @@ $scope.employmentCategories = [
       $scope.$broadcast('showScenarioFeedbackPopover');
     }
 
-    function closeModal() {
+    function closePopover() {
       $scope.$broadcast('closeAllPopovers');
       $scope.doAnimation(currentScenario);
-      $scope.stageIsClear = true;
+      $scope.acceptingResponses = true;
+      $('body').unbind('click.lock keyup.lock');
     }
-    setTimeout(closeModal, 5000);
+    setTimeout(closePopover, 5000);
     
   }
   $scope.createScenarioFeedbackForRate = function(studentResponse, correctAnswer, rateName) {
     var feedback = {};
     if (studentResponse === correctAnswer) {
-      feedback.status = 'Correct. ';
+      feedback.status = 'correct';
+      feedback.content = "";
     } else {
-      feedback.status = 'Incorrect. ';
-    }
-    feedback.content = feedback.status + "The " + rateName + " Rate ";
-    switch(correctAnswer) {
-      case "increase":
-        feedback.content += "increased.";
-        break;     
-      case "decrease":
-        feedback.content += "decreased.";
-        break;     
-      case "same":
-        feedback.content += "stayed the same.";
-        break;
+      feedback.status = 'incorrect';
+      feedback.content = "The " + rateName + " Rate ";
+      switch(correctAnswer) {
+        case "increase":
+          feedback.content += "increased.";
+          break;     
+        case "decrease":
+          feedback.content += "decreased.";
+          break;     
+        case "same":
+          feedback.content += "stayed the same.";
+          break;
+      }
     }
     return feedback;
   };
+
   $scope.doAnimation = function(scenario) {
     if(scenario.moveToCategoryId) {
       var num = _.random(5,10);
@@ -300,6 +305,7 @@ $scope.employmentCategories = [
       $scope.getNextScenario();
     });
   }
+
   $scope.getNextScenario = function() {
     if ($scope.scenarios.length > 1) {
       var currentScenarioIndex = _.random($scope.scenarios.length - 1);
