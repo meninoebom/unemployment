@@ -7,15 +7,3 @@
 	Round the answer to the nearest hundreth.</p>
 </div>
 <button class="button-link blue" ng-click="submitResponse(1)" type="button">Next</button>
-
-<div class="popover incorrect-answer-popover" ng-show="showHint" ><div class="arrow"></div>
-	<div class="popover-inner"><h3 class="popover-title"></h3>
-		<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
-		<div class="popover-content">
-			<p>The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.</p>
-			<img src="img/level-2-hint-labor-force-participation.png" width="148" height="63">
-			<p>{{employmentCategories[6].count}} / {{employmentCategories[5].count}} X 100 = {{employmentCategories[6].count / employmentCategories[5].count * 100 | number:2}}</p>
-		</div>
-	</div>
-	<img class="popover-close-button" src="img/popover_close.png" width="25" height="25" />
-</div>

@@ -5,16 +5,3 @@
 	<input class="level-2-response-field" ng-model="response.value" ng-maxlength="30" wrong-answer-popover='responseToAnswer()' data-color="darkGrey">
 	percent.  <span class="round-instruction">(Round the answer to the nearest hundreth)</span></p></div>
 <button class="button-link blue" ng-click="submitResponse(4)" type="button">Next</button>
-
-
-<div class="popover incorrect-answer-popover" ng-show="showHint" ><div class="arrow"></div>
-	<div class="popover-inner"><h3 class="popover-title"></h3>
-		<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
-		<div class="popover-content">
-			<p>The natural rate of unemployment the percentage of people in the labor force who are either frictionally or structurally unemployed.</p>
-			<img src="img/level-2-hint-natural-unemployment-rate.png" width="148" height="63">
-			<p>(({{employmentCategories[7].count}} - {{employmentCategories[3].count}}) / {{employmentCategories[6].count}})  X 100 = {{((employmentCategories[7].count - employmentCategories[3].count)/ employmentCategories[6].count)* 100  | number:2}}</p>
-		</div>
-	</div>
-	<img class="popover-close-button" src="img/popover_close.png" width="25" height="25" />
-</div>

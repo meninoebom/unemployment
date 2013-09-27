@@ -80,9 +80,9 @@ $scope.employmentCategories = [
   $scope.response = {value: 0};
   
   $scope.submitResponse = function(questionNum) {
+    if (!$scope.stageIsClear) return;
     var answer = $scope.fillInTheBlankAnswers[questionNum-1];
     if($scope.response.value == answer) {
-      $scope.correctPopoverContent = "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
       $scope.$broadcast('showCorrectPopover');
       $scope.currentQuestion.num = questionNum + 1;
       $scope.response.value = 0;
@@ -90,29 +90,17 @@ $scope.employmentCategories = [
       $scope.numAttempts = 0;
     } else {
       $scope.numAttempts += 1;
-      //$scope.incorrectPopoverContent = "FOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO";
-      //$scope.incorrectPopoverContent = $scope.getHintsForPopover(questionNum, $scope.numAttempts);
-      $scope.$broadcast('showIncorrectPopover');
+      var eventName = "showQuestion"+questionNum+"IncorrectPopover";
+      $scope.$broadcast(eventName);
     }  
   }
-
-  // $scope.getHintsForPopover = function(questionNum, numAttempts) {
-  //   var hint = "";
-  //   for(var i = 0; i <= numAttempts-1; i++) {
-  //     hint += $scope.hints[questionNum][i];
-  //   }
-  //   return hint;
-  // }
-
-  // $scope.hints = {
-  //   1: [
-  //     '<p>The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.</p>',
-  //     '<img src="img/level-2-hint-labor-force-participation.png" width="148" height="63">',
-  //     '<p>{{employmentCategories[6].count}} / {{employmentCategories[5].count}} X 100 = {{employmentCategories[6].count / employmentCategories[5].count * 100 | number:2}}</p>'
-  //       ],
-  //   2: [],
-  //   3: [],
-  // };
+  $scope.stageIsClear = true;
+  $scope.lockPopoverStage = function() {
+    $scope.stageIsClear = false;
+  }
+  $scope.releasePopoverStage = function() {
+    $scope.stageIsClear = true;
+  }
 
   $scope.displayPieChartPercentage = function(questionNum) {
     switch(questionNum){

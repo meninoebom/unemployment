@@ -1,4 +1,14 @@
- <ue-popover class="incorrect-popover" show-event="showIncorrectPopover">
+ <ue-popover class="incorrect-popover" show-event="showQuestion1IncorrectPopover" fade-in-callback="lockPopoverStage" fade-out-callback="releasePopoverStage">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Incorrect.</h4>
+		<p ng-show="numAttempts > 0">The labor force participation rate is the percentage of the people in the non-institutional adult population who are in the labor force.</p>
+		<img ng-show="numAttempts > 1" src="img/level-2-hint-labor-force-participation.png" width="148" height="63">
+		<p ng-show="numAttempts > 2">{{employmentCategories[6].count}} / {{employmentCategories[5].count}} X 100 = {{employmentCategories[6].count / employmentCategories[5].count * 100 | number:2}}</p>
+	</div>
+</ue-popover>
+
+<ue-popover class="incorrect-popover" show-event="showQuestion2IncorrectPopover" fade-in-callback="lockPopoverStage" fade-out-callback="releasePopoverStage">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -7,6 +17,34 @@
 		<p ng-show="numAttempts > 2">{{employmentCategories[0].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[0].count / employmentCategories[6].count * 100 | number:2}}</p>
 	</div>
 </ue-popover>
+
+<ue-popover class="incorrect-popover" show-event="showQuestion3IncorrectPopover" fade-in-callback="lockPopoverStage" fade-out-callback="releasePopoverStage">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Incorrect.</h4>
+		<p ng-show="numAttempts > 0">The unemployment rate is the percentage of the people in the labor force who are unemployed.</p>
+		<img ng-show="numAttempts > 1" src="img/level-2-hint-unemployment-rate.png" width="148" height="63">
+		<p ng-show="numAttempts > 2">{{employmentCategories[7].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[7].count / employmentCategories[6].count * 100 | number:2}}</p>
+	</div>
+</ue-popover>
+
+<ue-popover class="incorrect-popover" show-event="showQuestion4IncorrectPopover" fade-in-callback="lockPopoverStage" fade-out-callback="releasePopoverStage">
+	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Incorrect.</h4>
+		<p ng-show="numAttempts > 0">The natural rate of unemployment the percentage of people in the labor force who are either frictionally or structurally unemployed.</p>
+		<img ng-show="numAttempts > 1" src="img/level-2-hint-natural-unemployment-rate.png" width="148" height="63">
+		<p ng-show="numAttempts > 2">(({{employmentCategories[7].count}} - {{employmentCategories[3].count}}) / {{employmentCategories[6].count}})  X 100 = {{((employmentCategories[7].count - employmentCategories[3].count)/ employmentCategories[6].count)* 100  | number:2}}</p>
+	</div>
+</ue-popover>
+
+ <ue-popover class="correct-popover" show-event="showCorrectPopover" fade-in-callback="lockPopoverStage" fade-out-callback="releasePopoverStage">
+	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Correct.</h4>
+	</div>
+</ue-popover>
+
 
 
 <!-- 
