@@ -98,6 +98,36 @@
 	}
 }
 
+.legend {
+	left: 0px;
+	position: absolute;
+	top: 17px;
+	z-index: 9999;
+	.legend-item {
+		position: relative;
+		float: left;
+		height: 26px;
+		text-align: center;
+		width: 36px;
+	}
+	.color-box {
+		position: absolute;
+		left: 5px;
+		border: 2px solid #000;
+		height: 26px;
+		width: 26px;
+	}
+	.legend-percent {
+		position: relative;
+		top: 100%;
+	}
+	.legend-item-0 .color-box{ background: #ffb5b8;}
+	.legend-item-5 .color-box{ background: #ff5866;}
+	.legend-item-10 .color-box { background: #ff0019;}
+	.legend-item-15 .color-box { background: #c30000;}
+	.legend-item-20 .color-box { background: #700000;}
+}
+
 .level-3-table-container {
 	> table {
 		width: 418px;
