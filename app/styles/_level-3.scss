@@ -6,7 +6,7 @@
 	height: 49px;
 	overflow: visible;
 	position: relative;
-	z-index: 1000;
+	z-index: 99999;
 	.dropdown {
 		float: left;
 		height: 25px;
@@ -67,19 +67,20 @@
 	background-image: url('../img/icon-table-view-off.png');
 	&.on {
 		background-image: url('../img/icon-table-view-on.png');
-	}	
-	&.inactive {
-		background-image: url('../imgicon-table-view-inactive.png');
-	}	
+	}		
 }
 
 .graph-view-button {
 	background-image: url('../img/icon-graph-view-off.png');
 	&.on {
 		background-image: url('../img/icon-graph-view-on.png');
-	}	
-	&.inactive {
-		background-image: url('../imgicon-graph-view-inactive.png');
+	}		
+}
+
+.map-view-button {
+	background-image: url('../img/icon-map-view-off.png');
+	&.on {
+		background-image: url('../img/icon-map-view-on.png');
 	}	
 }
 
@@ -99,23 +100,24 @@
 }
 
 .legend {
-	left: 0px;
+	@include font(13px, 16px, $darkGrey);
+	left: 20px;
 	position: absolute;
-	top: 17px;
-	z-index: 9999;
+	top: 12px;
+	z-index: 10000;
 	.legend-item {
 		position: relative;
 		float: left;
-		height: 26px;
+		height: 24px;
 		text-align: center;
-		width: 36px;
+		width: 32px;
 	}
 	.color-box {
 		position: absolute;
-		left: 5px;
+		left: 4px;
 		border: 2px solid #000;
-		height: 26px;
-		width: 26px;
+		height: 24px;
+		width: 24px;
 	}
 	.legend-percent {
 		position: relative;

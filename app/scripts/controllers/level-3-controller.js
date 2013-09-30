@@ -6,6 +6,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.dataSpec.currentInstruction = 1;
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.view = "map";
+	$scope.dataSpec.mode = "exploration";
 	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
 	$scope.dataSpec.month = '1';
@@ -69,7 +70,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 				break;			
 		}
 		if ($scope.dataSpec.currentInstruction > 3) $scope.dataSpec.view = 'graph';
-		console.log($scope.dataSpec.currentInstruction);
 	}
 
 	$scope.showFeedbackMessage = function(message) {
@@ -213,6 +213,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			$scope.county2ChartData = [];
 		} else {
 			mapDataService.getChartableData($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.county2, function(result) {
+				console.log("getChartableData");
 				$scope.usChartData = result.us;
 				$scope.stateChartData = result.state;
 				$scope.county1ChartData = result.county1;
