@@ -13,7 +13,7 @@
 <div class="region-picker">
 	<p>Select an option to see its data</p>
 	<div class="region-select-container">
-		<div ng-repeat="region in graphLines" class="region {{region.color}}" ng-class="{selected: region.selected}" ng-click="toggleGraphLine(region)">
+		<div ng-repeat="region in graphLines" ng-show="region.show()" class="region {{region.color}}" ng-class="{selected: region.selected}" ng-click="toggleGraphLine(region)">
 			<span class="faux-check-box">
 				<span class="line-style-icon us-line-style" ng-class="'line-style-'+{{$index+1}}" ></span>
 			</span>

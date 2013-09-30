@@ -199,27 +199,20 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.county1ChartData = [];
 	$scope.county2ChartData = [];
 	
-	$scope.$watch('dataSpec.county1+" "+dataSpec.county2', function() {
+	$scope.$watch('dataSpec.regionName+" "+dataSpec.county1+" "+dataSpec.county2', function() {
 		if ($scope.dataSpec.county1!='') {
 			$scope.county1Value = $scope.dataForCounty($scope.dataSpec.county1);
 		}
 		if ($scope.dataSpec.county2!='') {
 			$scope.county2Value = $scope.dataForCounty($scope.dataSpec.county2);
 		}
-		if ($scope.dataSpec.county1=='' || $scope.dataSpec.county2=='') {
-			$scope.usChartData = [];
-			$scope.stateChartData = [];
-			$scope.county1ChartData = [];
-			$scope.county2ChartData = [];
-		} else {
-			mapDataService.getChartableData($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.county2, function(result) {
-				console.log("getChartableData");
-				$scope.usChartData = result.us;
-				$scope.stateChartData = result.state;
-				$scope.county1ChartData = result.county1;
-				$scope.county2ChartData = result.county2;
-			});
-		}
+		mapDataService.getChartableData($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.county2, function(result) {
+			console.log("getChartableData");
+			$scope.usChartData = result.us;
+			$scope.stateChartData = result.state;
+			$scope.county1ChartData = result.county1;
+			$scope.county2ChartData = result.county2;
+		});
 	});
 
 	//Graphing tools...
@@ -249,6 +242,9 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			selected: false,
 			update: function() {
 				this.data = $scope.usChartData;
+			},
+			show: function() {
+				return (this.data == "") ? false : true;
 			}
 		},{
 			name: $scope.dataSpec.regionName,
@@ -259,7 +255,10 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			update: function() {
 				this.data = $scope.stateChartData;
 				this.name = $scope.dataSpec.regionName;
-			}
+			},
+			show: function() {
+				return (this.name === 'United States' || this.data == "") ? false : true;
+			}			
 		},{
 			name: $scope.dataSpec.county1,
 			data: $scope.county1ChartData,
@@ -269,7 +268,10 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			update: function() {
 				this.data = $scope.county1ChartData;
 				this.name = $scope.dataSpec.county1;
-			}
+			},
+			show: function() {
+				return (this.data == "") ? false : true;
+			}			
 		},{
 			name: $scope.dataSpec.county2,
 			data: $scope.county2ChartData,
@@ -279,9 +281,16 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			update: function() {
 				this.data = $scope.county2ChartData;
 				this.name = $scope.dataSpec.county2;
-			}
+			},
+			show: function() {
+				return (this.data == "") ? false : true;
+			}			
 		}
 	];
+
+	$scope.graphingProperties = {
+
+	};
 
 	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year', function() {
 		$scope.unemploymentRateMap['United States'] = $scope.dataSpec.usValue;
