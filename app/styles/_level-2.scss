@@ -48,34 +48,55 @@
     width: 30px;
 }
 
-.popover {
-    max-width: none;
+.level-2-container {
+    .correct-popover, .incorrect-popover, .instruction-popover {
+        display: none;
+        width: 500px;
+        padding: 20px;
+        position: absolute;
+        top: 300px;
+        left: 622px;
+        .alert-icon {
+            float: left;
+            margin: 5px 14px 0 5px;
+        }
+        .popover-content {
+            float: left;
+            width: 380px;
+            h4 {font-family: 'open_sansregular'; margin-bottom: 5px;}
+            > div {font-family: 'open_sanslight';}
+        }
+    }
 }
 
-.popover-close-button {
-    position: absolute;
-    top: -12px;
-    right: -12px;
-}
+// .popover {
+//     max-width: none;
+// }
 
-.popover .alert-icon {
-    float: left;
-    margin: 5px 14px 0 5px;
-}
+// .popover-close-button {
+//     position: absolute;
+//     top: -12px;
+//     right: -12px;
+// }
 
-.incorrect-answer-popover {
-    @include popover($red, $white);
-    display: block;
-    width: 500px
-}
+// .popover .alert-icon {
+//     float: left;
+//     margin: 5px 14px 0 5px;
+// }
 
-[rel=popover][data-color=darkGrey] + .popover {
-    @include popover($darkGrey);
-}
+// .incorrect-answer-popover {
+//     @include popover($red, $white);
+//     display: block;
+//     width: 500px
+// }
 
-[rel=popover][data-color=white] + .popover {
-    @include popover($white);
-}
+// [rel=popover][data-color=darkGrey] + .popover {
+//     @include popover($darkGrey);
+// }
+
+// [rel=popover][data-color=white] + .popover {
+//     @include popover($white);
+// }
 
 .equation-tool {
     text-align: center;
