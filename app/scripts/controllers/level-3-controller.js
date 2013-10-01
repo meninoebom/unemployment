@@ -4,6 +4,12 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.dataSpec = {};
 	$scope.dataSpec.currentInstruction = 1;
+	$scope.dataSpec.question = 1;
+	$scope.dataSpec.latestDateAvailable = {
+		year: 2013,
+		month: 7,
+		monthName: 'July'
+	};
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.view = "map";
 	$scope.dataSpec.mode = "exploration";
@@ -29,7 +35,52 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	    "October", "November", "December"
 	];
 
-	$scope.submitResponse = function() {
+	$scope.answers = {
+		1: function() {
+			var startRate, endRate, startYear = $scope.dataSpec.latestDateAvailable.year-1;
+			mapDataService.getRegionalDataForDate('United States', startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
+				startRate = data.us.value;
+			});
+			mapDataService.getRegionalDataForDate('United States', $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
+				endRate = data.us.value;
+			});
+			if (startRate === endRate) return 'same';
+			if (startRate > endRate) return 'decrease';
+			if (startRate < endRate) return 'increase';
+		},
+		2: function() {
+
+		},
+		3: function() {
+
+		},
+		4: function() {
+
+		},
+		5: function() {
+
+		},
+		6: function() {
+
+		}
+	};
+
+	$scope.submitResponse = function(questionNum) {
+		var response = $("input[name=question"+questionNum+"]:checked").val();
+		var answer = $scope.answers[questionNum]();
+		if (response === answer) {
+			$scope.$broadcast('showCorrectPopover', undefined, $scope.loadNextQuestion);
+			console.log(response);
+		} else {
+			alert("WRONGAH!");
+		}
+	}
+
+	$scope.loadNextQuestion = function() {
+		$scope.dataSpec.question += 1;
+	}
+
+	$scope.submitResponseBkup = function() {
 		//TODO grading and feedback happen here
 		switch ($scope.dataSpec.currentInstruction) {
 			case 1:
@@ -207,7 +258,12 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			$scope.county2Value = $scope.dataForCounty($scope.dataSpec.county2);
 		}
 		mapDataService.getChartableData($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.county2, function(result) {
-			console.log("getChartableData");
+			var rawDateString = String(result.us[result.us.length-1][0]);
+			var rawDateArray = rawDateString.split('.');
+			$scope.dataSpec.latestDateAvailable.year = rawDateArray[0];
+			var monthNum = Math.round(String(rawDateArray[1]*12).split("").splice(0,2).join("."));
+			$scope.dataSpec.latestDateAvailable.month = monthNum;
+			$scope.dataSpec.latestDateAvailable.monthName = $scope.monthNames[monthNum-1];
 			$scope.usChartData = result.us;
 			$scope.stateChartData = result.state;
 			$scope.county1ChartData = result.county1;

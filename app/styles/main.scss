@@ -30,6 +30,7 @@ $lightPurple: #dcb3ff;
 @mixin popover($background: $white, $textColor: $darkGrey) {
     background: $background;
     color: $textColor;
+    z-index: 999999;
     &.right .arrow:after {
         border-right-color: $background;
     }
