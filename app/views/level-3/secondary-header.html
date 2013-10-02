@@ -1,6 +1,6 @@
 
 <h2>Unemployment Rates</h2>
-<div class="dropdown">
+<div class="dropdown" ng-show="showRegionDropdown()">
 	<div class="dropdown-toggle" role="button">
 		<span>{{{true: 'Choose a State', false: dataSpec.regionName}[dataSpec.regionName == 'United States']}}</span><b class="caret"></b>
 	</div>
@@ -9,7 +9,16 @@
 	</ul>
 </div>
 
-<div class="dropdown" ng-hide="dataSpec.regionName=='United States'">
+<div class="dropdown" ng-show="showExplorationModeCountyDropdown()">
+	<div class="dropdown-toggle" role="button">
+		<span>{{dataSpec.county1 || 'Choose a county'}}</span><b class="caret"></b>
+	</div>
+	<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+		<li ng-repeat="c in countyList" ng-hide="c == dataSpec.county1 || c == dataSpec.county2"><a ng-click="setCounty1(c)">{{c}}</a></li>
+	</ul>
+</div>
+
+<div class="dropdown" ng-show="showGraphingModeCountyDropdown">
 	<div class="dropdown-toggle" role="button">
 		<span>{{dataSpec.county1 || 'Choose County 1'}}</span><b class="caret"></b>
 	</div>
@@ -18,7 +27,7 @@
 	</ul>
 </div>
 
-<div class="dropdown" ng-hide="dataSpec.mode=='exploration'">
+<div class="dropdown" ng-show="showGraphingModeCountyDropdown">
 	<div class="dropdown-toggle" role="button">
 		<span>{{dataSpec.county2 || 'Choose County 2'}}</span><b class="caret"></b>
 	</div>

@@ -153,6 +153,19 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		return ($scope.dataSpec.county1 != '' && $scope.dataSpec.county2 != '') ? true : false;
 	}
 
+	$scope.showRegionDropdown = function() {
+		var hasChosenAState = $scope.hasChosenAState();
+		return ($scope.dataSpec.question <= 5) ? true : false;
+	}
+	
+	$scope.showExplorationModeCountyDropdown = function() {
+		return ($scope.dataSpec.question <= 4 && $scope.hasChosenAState() ) ? true : false;
+	}	
+
+	$scope.showGraphingModeCountyDropdown = function() {
+		return ($scope.dataSpec.question === 6) ? true : false;
+	}
+
 	$scope.setDataView = function(view) {
 		$scope.dataSpec.view = view;
 	}
