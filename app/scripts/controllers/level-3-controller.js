@@ -3,7 +3,7 @@
 unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService', 'unemploymentDataService',  function($scope, $state ,$timeout, mapDataService, unemploymentDataService) {
 
 	$scope.dataSpec = {};
-	$scope.dataSpec.question = 4;
+	$scope.dataSpec.question = 1;
 	$scope.dataSpec.latestDateAvailable = {
 		year: 2013,
 		month: 7,
@@ -37,8 +37,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.answers = {
 		1: function() {
 			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
-			var startUnempRate = unemploymentDataService.getUnemploymentDataForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
-			var endUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var startUnempRate = unemploymentDataService.getUSUnemploymentDataForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var endUnempRate = unemploymentDataService.getUSUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			if (startUnempRate === endUnempRate) return 'stayed the same';
 			if (startUnempRate > endUnempRate) return 'decreased';
 			if (startUnempRate < endUnempRate) return 'increased';
@@ -47,10 +47,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			//////////////////////////////////
 			//need to get Natural Unemployment Rate
 			//////////////////////////////////
-			var unempRate, naturalUnempRate = 8;
-			mapDataService.getRegionalDataForDate('United States', $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
-				unempRate = data.us.value;
-			});
+			var naturalUnempRate = 8;
+			var unempRate = unemploymentDataService.getUSUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			if (unempRate === naturalUnempRate) return 'stayed the same';
 			if (unempRate > naturalUnempRate) return 'higher';
 			if (unempRate < naturalUnempRate) return 'lower';
@@ -65,11 +63,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		},
 		4: function() {
 			var answer1 = $scope.answers[1]();
-			console.log(answer1);
 			var answer2 = $scope.answers[2]();
-			console.log(answer2);
 			var answer3 = $scope.answers[3]();
-			console.log(answer3);
 			if (answer2 === 'lower') {
 				return (answer1 === 'increased' || answer3 === 'increased') ? 'a' : 'b';
 			} else if (answer2== 'higher') {
@@ -77,18 +72,18 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			}
 		},
 		5: function() {
-			var nationalUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var nationalUnempRate = unemploymentDataService.getUSUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			var stateUnempRate = mapDataService.getStateUnempDataForDate($scope.dataSpec.regionName, $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
-			console.log('stateUnempRate');	
-			console.log(stateUnempRate);	
-			console.log('nationalUnempRate');	
-			console.log(nationalUnempRate);	
 			if (stateUnempRate === nationalUnempRate) return 'stayed the same';
 			if (stateUnempRate > nationalUnempRate) return 'higher';
 			if (stateUnempRate < nationalUnempRate) return 'lower';	
 		},
 		6: function() {
-
+			var county1Rate = mapDataService.getCountyUnempDataForDate($scope.dataSpec.regionName, $scope.dataSpec.county1, $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var county2Rate = mapDataService.getCountyUnempDataForDate($scope.dataSpec.regionName, $scope.dataSpec.county2, $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			if (county1Rate === county2Rate) return 'stayed the same';
+			if (county1Rate > county2Rate) return 'higher';
+			if (county1Rate < county2Rate) return 'lower';
 		}
 	};
 

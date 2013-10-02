@@ -78,7 +78,7 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		getLaborForceData: function(d1, d2, months_before) {
 			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
 		},
-		getUnemploymentDataForDate: function(date) {
+		getUSUnemploymentDataForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.unemployment, date);
 		},
 		getLaborForceDataForForDate: function(date) {
@@ -251,6 +251,22 @@ services.factory('mapDataService',['$http', function($http) {
 					} else {
 						data = dataSource.region.values[dateIndex];
 					};
+				});
+			});
+			return data;
+		},
+
+		getCountyUnempDataForDate: function(state_name, county_name, d) {
+			// console.log('getting '+region_name+' data for date '+d);
+			var that = this;
+			var data;
+			that._prefetchRegion('United States', function() {
+				that._prefetchRegion(state_name, function() {
+					var dataSource = that.allRegionData[state_name];
+					var dateIndex = that.calculateMonthsBetween(dataSource.start_date, d);
+					var countyData = _.findWhere(dataSource.sub_regions, {name: county_name});
+					return countyData.value;
+
 				});
 			});
 			return data;
