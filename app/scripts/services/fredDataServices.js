@@ -47,6 +47,15 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 			var ym1 = d1.split('-');
 			var ym2 = d2.split('-');
 			return 12*(ym2[0]-ym1[0]) + (ym2[1]-ym1[1]);
+		},	
+		_getDataFromDatasetForDate: function(dataset, d1) {
+			if (!dataset.hasOwnProperty('values')) {
+				// hasn't finished loading data yet...
+				return [];
+			}
+			var ixStart = this.calculateMonthsBetween(dataset.start_date, d1);
+			var data = [];
+			return dataset.values[ixStart];
 		},
 		_getDataFromDataset: function(dataset, d1, d2, months_before) {
 			if (!dataset.hasOwnProperty('values')) {
@@ -68,6 +77,12 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		},
 		getLaborForceData: function(d1, d2, months_before) {
 			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
+		},
+		getUnemploymentDataForDate: function(date) {
+			return this._getDataFromDatasetForDate(this.unemployment, date);
+		},
+		getLaborForceDataForForDate: function(date) {
+			return this._getDataFromDatasetForDate(this.labor_force, date);
 		},
 		// deprecated because bad naming in light of labor force data; should be removed
 		getData: function(d1, d2, months_before) {
@@ -220,6 +235,25 @@ services.factory('mapDataService',['$http', function($http) {
 				});
 			});
 			
+		},
+
+		getStateUnempDataForDate: function(region_name, d) {
+			// console.log('getting '+region_name+' data for date '+d);
+			var that = this;
+			var data;
+			that._prefetchRegion('United States', function() {
+				that._prefetchRegion(region_name, function() {
+					var dataSource = that.allRegionData[region_name];
+					var dateIndex = that.calculateMonthsBetween(dataSource.start_date, d);
+					var result = {region: {name: dataSource.region.name, id:dataSource.region.id}};
+					if (dateIndex<0 || dateIndex>=dataSource.region.values.length) {
+						data =  NaN;
+					} else {
+						data = dataSource.region.values[dateIndex];
+					};
+				});
+			});
+			return data;
 		},
 		
 		_getChartableDataset: function(dataValues, start_date) {

@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
 
-$scope.currentQuestion = {num: 5};//which question will display first
+$scope.currentQuestion = {num: 1};//which question will display first
 $scope.acceptingResponses = true;
 $scope.fillInTheBlankResponse = {value: 0};
 $scope.fillInTheBlankAnswers = [64, 92, 8, 8];
@@ -187,7 +187,6 @@ $scope.employmentCategories = [
   $scope.loadNextFillInTheBlankQuestion = function() {
     $scope.$apply(function() {
       $scope.currentQuestion.num = $scope.currentQuestion.num + 1;
-      console.log($scope.currentQuestion.num);
       $scope.fillInTheBlankResponse.value = 0;
       $scope.numAttempts = 0;
     })

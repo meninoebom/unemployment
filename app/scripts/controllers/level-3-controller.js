@@ -1,10 +1,9 @@
 'use strict';
 
-unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService',  function($scope, $state ,$timeout, mapDataService) {
+unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService', 'unemploymentDataService',  function($scope, $state ,$timeout, mapDataService, unemploymentDataService) {
 
 	$scope.dataSpec = {};
-	$scope.dataSpec.currentInstruction = 1;
-	$scope.dataSpec.question = 1;
+	$scope.dataSpec.question = 5;
 	$scope.dataSpec.latestDateAvailable = {
 		year: 2013,
 		month: 7,
@@ -37,91 +36,162 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.answers = {
 		1: function() {
-			var startRate, endRate, startYear = $scope.dataSpec.latestDateAvailable.year-1;
-			mapDataService.getRegionalDataForDate('United States', startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
-				startRate = data.us.value;
-			});
-			mapDataService.getRegionalDataForDate('United States', $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
-				endRate = data.us.value;
-			});
-			if (startRate === endRate) return 'same';
-			if (startRate > endRate) return 'decrease';
-			if (startRate < endRate) return 'increase';
+			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
+			var startUnempRate = unemploymentDataService.getUnemploymentDataForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var endUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			if (startUnempRate === endUnempRate) return 'same';
+			if (startUnempRate > endUnempRate) return 'decrease';
+			if (startUnempRate < endUnempRate) return 'increase';
 		},
 		2: function() {
-
+			//////////////////////////////////
+			//need to get Natural Unemployment Rate
+			//////////////////////////////////
+			var unempRate, naturalUnempRate = 8;
+			mapDataService.getRegionalDataForDate('United States', $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
+				unempRate = data.us.value;
+			});
+			if (unempRate === naturalUnempRate) return 'same';
+			if (unempRate > naturalUnempRate) return 'higher';
+			if (unempRate < naturalUnempRate) return 'lower';
 		},
 		3: function() {
-
+			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
+			var startLFPRate = unemploymentDataService.getLaborForceDataForForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var endLFPRate = unemploymentDataService.getLaborForceDataForForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			if (startLFPRate === endLFPRate) return 'same';
+			if (startLFPRate > endLFPRate) return 'decrease';
+			if (startLFPRate < endLFPRate) return 'increase';
 		},
 		4: function() {
-
+			return 'a';
 		},
 		5: function() {
-
+			var nationalUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var stateUnempRate = mapDataService.getStateUnempDataForDate($scope.dataSpec.regionName, $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			console.log('stateUnempRate');	
+			console.log(stateUnempRate);	
+			console.log('nationalUnempRate');	
+			console.log(nationalUnempRate);	
+			if (stateUnempRate === nationalUnempRate) return 'same';
+			if (stateUnempRate > nationalUnempRate) return 'higher';
+			if (stateUnempRate < nationalUnempRate) return 'lower';	
 		},
 		6: function() {
 
 		}
 	};
 
-	$scope.submitResponse = function(questionNum) {
-		var response = $("input[name=question"+questionNum+"]:checked").val();
-		var answer = $scope.answers[questionNum]();
+	$scope.submitResponse = function() {
+		if (!$scope.acceptingResponses) return;
+		var eventName, question = $scope.dataSpec.question;
+		
+		if (question === 5 && !$scope.hasChosenAState()) {
+			eventName = "showQuestion5InstructionPopover";
+			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
+			return;
+		}
+
+		if (question === 6 && !$scope.hasChosenTwoCounties()) {
+			eventName = "showQuestion6InstructionPopover";
+			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
+			return;
+		}
+
+		var response = $("input[name=question"+question+"]:checked").val();
+		if (response === undefined || response === 'undefined' || response === '') {
+			$scope.$broadcast('showChooseAnAnswerPopover', $scope.lock, $scope.unlock);
+			return;
+		} 
+
+		var answer = $scope.answers[question]();
+
 		if (response === answer) {
-			$scope.$broadcast('showCorrectPopover', undefined, $scope.loadNextQuestion);
-			console.log(response);
-		} else {
-			alert("WRONGAH!");
+			if(question === 6) {
+				$scope.$broadcast('showCorrectPopover', $scope.lock, function() {
+					function goToLevel4() {
+				        $scope.$broadcast('closeAllPopovers');
+						$state.transitionTo('level-4-intro');	
+				    }
+				    setTimeout(goToLevel4, 5000);
+					return;
+				});
+			} else {
+				$scope.$broadcast('showCorrectPopover', $scope.lock, $scope.loadNextQuestion);
+			}
+		} else if (response !== answer) {
+			eventName = "showQuestion"+question+"IncorrectPopover";
+			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
 		}
 	}
 
 	$scope.loadNextQuestion = function() {
-		$scope.dataSpec.question += 1;
+		$scope.unlock();
+		$scope.$apply(function() {
+			$scope.dataSpec.question += 1;
+		});
 	}
 
-	$scope.submitResponseBkup = function() {
-		//TODO grading and feedback happen here
-		switch ($scope.dataSpec.currentInstruction) {
-			case 1:
-				if (!$("input[name=firstQuestion]:checked").val()) {
-					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
-					return;
-				} else {
-					$scope.dataSpec.currentInstruction +=1;
-					if ($scope.dataSpec.regionName !== 'United States') $scope.dataSpec.currentInstruction += 1; 
-					if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
-				}
-				break;
-			case 2:
-				if ($scope.dataSpec.regionName == 'United States') {
-					$scope.showFeedbackMessage('You must choose a state before going to the next step.');
-					return;
-				} else {
-					$scope.dataSpec.currentInstruction +=1;
-					if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
-				} 
-				break;
-			case 3:
-				if ($scope.dataSpec.county1 == '' || $scope.dataSpec.county2 == '') {
-					$scope.showFeedbackMessage('You must choose two counties before going to the next step.');
-					return;
-				} else {
-					$scope.dataSpec.currentInstruction +=1;
-				} 
-				break;	
-			case 4:
-				if (!$("input[name=lastQuestion]:checked").val()) {
-					$scope.showFeedbackMessage('Choose an answer the before clicking next.');
-					return;
-				} else {
-					$state.transitionTo('level-4-intro');
-					return; 
-				}
-				break;			
-		}
-		if ($scope.dataSpec.currentInstruction > 3) $scope.dataSpec.view = 'graph';
+	$scope.acceptingResponses = true;
+
+	$scope.lock = function() {
+		$scope.acceptingResponses = false;
 	}
+
+	$scope.unlock = function() {
+		$scope.acceptingResponses = true;
+	}
+
+	$scope.hasChosenAState = function() {
+		return ($scope.dataSpec.regionName === 'United States') ? false : true;
+	}
+
+	$scope.hasChosenTwoCounties = function() {
+		return ($scope.dataSpec.county1 != '' && $scope.dataSpec.county2 != '') ? true : false;
+	}
+
+	// $scope.submitResponseBkup = function() {
+	// 	//TODO grading and feedback happen here
+	// 	switch ($scope.dataSpec.currentInstruction) {
+	// 		case 1:
+	// 			if (!$("input[name=firstQuestion]:checked").val()) {
+	// 				$scope.showFeedbackMessage('Choose an answer the before clicking next.');
+	// 				return;
+	// 			} else {
+	// 				$scope.dataSpec.currentInstruction +=1;
+	// 				if ($scope.dataSpec.regionName !== 'United States') $scope.dataSpec.currentInstruction += 1; 
+	// 				if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
+	// 			}
+	// 			break;
+	// 		case 2:
+	// 			if ($scope.dataSpec.regionName == 'United States') {
+	// 				$scope.showFeedbackMessage('You must choose a state before going to the next step.');
+	// 				return;
+	// 			} else {
+	// 				$scope.dataSpec.currentInstruction +=1;
+	// 				if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
+	// 			} 
+	// 			break;
+	// 		case 3:
+	// 			if ($scope.dataSpec.county1 == '' || $scope.dataSpec.county2 == '') {
+	// 				$scope.showFeedbackMessage('You must choose two counties before going to the next step.');
+	// 				return;
+	// 			} else {
+	// 				$scope.dataSpec.currentInstruction +=1;
+	// 			} 
+	// 			break;	
+	// 		case 4:
+	// 			if (!$("input[name=lastQuestion]:checked").val()) {
+	// 				$scope.showFeedbackMessage('Choose an answer the before clicking next.');
+	// 				return;
+	// 			} else {
+	// 				$state.transitionTo('level-4-intro');
+	// 				return; 
+	// 			}
+	// 			break;			
+	// 	}
+	// 	if ($scope.dataSpec.currentInstruction > 3) $scope.dataSpec.view = 'graph';
+	// }
 
 	$scope.showFeedbackMessage = function(message) {
 		$scope.dataSpec.feedbackMessage = message;

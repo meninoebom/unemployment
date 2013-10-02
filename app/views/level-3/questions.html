@@ -1,0 +1,119 @@
+<div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
+
+<div class="question" ng-show="dataSpec.question==1">
+	<p>What happened to the national unemployment rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question1" value="increase" />
+			It increased
+		</li>
+		<li>
+			<input type="radio" name="question1" value="decrease" />
+			It decreased
+		</li>
+		<li>
+			<input type="radio" name="question1" value="same" />
+			It stayed the same
+		</li>
+	</ul>
+</div>
+
+<div class="question" ng-show="dataSpec.question==2">
+	<p>How does the national unemployment rate in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} compare to the natural rate of unemployment in the same month?</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question2" value="higher" />
+			It is higher than the natural rate of unemployment.
+		</li>
+		<li>
+			<input type="radio" name="question2" value="lower" />
+			It is lower than the natural rate of unemployment.
+		</li>
+		<li>
+			<input type="radio" name="question2" value="same" />
+			It is the same as the natural rate of unemployment.
+		</li>
+	</ul>
+</div>
+
+<div class="question" ng-show="dataSpec.question==3">
+	<p>What happened to the labor force participation rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question3" value="increase" />
+			It is higher than the national unemployment rate.
+		</li>
+		<li>
+			<input type="radio" name="question3" value="decrease" />
+			It is lower than the national unemployment rate.
+		</li>
+		<li>
+			<input type="radio" name="question3" value="same" />
+			It is the same as the national unemployment rate.
+		</li>
+	</ul>
+</div>
+
+<div class="question" ng-show="dataSpec.question==4">
+	<p>The national unemployment rate ____ and the labor force participation rate ___ from {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} to {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was ____.  At the same time, the natural rate of unemployment in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was ____. What is a possible explanation for this?</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question4" value="a" />
+			Foo
+		</li>
+		<li>
+			<input type="radio" name="question4" value="b" />
+			Bar 
+		</li>
+		<li>
+			<input type="radio" name="question4" value="c" />
+			Foo Bar
+		</li>
+	</ul>
+</div>
+
+<div class="question" ng-show="dataSpec.question==5 && !hasChosenAState()">
+	<p>Choose a State to explore then click Next.</p>
+</div>
+
+<div class="question" ng-show="dataSpec.question==5 && hasChosenAState()">
+	<p>In {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}, How does the unemployment rate in {{dataSpec.regionName}} compare to the national unemployment rate in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question5" value="higher" />
+			Its higher than the national unemployment rate
+		</li>
+		<li>
+			<input type="radio" name="question5" value="lower" />
+			Its lower than the national unemployment rate
+		</li>
+		<li>
+			<input type="radio" name="question5" value="same" />
+			Its the same as the national unemployment rate
+		</li>
+	</ul>
+</div>
+
+
+<div class="question" ng-show="dataSpec.question==6 && !hasChosenTwoCounties()">
+	<p>Choose two counties within {{dataSpec.regionName}} to compare then click Next.</p>
+</div>
+
+<div class="question" ng-show="dataSpec.question==6 && hasChosenTwoCounties()">
+	<p>Choose two counties within {{dataSpec.regionName}}.  In {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}, how does the unemployment rate in {{dataSpec.county1}} compare to the unemployemnt rate in {{dataSpec.county2}}?</p>
+	<ul class="clearfix">
+		<li>
+			<input type="radio" name="question6" value="higher" />
+			It is higher than the unemployment rate in Livingston.
+		</li>
+		<li>
+			<input type="radio" name="question6" value="lower" />
+			It is lower than the unemployment rate in Livingston.
+		</li>
+		<li>
+			<input type="radio" name="question6" value="same" />
+			It is the same as the unemployment rate in Livingston.
+		</li>
+	</ul>
+</div>
+<button class="button-link blue" ng-click="submitResponse(dataSpec.question)" type="button">Next</button>
