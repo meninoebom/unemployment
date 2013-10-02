@@ -4,16 +4,16 @@
 	<p>What happened to the national unemployment rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
 	<ul class="clearfix">
 		<li>
-			<input type="radio" name="question1" value="increase" />
-			It increased
+			<input type="radio" name="question1" value="increased" />
+			<p class="choice"><span>a.</span> It increased</p>
 		</li>
 		<li>
-			<input type="radio" name="question1" value="decrease" />
-			It decreased
+			<input type="radio" name="question1" value="decreased" />
+			<p class="choice"><span>b.</span> It decreased</p>
 		</li>
 		<li>
-			<input type="radio" name="question1" value="same" />
-			It stayed the same
+			<input type="radio" name="question1" value="stayed the same" />
+			<p class="choice"><span>c.</span> It stayed the same</p>
 		</li>
 	</ul>
 </div>
@@ -23,15 +23,15 @@
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question2" value="higher" />
-			It is higher than the natural rate of unemployment.
+			<p class="choice"><span>a.</span> It is higher than the natural rate of unemployment.</p>
 		</li>
 		<li>
 			<input type="radio" name="question2" value="lower" />
-			It is lower than the natural rate of unemployment.
+			<p class="choice"><span>b.</span> It is lower than the natural rate of unemployment.</p>
 		</li>
 		<li>
-			<input type="radio" name="question2" value="same" />
-			It is the same as the natural rate of unemployment.
+			<input type="radio" name="question2" value="styed the same" />
+			<p class="choice"><span>c.</span> It is the same as the natural rate of unemployment.</p>
 		</li>
 	</ul>
 </div>
@@ -40,34 +40,38 @@
 	<p>What happened to the labor force participation rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
 	<ul class="clearfix">
 		<li>
-			<input type="radio" name="question3" value="increase" />
-			It is higher than the national unemployment rate.
+			<input type="radio" name="question3" value="increased" />
+			<p class="choice"><span>a.</span> It is higher than the national unemployment rate.</p>
 		</li>
 		<li>
-			<input type="radio" name="question3" value="decrease" />
-			It is lower than the national unemployment rate.
+			<input type="radio" name="question3" value="decreased" />
+			<p class="choice"><span>b.</span> It is lower than the national unemployment rate.</p>
 		</li>
 		<li>
-			<input type="radio" name="question3" value="same" />
-			It is the same as the national unemployment rate.
+			<input type="radio" name="question3" value="stayed the same" />
+			<p class="choice"><span>c.</span> It is the same as the national unemployment rate.</p>
 		</li>
 	</ul>
 </div>
 
 <div class="question" ng-show="dataSpec.question==4">
-	<p>The national unemployment rate ____ and the labor force participation rate ___ from {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} to {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was ____.  At the same time, the natural rate of unemployment in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was ____. What is a possible explanation for this?</p>
+	<p>The national unemployment rate {{answers.1()}} and the labor force participation rate {{answers.3()}} from {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} to {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}.  At the same time, the natural rate of unemployment in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was {{answers.2()}}. What is a possible explanation for this?</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question4" value="a" />
-			Foo
+			<p class="choice"><span>a.</span> The economy has been in an expansion for some time, encouraging people to enter the labor force. However, the economy is beginning to slow down and unemployment is increasing.</p>
 		</li>
 		<li>
 			<input type="radio" name="question4" value="b" />
-			Bar 
+			<p class="choice"><span>b.</span> The economy has been in an expansion for some time, but is starting to decline. Those who thought they could get a job are realizing that it is becoming increasingly difficult to do so and have stopped looking for work.</p>
 		</li>
 		<li>
 			<input type="radio" name="question4" value="c" />
-			Foo Bar
+			<p class="choice"><span>c.</span> The economy is coming out of a recession and people are beginning to look for jobs but have been unable to find any yet.</p>
+		</li>
+		<li>
+			<input type="radio" name="question4" value="d" />
+			<p class="choice">d. The economy has been in a recession for some time and many of those who are unemployed have stopped looking for work.</p>
 		</li>
 	</ul>
 </div>
@@ -81,15 +85,15 @@
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question5" value="higher" />
-			Its higher than the national unemployment rate
+			<p class="choice"><span>a.</span> Its higher than the national unemployment rate</p>
 		</li>
 		<li>
 			<input type="radio" name="question5" value="lower" />
-			Its lower than the national unemployment rate
+			<p class="choice"><span>b.</span> Its lower than the national unemployment rate</p>
 		</li>
 		<li>
-			<input type="radio" name="question5" value="same" />
-			Its the same as the national unemployment rate
+			<input type="radio" name="question5" value="stayed the same" />
+			<p class="choice"><span>c.</span> Its the same as the national unemployment rate</p>
 		</li>
 	</ul>
 </div>
@@ -104,15 +108,15 @@
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question6" value="higher" />
-			It is higher than the unemployment rate in Livingston.
+			<p class="choice"><span>a.</span> It is higher than the unemployment rate in Livingston.</p>
 		</li>
 		<li>
 			<input type="radio" name="question6" value="lower" />
-			It is lower than the unemployment rate in Livingston.
+			<p class="choice"><span>b.</span> It is lower than the unemployment rate in Livingston.</p>
 		</li>
 		<li>
-			<input type="radio" name="question6" value="same" />
-			It is the same as the unemployment rate in Livingston.
+			<input type="radio" name="question6" value="stayed the same" />
+			<p class="choice"><span>c.</span> It is the same as the unemployment rate in Livingston.</p>
 		</li>
 	</ul>
 </div>

@@ -397,12 +397,25 @@
 	        @include font(14px, 16px);
 	        font-family: 'open_sanssemibold';
 	        padding-left: 1px;
-	        input {
-	            position: relative;
-	            bottom: 2px;
-	            margin: 0 6px 0 0;
-	        }
 	    }
+	    li {
+	    	display: block;
+	    	@include clearfix;
+	    	margin-bottom: 8px;
+	    }
+	    .choice{
+	    	width: 700px;
+	    	float: left;
+	    	span {
+	    		font-family: 'open_sansbold';
+	    	}
+	    }
+        input {
+            position: relative;
+            bottom: -4px;
+            margin: 0 10px 0 0;
+            float: left;
+        }
     }
 }
 

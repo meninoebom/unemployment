@@ -3,7 +3,7 @@
 unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService', 'unemploymentDataService',  function($scope, $state ,$timeout, mapDataService, unemploymentDataService) {
 
 	$scope.dataSpec = {};
-	$scope.dataSpec.question = 5;
+	$scope.dataSpec.question = 4;
 	$scope.dataSpec.latestDateAvailable = {
 		year: 2013,
 		month: 7,
@@ -12,7 +12,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.view = "map";
 	$scope.dataSpec.mode = "exploration";
-	$scope.dataSpec.feedbackMessage = '';
 	$scope.dataSpec.year = '2000';
 	$scope.dataSpec.month = '1';
 	$scope.years = [];
@@ -25,6 +24,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.countyList = [];
 	$scope.dataSpec.county1 = '';
 	$scope.dataSpec.county2 = '';
+	$scope.acceptingResponses = true;
 
 	// to handle some date formatting issues...
 	$scope.monthNames = [
@@ -39,9 +39,9 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
 			var startUnempRate = unemploymentDataService.getUnemploymentDataForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			var endUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
-			if (startUnempRate === endUnempRate) return 'same';
-			if (startUnempRate > endUnempRate) return 'decrease';
-			if (startUnempRate < endUnempRate) return 'increase';
+			if (startUnempRate === endUnempRate) return 'stayed the same';
+			if (startUnempRate > endUnempRate) return 'decreased';
+			if (startUnempRate < endUnempRate) return 'increased';
 		},
 		2: function() {
 			//////////////////////////////////
@@ -51,7 +51,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			mapDataService.getRegionalDataForDate('United States', $scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01', function(data) {
 				unempRate = data.us.value;
 			});
-			if (unempRate === naturalUnempRate) return 'same';
+			if (unempRate === naturalUnempRate) return 'stayed the same';
 			if (unempRate > naturalUnempRate) return 'higher';
 			if (unempRate < naturalUnempRate) return 'lower';
 		},
@@ -59,12 +59,22 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
 			var startLFPRate = unemploymentDataService.getLaborForceDataForForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			var endLFPRate = unemploymentDataService.getLaborForceDataForForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
-			if (startLFPRate === endLFPRate) return 'same';
-			if (startLFPRate > endLFPRate) return 'decrease';
-			if (startLFPRate < endLFPRate) return 'increase';
+			if (startLFPRate === endLFPRate) return 'stayed the same';
+			if (startLFPRate > endLFPRate) return 'decreased';
+			if (startLFPRate < endLFPRate) return 'increased';
 		},
 		4: function() {
-			return 'a';
+			var answer1 = $scope.answers[1]();
+			console.log(answer1);
+			var answer2 = $scope.answers[2]();
+			console.log(answer2);
+			var answer3 = $scope.answers[3]();
+			console.log(answer3);
+			if (answer2 === 'lower') {
+				return (answer1 === 'increased' || answer3 === 'increased') ? 'a' : 'b';
+			} else if (answer2== 'higher') {
+				return (answer1 === 'increased' || answer3 === 'increased') ? 'c' : 'd';
+			}
 		},
 		5: function() {
 			var nationalUnempRate = unemploymentDataService.getUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
@@ -73,7 +83,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			console.log(stateUnempRate);	
 			console.log('nationalUnempRate');	
 			console.log(nationalUnempRate);	
-			if (stateUnempRate === nationalUnempRate) return 'same';
+			if (stateUnempRate === nationalUnempRate) return 'stayed the same';
 			if (stateUnempRate > nationalUnempRate) return 'higher';
 			if (stateUnempRate < nationalUnempRate) return 'lower';	
 		},
@@ -84,21 +94,21 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.submitResponse = function() {
 		if (!$scope.acceptingResponses) return;
-		var eventName, question = $scope.dataSpec.question;
+		
+		var question = $scope.dataSpec.question;
 		
 		if (question === 5 && !$scope.hasChosenAState()) {
-			eventName = "showQuestion5InstructionPopover";
-			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
+			$scope.$broadcast("showQuestion5InstructionPopover", $scope.lock, $scope.unlock);
 			return;
 		}
 
 		if (question === 6 && !$scope.hasChosenTwoCounties()) {
-			eventName = "showQuestion6InstructionPopover";
-			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
+			$scope.$broadcast("showQuestion6InstructionPopover", $scope.lock, $scope.unlock);
 			return;
 		}
 
 		var response = $("input[name=question"+question+"]:checked").val();
+		
 		if (response === undefined || response === 'undefined' || response === '') {
 			$scope.$broadcast('showChooseAnAnswerPopover', $scope.lock, $scope.unlock);
 			return;
@@ -120,7 +130,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 				$scope.$broadcast('showCorrectPopover', $scope.lock, $scope.loadNextQuestion);
 			}
 		} else if (response !== answer) {
-			eventName = "showQuestion"+question+"IncorrectPopover";
+			var eventName = "showQuestion"+question+"IncorrectPopover";
 			$scope.$broadcast(eventName, $scope.lock, $scope.unlock);
 		}
 	}
@@ -131,8 +141,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			$scope.dataSpec.question += 1;
 		});
 	}
-
-	$scope.acceptingResponses = true;
 
 	$scope.lock = function() {
 		$scope.acceptingResponses = false;
@@ -148,54 +156,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.hasChosenTwoCounties = function() {
 		return ($scope.dataSpec.county1 != '' && $scope.dataSpec.county2 != '') ? true : false;
-	}
-
-	// $scope.submitResponseBkup = function() {
-	// 	//TODO grading and feedback happen here
-	// 	switch ($scope.dataSpec.currentInstruction) {
-	// 		case 1:
-	// 			if (!$("input[name=firstQuestion]:checked").val()) {
-	// 				$scope.showFeedbackMessage('Choose an answer the before clicking next.');
-	// 				return;
-	// 			} else {
-	// 				$scope.dataSpec.currentInstruction +=1;
-	// 				if ($scope.dataSpec.regionName !== 'United States') $scope.dataSpec.currentInstruction += 1; 
-	// 				if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
-	// 			}
-	// 			break;
-	// 		case 2:
-	// 			if ($scope.dataSpec.regionName == 'United States') {
-	// 				$scope.showFeedbackMessage('You must choose a state before going to the next step.');
-	// 				return;
-	// 			} else {
-	// 				$scope.dataSpec.currentInstruction +=1;
-	// 				if ($scope.dataSpec.county1 !== '' && $scope.dataSpec.county2 !== '') $scope.dataSpec.currentInstruction += 1;	 
-	// 			} 
-	// 			break;
-	// 		case 3:
-	// 			if ($scope.dataSpec.county1 == '' || $scope.dataSpec.county2 == '') {
-	// 				$scope.showFeedbackMessage('You must choose two counties before going to the next step.');
-	// 				return;
-	// 			} else {
-	// 				$scope.dataSpec.currentInstruction +=1;
-	// 			} 
-	// 			break;	
-	// 		case 4:
-	// 			if (!$("input[name=lastQuestion]:checked").val()) {
-	// 				$scope.showFeedbackMessage('Choose an answer the before clicking next.');
-	// 				return;
-	// 			} else {
-	// 				$state.transitionTo('level-4-intro');
-	// 				return; 
-	// 			}
-	// 			break;			
-	// 	}
-	// 	if ($scope.dataSpec.currentInstruction > 3) $scope.dataSpec.view = 'graph';
-	// }
-
-	$scope.showFeedbackMessage = function(message) {
-		$scope.dataSpec.feedbackMessage = message;
-		angular.element('#incorrect-modal').modal('show');
 	}
 
 	$scope.setDataView = function(view) {
@@ -413,10 +373,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			}			
 		}
 	];
-
-	$scope.graphingProperties = {
-
-	};
 
 	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year', function() {
 		$scope.unemploymentRateMap['United States'] = $scope.dataSpec.usValue;
