@@ -18,7 +18,7 @@
 	</ul>
 </div>
 
-<div class="dropdown" ng-show="showGraphingModeCountyDropdown">
+<div class="dropdown" ng-show="showGraphingModeCountyDropdown()">
 	<div class="dropdown-toggle" role="button">
 		<span>{{dataSpec.county1 || 'Choose County 1'}}</span><b class="caret"></b>
 	</div>
@@ -27,7 +27,7 @@
 	</ul>
 </div>
 
-<div class="dropdown" ng-show="showGraphingModeCountyDropdown">
+<div class="dropdown" ng-show="showGraphingModeCountyDropdown()">
 	<div class="dropdown-toggle" role="button">
 		<span>{{dataSpec.county2 || 'Choose County 2'}}</span><b class="caret"></b>
 	</div>

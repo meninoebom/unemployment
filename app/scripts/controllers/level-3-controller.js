@@ -113,16 +113,18 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 		if (response === answer) {
 			if(question === 6) {
-				$scope.$broadcast('showCorrectPopover', $scope.lock, function() {
-					function goToLevel4() {
-				        $scope.$broadcast('closeAllPopovers');
-						$state.transitionTo('level-4-intro');	
-				    }
-				    setTimeout(goToLevel4, 5000);
+				$scope.$broadcast('showCorrectPopover', function() {
+					$scope.lock();
+				    setTimeout($scope.goToLevel4, 1500);
 					return;
-				});
+				}, $scope.goToLevel4);
 			} else {
-				$scope.$broadcast('showCorrectPopover', $scope.lock, $scope.loadNextQuestion);
+				console.log('question !== 6');
+				$scope.$broadcast('showCorrectPopover', function() {
+					$scope.lock();
+				    setTimeout($scope.loadNextQuestion, 1500);
+					return;
+				}, $scope.loadNextQuestion);
 			}
 		} else if (response !== answer) {
 			var eventName = "showQuestion"+question+"IncorrectPopover";
@@ -131,10 +133,16 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 
 	$scope.loadNextQuestion = function() {
+		$scope.$broadcast('closeAllPopovers');
 		$scope.unlock();
 		$scope.$apply(function() {
 			$scope.dataSpec.question += 1;
 		});
+	}
+
+	$scope.goToLevel4 = function() {
+		$scope.$broadcast('closeAllPopovers');
+		$state.transitionTo('level-4-intro');
 	}
 
 	$scope.lock = function() {
