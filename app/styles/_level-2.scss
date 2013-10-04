@@ -55,35 +55,6 @@
     }
 }
 
-// .popover {
-//     max-width: none;
-// }
-
-// .popover-close-button {
-//     position: absolute;
-//     top: -12px;
-//     right: -12px;
-// }
-
-// .popover .alert-icon {
-//     float: left;
-//     margin: 5px 14px 0 5px;
-// }
-
-// .incorrect-answer-popover {
-//     @include popover($red, $white);
-//     display: block;
-//     width: 500px
-// }
-
-// [rel=popover][data-color=darkGrey] + .popover {
-//     @include popover($darkGrey);
-// }
-
-// [rel=popover][data-color=white] + .popover {
-//     @include popover($white);
-// }
-
 .equation-tool {
     text-align: center;
     max-width: 400px;

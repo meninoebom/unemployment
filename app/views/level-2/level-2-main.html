@@ -1,0 +1,8 @@
+<div class="level-2-container clearfix">
+	<div ng-include src="'views/main-header.html'"></div>
+	<div class="level-2-pie-charts" ng-include src="'views/level-2/level-2-pie-charts.html'"></div>
+	<div class="tree" ng-include src="'views/level-2/level-2-tree.html'"></div>
+	<div class="level-2-question-area question-area" ng-show="currentQuestion.num <= 4" ng-include="'views/level-2/level-2-fill-in-the-blanks-questions.html'"></div>
+	<div class="level-2-question-area question-area" ng-show="currentQuestion.num > 4" ng-include="'views/level-2/level-2-scenario-questions.html'"></div>
+	<div ng-include src="'views/level-2/level-2-popovers.html'"></div>
+</div>

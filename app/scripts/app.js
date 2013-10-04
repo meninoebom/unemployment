@@ -26,12 +26,12 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
       })
       .state('level-2-intro', {
       url: "/level/2/intro",
-        templateUrl: "views/level-2/intro.html",
+        templateUrl: "views/level-2/level-2-intro.html",
         baseClass: "intro"
       })
       .state('level-2', {
         url: "/level/2",
-        templateUrl: "views/level-2/main.html",
+        templateUrl: "views/level-2/level-2-main.html",
         controller: "Level2Ctrl",
         baseClass: "level-2"
       })
@@ -48,13 +48,13 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
       })
       .state('level-4-intro', {
         url: "/level/4/intro",
-        templateUrl: "views/level-4/intro.html",
+        templateUrl: "views/level-4/level-4-intro.html",
         baseClass: "intro"
       })
       .state('level-4', {
         //url: "",
         url: "/level/4",
-        templateUrl: "views/level-4/main.html",
+        templateUrl: "views/level-4/level-4-main.html",
         controller: "Level4Ctrl",
         baseClass: "level-4"
       });
