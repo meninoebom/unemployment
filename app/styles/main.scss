@@ -342,6 +342,25 @@ div, ul, li, p, h1, h2, h3, h4 {
     @include popover($darkGrey, $white);
 }
 
+.view-container {
+    .correct-popover, .incorrect-popover, .instruction-popover {
+        display: none;
+        width: 500px;
+        padding: 20px;
+        position: absolute;
+        .alert-icon {
+            float: left;
+            margin: 5px 14px 0 5px;
+        }
+        .popover-content {
+            float: left;
+            width: 380px;
+            h4 {font-family: 'open_sansregular'; margin-bottom: 5px;}
+            > div {font-family: 'open_sanslight';}
+        }
+    }
+}
+
 .modal-body {
     color: $white;
 }

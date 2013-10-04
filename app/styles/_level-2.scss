@@ -50,22 +50,8 @@
 
 .level-2-container {
     .correct-popover, .incorrect-popover, .instruction-popover {
-        display: none;
-        width: 500px;
-        padding: 20px;
-        position: absolute;
         top: 300px;
         left: 622px;
-        .alert-icon {
-            float: left;
-            margin: 5px 14px 0 5px;
-        }
-        .popover-content {
-            float: left;
-            width: 380px;
-            h4 {font-family: 'open_sansregular'; margin-bottom: 5px;}
-            > div {font-family: 'open_sanslight';}
-        }
     }
 }
 
