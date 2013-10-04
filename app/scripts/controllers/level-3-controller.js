@@ -91,7 +91,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		}
 	};
 
-	$scope.incorrectResponseFeedback = {
+	$scope.firstIncorrectAttemptHints = {
 		1: {
 			answers: {
 				'increased': {
@@ -131,6 +131,22 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		}
 	}// end of incorrectResponseFeedback 
 
+	$scope.secondIncorrectAttemptHints = {
+		1: {
+			answers: {
+				'increased':  function(){ 
+					return "The unemployment rate increased between "+$scope.month1()+" and "+$scope.month2()+"." 
+				},
+				'decreased': function(){ 
+					return "The unemployment rate decreased between "+$scope.month1()+" and "+$scope.month2()+"." 
+				},
+				'stayed the same': function(){ 
+					return "The unemployment rate stayed the same between "+$scope.month1()+" and "+$scope.month2()+"." 
+				}
+			}
+		}
+	}
+
 	$scope.month1 = function() {
 		var month = $scope.dataSpec.latestDateAvailable.monthName + " " + $scope.dataSpec.latestDateAvailable.year;
 		return month; 
@@ -144,14 +160,23 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 
 	$scope.getIncorrectResponseFeedback = function() {
-		var data = $scope.incorrectResponseFeedback;
-		var question = $scope.dataSpec.question;
-		var answer = $scope.currentAnswer;
-		var response = $scope.currentResponse;
-		if (data[question].answers[answer] === undefined || data[question].answers[answer] === '') return;
-		if (data[question].answers[answer].responses[response]() === undefined || data[question].answers[answer].responses[response]() === '') return;
-		var feedback = data[question].answers[answer].responses[response]();
-		return feedback;
+		if ($scope.attempts === 1) {			
+			var data = $scope.firstIncorrectAttemptHints;
+			var question = $scope.dataSpec.question;
+			var answer = $scope.currentAnswer;
+			var response = $scope.currentResponse;
+			if (data[question].answers[answer] === undefined || data[question].answers[answer] === '') return;
+			if (data[question].answers[answer].responses[response]() === undefined || data[question].answers[answer].responses[response]() === '') return;
+			var feedback = data[question].answers[answer].responses[response]();
+			return feedback;
+		} else if ($scope.attempts > 1) {
+			var data = $scope.secondIncorrectAttemptHints;
+			var question = $scope.dataSpec.question;
+			var answer = $scope.currentAnswer;
+			if (data[question].answers[answer]() === undefined || data[question].answers[answer]() === '') return;
+			var feedback = data[question].answers[answer]();
+			return feedback;
+		}
 	}
 
 	$scope.submitResponse = function() {
