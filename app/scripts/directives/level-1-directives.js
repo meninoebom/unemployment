@@ -70,6 +70,7 @@ angular.module('directives.ue.level-1', [])
 				e.preventDefault();
 				var currentProfileIndex = e.originalEvent.dataTransfer.getData('text/plain');
 				var currentProfile = scope.profiles[currentProfileIndex];
+				scope.currentProfile.name = currentProfile.name;
 				if(currentProfile.employmentCategoryId == attrs.employmentCategoryId) {
 					count++;
 					ngModel.$setViewValue(count);

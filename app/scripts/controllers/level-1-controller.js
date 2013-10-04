@@ -6,9 +6,7 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
     $scope.structuralCount = 0;
     $scope.cyclicalCount = 0;
     $scope.notInLaborForceCount = 0;
-    $scope.showIncorrectModal = function() {
-      angular.element('#incorrect-modal').modal('show');
-    }
+    $scope.currentProfile = {};
     $scope.profiles = [
       {gender: "f", failedAttempts: 0, name: "Sarah", description: "works 40 hours a week at the local retail shoe store", employmentCategoryId: 1, active: "true"},
       {gender: "m", failedAttempts: 0, name: "Jim", description: "has recently accepted a new job, but he does not begin this job until 30 days from now", employmentCategoryId: 2, active: "true"},
@@ -77,6 +75,10 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
               $scope.$broadcast('closeAllPopovers');  
             }, 1500);
         });
+    }
+
+    $scope.getIncorrectFeedbackPopoverContent = function() {
+      return "You placed "+$scope.currentProfile.name+" in the wrong category.";
     }
 
     $scope.getEmpCategoryObjById = function(id) {
