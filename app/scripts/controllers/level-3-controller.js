@@ -98,28 +98,28 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 					responses: {
 						'increased': undefined,
 						'decreased': function(){ 
-							return "The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not decrease." 
+							return "The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not decrease."; 
 						},
 						'stayed the same': function(){ 
-							return "You're close. The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease." 
+							return "You're close. The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease?"; 
 						}
 					}
 				},
 				'decreased': {
 					responses: {
 						'increased': function(){ 
-							return "You're close. The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not increase." 
+							return "You're close. The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not increase."; 
 						},
 						'decreased': undefined,
 						'stayed the same': function(){ 
-							return "The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease." 
+							return "The unemployment rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease?"; 
 						}
 					}
 				},
 				'stayed the same': {
 					responses: {
 						'increased': function(){ 
-							return "The unemployment rate did not change between "+$scope.month1()+" and "+$scope.month2()+"." 
+							return "The unemployment rate did not change between "+$scope.month1()+" and "+$scope.month2()+"."; 
 						},
 						'decreased': function(){ 
 							return "The unemployment rate did not change between "+$scope.month1()+" and "+$scope.month2()+"."
@@ -135,63 +135,286 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 					responses: {
 						'higher': undefined,
 						'lower': function(){ 
-							return "You're close.  In "+$scope.month2()+" the unemployment rate is different than the natural rate of unemployment, but it is not lower." 
+							return "You're close.  In "+$scope.month2()+" the unemployment rate is different than the natural rate of unemployment, but it is not lower."; 
 						},
 						'stayed the same': function(){ 
-							return "In "+$scope.month2()+", the unemployment rate is different than the natural rate of unemployment.  Is it higher or lower." 
+							return "In "+$scope.month2()+", the unemployment rate is different than the natural rate of unemployment.  Is it higher or lower?"; 
 						}
 					}
 				},
 				'lower': {
 					responses: {
 						'higher': function(){ 
-							return "You're close. In "+$scope.month2()+", the unemployment rate is different than the natural  rate of unemployment, but it is not higher." 
+							return "You're close. In "+$scope.month2()+", the unemployment rate is different than the natural rate of unemployment, but it is not higher."; 
 						},
 						'lower': undefined,
 						'stayed the same': function(){ 
-							return "In "+$scope.month2()+", the unemployment rate is different than the natural rate of unemployment.  Is it higher or lower." 
+							return "In "+$scope.month2()+", the unemployment rate is different than the natural rate of unemployment.  Is it higher or lower?"; 
 						}
 					}
 				},
 				'stayed the same': {
 					responses: {
 						'higher': function(){ 
-							return "In "+$scope.month2()+", the unemployment rate is not different than the natural rate of unemployment." 
+							return "In "+$scope.month2()+", the unemployment rate is not different than the natural rate of unemployment."; 
 						},
 						'lower': function(){ 
-							return "In "+$scope.month2()+", the unemployment rate is not different than the natural rate of unemployment." 
+							return "In "+$scope.month2()+", the unemployment rate is not different than the natural rate of unemployment."; 
 						},
 						'stayed the same': undefined
 					}
 				}
 			}
-		}
+		},
+		3: {
+			answers: {
+				'increased': {
+					responses: {
+						'increased': undefined,
+						'decreased': function(){ 
+							return "You're close. The labor force participation rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not decrease."; 
+						},
+						'stayed the same': function(){ 
+							return "The labor force participation rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease?"; 
+						}
+					}
+				},
+				'decreased': {
+					responses: {
+						'increased': function(){ 
+							return "You're close. The labor force participation rate changed between "+$scope.month1()+" and "+$scope.month2()+", but it did not increase."; 
+						},
+						'decreased': undefined,
+						'stayed the same': function(){ 
+							return "The labor force participation rate changed between "+$scope.month1()+" and "+$scope.month2()+".  Did it increase or decrease?"; 
+						}
+					}
+				},
+				'stayed the same': {
+					responses: {
+						'increased': function(){ 
+							return "The labor force participation rate did not change between "+$scope.month1()+" and "+$scope.month2()+"."; 
+						},
+						'decreased': function(){ 
+							return "The labor force participation rate did not change between "+$scope.month1()+" and "+$scope.month2()+"."
+						},
+						'stayed the same': undefined
+					}
+				}
+			}
+		},
+		4: {
+			answers: {
+				'a': {
+					responses: {
+						'a': undefined,
+						'b': function() { 
+							return ""; 
+						},
+						'c': function() { 
+							return ""; 
+						},
+						'd': function() {
+							return""; 
+								}
+					}
+				},
+				'b': {
+					responses: {
+						'a': function() {
+							return ""; 
+						},
+						'b': undefined,
+						'c': function() { 
+							return ""; 
+						},
+						'd': function() {
+							return""; 
+								}
+					}
+				},
+				'c': {
+					responses: {
+						'a': function() {
+							return ""; 
+						},
+						'b': function() { 
+							return ""; 
+						},
+						'c': undefined,
+						'd': function() {
+							return""; 
+								}
+					}
+				},
+				'd': {
+					responses: {
+						'a': function() {
+							return ""; 
+						},
+						'b': function() { 
+							return ""; 
+						},
+						'c': function() { 
+							return ""; 
+						},
+						'd': undefined
+					}
+				}
+			}
+		},
+		5: {
+			answers: {
+				'higher': {
+					responses: {
+						'higher': undefined,
+						'lower': function(){ 
+							return "You're close.  In "+$scope.month2()+" the unemployment rate in "+$scope.dataSpec.regionName+" is different than the natural rate of unemployment, but it is not lower."; 
+						},
+						'stayed the same': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is different than the natural rate of unemployment.  Is it higher or lower?"; 
+						}
+					}
+				},
+				'lower': {
+					responses: {
+						'higher': function(){ 
+							return "You're close. In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is different than the natural rate of unemployment, but it is not higher."; 
+						},
+						'lower': undefined,
+						'stayed the same': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is different than the natural rate of unemployment.  Is it higher or lower?"; 
+						}
+					}
+				},
+				'stayed the same': {
+					responses: {
+						'higher': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is not different than the natural rate of unemployment."; 
+						},
+						'lower': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is not different than the natural rate of unemployment."; 
+						},
+						'stayed the same': undefined
+					}
+				}
+			}
+		},
+		6: {
+			answers: {
+				'higher': {
+					responses: {
+						'higher': undefined,
+						'lower': function(){ 
+							return "You're close.  In "+$scope.month2()+" the unemployment rate in "+$scope.dataSpec.county1+" is different than the unemployment rate in "+$scope.dataSpec.county2+", but it is not lower."; 
+						},
+						'stayed the same': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.county1+" is different than the unemployment rate in "+$scope.dataSpec.county2+".  Is it higher or lower?"; 
+						}
+					}
+				},
+				'lower': {
+					responses: {
+						'higher': function(){ 
+							return "You're close. In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.county1+" is different than the unemployment rate in "+$scope.dataSpec.county2+", but it is not higher."; 
+						},
+						'lower': undefined,
+						'stayed the same': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.county1+" is different than the unemployment rate in "+$scope.dataSpec.county2+".  Is it higher or lower?"; 
+						}
+					}
+				},
+				'stayed the same': {
+					responses: {
+						'higher': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.county1+" is not different than the unemployment rate in "+$scope.dataSpec.county2+"."; 
+						},
+						'lower': function(){ 
+							return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.county1+" is not different than the unemployment rate in "+$scope.dataSpec.county2+"."; 
+						},
+						'stayed the same': undefined
+					}
+				}
+			}
+		}		
 	}// end of incorrectResponseFeedback 
 
 	$scope.secondIncorrectAttemptHints = {
 		1: {
 			answers: {
 				'increased':  function(){ 
-					return "The unemployment rate increased between "+$scope.month1()+" and "+$scope.month2()+"." 
+					return "The unemployment rate increased between "+$scope.month1()+" and "+$scope.month2()+"."; 
 				},
 				'decreased': function(){ 
-					return "The unemployment rate decreased between "+$scope.month1()+" and "+$scope.month2()+"." 
+					return "The unemployment rate decreased between "+$scope.month1()+" and "+$scope.month2()+"."; 
 				},
 				'stayed the same': function(){ 
-					return "The unemployment rate stayed the same between "+$scope.month1()+" and "+$scope.month2()+"." 
+					return "The unemployment rate stayed the same between "+$scope.month1()+" and "+$scope.month2()+"."; 
 				}
 			}
 		},
 		2: {
 			answers: {
 				'higher':  function(){ 
-					return "In "+$scope.month2()+", the unemployment rate is higher than the natural rate of unemployment." 
+					return "In "+$scope.month2()+", the unemployment rate is higher than the natural rate of unemployment."; 
 				},
 				'lower': function(){ 
-					return "In "+$scope.month2()+", the unemployment rate is lower than the natural rate of unemployment." 
+					return "In "+$scope.month2()+", the unemployment rate is lower than the natural rate of unemployment."; 
 				},
 				'stayed the same': function(){ 
-					return "In "+$scope.month2()+", the unemployment rate is the same as the natural rate of unemployment."  
+					return "In "+$scope.month2()+", the unemployment rate is the same as the natural rate of unemployment."; 
+				}
+			}
+		},
+		3: {
+			answers: {
+				'increased':  function(){ 
+					return "The labor force participation rate increased between "+$scope.month1()+" and "+$scope.month2()+"."; 
+				},
+				'decreased': function(){ 
+					return "The labor force participation rate decreased between "+$scope.month1()+" and "+$scope.month2()+"."; 
+				},
+				'stayed the same': function(){ 
+					return "The labor force participation rate stayed the same between "+$scope.month1()+" and "+$scope.month2()+"."; 
+				}
+			}
+		},
+		4: {
+			answers: {
+				'increased':  function(){ 
+					return ""; 
+				},
+				'decreased': function(){ 
+					return ""; 
+				},
+				'stayed the same': function(){ 
+					return "";
+				}
+			}
+		},
+		5: {
+			answers: {
+				'higher':  function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is higher than the natural rate of unemployment."; 
+				},
+				'lower': function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is lower than the natural rate of unemployment."; 
+				},
+				'stayed the same': function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is the same as the natural rate of unemployment."; 
+				}
+			}
+		},
+		6: {
+			answers: {
+				'higher':  function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is higher than the unemployment rate in "+$scope.dataSpec.county2+"."; 
+				},
+				'lower': function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is lower than the unemployment rate in "+$scope.dataSpec.county2+"."; 
+				},
+				'stayed the same': function(){ 
+					return "In "+$scope.month2()+", the unemployment rate in "+$scope.dataSpec.regionName+" is the same as the unemployment rate in "+$scope.dataSpec.county2+"."; 
 				}
 			}
 		}
@@ -207,30 +430,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		var year = $scope.dataSpec.latestDateAvailable.year-1;
 		var month = month +"  " + year;
 		return month; 
-	}
-
-	$scope.getIncorrectResponseFeedback = function() {
-		if ($scope.attempts === 1) {
-			console.log('$scope.attempts === 1');			
-			console.log($scope.attempts === 1);			
-			var data = $scope.firstIncorrectAttemptHints;
-			var question = $scope.dataSpec.question;
-			var answer = $scope.currentAnswer;
-			var response = $scope.currentResponse;
-			if (data[question].answers[answer] === undefined || data[question].answers[answer] === '') return;
-			if (data[question].answers[answer].responses[response]() === undefined || data[question].answers[answer].responses[response]() === '') return;
-			var feedback = data[question].answers[answer].responses[response]();
-			return feedback;
-		} else if ($scope.attempts > 1) {
-			console.log('$scope.attempts > 1');			
-			console.log($scope.attempts > 1);	
-			var data = $scope.secondIncorrectAttemptHints;
-			var question = $scope.dataSpec.question;
-			var answer = $scope.currentAnswer;
-			if (data[question].answers[answer]() === undefined || data[question].answers[answer]() === '') return;
-			var feedback = data[question].answers[answer]();
-			return feedback;
-		}
 	}
 
 	$scope.submitResponse = function() {
@@ -253,7 +452,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		var response = $("input[name=question"+question+"]:checked").val();
 		
 		if (response === undefined || response === 'undefined' || response === '') {
-			console.log("NADA zilch zero!");
 			$scope.instruction = "Choose and answer."
 			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
 			return;
@@ -269,13 +467,13 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			if(question === 6) {
 				$scope.$broadcast('showCorrectResponsePopover', function() {
 					$scope.lock();
-				    setTimeout($scope.goToLevel4, 2000);
+				    setTimeout($scope.goToLevel4, 1500);
 					return;
 				}, $scope.goToLevel4);
 			} else {
 				$scope.$broadcast('showCorrectResponsePopover', function() {
 					$scope.lock();
-				    setTimeout($scope.loadNextQuestion, 2000);
+				    setTimeout($scope.loadNextQuestion, 1500);
 					return;
 				}, $scope.loadNextQuestion);
 			}
@@ -285,8 +483,29 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 				$scope.lock();
 				setTimeout(function() {
 					$scope.$broadcast('closeAllPopovers');	
-				}, 1500);
+				}, 2500);
 			}, $scope.unlock);
+		}
+	}
+
+
+	$scope.getIncorrectResponseFeedback = function() {
+		if ($scope.attempts === 1) {	
+			var data = $scope.firstIncorrectAttemptHints;
+			var question = $scope.dataSpec.question;
+			var answer = $scope.currentAnswer;
+			var response = $scope.currentResponse;
+			if (data[question].answers[answer] === undefined || data[question].answers[answer] === '') return;
+			if (data[question].answers[answer].responses[response]() === undefined || data[question].answers[answer].responses[response]() === '') return;
+			var feedback = data[question].answers[answer].responses[response]();
+			return feedback;
+		} else if ($scope.attempts > 1) {
+			var data = $scope.secondIncorrectAttemptHints;
+			var question = $scope.dataSpec.question;
+			var answer = $scope.currentAnswer;
+			if (data[question].answers[answer]() === undefined || data[question].answers[answer]() === '') return;
+			var feedback = data[question].answers[answer]();
+			return feedback;
 		}
 	}
 
@@ -300,17 +519,17 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		});
 	}
 
-	$scope.goToLevel4 = function() {
-		$scope.$broadcast('closeAllPopovers');
-		$state.transitionTo('level-4-intro');
-	}
-
 	$scope.lock = function() {
 		$scope.locked = false;
 	}
 
 	$scope.unlock = function() {
 		$scope.locked = true;
+	}
+
+	$scope.goToLevel4 = function() {
+		$scope.$broadcast('closeAllPopovers');
+		$state.transitionTo('level-4-intro');
 	}
 
 	$scope.hasChosenAState = function() {
