@@ -20,7 +20,7 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
       {gender: "f", failedAttempts: 0, name: "LaShanna", description: "used to work at a real estate office, which recently laid off some of its workers, including LaShanna, due to the recession", employmentCategoryId: 4, active: "true"}
     ];
 
-$scope.employmentCategories = [
+    $scope.employmentCategories = [
       { id: 1,
         name: 'employed',
         parent: 7,
@@ -62,6 +62,22 @@ $scope.employmentCategories = [
         count: 0
       }
     ];
+
+    $scope.showIncorrectFeedback = function() {
+      $scope.$broadcast("showIncorrectResponsePopover", function () {
+          setTimeout(function() {
+            $scope.$broadcast('closeAllPopovers');  
+          }, 1500);
+      });      
+    }
+
+    $scope.showCorrectFeedback = function() {
+        $scope.$broadcast('showCorrectResponsePopover', function() {
+            setTimeout(function() {
+              $scope.$broadcast('closeAllPopovers');  
+            }, 1500);
+        });
+    }
 
     $scope.getEmpCategoryObjById = function(id) {
         var obj = $scope.findObjById($scope.employmentCategories, id);

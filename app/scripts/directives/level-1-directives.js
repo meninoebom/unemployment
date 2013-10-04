@@ -77,12 +77,13 @@ angular.module('directives.ue.level-1', [])
 						currentProfile.active = false;
 						scope.addProfiles(attrs.employmentCategoryId);
 					});
+					scope.showCorrectFeedback();
 					ngModel.$render();
 				} else	{
 					scope.$apply(function(){
 						currentProfile.failedAttempts++;
 					});
-					scope.showIncorrectModal();
+					scope.showIncorrectFeedback();
 				}
 			});
 			ngModel.$render = function() {
