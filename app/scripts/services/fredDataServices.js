@@ -33,7 +33,6 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		calculateDateWithOffset: function(d, offset) {
 			var y = d.split('-')[0];
 			var m = d.split('-')[1];
-			console.log(m);
 			var epoch = y*12 + (m-1);
 			epoch += offset;
 			
@@ -184,7 +183,7 @@ services.factory('mapDataService',['$http', function($http) {
 			} else {
 				var that = this;
 				var region_id = this.stateAbbreviations[region_name];
-				console.log('fetching data for region "'+region_name+'"...');
+				//console.log('fetching data for region "'+region_name+'"...');
 				$http.get('data/state_map_json/'+region_id+'_urn.json').success(function(result){
 					that.allRegionData[result.region.name] = result;
 					callback();
