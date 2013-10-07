@@ -36,7 +36,39 @@ h3. Level 2 Popovers and Modals
 "info-button"
 -uses the "infoButton" directive which creates a tooltip when the button is clicked that contains a calculator for solving equations
 
-h3. D3 Popover Pattern
+h3. Feedback Popovers
+Feedback popoevers occur on all 4 levels of the app. The work  like this
+
+The mark up is placed in a file called ..views/level-x/level-x-popovers.html
+and included in the level's main view like this: 
+	<div ng-include src="'views/level-x/level-x-popovers.html'"></div>
+
+The popover directive is located in scripts/directives/popover-directives, the module name is directives.ue.popovers and is included in app.js
+
+To trigger a popover broadcast the event name registered as an attribute of the element that is made into a popover directive
+For example, the following is a popover in level 3: 
+
+	 <ue-popover class="instruction-popover" show-event="showInstructionPopover">
+		<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
+		<div class="popover-content">
+			<p>{{instruction}}</p>
+		</div>
+	</ue-popover>
+
+the "show-event" attribute value, in this case, "showIntructionPopover",  registers the event name that will cause this popover to show for 2000 milliseconds or until the user clis on the screen which ever comes first. 
+
+In the Controller:
+Continuing with our example, to display this intruction popover in level 3 the controller broadasts the "show-event":
+	$scope.$broadcast("showInstructionPopover", $scope.lock, $scope.unlock);
+
+The event handler in the popover directive accepts to extra parameters: a fadeIn callback, triggered of course once the popover has faded in and the fadeOut callback triggered when the popover is fully faded out. 
+
+
+The Feedback Popovers
+
+
+h3. Graphing Detail Popovers
+This popover appears when the user mouses over a line on the line graphs on level 3 or 4
 
 In the view
 	<div class="popover detail-popover" ng-show="showDetailPopover" ><div class="arrow"></div>
