@@ -10,6 +10,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		monthName: 'July'
 	};
 	$scope.dataSpec.usValue = 0;
+	$scope.dataSpec.lfpValue = 0;
 	$scope.dataSpec.view = "map";
 	$scope.dataSpec.mode = "exploration";
 	$scope.dataSpec.year = '2000';
@@ -638,6 +639,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 	
 	$scope.updateData = function(regionChanged) {
+		var lfpData = unemploymentDataService.getLaborForceDataForForDate($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01');
+		console.log(lfpData);
 		mapDataService.getRegionalDataForDate($scope.dataSpec.regionName, $scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.dataSpec.usValue = data.us.value;
 			$scope.dataSpec.regionName = data.region.name;

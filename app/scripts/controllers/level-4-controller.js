@@ -74,9 +74,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 				rates[i].letter = dataObj[i].letter;
 				rates[i].rate = lowestKeyValPair[1];
 			}
-			console.log('rates');
-			console.log(rates);
-
 			var lowestRate;
 			for (var i = 0; i < 3; i++) {
 				lowestRate = _.min(rates, function(item) {
@@ -86,14 +83,15 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 			return lowestRate.letter;
 		},
 		5: function() {
+			//TODO calculate and return answer dynamically
 			return 'a';	
 		},
 		6: function() {
+			//TODO calculate and return answer dynamically
 			return 'a';
 		}
 
 	};
-
 
 	$scope.getPeriodDataForQuestion = function(questionNum) {
 		var dataObj = [];
@@ -109,12 +107,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		}
 		return dataObj;
 	}
-
-	// $scope.getLFPDataForPeriodName = function(periodCollection, name) {
-	// 	var period = _.findWhere(periodCollection, {name: name})
-	// 	var data = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
-	// 	return data;
-	// }
 
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {

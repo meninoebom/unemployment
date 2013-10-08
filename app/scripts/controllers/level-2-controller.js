@@ -1,10 +1,11 @@
 'use strict';
 
-unemploymentApp.controller('Level2Ctrl', ['$scope', '$state',  function($scope, $state ) {
+unemploymentApp.controller('Level2Ctrl', ['$scope', '$state', '$filter',  function($scope, $state, $filter ) {
 
 $scope.currentQuestion = {num: 1};//which question will display first
 $scope.acceptingResponses = true;
-$scope.fillInTheBlankResponse = {value: 0};
+$scope.response = {value: '0.00'};
+
 $scope.fillInTheBlankAnswers = [64, 92, 8, 8];
 $scope.numAttempts = 0;
 
@@ -174,7 +175,7 @@ $scope.employmentCategories = [
   $scope.submitFillInTheBlankResponse = function(questionNum) {
     if (!$scope.acceptingResponses) return;
     var answer = $scope.fillInTheBlankAnswers[questionNum-1];
-    if($scope.fillInTheBlankResponse.value == answer) {
+    if($scope.response.value == answer) {
       $scope.$broadcast('showCorrectPopover', undefined, $scope.loadNextFillInTheBlankQuestion);
       $scope.displayPieChartPercentage(questionNum);
     } else {
@@ -187,7 +188,7 @@ $scope.employmentCategories = [
   $scope.loadNextFillInTheBlankQuestion = function() {
     $scope.$apply(function() {
       $scope.currentQuestion.num = $scope.currentQuestion.num + 1;
-      $scope.fillInTheBlankResponse.value = 0;
+      $scope.response.value = 0;
       $scope.numAttempts = 0;
     })
   }

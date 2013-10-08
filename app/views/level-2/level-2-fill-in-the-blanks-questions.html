@@ -1,5 +1,5 @@
 <div class="question" ng-show="currentQuestion.num == 1">
-	<p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="laborForceParticipation">labor force participation rate</a> of the group above is <input class="level-2-response-field" ng-model="fillInTheBlankResponse.value" ng-maxlength="30" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
+	<p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="laborForceParticipation">labor force participation rate</a> of the group above is <input class="level-2-response-field" ng-model="response.value" two-decimal-places ng-maxlength="5" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
 </div>
 
 <div ng-show="currentQuestion.num == 2">
@@ -7,13 +7,13 @@
 		<img src="img/indicator_question.png" width="44" height="90" />
 	</div>
 	<div class="question">
-		<p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="employment">employment rate</a> of the group above is <input class="level-2-response-field" ng-model="fillInTheBlankResponse.value" ng-maxlength="30" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
+		<p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="employment">employment rate</a> of the group above is <input class="level-2-response-field" ng-model="response.value" two-decimal-places ng-maxlength="5" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
 	</div>
 </div>
 
 <div ng-show="currentQuestion.num == 3">
 	<div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
-	<div class="question"><p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="unemployment">unemployment rate</a> of the group above is <input class="level-2-response-field" ng-model="fillInTheBlankResponse.value" ng-maxlength="30" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
+	<div class="question"><p>The <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula content="unemployment">unemployment rate</a> of the group above is <input class="level-2-response-field" ng-model="response.value" two-decimal-places ng-maxlength="5" data-color="darkGrey"> percent. <br /> Round the answer to the nearest hundreth.</p>
 	</div>
 </div>
 
@@ -21,7 +21,7 @@
 	<div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
 	<div class="question">
 	<p>The economy is considered at full employment when there is no cyclical unemployment.  The unemployment rate when the economy is at full employment is considered the natural rate of unemployment.</p>
-	<p>The data above suggests that the <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula  content="naturalUnemployment">natural rate of unemployment</a> is <input class="level-2-response-field" ng-model="fillInTheBlankResponse.value" ng-maxlength="30" wrong-answer-popover='responseToAnswer()' data-color="darkGrey"> percent.  <span class="round-instruction">(Round the answer to the nearest hundreth)</span></p>
+	<p>The data above suggests that the <a href="#" rel="popover" eat-click data-color="darkGrey" show-formula  content="naturalUnemployment">natural rate of unemployment</a> is <input class="level-2-response-field" ng-model="response.value" two-decimal-places ng-maxlength="5" wrong-answer-popover='responseToAnswer()' data-color="darkGrey"> percent.  <span class="round-instruction">(Round the answer to the nearest hundreth)</span></p>
 	</div>
 </div>
 
