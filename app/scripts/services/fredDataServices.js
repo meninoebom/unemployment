@@ -29,6 +29,7 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		
 		unemployment: {},
 		labor_force: {},
+		nairu_long: {},
 		
 		calculateDateWithOffset: function(d, offset) {
 			var y = d.split('-')[0];
@@ -77,11 +78,17 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		getLaborForceData: function(d1, d2, months_before) {
 			return this._getDataFromDataset(this.labor_force, d1, d2, months_before);
 		},
+		getNairuData: function(d1, d2, months_before) {
+			return this._getDataFromDataset(this.nairu_long, d1, d2, months_before);
+		},
 		getUSUnemploymentDataForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.unemployment, date);
 		},
 		getLaborForceDataForForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.labor_force, date);
+		},
+		getNairuDataForForDate: function(date) {
+			return this._getDataFromDatasetForDate(this.nairu_long, date);
 		},
 		// deprecated because bad naming in light of labor force data; should be removed
 		getData: function(d1, d2, months_before) {
@@ -123,6 +130,12 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 				dataservice.labor_force.start_date = response.data.start_date;
 				dataservice.labor_force.values = response.data.values;
 		});
+	$http.get('data/us_nairu_long.json')
+		.then(function(response) {
+				dataservice.nairu_long.start_date = response.data.start_date;
+				dataservice.nairu_long.values = response.data.values;
+		});
+	
 	
 	return dataservice;
 		
