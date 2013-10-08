@@ -1,18 +1,18 @@
 <div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
 <div class="question">
-	<p>{{currentQuestion.question}}</p>
+	<p>{{questions[currentQuestionNum.val - 1].text}}</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="answer" value="a" />
-			{{currentQuestion.a}}
+			{{questions[currentQuestionNum.val - 1].a}}
 		</li>
 		<li>
 			<input type="radio" name="answer" value="b" />
-			{{currentQuestion.b}}
+			{{questions[currentQuestionNum.val - 1].b}}
 		</li>
 		<li>
 			<input type="radio" name="answer" value="c" />
-			{{currentQuestion.c}}
+			{{questions[currentQuestionNum.val - 1].c}}
 		</li>
 	</ul>
 

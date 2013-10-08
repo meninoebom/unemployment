@@ -511,7 +511,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.loadNextQuestion = function() {
 		if ($scope.locked) return;
-		$scope.attempts = 0;
+		//$scope.attempts = 0;
 		$scope.$broadcast('closeAllPopovers');
 		$scope.unlock();
 		$scope.$apply(function() {

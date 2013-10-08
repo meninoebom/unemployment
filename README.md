@@ -61,7 +61,12 @@ In the Controller:
 Continuing with our example, to display this intruction popover in level 3 the controller broadasts the "show-event":
 	$scope.$broadcast("showInstructionPopover", $scope.lock, $scope.unlock);
 
-The event handler in the popover directive accepts to extra parameters: a fadeIn callback, triggered of course once the popover has faded in and the fadeOut callback triggered when the popover is fully faded out. 
+The event handler in the popover directive accepts to extra parameters... 
+a fadeIn callback: triggered of course once the popover has faded 
+a fadeOut callback: triggered when the popover is fully faded out
+a timer: the amount of milliseconds until the popover should fade out
+
+The incorrectFeedback Popovers get thier content by way of an angular expression that calls a scope function called "getIncorrectResponseFeedback"
 
 
 The Feedback Popovers

@@ -4,12 +4,18 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 	$scope.dialPopCurMonth = {val: 0};
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
-	$scope.currentQuestionNum = {val: 0};
+	$scope.currentQuestionNum = {val: 4};
 	$scope.recessionsIsCollapsed = true;
 	$scope.expansionsIsCollapsed = true;
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
 	$scope.showGridOrGraph = "graph";
+
+	$scope.locked = false;
+	$scope.attempts = 0;
+	$scope.currentAnswer;
+	$scope.currentResponse;
+	$scope.instruction;
 	
 	$scope.availableSelectionColors = ['purple','green','blue'];
 
@@ -39,13 +45,76 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 	];
 
 	$scope.questions = [
-		{question: "During which of the recessionary periods did the United States Unemployement Rate reach the highest level?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{question: "During which of the recessionary periods did the United States Unemployement Rate increase the most from its lowest to its highest?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{question: "During which of the recessionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{question: "During which of the expansionary periods did the United States Unemployement Rate reach the lowest level?", a: "", b: "", c: ""},
-		{question: "During which of the following expansionary periods did the United States Unemployement Rate decrease the most from its highest to its lowest rate?", a: "", b: "", c: ""},
-		{question: "During which of the following expansionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
+		{text: "During which of the recessionary periods did the United States Unemployement Rate reach the highest level?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{text: "During which of the recessionary periods did the United States Unemployement Rate increase the most from its lowest to its highest?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{text: "During which of the recessionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		{text: "During which of the expansionary periods did the United States Unemployement Rate reach the lowest level?", a: "", b: "", c: ""},
+		{text: "During which of the following expansionary periods did the United States Unemployement Rate decrease the most from its highest to its lowest rate?", a: "", b: "", c: ""},
+		{text: "During which of the following expansionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
 	];
+
+	$scope.answers = {
+		1: function() {
+			return 'a';
+		},
+		2: function() {
+			return 'a';
+		},
+		3: function() {
+			return 'a';
+		},
+		4: function() {
+			var dataObj = $scope.getPeriodDataForQuestion(4);
+			var rates = [];
+			for (var i = 0; i < 3; i++) {
+				rates[i] = {};
+				var lowestKeyValPair = _.min(dataObj[i].unemploymentData, function(item) {
+					return item[1];
+				});
+				rates[i].letter = dataObj[i].letter;
+				rates[i].rate = lowestKeyValPair[1];
+			}
+			console.log('rates');
+			console.log(rates);
+
+			var lowestRate;
+			for (var i = 0; i < 3; i++) {
+				lowestRate = _.min(rates, function(item) {
+					return item.rate;
+				});
+			}
+			return lowestRate.letter;
+		},
+		5: function() {
+			return 'a';	
+		},
+		6: function() {
+			return 'a';
+		}
+
+	};
+
+
+	$scope.getPeriodDataForQuestion = function(questionNum) {
+		var dataObj = [];
+		var periodNames = [$scope.questions[questionNum].a, $scope.questions[questionNum].b, $scope.questions[questionNum].c];
+		var letterChoices = ['a','b','c'];
+		for (var i = 0; i < 3; i++) {
+			var period = _.findWhere($scope.expansions, {name: periodNames[i]})
+			dataObj[i] = {
+				letter: letterChoices[i], 
+				unemploymentData: unemploymentDataService.getUnemploymentData(period.startDate, period.endDate, 12),
+				lfpData: unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12)
+			}
+		}
+		return dataObj;
+	}
+
+	// $scope.getLFPDataForPeriodName = function(periodCollection, name) {
+	// 	var period = _.findWhere(periodCollection, {name: name})
+	// 	var data = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
+	// 	return data;
+	// }
 
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {
@@ -166,7 +235,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 
 	$scope.initQuestions = function() {
 		var randomizedRecessions = [];
-		
 		_.each($scope.recessions, function(item, index, list){
 			if(item.name !== "Great Depression: August 1929 - March 1933" && item.name !== "Great Recession: December 2007 - June 2009") {
 				randomizedRecessions.push(item.name);
@@ -186,22 +254,63 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 			$scope.questions[j+3].b = randomizedExpansions[j+1];
 			$scope.questions[j+3].c = randomizedExpansions[j+2];
 		}
-		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val];
 	}
 
 	$scope.initQuestions();
 
 	$scope.submitResponse = function() {
-		//TODO grading and feedback happen here
-		if ($scope.currentQuestionNum.val >= 5) $state.transitionTo('intro');
-		if (!$("input[name=answer]:checked").val()) $scope.showFeedbackMessage('Choose an answer the before clicking next.');
-		$scope.currentQuestion = $scope.questions[$scope.currentQuestionNum.val += 1];
+		if ($scope.locked) return;
+		var question = $scope.currentQuestionNum.val;
+		var response = $("input[name=answer]:checked").val();
+		if (response === undefined || response === 'undefined' || response === '') {
+			$scope.instruction = "Choose and answer."
+			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
+			return;
+		} else {
+			$scope.currentResponse = response; 
+		}
+		var answer = $scope.answers[question]();
+		$scope.currentAnswer = answer;
+		if (response === answer) {
+			if(question === 6) {
+				$scope.$broadcast('showCorrectResponsePopover', 
+					function() { $scope.locked = true; }, 
+					function() { 
+						$scope.$broadcast('closeAllPopovers');
+						$state.transitionTo('intro'); 
+					},
+					3000 
+				);
+			} else {
+				$scope.$broadcast('showCorrectResponsePopover', 
+					function() { $scope.locked = true; },
+					function() {
+						$scope.loadNextQuestion();
+						$scope.locked = false;
+					 } ,
+					3000
+				);
+			}
+		} else if (response !== answer) {
+			$scope.$broadcast("showIncorrectResponsePopover", 
+				function () { $scope.locked = true; }, //fadeIn callback
+				function() { $scope.locked = false; }, //fadeOut callback
+				3000
+			);
+		}
+	}
+
+	$scope.loadNextQuestion = function() {
+		$scope.$broadcast('closeAllPopovers');
+		$scope.$apply(function() {
+			$scope.currentQuestionNum.val += 1;
+		});
 		$("input[name=answer]:checked").prop('checked',false); 
 	}
 
-	$scope.showFeedbackMessage = function(message) {
-		$scope.feedbackMessage = message;
-		angular.element('#incorrect-modal').modal('show');
+	$scope.getIncorrectResponseFeedback = function() {
+		//to see how to implement this function using a somewhat comples data model, see level 3
+		return "";
 	}
 
 }]);
