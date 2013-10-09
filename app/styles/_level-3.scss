@@ -1,3 +1,10 @@
+.level-3-container {
+	@include clearfix;
+	.correct-popover, .incorrect-popover, .instruction-popover {
+	    top: 300px;
+	    left: 322px;
+	}
+}
 
 .level-3-secondary-header {
 	background: $grey;
@@ -452,11 +459,4 @@
 .map_popup_feature {
 	@include popover($darkGrey, $white);
 	padding: 10px;
-}
-
-.level-3-container {
-	.correct-popover, .incorrect-popover, .instruction-popover {
-	    top: 300px;
-	    left: 322px;
-	}
 }

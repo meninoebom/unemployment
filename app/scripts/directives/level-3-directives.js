@@ -214,10 +214,9 @@ angular.module('directives.ue.level-3', [])
 		    }// end of redrawSlider()
 	         
 	        scope.$watch("selectedRegions", function() {
-	        	var date = scope.dataSpec.latestDateAvailable.year +"-"+ scope.dataSpec.latestDateAvailable.month;
-	        	date = unemploymentDataService.calculateDateAsDecimal(date);
-	          	redrawSlider( date, scope.highestVisibleRate);
-	          // redrawSlider(2013.3, scope.highestVisibleRate);
+	        	var endDate = scope.dataSpec.latestDateAvailable.year +"-"+ scope.dataSpec.latestDateAvailable.month;
+	        	var endDateInDecimalForm = unemploymentDataService.calculateDateAsDecimal(endDate);
+	          	redrawSlider( endDateInDecimalForm, scope.highestVisibleRate);
 	        });
 
 	  	}// end link function

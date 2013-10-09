@@ -1,3 +1,10 @@
+.level-4-container {
+	@include clearfix;
+	.correct-popover, .incorrect-popover, .instruction-popover {
+	    top: 300px;
+	    left: 422px;
+	}
+}
 
 .level-4-main-header {
 	@include font(24px, 18px);
@@ -366,12 +373,5 @@
 	}
 	tr.even {
 		background-color: $lightGrey;
-	}
-}
-
-.level-4-container {
-	.correct-popover, .incorrect-popover, .instruction-popover {
-	    top: 300px;
-	    left: 422px;
 	}
 }

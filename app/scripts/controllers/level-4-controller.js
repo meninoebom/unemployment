@@ -252,8 +252,12 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 
 	$scope.submitResponse = function() {
 		if ($scope.locked) return;
+
 		var question = $scope.currentQuestionNum.val;
 		var response = $("input[name=answer]:checked").val();
+		var answer = $scope.answers[question]();
+		$scope.currentAnswer = answer;
+
 		if (response === undefined || response === 'undefined' || response === '') {
 			$scope.instruction = "Choose and answer."
 			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
@@ -261,8 +265,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		} else {
 			$scope.currentResponse = response; 
 		}
-		var answer = $scope.answers[question]();
-		$scope.currentAnswer = answer;
+
 		if (response === answer) {
 			if(question === 6) {
 				$scope.$broadcast('showCorrectResponsePopover', 
@@ -290,6 +293,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 				3000
 			);
 		}
+		
 	}
 
 	$scope.loadNextQuestion = function() {

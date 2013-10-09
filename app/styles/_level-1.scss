@@ -1,3 +1,12 @@
+
+.level-1-container {
+    @include clearfix;
+    .correct-popover, .incorrect-popover, .instruction-popover {
+        top: 300px;
+        left: 422px;
+    }
+}
+
 .profiles, .level-2-pie-charts {
     background: $grey;
     float: left;
@@ -147,11 +156,4 @@ $labelSize: 21px;
 
 .level-1-question-area {
     width: 721px; 
-}
-
-.level-1-container {
-    .correct-popover, .incorrect-popover, .instruction-popover {
-        top: 300px;
-        left: 422px;
-    }
 }

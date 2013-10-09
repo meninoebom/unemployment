@@ -46,9 +46,10 @@ angular.module('directives.ue.popovers', [])
 				scope.$broadcast('closeAllPopovers', element);
 				if(showing) return;
 				showing = true;
+				var timeOutId;
 				$(element).fadeIn('slow', function() {
 					if (timer) {
-						var timeOutId = window.setTimeout(function() {
+						timeOutId = window.setTimeout(function() {
 							$(element).fadeOut('slow', function() {
 								showing = false;
 								if (fadeOutCallback) fadeOutCallback();
