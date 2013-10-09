@@ -260,7 +260,11 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 
 		if (response === undefined || response === 'undefined' || response === '') {
 			$scope.instruction = "Choose and answer."
-			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
+			$scope.$broadcast('showInstructionPopover', 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
 			return;
 		} else {
 			$scope.currentResponse = response; 
@@ -288,8 +292,8 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 			}
 		} else if (response !== answer) {
 			$scope.$broadcast("showIncorrectResponsePopover", 
-				function () { $scope.locked = true; }, //fadeIn callback
-				function() { $scope.locked = false; }, //fadeOut callback
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
 				3000
 			);
 		}

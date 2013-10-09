@@ -78,22 +78,6 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
       );    
     }
 
-    // $scope.showIncorrectFeedback = function() {
-    //   $scope.$broadcast("showIncorrectResponsePopover", function () {
-    //       setTimeout(function() {
-    //         $scope.$broadcast('closeAllPopovers');  
-    //       }, 1500);
-    //   });      
-    // }
-
-    // $scope.showCorrectFeedback = function() {
-    //     $scope.$broadcast('showCorrectResponsePopover', function() {
-    //         setTimeout(function() {
-    //           $scope.$broadcast('closeAllPopovers');  
-    //         }, 1500);
-    //     });
-    // }
-
     $scope.getIncorrectFeedbackPopoverContent = function() {
       return "You placed "+$scope.currentProfile.name+" in the wrong category.";
     }

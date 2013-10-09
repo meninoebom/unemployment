@@ -2,11 +2,10 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state', '$filter',  function($scope, $state, $filter ) {
 
-$scope.currentQuestion = {num: 1};//which question will display first
-$scope.acceptingResponses = true;
+$scope.currentQuestion = {num: 5};//which question will display first
 $scope.response = {value: '0.00'};
-
-$scope.fillInTheBlankAnswers = [64, 92, 8, 8];
+$scope.instruction = ""
+$scope.locked = false;
 $scope.numAttempts = 0;
 
 $scope.eqTool = {
@@ -14,6 +13,8 @@ $scope.eqTool = {
   unemployed: "",
   nonInstitutional: ""
 }
+
+$scope.fillInTheBlankAnswers = [64, 92, 8, 8];
 
 $scope.employmentCategories = [
       { id: 1,
@@ -173,15 +174,32 @@ $scope.employmentCategories = [
   }
 
   $scope.submitFillInTheBlankResponse = function(questionNum) {
-    if (!$scope.acceptingResponses) return;
+    if ($scope.locked) return;
+
+    //TODO make sure answer and response treated the same way interms of rounding
     var answer = $scope.fillInTheBlankAnswers[questionNum-1];
-    if($scope.response.value == answer) {
-      $scope.$broadcast('showCorrectPopover', undefined, $scope.loadNextFillInTheBlankQuestion);
-      $scope.displayPieChartPercentage(questionNum);
-    } else {
+    var response = $scope.response.value;
+
+    if(response == answer) {
+      $scope.$broadcast('showCorrectResponsePopover', 
+        function() { 
+          $scope.locked = true; 
+          $scope.displayPieChartPercentage(questionNum);
+        },
+        function() {
+          $scope.loadNextFillInTheBlankQuestion();
+          $scope.locked = false;
+         } ,
+        2000
+      );
+    } else if (response != answer){
       $scope.numAttempts += 1;
-      var eventName = "showQuestion"+questionNum+"IncorrectPopover";
-      $scope.$broadcast(eventName, $scope.lockPopoverStage, $scope.unlockPopoverStage);
+      var eventName = "showIncorrectResponsePopover-"+questionNum;
+      $scope.$broadcast(eventName, 
+        function () { $scope.locked = true; },
+        function() { $scope.locked = false; },
+        3000
+      );
     }  
   }
 
@@ -191,13 +209,6 @@ $scope.employmentCategories = [
       $scope.response.value = 0;
       $scope.numAttempts = 0;
     })
-  }
- 
-  $scope.lockPopoverStage = function() {
-    $scope.acceptingResponses = false;
-  }
-  $scope.unlockPopoverStage = function() {
-    $scope.acceptingResponses = true;
   }
 
   $scope.displayPieChartPercentage = function(questionNum) {
@@ -218,11 +229,16 @@ $scope.employmentCategories = [
   }
 
   $scope.submitScenarioResponses = function() {
-    if (!$scope.acceptingResponses) return;
+    if ($scope.locked) return;
     if (!$("input[name=labor-force]:checked").val() 
       || !$("input[name=employment]:checked").val() 
       || !$("input[name=unemployment]:checked").val()) { 
-      $scope.$broadcast('chooseAnswersPopover', undefined, undefined, "Choose one answer for each category, then click 'Next'");     
+      $scope.instruction = "Choose one answer for each category, then click 'Next'."
+      $scope.$broadcast('showInstructionPopover', 
+        function () { $scope.locked = true; },
+        function() { $scope.locked = false; },
+        3000
+      );    
     } else {
       //tally the score here
       $scope.showScenarioFeedback($scope.currentScenario);
@@ -230,25 +246,21 @@ $scope.employmentCategories = [
   }
 
   $scope.showScenarioFeedback = function(currentScenario) {
-     $scope.acceptingResponses = false;
-
-     $('body').bind('click.lock keyup.lock', function(e) {
-        e.preventDefault();
-     });
+     $scope.locked = true;
 
     var answerStatus = [];
 
-    var lfpScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=labor-force]:checked").val(), currentScenario.answers.laborForceParticipation, 'Labor Force Participation');
-    $scope.lfpScenarioFeedback = lfpScenarioFeedback.content;
-    answerStatus.push(lfpScenarioFeedback.status);
+    var lfpScenarioFeedbackObj = $scope.createScenarioFeedbackForRate($("input[name=labor-force]:checked").val(), currentScenario.answers.laborForceParticipation, 'Labor Force Participation');
+    $scope.lfpScenarioFeedback = lfpScenarioFeedbackObj.content;
+    answerStatus.push(lfpScenarioFeedbackObj.status);
 
-    var empScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=employment]:checked").val(), currentScenario.answers.employment, 'Employment');
-    $scope.empScenarioFeedback = empScenarioFeedback.content;
-    answerStatus.push(empScenarioFeedback.status);
+    var empScenarioFeedbackObj = $scope.createScenarioFeedbackForRate($("input[name=employment]:checked").val(), currentScenario.answers.employment, 'Employment');
+    $scope.empScenarioFeedback = empScenarioFeedbackObj.content;
+    answerStatus.push(empScenarioFeedbackObj.status);
     
-    var unempScenarioFeedback = $scope.createScenarioFeedbackForRate($("input[name=unemployment]:checked").val(), currentScenario.answers.unemployment, 'Unemployment');
-    $scope.unempScenarioFeedback = unempScenarioFeedback.content;
-    answerStatus.push(unempScenarioFeedback.status);
+    var unempScenarioFeedbackObj = $scope.createScenarioFeedbackForRate($("input[name=unemployment]:checked").val(), currentScenario.answers.unemployment, 'Unemployment');
+    $scope.unempScenarioFeedback = unempScenarioFeedbackObj.content;
+    answerStatus.push(unempScenarioFeedbackObj.status);
 
     var allAnswersCorrect = true;
     for(var i = 0; i < answerStatus.length; i++) {
@@ -256,18 +268,26 @@ $scope.employmentCategories = [
     }
 
     if (allAnswersCorrect) {
-      $scope.$broadcast('showCorrectPopover');
+      $scope.$broadcast('showCorrectResponsePopover', 
+        function() { 
+          $scope.locked = true; 
+          $scope.doAnimation(currentScenario);
+        },
+        function() { 
+          $scope.$apply(function () {
+            $scope.getNextScenario();
+          });
+          $scope.locked = false; 
+        },
+        4000
+      );
     } else {
-      $scope.$broadcast('showScenarioFeedbackPopover');
+      $scope.$broadcast('showScenarioFeedbackPopover', 
+        function() { $scope.locked = true; },
+        function() { $scope.locked = false; },
+        4000
+      );
     }
-
-    function closePopover() {
-      $scope.$broadcast('closeAllPopovers');
-      $scope.doAnimation(currentScenario);
-      $scope.acceptingResponses = true;
-      $('body').unbind('click.lock keyup.lock');
-    }
-    setTimeout(closePopover, 5000);
   }
 
   $scope.createScenarioFeedbackForRate = function(studentResponse, correctAnswer, rateName) {
@@ -300,9 +320,6 @@ $scope.employmentCategories = [
       var to = _.findWhere($scope.employmentCategories, {id: scenario.moveToCategoryId});
       console.log('moving from ' + from.name + ' to ' + to.name);
     }
-    $scope.$apply(function () {
-      $scope.getNextScenario();
-    });
   }
 
   $scope.getNextScenario = function() {
