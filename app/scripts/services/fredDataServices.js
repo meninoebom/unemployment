@@ -84,10 +84,10 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		getUSUnemploymentDataForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.unemployment, date);
 		},
-		getLaborForceDataForForDate: function(date) {
+		getLaborForceDataForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.labor_force, date);
 		},
-		getNairuDataForForDate: function(date) {
+		getNairuDataForDate: function(date) {
 			return this._getDataFromDatasetForDate(this.nairu_long, date);
 		},
 		// deprecated because bad naming in light of labor force data; should be removed
@@ -108,16 +108,36 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		
 			return v1 + (v2-v1)*k;
 		},
-	  getCurrentMonthYearFormatted: function(startDate, offset) {
-	    var currentDateFormatted = {};
-	    var currentDate = this.calculateDateWithOffset(startDate, offset);
-	    var y = currentDate.split('-')[0];
-			var m = currentDate.split('-')[1];
-			var currentDateObj = new Date(y, m-1, 01);
-			currentDateFormatted.monthName = currentDateObj.getMonthName();
-			currentDateFormatted.fullYear = currentDateObj.getFullYear();
-			return currentDateFormatted;
-	  }
+	    getCurrentMonthYearFormatted: function(startDate, offset) {
+	      var currentDateFormatted = {};
+	      var currentDate = this.calculateDateWithOffset(startDate, offset);
+	      var y = currentDate.split('-')[0];
+		  	var m = currentDate.split('-')[1];
+		  	var currentDateObj = new Date(y, m-1, 01);
+		  	currentDateFormatted.monthName = currentDateObj.getMonthName();
+		  	currentDateFormatted.fullYear = currentDateObj.getFullYear();
+		  	return currentDateFormatted;
+	    },
+	    getLaborForceDataForDateAsync: function(date, callback) {
+	    	var that = this;
+			$http.get('data/us_labor_force.json')
+				.then(function(response) {
+						var start_date = response.data.start_date;
+						var ixStart = that.calculateMonthsBetween(start_date, date);
+						var value = response.data.values[ixStart];
+						callback(value);
+				});
+		},
+	    getNairuDataForDateAsync: function(date, callback) {
+	    	var that = this;
+			$http.get('data/us_nairu_long.json')
+				.then(function(response) {
+						var start_date = response.data.start_date;
+						var ixStart = that.calculateMonthsBetween(start_date, date);
+						var value = response.data.values[ixStart];
+						callback(value);
+				});
+		}
 	};
 		
 	$http.get('data/us_unemployment.json')

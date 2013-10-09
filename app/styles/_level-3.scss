@@ -262,8 +262,29 @@
 	.stat-reader-date, .stat-reader-region, .stat-reader-label {
 		@include font(18px, 22px, $darkGrey);
 	}
-	.stat-reader-horiz-line {
+
+	.stat-reader-subheading-percentage {
+		@include font(16px, 20px, $red);
+		font-family: 'open_sansbold';
 		display: block;
+		float: left;	
+		margin-top: 9px;
+		width: 55px;
+	}
+
+	.stat-reader-subheading-label {
+		@include font(16px, 20px, $darkGrey);
+		font-family: 'open_sanssemibold';
+		display: block;
+		float: left;
+		margin-top: 9px;
+		width: 165px;
+	}
+
+	.stat-reader-horiz-line {
+		@include clearfix;
+		display: block;
+		float: left;
 		height: 1px;
 		width: 100%;
 		background: $darkGrey;

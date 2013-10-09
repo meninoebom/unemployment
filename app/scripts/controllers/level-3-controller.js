@@ -11,6 +11,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	};
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.lfpValue = 0;
+	$scope.dataSpec.nairuValue = 0;
 	$scope.dataSpec.view = "map";
 	$scope.dataSpec.mode = "exploration";
 	$scope.dataSpec.year = '2000';
@@ -60,8 +61,8 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		},
 		3: function() {
 			var startYear = $scope.dataSpec.latestDateAvailable.year-1;
-			var startLFPRate = unemploymentDataService.getLaborForceDataForForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
-			var endLFPRate = unemploymentDataService.getLaborForceDataForForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var startLFPRate = unemploymentDataService.getLaborForceDataForDate(startYear+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
+			var endLFPRate = unemploymentDataService.getLaborForceDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			if (startLFPRate === endLFPRate) return 'stayed the same';
 			if (startLFPRate > endLFPRate) return 'decreased';
 			if (startLFPRate < endLFPRate) return 'increased';
@@ -639,8 +640,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 	
 	$scope.updateData = function(regionChanged) {
-		var lfpData = unemploymentDataService.getLaborForceDataForForDate($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01');
-		console.log(lfpData);
+
 		mapDataService.getRegionalDataForDate($scope.dataSpec.regionName, $scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.dataSpec.usValue = data.us.value;
 			$scope.dataSpec.regionName = data.region.name;
@@ -662,8 +662,18 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 				$scope.county2Value = $scope.dataForCounty($scope.dataSpec.county2);
 			}
 		});
+
+		unemploymentDataService.getLaborForceDataForDateAsync($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
+			$scope.dataSpec.lfpValue = data;
+		});
+		
+		unemploymentDataService.getNairuDataForDateAsync($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
+			$scope.dataSpec.nairuValue = data;
+		});
 	};
-	
+
+	$scope.updateData(false);
+
 	$scope.$watch('dataSpec.regionName', function() {
 		$scope.updateData(true);
 	});
