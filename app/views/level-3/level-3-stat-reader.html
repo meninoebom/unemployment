@@ -6,12 +6,12 @@
 		<p class="stat-reader-label">Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
-	<div>	
+	<div ng-show="dataSpec.question==2">	
 		<p class="stat-reader-subheading-percentage">{{dataSpec.nairuValue}}%</p>
 		<p class="stat-reader-subheading-label">Natural Unemployment Rate</p>
 		<span class="stat-reader-horiz-line"></span>
 	</div>	
-	<div>	
+	<div ng-show="dataSpec.question==3">	
 		<p class="stat-reader-subheading-percentage">{{dataSpec.lfpValue}}%</p>
 		<p class="stat-reader-subheading-label">Labor Force Participation Rate</p>
 		<span class="stat-reader-horiz-line"></span>

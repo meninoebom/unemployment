@@ -48,6 +48,13 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 			var ym2 = d2.split('-');
 			return 12*(ym2[0]-ym1[0]) + (ym2[1]-ym1[1]);
 		},	
+		calculateDateAsDecimal: function(d) {
+			var y = d.split('-')[0];
+			var m = d.split('-')[1];
+			var decimal = Math.round((parseInt(m)*100)/12);
+			var num = y+"."+decimal;
+			return num;
+		},
 		_getDataFromDatasetForDate: function(dataset, d1) {
 			if (!dataset.hasOwnProperty('values')) {
 				// hasn't finished loading data yet...
@@ -137,6 +144,16 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 						var value = response.data.values[ixStart];
 						callback(value);
 				});
+		},
+		getLatestDateAvailableInDataSeries: function(callback) {
+	    	var that = this;
+			$http.get('data/us_unemployment.json')
+				.then(function(response) {
+						var start_date = response.data.start_date;
+						var offset = response.data.values.length - 2;
+						var value = that.calculateDateWithOffset(start_date, offset);
+						callback(value);
+				});
 		}
 	};
 		
@@ -154,11 +171,10 @@ services.factory('unemploymentDataService', ['$http', function($http) {
 		.then(function(response) {
 				dataservice.nairu_long.start_date = response.data.start_date;
 				dataservice.nairu_long.values = response.data.values;
-		});
-	
-	
+		});	
+
 	return dataservice;
-		
+
 }]);
 
 services.factory('mapDataService',['$http', function($http) {

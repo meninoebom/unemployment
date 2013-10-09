@@ -9,6 +9,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		month: 7,
 		monthName: 'July'
 	};
+
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.lfpValue = 0;
 	$scope.dataSpec.nairuValue = 0;
@@ -640,7 +641,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 	
 	$scope.updateData = function(regionChanged) {
-
 		mapDataService.getRegionalDataForDate($scope.dataSpec.regionName, $scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.dataSpec.usValue = data.us.value;
 			$scope.dataSpec.regionName = data.region.name;
@@ -666,10 +666,19 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		unemploymentDataService.getLaborForceDataForDateAsync($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.dataSpec.lfpValue = data;
 		});
-		
+
 		unemploymentDataService.getNairuDataForDateAsync($scope.dataSpec.year+'-'+$scope.dataSpec.month+'-01', function(data) {
 			$scope.dataSpec.nairuValue = data;
 		});
+
+		unemploymentDataService.getLatestDateAvailableInDataSeries(function(d) {
+			var y = d.split('-')[0];
+			var m = d.split('-')[1];
+			this.dataSpec.latestDateAvailable.year = y;
+			this.dataSpec.latestDateAvailable.month = m;
+			this.dataSpec.latestDateAvailable.monthName = this.monthNames[parseInt(m)-1];
+		});
+
 	};
 
 	$scope.updateData(false);
