@@ -274,7 +274,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 						$scope.$broadcast('closeAllPopovers');
 						$state.transitionTo('intro'); 
 					},
-					3000 
+					2000 
 				);
 			} else {
 				$scope.$broadcast('showCorrectResponsePopover', 
@@ -283,7 +283,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 						$scope.loadNextQuestion();
 						$scope.locked = false;
 					 } ,
-					3000
+					2000
 				);
 			}
 		} else if (response !== answer) {
@@ -293,7 +293,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 				3000
 			);
 		}
-		
+
 	}
 
 	$scope.loadNextQuestion = function() {
