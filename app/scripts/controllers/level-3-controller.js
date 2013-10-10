@@ -1,7 +1,6 @@
 'use strict';
 
 unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService', 'unemploymentDataService',  function($scope, $state ,$timeout, mapDataService, unemploymentDataService) {
-
 	$scope.dataSpec = {};
 	$scope.dataSpec.question = 1;
 	$scope.dataSpec.latestDateAvailable = {
@@ -9,7 +8,6 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		month: 7,
 		monthName: 'July'
 	};
-
 	$scope.dataSpec.usValue = 0;
 	$scope.dataSpec.lfpValue = 0;
 	$scope.dataSpec.nairuValue = 0;
@@ -27,7 +25,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.countyList = [];
 	$scope.dataSpec.county1 = '';
 	$scope.dataSpec.county2 = '';
-	$scope.locked = true;
+	$scope.locked = false;
 	$scope.attempts = 0;
 	$scope.currentAnswer;
 	$scope.currentResponse;
@@ -436,27 +434,39 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	}
 
 	$scope.submitResponse = function() {
-		if (!$scope.locked) return;
+		if ($scope.locked) return;
 		
 		var question = $scope.dataSpec.question;
 		
 		if (question === 5 && !$scope.hasChosenAState()) {
 			$scope.instruction = "Choose a state."
-			$scope.$broadcast("showInstructionPopover", $scope.lock, $scope.unlock);
+			$scope.$broadcast('showInstructionPopover', 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
 			return;
 		}
 
 		if (question === 6 && !$scope.hasChosenTwoCounties()) {
 			$scope.instruction = "Choose two counties."
-			$scope.$broadcast("showInstructionPopover", $scope.lock, $scope.unlock);
-			return;
+			$scope.$broadcast('showInstructionPopover', 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
+			return;			
 		}
 
 		var response = $("input[name=question"+question+"]:checked").val();
 		
 		if (response === undefined || response === 'undefined' || response === '') {
-			$scope.instruction = "Choose and answer."
-			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
+			$scope.instruction = "Choose an answer."
+			$scope.$broadcast('showInstructionPopover', 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
 			return;
 		} else {
 			$scope.currentResponse = response; 
@@ -468,29 +478,30 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		if (response === answer) {
 			$scope.attempts = 0;
 			if(question === 6) {
-				$scope.$broadcast('showCorrectResponsePopover', function() {
-					$scope.lock();
-				    setTimeout($scope.goToLevel4, 1500);
-					return;
-				}, $scope.goToLevel4);
+				$scope.$broadcast('showCorrectResponsePopover', 
+					function() { $scope.locked = true; },
+					function() { $scope.goToLevel4(); } ,
+					2000
+				);
 			} else {
-				$scope.$broadcast('showCorrectResponsePopover', function() {
-					$scope.lock();
-				    setTimeout($scope.loadNextQuestion, 1500);
-					return;
-				}, $scope.loadNextQuestion);
+				$scope.$broadcast('showCorrectResponsePopover', 
+					function() { $scope.locked = true; },
+					function() { 
+						$scope.locked = false;
+						$scope.loadNextQuestion(); 
+					} ,
+					2000
+				);
 			}
 		} else if (response !== answer) {
 			$scope.attempts +=1;
-			$scope.$broadcast("showIncorrectResponsePopover", function () {
-				$scope.lock();
-				setTimeout(function() {
-					$scope.$broadcast('closeAllPopovers');	
-				}, 2500);
-			}, $scope.unlock);
+			$scope.$broadcast("showIncorrectResponsePopover", 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
 		}
 	}
-
 
 	$scope.getIncorrectResponseFeedback = function() {
 		if ($scope.attempts === 1) {	
@@ -499,35 +510,25 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			var answer = $scope.currentAnswer;
 			var response = $scope.currentResponse;
 			if (data[question].answers[answer] === undefined || data[question].answers[answer] === '') return;
-			if (data[question].answers[answer].responses[response]() === undefined || data[question].answers[answer].responses[response]() === '') return;
 			var feedback = data[question].answers[answer].responses[response]();
+			if (feedback === undefined || feedback === '') return;
 			return feedback;
 		} else if ($scope.attempts > 1) {
 			var data = $scope.secondIncorrectAttemptHints;
 			var question = $scope.dataSpec.question;
 			var answer = $scope.currentAnswer;
-			if (data[question].answers[answer]() === undefined || data[question].answers[answer]() === '') return;
 			var feedback = data[question].answers[answer]();
+			if (feedback === undefined || feedback === '') return;
 			return feedback;
 		}
 	}
 
 	$scope.loadNextQuestion = function() {
 		if ($scope.locked) return;
-		//$scope.attempts = 0;
-		$scope.$broadcast('closeAllPopovers');
-		$scope.unlock();
+		$scope.locked = false;
 		$scope.$apply(function() {
 			$scope.dataSpec.question += 1;
 		});
-	}
-
-	$scope.lock = function() {
-		$scope.locked = false;
-	}
-
-	$scope.unlock = function() {
-		$scope.locked = true;
 	}
 
 	$scope.goToLevel4 = function() {
@@ -674,9 +675,9 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		unemploymentDataService.getLatestDateAvailableInDataSeries(function(d) {
 			var y = d.split('-')[0];
 			var m = d.split('-')[1];
-			this.dataSpec.latestDateAvailable.year = y;
-			this.dataSpec.latestDateAvailable.month = m;
-			this.dataSpec.latestDateAvailable.monthName = this.monthNames[parseInt(m)-1];
+			$scope.dataSpec.latestDateAvailable.year = y;
+			$scope.dataSpec.latestDateAvailable.month = m;
+			$scope.dataSpec.latestDateAvailable.monthName = $scope.monthNames[parseInt(m)-1];
 		});
 
 	};
