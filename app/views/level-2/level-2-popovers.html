@@ -1,18 +1,18 @@
- <ue-popover2 class="instruction-popover" show-event="showInstructionPopover">
+ <ue-popover class="instruction-popover" show-event="showInstructionPopover">
 	<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<p>{{instruction}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>
 
- <ue-popover2 class="correct-popover" show-event="showCorrectResponsePopover">
+ <ue-popover class="correct-popover" show-event="showCorrectResponsePopover">
 	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Correct.</h4>
 	</div>
-</ue-popover2>
+</ue-popover>
 
- <ue-popover2 class="incorrect-popover" show-event="showIncorrectResponsePopover-1">
+ <ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-1">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -20,9 +20,9 @@
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-labor-force-participation.png" width="148" height="63">
 		<p ng-show="numAttempts > 2">{{employmentCategories[6].count}} / {{employmentCategories[5].count}} X 100 = {{employmentCategories[6].count / employmentCategories[5].count * 100 | number:2}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>
 
-<ue-popover2 class="incorrect-popover" show-event="showIncorrectResponsePopover-2">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-2">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -30,9 +30,9 @@
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-employment-rate.png" width="148" height="63">
 		<p ng-show="numAttempts > 2">{{employmentCategories[0].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[0].count / employmentCategories[6].count * 100 | number:2}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>
 
-<ue-popover2 class="incorrect-popover" show-event="showIncorrectResponsePopover-3">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-3">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -40,9 +40,9 @@
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-unemployment-rate.png" width="148" height="63">
 		<p ng-show="numAttempts > 2">{{employmentCategories[7].count}} / {{employmentCategories[6].count}} X 100 = {{employmentCategories[7].count / employmentCategories[6].count * 100 | number:2}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>
 
-<ue-popover2 class="incorrect-popover" show-event="showIncorrectResponsePopover-4">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-4">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -50,13 +50,13 @@
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-natural-unemployment-rate.png" width="148" height="63">
 		<p ng-show="numAttempts > 2">(({{employmentCategories[7].count}} - {{employmentCategories[3].count}}) / {{employmentCategories[6].count}})  X 100 = {{((employmentCategories[7].count - employmentCategories[3].count)/ employmentCategories[6].count)* 100  | number:2}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>
 
- <ue-popover2 class="incorrect-popover" show-event="showScenarioFeedbackPopover">
+ <ue-popover class="incorrect-popover" show-event="showScenarioFeedbackPopover">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 	    <p ng-show="lfpScenarioFeedback != ''">{{lfpScenarioFeedback}}</p>
 	    <p ng-show="empScenarioFeedback != ''">{{empScenarioFeedback}}</p>
 	    <p ng-show="unempScenarioFeedback != ''">{{unempScenarioFeedback}}</p>
 	</div>
-</ue-popover2>
+</ue-popover>

@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state', '$filter',  function($scope, $state, $filter ) {
 
-$scope.currentQuestion = {num: 5};//which question will display first
+$scope.currentQuestion = {num: 1};//which question will display first
 $scope.response = {value: '0.00'};
 $scope.instruction = ""
 $scope.locked = false;
