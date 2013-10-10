@@ -1,6 +1,7 @@
 'use strict';
 
 unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
+    $scope.locked = false;
     $scope.employedCount = 0;
     $scope.frictionalCount = 0;
     $scope.structuralCount = 0;
@@ -61,20 +62,20 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
       }
     ];
 
-    $scope.showIncorrectFeedback = function() {
-      $scope.$broadcast("showIncorrectResponsePopover", function () {
-          setTimeout(function() {
-            $scope.$broadcast('closeAllPopovers');  
-          }, 1500);
-      });      
+    $scope.showCorrectFeedback = function() {
+        $scope.$broadcast('showCorrectResponsePopover', 
+          function() { $scope.locked = true; },
+          function() { $scope.locked = false; },
+          2000
+        );
     }
 
-    $scope.showCorrectFeedback = function() {
-        $scope.$broadcast('showCorrectResponsePopover', function() {
-            setTimeout(function() {
-              $scope.$broadcast('closeAllPopovers');  
-            }, 1500);
-        });
+    $scope.showIncorrectFeedback = function() {
+      $scope.$broadcast("showIncorrectResponsePopover", 
+        function () { $scope.locked = true; },
+        function() { $scope.locked = false; },
+        3000
+      );    
     }
 
     $scope.getIncorrectFeedbackPopoverContent = function() {

@@ -1,4 +1,18 @@
- <ue-popover class="incorrect-popover" show-event="showQuestion1IncorrectPopover">
+ <ue-popover class="instruction-popover" show-event="showInstructionPopover">
+	<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<p>{{instruction}}</p>
+	</div>
+</ue-popover>
+
+ <ue-popover class="correct-popover" show-event="showCorrectResponsePopover">
+	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
+	<div class="popover-content">
+		<h4>Correct.</h4>
+	</div>
+</ue-popover>
+
+ <ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-1">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -8,7 +22,7 @@
 	</div>
 </ue-popover>
 
-<ue-popover class="incorrect-popover" show-event="showQuestion2IncorrectPopover">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-2">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -18,7 +32,7 @@
 	</div>
 </ue-popover>
 
-<ue-popover class="incorrect-popover" show-event="showQuestion3IncorrectPopover">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-3">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
@@ -28,27 +42,13 @@
 	</div>
 </ue-popover>
 
-<ue-popover class="incorrect-popover" show-event="showQuestion4IncorrectPopover">
+<ue-popover class="incorrect-popover" show-event="showIncorrectResponsePopover-4">
 	<img src="img/popover-incorrect-icon.png" class="alert-icon" width="44" height="45" />
 	<div class="popover-content">
 		<h4>Incorrect.</h4>
 		<p ng-show="numAttempts > 0">The natural rate of unemployment the percentage of people in the labor force who are either frictionally or structurally unemployed.</p>
 		<img ng-show="numAttempts > 1" src="img/level-2-hint-natural-unemployment-rate.png" width="148" height="63">
 		<p ng-show="numAttempts > 2">(({{employmentCategories[7].count}} - {{employmentCategories[3].count}}) / {{employmentCategories[6].count}})  X 100 = {{((employmentCategories[7].count - employmentCategories[3].count)/ employmentCategories[6].count)* 100  | number:2}}</p>
-	</div>
-</ue-popover>
-
- <ue-popover class="correct-popover" show-event="showCorrectPopover">
-	<img src="img/popover-correct-icon.png" class="alert-icon" width="44" height="45" />
-	<div class="popover-content">
-		<h4>Correct.</h4>
-	</div>
-</ue-popover>
-
- <ue-popover class="instruction-popover" show-event="chooseAnswersPopover">
-	<img src="img/popover-alert-icon.png" class="alert-icon" width="44" height="45" />
-	<div class="popover-content">
-		<p>{{content}}</p>
 	</div>
 </ue-popover>
 

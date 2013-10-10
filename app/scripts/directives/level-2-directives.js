@@ -1,6 +1,25 @@
 'use strict';
 
 angular.module('directives.ue.level-2', [])
+.directive('twoDecimalPlaces', function() {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function(scope, elem, attrs, ngModel) {
+			elem.on('blur', function() {
+				var input = ngModel.$viewValue;
+				if( isNaN( parseFloat( input ) ) ) {
+					ngModel.$setViewValue("0.00");
+					ngModel.$render();
+					return;
+				}
+				var output = parseFloat(input).toFixed(2);
+				ngModel.$setViewValue(output);
+				ngModel.$render();
+			});
+		}
+	}
+})
 .directive('infoButton',['$position', '$timeout', function($position, $timeout){
 	//TODO clean out unnecessary code from this directive
 	return {

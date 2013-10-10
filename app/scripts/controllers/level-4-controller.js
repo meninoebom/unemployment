@@ -74,9 +74,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 				rates[i].letter = dataObj[i].letter;
 				rates[i].rate = lowestKeyValPair[1];
 			}
-			console.log('rates');
-			console.log(rates);
-
 			var lowestRate;
 			for (var i = 0; i < 3; i++) {
 				lowestRate = _.min(rates, function(item) {
@@ -86,14 +83,15 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 			return lowestRate.letter;
 		},
 		5: function() {
+			//TODO calculate and return answer dynamically
 			return 'a';	
 		},
 		6: function() {
+			//TODO calculate and return answer dynamically
 			return 'a';
 		}
 
 	};
-
 
 	$scope.getPeriodDataForQuestion = function(questionNum) {
 		var dataObj = [];
@@ -109,12 +107,6 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		}
 		return dataObj;
 	}
-
-	// $scope.getLFPDataForPeriodName = function(periodCollection, name) {
-	// 	var period = _.findWhere(periodCollection, {name: name})
-	// 	var data = unemploymentDataService.getLaborForceData(period.startDate, period.endDate, 12);
-	// 	return data;
-	// }
 
 	$scope.toggleGridAndGraphViews = function(view) {
         if (view === "graph") {
@@ -260,17 +252,24 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 
 	$scope.submitResponse = function() {
 		if ($scope.locked) return;
+
 		var question = $scope.currentQuestionNum.val;
 		var response = $("input[name=answer]:checked").val();
+		var answer = $scope.answers[question]();
+		$scope.currentAnswer = answer;
+
 		if (response === undefined || response === 'undefined' || response === '') {
 			$scope.instruction = "Choose and answer."
-			$scope.$broadcast('showInstructionPopover', $scope.lock, $scope.unlock);
+			$scope.$broadcast('showInstructionPopover', 
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
+				3000
+			);
 			return;
 		} else {
 			$scope.currentResponse = response; 
 		}
-		var answer = $scope.answers[question]();
-		$scope.currentAnswer = answer;
+
 		if (response === answer) {
 			if(question === 6) {
 				$scope.$broadcast('showCorrectResponsePopover', 
@@ -279,7 +278,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 						$scope.$broadcast('closeAllPopovers');
 						$state.transitionTo('intro'); 
 					},
-					3000 
+					2000 
 				);
 			} else {
 				$scope.$broadcast('showCorrectResponsePopover', 
@@ -288,16 +287,17 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 						$scope.loadNextQuestion();
 						$scope.locked = false;
 					 } ,
-					3000
+					2000
 				);
 			}
 		} else if (response !== answer) {
 			$scope.$broadcast("showIncorrectResponsePopover", 
-				function () { $scope.locked = true; }, //fadeIn callback
-				function() { $scope.locked = false; }, //fadeOut callback
+				function () { $scope.locked = true; },
+				function() { $scope.locked = false; },
 				3000
 			);
 		}
+
 	}
 
 	$scope.loadNextQuestion = function() {

@@ -55,7 +55,7 @@ For example, the following is a popover in level 3:
 		</div>
 	</ue-popover>
 
-the "show-event" attribute value, in this case, "showIntructionPopover",  registers the event name that will cause this popover to show for 2000 milliseconds or until the user clis on the screen which ever comes first. 
+the "show-event" attribute value, in this case, "showIntructionPopover",  registers the event name that will cause this popover to display for the duration of its timer or until the user clicks on the screen, which ever comes first. 
 
 In the Controller:
 Continuing with our example, to display this intruction popover in level 3 the controller broadasts the "show-event":
