@@ -136,7 +136,8 @@ angular.module('directives.mapping', [])
 				
 				var onStateClicked = function(obj) {
 					console.log('State Clicked');
-					console.log(obj);
+					// console.log(obj);
+					if (scope.showGraphingModeCountyDropdown()) return;
 					scope.dataSpec.regionName = obj.label;
 					scope.$apply();
 					console.log(scope.dataSpec);
@@ -150,16 +151,25 @@ angular.module('directives.mapping', [])
 					} else {
 						dataId = obj.id.split('_')[2];
 						var countyData = dataForCountyById(dataId);
-						if (scope.dataSpec.county1==countyData.name)  {
-							scope.dataSpec.county1 = '';
-						} else if (scope.dataSpec.county2==countyData.name)  {
-							scope.dataSpec.county2 = '';
-						} else if (scope.dataSpec.county1=='') {
-							scope.dataSpec.county1 = countyData.name;
+						if (scope.showGraphingModeCountyDropdown()) {
+							if (scope.dataSpec.county1==countyData.name)  {
+								scope.dataSpec.county1 = '';
+							} else if (scope.dataSpec.county2==countyData.name)  {
+								scope.dataSpec.county2 = '';
+							} else if (scope.dataSpec.county1=='') {
+								scope.dataSpec.county1 = countyData.name;
+							} else {
+								scope.dataSpec.county2 = countyData.name;
+							}
 						} else {
-							scope.dataSpec.county2 = countyData.name;
+							scope.dataSpec.county2 = '';
+							if (scope.dataSpec.county1==countyData.name)  {
+								scope.dataSpec.county1 = '';
+							} else {
+								scope.dataSpec.county1 = countyData.name;
+							}
 						}
-						scope.$apply();
+							scope.$apply();
 					}
 				}
 				window['countyClicked'] = onCountyClicked; // I HATE THIS!!!!! but that's how it must be done for now...
