@@ -14,7 +14,24 @@ $scope.eqTool = {
   nonInstitutional: ""
 }
 
-$scope.fillInTheBlankAnswers = [64, 92, 8, 8];
+$scope.fillInTheBlankAnswers = {
+  1: function() {
+    //63.61
+    return Math.round(($scope.employmentCategories[6].count/$scope.employmentCategories[5].count)*10000)/100
+  },  
+  2: function() {
+    //92.11
+    return Math.round(($scope.employmentCategories[0].count/$scope.employmentCategories[6].count)*10000)/100
+  }, 
+  3: function() {
+    //7.89
+    return Math.round(($scope.employmentCategories[7].count/$scope.employmentCategories[6].count)*10000)/100
+  }, 
+  4: function() {
+    //7.80
+    return Math.round((($scope.employmentCategories[7].count - $scope.employmentCategories[3].count)/$scope.employmentCategories[6].count)*10000)/100
+  }
+};
 
 $scope.employmentCategories = [
       { id: 1,
@@ -177,7 +194,9 @@ $scope.employmentCategories = [
     if ($scope.locked) return;
 
     //TODO make sure answer and response treated the same way interms of rounding
-    var answer = $scope.fillInTheBlankAnswers[questionNum-1];
+    var answer = $scope.fillInTheBlankAnswers[questionNum]();
+    console.log('answer');
+    console.log(answer);
     var response = $scope.response.value;
 
     if(response == answer) {

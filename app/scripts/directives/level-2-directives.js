@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('directives.ue.level-2', [])
-.directive('twoDecimalPlaces', function() {
+.directive('requireTwoDecimalPlacesBkUp', function() {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
@@ -17,6 +17,44 @@ angular.module('directives.ue.level-2', [])
 				ngModel.$setViewValue(output);
 				ngModel.$render();
 			});
+		}
+	}
+})
+.directive('requireTwoDecimalPlaces', function() {
+	return {
+		restrict: 'A',
+		require: 'ngModel',
+		link: function(scope, elem, attrs, ngModelCtrl) {
+
+			function parse(inputValue) { //with the div in the template function is never called
+                var transformedInput = putDecimals(inputValue); 
+		        if (transformedInput!=inputValue) {
+		        	//update the model
+		            ngModelCtrl.$setViewValue(transformedInput);
+		            //update the view 
+		            //in docs says "It is expected that the user of the ng-model directive will implement this method. http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController"
+		            //but I don't see that in examples such as: http://stackoverflow.com/questions/14419651/angularjs-filters-on-ng-model-in-an-input/14425022#14425022
+		            //so Im going to use it as defined until I get clarity
+		            ngModelCtrl.$render();
+		        }  
+		        console.log('Parsed'+inputValue+' into '+transformedInput);
+		        //??? we just set the model value didnt we?? 
+		        return transformedInput; 
+			}
+
+			function format(value) { //with the div in the template, string is always 'undefined' and the function is only called once
+				return putDecimals(value);
+			}
+
+			function putDecimals(value) {
+				if( isNaN( parseFloat( value) ) ) {
+					return "0.00";
+				} else {
+					 return (Math.round(parseFloat(value)*100)/100).toFixed(2)
+				}
+			}
+			//ngModelCtrl.$parsers.push(parse);
+			ngModelCtrl.$formatters.push(format);
 		}
 	}
 })
@@ -291,8 +329,8 @@ angular.module('directives.ue.level-2', [])
 
     arcContainer.append("text")
         .attr("transform", function(d) { return "translate(" + arc.centroid(d) + ") rotate(-"+ rotation +")"; })
-        .attr("dy", "-1em")
-        .attr("dx", "-1em")
+        .attr("dy", "-.6em")
+        .attr("dx", "-.6em")
         .attr("class", function(d){ return d.data.className + "-percentage-label"})
         .style("text-anchor", "middle")
         .style("font-size", "14px")
@@ -300,7 +338,8 @@ angular.module('directives.ue.level-2', [])
         .style("stroke", "none")
         .style("display", "none")
         .text(function(d) {
-         return Math.round(d.data.population/total * 100)+"%"; 
+        	var val = Math.round(d.data.population/total * 10000)/100
+         return val +"%"; 
     });
 
     var legend = svg.append("g")
