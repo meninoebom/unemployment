@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDataService', 'unemploymentDataService',  function($scope, $state ,$timeout, mapDataService, unemploymentDataService) {
 	$scope.dataSpec = {};
-	$scope.dataSpec.question = 1;
+	$scope.dataSpec.question = 4;
 	$scope.dataSpec.latestDateAvailable = {
 		year: 2013,
 		month: 7,

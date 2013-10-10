@@ -307,17 +307,16 @@ services.factory('mapDataService',['$http', function($http) {
 		getCountyUnempDataForDate: function(state_name, county_name, d) {
 			// console.log('getting '+region_name+' data for date '+d);
 			var that = this;
-			var data;
+			var data = {val: 0};
 			that._prefetchRegion('United States', function() {
 				that._prefetchRegion(state_name, function() {
 					var dataSource = that.allRegionData[state_name];
 					var dateIndex = that.calculateMonthsBetween(dataSource.start_date, d);
 					var countyData = _.findWhere(dataSource.sub_regions, {name: county_name});
-					return countyData.value;
-
+					data.val = countyData.values[dateIndex];
 				});
 			});
-			return data;
+			return data.val;
 		},
 		
 		_getChartableDataset: function(dataValues, start_date) {
