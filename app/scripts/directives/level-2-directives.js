@@ -1,11 +1,25 @@
 'use strict';
 
 angular.module('directives.ue.level-2', [])
-.directive('requireTwoDecimalPlacesBkUp', function() {
+.directive('requireTwoDecimalPlaces', function() {
 	return {
 		restrict: 'A',
 		require: 'ngModel',
 		link: function(scope, elem, attrs, ngModel) {
+
+			function parse(inputValue) {
+				if(isNaN(inputValue)) return 0;
+				return inputValue;
+			}
+			function format(outputValue) {
+				var re = new RegExp('^\.{0,6}$');
+				if(!re.test(outputValue)) {
+					var array = outputValue.split("");
+					array.pop();
+					outputValue = array.join("");
+				}
+				return outputValue;
+			}
 			elem.on('blur', function() {
 				var input = ngModel.$viewValue;
 				if( isNaN( parseFloat( input ) ) ) {
@@ -17,44 +31,8 @@ angular.module('directives.ue.level-2', [])
 				ngModel.$setViewValue(output);
 				ngModel.$render();
 			});
-		}
-	}
-})
-.directive('requireTwoDecimalPlaces', function() {
-	return {
-		restrict: 'A',
-		require: 'ngModel',
-		link: function(scope, elem, attrs, ngModelCtrl) {
-
-			function parse(inputValue) { //with the div in the template function is never called
-                var transformedInput = putDecimals(inputValue); 
-		        if (transformedInput!=inputValue) {
-		        	//update the model
-		            ngModelCtrl.$setViewValue(transformedInput);
-		            //update the view 
-		            //in docs says "It is expected that the user of the ng-model directive will implement this method. http://docs.angularjs.org/api/ng.directive:ngModel.NgModelController"
-		            //but I don't see that in examples such as: http://stackoverflow.com/questions/14419651/angularjs-filters-on-ng-model-in-an-input/14425022#14425022
-		            //so Im going to use it as defined until I get clarity
-		            ngModelCtrl.$render();
-		        }  
-		        console.log('Parsed'+inputValue+' into '+transformedInput);
-		        //??? we just set the model value didnt we?? 
-		        return transformedInput; 
-			}
-
-			function format(value) { //with the div in the template, string is always 'undefined' and the function is only called once
-				return putDecimals(value);
-			}
-
-			function putDecimals(value) {
-				if( isNaN( parseFloat( value) ) ) {
-					return "0.00";
-				} else {
-					 return (Math.round(parseFloat(value)*100)/100).toFixed(2)
-				}
-			}
-			//ngModelCtrl.$parsers.push(parse);
-			ngModelCtrl.$formatters.push(format);
+			ngModel.$parsers.push(parse);
+			ngModel.$formatters.push(format);
 		}
 	}
 })

@@ -17,7 +17,7 @@ $scope.eqTool = {
 $scope.fillInTheBlankAnswers = {
   1: function() {
     //63.61
-    return Math.round(($scope.employmentCategories[6].count/$scope.employmentCategories[5].count)*10000)/100
+    return Math.round(($scope.employmentCategories[6].count/$scope.employmentCategories[5].count)*10000)/100;
   },  
   2: function() {
     //92.11
@@ -195,8 +195,7 @@ $scope.employmentCategories = [
 
     //TODO make sure answer and response treated the same way interms of rounding
     var answer = $scope.fillInTheBlankAnswers[questionNum]();
-    console.log('answer');
-    console.log(answer);
+
     var response = $scope.response.value;
 
     if(response == answer) {
