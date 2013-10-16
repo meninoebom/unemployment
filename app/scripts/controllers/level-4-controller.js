@@ -4,7 +4,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 	$scope.dialPopCurMonth = {val: 0};
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
-	$scope.currentQuestionNum = {val: 4};
+	$scope.currentQuestionNum = {val: 6};
 	$scope.recessionsIsCollapsed = true;
 	$scope.expansionsIsCollapsed = true;
 	$scope.selectedPeriods = [];
@@ -103,12 +103,32 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 					return item.difference;
 				});
 			}
-			debugger;
 			return greatestDifference.letter;
 		},
 		6: function() {
-			//TODO calculate and return answer dynamically
-			return 'a';
+			var dataObj = $scope.getPeriodDataForQuestion(6);
+			var differences = [];
+			for (var i = 0; i < 3; i++) {
+				differences[i] = {};
+				var lowestKeyValPair = _.min(dataObj[i].unemploymentData, function(item) {
+					return item[1];
+				});
+				var highestKeyValPair = _.max(dataObj[i].unemploymentData, function(item) {
+					return item[1];
+				});
+				var absDiffOfHighestRate = Math.abs(highestKeyValPair[1] - 5.6);
+				var absDiffOfLowestRate = Math.abs(5.6 - lowestKeyValPair[1]);
+				var difference = _.max([absDiffOfHighestRate, absDiffOfLowestRate]);
+				differences[i].letter = dataObj[i].letter;
+				differences[i].difference = difference;
+			}
+			var greatestDifference;
+			for (var i = 0; i < 3; i++) {
+				greatestDifference = _.max(differences, function(item) {
+					return item.difference;
+				});
+			}
+			return greatestDifference.letter;
 		}
 
 	};

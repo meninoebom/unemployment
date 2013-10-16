@@ -52,7 +52,6 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
         baseClass: "intro"
       })
       .state('level-4', {
-        //url: "",
         url: "/level/4",
         templateUrl: "views/level-4/level-4-main.html",
         controller: "Level4Ctrl",
