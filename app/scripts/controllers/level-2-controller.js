@@ -152,7 +152,7 @@ $scope.employmentCategories = [
       moveFromCategoryId: 2,
       moveToCategoryId: 1,
       answers: {
-        laborForceParticipation: 'stay',
+        laborForceParticipation: 'same',
         employment: 'increase',
         unemployment: 'decrease'
       }
@@ -195,7 +195,6 @@ $scope.employmentCategories = [
 
     //TODO make sure answer and response treated the same way interms of rounding
     var answer = $scope.fillInTheBlankAnswers[questionNum]();
-
     var response = $scope.response.value;
 
     if(response == answer) {
@@ -207,10 +206,10 @@ $scope.employmentCategories = [
         function() {
           $scope.loadNextFillInTheBlankQuestion();
           $scope.locked = false;
-         } ,
+         },
         2000
       );
-    } else if (response != answer){
+    } else if (response !== answer){
       $scope.numAttempts += 1;
       var eventName = "showIncorrectResponsePopover-"+questionNum;
       $scope.$broadcast(eventName, 
@@ -224,7 +223,7 @@ $scope.employmentCategories = [
   $scope.loadNextFillInTheBlankQuestion = function() {
     $scope.$apply(function() {
       $scope.currentQuestion.num = $scope.currentQuestion.num + 1;
-      $scope.response.value = 0;
+      $scope.response = {value: '0.00'};
       $scope.numAttempts = 0;
     })
   }
@@ -258,7 +257,6 @@ $scope.employmentCategories = [
         3000
       );    
     } else {
-      //tally the score here
       $scope.showScenarioFeedback($scope.currentScenario);
     }
   }
@@ -286,19 +284,36 @@ $scope.employmentCategories = [
     }
 
     if (allAnswersCorrect) {
-      $scope.$broadcast('showCorrectResponsePopover', 
-        function() { 
-          $scope.locked = true; 
-          $scope.doAnimation(currentScenario);
-        },
-        function() { 
-          $scope.$apply(function () {
-            $scope.getNextScenario();
-          });
-          $scope.locked = false; 
-        },
-        4000
-      );
+      if ($scope.currentQuestion.num >= 7) {
+        $scope.$broadcast('showCorrectResponsePopover', 
+          function() { 
+            $scope.locked = true; 
+            $scope.doAnimation(currentScenario);
+          },
+          function() { 
+            $scope.$apply(function () {
+              $state.transitionTo('level-3-intro');
+            });
+            $scope.locked = false; 
+          },
+          4000
+        );
+      } else {
+        $scope.$broadcast('showCorrectResponsePopover', 
+          function() { 
+            $scope.locked = true; 
+            $scope.doAnimation(currentScenario);
+          },
+          function() { 
+            $scope.$apply(function () {
+              $scope.getNextScenario();
+            });
+            $scope.locked = false; 
+          },
+          4000
+        );
+        $scope.currentQuestion.num = $scope.currentQuestion.num + 1;
+      }
     } else {
       $scope.$broadcast('showScenarioFeedbackPopover', 
         function() { $scope.locked = true; },

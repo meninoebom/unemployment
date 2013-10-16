@@ -1,7 +1,7 @@
 <div class="question-area-indicator"><img src="img/indicator_question.png" width="44" height="90" /></div>
 
 <div class="question" ng-show="dataSpec.question==1">
-	<p>What happened to the national unemployment rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
+	<p>1 What happened to the national unemployment rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question1" value="increased" />
@@ -19,7 +19,7 @@
 </div>
 
 <div class="question" ng-show="dataSpec.question==2">
-	<p>How does the national unemployment rate in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} compare to the natural rate of unemployment in the same month?</p>
+	<p>2 How does the national unemployment rate in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} compare to the natural rate of unemployment in the same month?</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question2" value="higher" />
@@ -37,7 +37,7 @@
 </div>
 
 <div class="question" ng-show="dataSpec.question==3">
-	<p>What happened to the labor force participation rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
+	<p>3 What happened to the labor force participation rate between {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} and {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question3" value="increased" />
@@ -55,7 +55,7 @@
 </div>
 
 <div class="question" ng-show="dataSpec.question==4">
-	<p>The national unemployment rate {{answers.1()}} and the labor force participation rate {{answers.3()}} from {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} to {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}.  At the same time, the natural rate of unemployment in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was {{answers.2()}}. What is a possible explanation for this?</p>
+	<p>4 The national unemployment rate {{answers.1()}} and the labor force participation rate {{answers.3()}} from {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year - 1}} to {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}}.  At the same time, the natural rate of unemployment in {{dataSpec.latestDateAvailable.monthName}} {{dataSpec.latestDateAvailable.year}} was {{answers.2()}}. What is a possible explanation for this?</p>
 	<ul class="clearfix">
 		<li>
 			<input type="radio" name="question4" value="a" />

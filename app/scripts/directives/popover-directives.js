@@ -21,10 +21,12 @@ angular.module('directives.ue.popovers', [])
 							$(element).fadeOut('slow', function() {
 								showing = false;
 								if (fadeOutCallback) fadeOutCallback();
-							})	
+							});
+							$('body').unbind('click.popover keyup.popover');
 						}, timer);
 					}
 					$('body').bind('click.popover keyup.popover', function(e) {
+						console.log('click.popover');
 						window.clearTimeout(timeOutId);
 						$(element).fadeOut('slow');
 						$(this).unbind('click.popover keyup.popover');

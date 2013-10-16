@@ -29,7 +29,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		{name: "April 1960 - February 1961", startDate: "1960-04", endDate: "1961-02"},
 		{name: "December 1969 - November 1970", startDate: "1969-12", endDate: "1970-11"},
 		{name: "November 1973 - March 1975", startDate: "1973-11", endDate: "1975-03"},
-		{name: "Janurary 1980 - July 1980", startDate: "1980-01", endDate: "1980-07"},
+		{name: "January 1980 - July 1980", startDate: "1980-01", endDate: "1980-07"},
 		{name: "July 1981 - November 1982", startDate: "1981-07", endDate: "1982-11"},
 		{name: "July 1990 - March 1991", startDate: "1990-07", endDate: "1991-03"},
 		{name: "March 2001 - November 2001", startDate: "2001-03", endDate: "2001-11"},
@@ -41,17 +41,17 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		{name: "October 1949 - July 1953", startDate: "1949-10", endDate: "1953-07"},
 		{name: "May 1954 - August 1957", startDate: "1954-03", endDate: "1957-08"},
 		{name: "April 1958 - April 1960", startDate: "1958-04", endDate: "1960-04"},
-		{name: "Feb 1961 - December 1969", startDate: "1961-02", endDate: "1969-12"}
+		{name: "February 1961 - December 1969", startDate: "1961-02", endDate: "1969-12"}
 	];
 
-	$scope.questions = [
-		{text: "During which of the recessionary periods did the United States Unemployement Rate reach the highest level?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{text: "During which of the recessionary periods did the United States Unemployement Rate increase the most from its lowest to its highest?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{text: "During which of the recessionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
-		{text: "During which of the expansionary periods did the United States Unemployement Rate reach the lowest level?", a: "", b: "", c: ""},
-		{text: "During which of the following expansionary periods did the United States Unemployement Rate decrease the most from its highest to its lowest rate?", a: "", b: "", c: ""},
-		{text: "During which of the following expansionary periods did the United States Unemployement Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
-	];
+	$scope.questions = {
+		1: {text: "During which of the recessionary periods did the United States Unemployment Rate reach the highest level?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		2: {text: "During which of the recessionary periods did the United States Unemployment Rate increase the most from its lowest to its highest?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		3: {text: "During which of the recessionary periods did the United States Unemployment Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%?", a: "Great Depression: August 1929 - March 1933", b: "", c: "Great Recession: December 2007 - June 2009"},
+		4: {text: "During which of the expansionary periods did the United States Unemployment Rate reach the lowest level?", a: "", b: "", c: ""},
+		5: {text: "During which of the following expansionary periods did the United States Unemployment Rate decrease the most from its highest to its lowest rate?", a: "", b: "", c: ""},
+		6: {text: "During which of the following expansionary periods did the United States Unemployment Rate differ the most from the Natural Rate of Unemployment Historical average of 5.6%", a: "", b: "", c: ""}
+	};
 
 	$scope.answers = {
 		1: function() {
@@ -83,8 +83,28 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 			return lowestRate.letter;
 		},
 		5: function() {
-			//TODO calculate and return answer dynamically
-			return 'a';	
+			var dataObj = $scope.getPeriodDataForQuestion(5);
+			var differences = [];
+			for (var i = 0; i < 3; i++) {
+				differences[i] = {};
+				var lowestKeyValPair = _.min(dataObj[i].unemploymentData, function(item) {
+					return item[1];
+				});
+				var highestKeyValPair = _.max(dataObj[i].unemploymentData, function(item) {
+					return item[1];
+				});
+				var difference = highestKeyValPair[1] - lowestKeyValPair[1];
+				differences[i].letter = dataObj[i].letter;
+				differences[i].difference = difference;
+			}
+			var greatestDifference;
+			for (var i = 0; i < 3; i++) {
+				greatestDifference = _.max(differences, function(item) {
+					return item.difference;
+				});
+			}
+			debugger;
+			return greatestDifference.letter;
 		},
 		6: function() {
 			//TODO calculate and return answer dynamically
@@ -234,7 +254,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 		});
 		randomizedRecessions = _.shuffle(randomizedRecessions);
 		for (var i = 0; i < 3; i++) {
-			$scope.questions[i].b = randomizedRecessions[i];
+			$scope.questions[i+1].b = randomizedRecessions[i];
 		}
 		for (var j = 0; j < 3; j++) {
 			var randomizedExpansions = [];
@@ -242,9 +262,9 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 				randomizedExpansions.push(item.name);
 			});
 			randomizedExpansions = _.shuffle(randomizedExpansions);
-			$scope.questions[j+3].a = randomizedExpansions[j];
-			$scope.questions[j+3].b = randomizedExpansions[j+1];
-			$scope.questions[j+3].c = randomizedExpansions[j+2];
+			$scope.questions[j+4].a = randomizedExpansions[j];
+			$scope.questions[j+4].b = randomizedExpansions[j+1];
+			$scope.questions[j+4].c = randomizedExpansions[j+2];
 		}
 	}
 

@@ -105,7 +105,7 @@ angular.module('directives.ue.level-4', [])
             .attr("x", -height/2)
             .attr("dy", ".71em")
             .style("text-anchor", "middle")
-            .text("Unemployement Rate (% of Labor Force)");
+            .text("Unemployment Rate (% of Labor Force)");
         
         svg.select(".y.axis")
             .selectAll(".tick")

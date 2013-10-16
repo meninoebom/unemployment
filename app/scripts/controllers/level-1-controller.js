@@ -14,7 +14,7 @@ unemploymentApp.controller('Level1Ctrl', ['$scope', function($scope) {
       {gender: "f", failedAttempts: 0, name: "Jiayi", description: "stays home cooking, cleaning and taking care of her home and her family", employmentCategoryId: 5, active: "true"},
       {gender: "f", failedAttempts: 0, name: "Lauren", description: "volunteers 30 hours a week in a local soup kitchen", employmentCategoryId: 5, active: "true"},
       {gender: "m", failedAttempts: 0, name: "Morgan", description: "works 20 hours each week at an on campus bookstore", employmentCategoryId: 1, active: "true"},
-      {gender: "f", failedAttempts: 0, name: "Amanda", description: "used to work at a travel agency that has closed recenly due to lack of business caused by online travel websites", employmentCategoryId: 3, active: "true"},
+      {gender: "f", failedAttempts: 0, name: "Amanda", description: "used to work at a travel agency that has closed recently due to lack of business caused by online travel websites", employmentCategoryId: 3, active: "true"},
       {gender: "m", failedAttempts: 0, name: "Eric", description: "needed a break from his job search and has not looked for a job in two weeks", employmentCategoryId: 2, active: "true"},
       {gender: "f", failedAttempts: 0, name: "LaShanna", description: "used to work at a real estate office, which recently laid off some of its workers, including LaShanna, due to the recession", employmentCategoryId: 4, active: "true"}
     ];
