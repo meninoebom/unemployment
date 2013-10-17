@@ -4,8 +4,8 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 	$scope.dialPopCurMonth = {val: 0};
 	$scope.detailPopCurMonth = {val: 0};
     $scope.detailPeriod = {};
-	$scope.currentQuestionNum = {val: 6};
-	$scope.recessionsIsCollapsed = true;
+	$scope.currentQuestionNum = {val: 1};
+	$scope.recessionsIsCollapsed = false;
 	$scope.expansionsIsCollapsed = true;
 	$scope.selectedPeriods = [];
 	$scope.currentSelectionList;
