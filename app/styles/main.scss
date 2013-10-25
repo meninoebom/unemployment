@@ -10,7 +10,6 @@ $green: #0f673a;
 $lightGreen: #8ec859;
 $blue: #0d5b92;
 $lightBlue: #70caf2;
-/*$lightBlue: #66ccff;*/
 $red: #990000;
 $purple: #660066;
 $lightPurple: #dcb3ff;
@@ -46,8 +45,6 @@ $lightPurple: #dcb3ff;
 }
 
 $semibold: 'open_sanssemibold', "Helvetica Neue", Helvetica, Arial, sans-serif;
-
-/* Put your CSS here */
 
 /* apply a natural box layout model to all elements */
 /*http://www.paulirish.com/2012/box-sizing-border-box-ftw/*/
@@ -91,6 +88,7 @@ div, ul, li, p, h1, h2, h3, h4 {
     height: 100%;
     float: left;
 }
+
 .vert-center-wrapper:before {
   content: '';
   display: inline-block;
@@ -99,6 +97,7 @@ div, ul, li, p, h1, h2, h3, h4 {
   width: 1%;
   /*margin-right: -0.25em;  Adjusts for spacing */
  }
+
  .vert-center {
     display: inline-block;
     vertical-align: middle;

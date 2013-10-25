@@ -1,9 +1,9 @@
 
-.level-1-container {
+.tree {
     @include clearfix;
     .correct-popover, .incorrect-popover, .instruction-popover {
-        top: 300px;
-        left: 422px;
+        top: 214px;
+        left: 114px;
     }
 }
 

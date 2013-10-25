@@ -480,7 +480,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			if(question === 6) {
 				$scope.$broadcast('showCorrectResponsePopover', 
 					function() { $scope.locked = true; },
-					function() { $scope.goToLevel4(); } ,
+					function() { $scope.goToLevel4(); },
 					2000
 				);
 			} else {

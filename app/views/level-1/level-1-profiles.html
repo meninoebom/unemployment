@@ -1,21 +1,20 @@
-	<div class="profiles">
-		<h2 class="profiles-header">Are they unemployed?</h2>
-		<ul>
-			<li 
-				ng-repeat="profile in profiles"
-				ng-model="profile"
-				profile="profile"
-				profile-bg
-				draggable="{{profile.active}}" 
-				ng-class="{'profile': true, 'active': profile.active}" 
-				index="{{$index}}"  
-				id="profile-{{$index}}" 
-				show-details
-				>
-				<span class="failed-attempts-count" ng-show="profile.failedAttempts" >
-					{{profile.failedAttempts}}
-					<div class="failed-attempts-details"></div>
-				</span>
-			</li>
-		</ul>
-	</div>
+<h2 class="profiles-header">Are they unemployed?</h2>
+<ul>
+	<li 
+		ng-repeat="profile in profiles"
+		ng-model="profile"
+		profile="profile"
+		profile-bg
+		draggable="{{profile.active}}" 
+		ng-class="{'profile': true, 'active': profile.active}" 
+		index="{{$index}}"  
+		id="profile-{{$index}}" 
+		show-details
+		>
+		<span class="failed-attempts-count" ng-show="profile.failedAttempts" >
+			{{profile.failedAttempts}}
+			<div class="failed-attempts-details"></div>
+		</span>
+	</li>
+</ul>
+

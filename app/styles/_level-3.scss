@@ -1,8 +1,9 @@
 .level-3-container {
 	@include clearfix;
+	position: relative;
 	.correct-popover, .incorrect-popover, .instruction-popover {
-	    top: 300px;
-	    left: 322px;
+	    top: 270px;
+	    left: 145px;
 	}
 }
 
