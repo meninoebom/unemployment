@@ -13,7 +13,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 	$scope.dataSpec.nairuValue = 0;
 	$scope.dataSpec.view = "map";
 	$scope.dataSpec.mode = "exploration";
-	$scope.dataSpec.year = '2000';
+	$scope.dataSpec.years = '2000';
 	$scope.dataSpec.month = '1';
 	$scope.years = [];
 	$scope.months = [];
@@ -49,10 +49,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 			if (startUnempRate < endUnempRate) return 'increased';
 		},
 		2: function() {
-			//////////////////////////////////
-			//need to get Natural Unemployment Rate
-			//////////////////////////////////
-			var naturalUnempRate = 8;
+			var naturalUnempRate = unemploymentDataService.getNairuDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			var unempRate = unemploymentDataService.getUSUnemploymentDataForDate($scope.dataSpec.latestDateAvailable.year+'-'+$scope.dataSpec.latestDateAvailable.month+'-01');
 			if (unempRate === naturalUnempRate) return 'stayed the same';
 			if (unempRate > naturalUnempRate) return 'higher';
