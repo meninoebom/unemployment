@@ -29,19 +29,21 @@ angular.module('directives.ue.level-1', [])
     return {
 		restrict: 'A',
 		link: function(scope, elem, attrs, ctrl) {
+			var theElem = elem;
 		    var whichImg = Math.floor(Math.random()*3)+1;
 	        scope.$watch(attrs.profile, function(profile) {
 		        var gender = (profile.gender == 'm') ? 'male' : 'female';
 				if(profile.active) {
 			    	elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_active.png')");
-	        		elem.bind('mouseenter', function(){
+	        		elem.bind('mouseenter.bg', function(){
 			            elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_roll.png')");
-			        }).bind('mouseleave', function(){
+			        }).bind('mouseleave.bg', function(){
 				        elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_active.png')");
 			        })
 	        	} else {
+			        elem.unbind('mouseenter.bg');
+			        elem.unbind('mouseleave.bg');
 			        elem.css("background-image", "url('img/profiles/"+gender+"/"+whichImg+"_inactive.png')");
-			        elem.unbind();
 	        	}	        
 	        }, true);
 		}
