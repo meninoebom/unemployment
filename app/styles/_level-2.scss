@@ -132,7 +132,7 @@ input[type="number"].level-2-response-field {
 }
 
 .scenario-radio-buttons-container {
-    margin: 20px 20px 0 0;
+    margin: 7px 20px 0 0;
     float: left;
     .scenario-category-header {
         float: left;
@@ -141,8 +141,8 @@ input[type="number"].level-2-response-field {
     .scenario-category-label {
         float: left;
         font-family: 'open_sansbold';
-        @include font(14px, 16px);
-        margin: 0 10px 5px 0;
+        @include font(13px, 16px);
+        margin: 0 10px 2px 0;
     }
     .info-button {
         border: 0; 
@@ -168,16 +168,23 @@ input[type="number"].level-2-response-field {
 }
 
 .question .choose-one-instruction {
-    @include font(16px, 18px);
+    @include font(14px, 18px);
     font-family: 'open_sansregular';
 }
 .question .round-instruction{
-    @include font(16px, 18px);
+    @include font(14px, 18px);
     font-family: 'open_sansregular';
 }
 
 .level-2-question-area {
     width: 721px;
+    height: 175px;
+    .scenario-question {
+        @include font(14px, 18px);
+        & > p {
+            margin-bottom: 0px;
+        }
+    }
 }
 
 #scenario-feedback-modal {

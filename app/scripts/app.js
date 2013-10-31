@@ -56,6 +56,12 @@ var unemploymentApp = angular.module('unemploymentApp', ['ui','ui.state', 'angul
         templateUrl: "views/level-4/level-4-main.html",
         controller: "Level4Ctrl",
         baseClass: "level-4"
+      })
+      .state('recap', {
+        url: "/recap",
+        templateUrl: "views/recap.html",
+        controller: "RecapCtrl",
+        baseClass: "recap"
       });
   }]).run(["$rootScope", "$state", "$stateParams" ,function ($rootScope, $state, $stateParams) {
     $rootScope.$state = $state;

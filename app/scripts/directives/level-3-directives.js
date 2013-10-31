@@ -484,7 +484,7 @@ angular.module('directives.ue.level-3', [])
 	         
 	        scope.$watch("selectedRegions", function() {
 	          redrawEntireGraph(2014, scope.highestVisibleRate);
-	        });
+	        }, true);
 
 	  	}// end link function
     }// end returned object

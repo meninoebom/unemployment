@@ -789,7 +789,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 		}
 	];
 
-	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year', function() {
+	$scope.$watch('usChartData + stateChartData + county1ChartData + county2ChartData + dataSpec.month + dataSpec.year + dataSpec.view', function(oldVal, newVal) {
 		$scope.unemploymentRateMap['United States'] = $scope.dataSpec.usValue;
 		$scope.unemploymentRateMap[$scope.dataSpec.regionName] = $scope.regionValue;
 		$scope.unemploymentRateMap[$scope.dataSpec.county1] = $scope.county1Value;
@@ -810,7 +810,7 @@ unemploymentApp.controller('Level3Ctrl', ['$scope','$state', '$timeout', 'mapDat
 
 	$scope.$watch('selectedRegions', function() {
 		$scope.highestUnempRateOfSelectedPeriods();
-	});
+	}, true);
 
 	$scope.showMonthDialPopover = false;
 

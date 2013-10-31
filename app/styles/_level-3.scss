@@ -415,8 +415,10 @@
 }
 
 .level-3-question-area {
-    padding: 19px 16px 40px 65px;
     width: 100%;
+    min-height: 0;
+    height: 129px;
+    padding-top: 8px;
     .question-area-indicator {
         margin-top: 5px;
 	}
@@ -430,7 +432,7 @@
 	    li {
 	    	display: block;
 	    	@include clearfix;
-	    	margin-bottom: 8px;
+	    	margin-bottom: 3px;
 	    }
 	    .choice{
 	    	width: 700px;
@@ -444,6 +446,10 @@
             bottom: -4px;
             margin: 0 10px 0 0;
             float: left;
+        }
+        & > p {
+        	margin-bottom: 3px;
+        	@include font(15px, 18\7px);
         }
     }
 }

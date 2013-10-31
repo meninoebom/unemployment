@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state', '$filter',  function($scope, $state, $filter ) {
 
-$scope.currentQuestion = {num: 1};//which question will display first
+$scope.currentQuestion = {num: 4};//which question will display first
 $scope.response = {value: '0.00'};
 $scope.instruction = ""
 $scope.locked = false;
@@ -157,7 +157,7 @@ $scope.employmentCategories = [
         unemployment: 'decrease'
       }
     },
-    { text: "a group of full time sutdents graduate and get full time jobs",
+    { text: "a group of full time students graduate and get full time jobs",
       moveFromCategoryId: 5,
       moveToCategoryId: 1,
       answers: {

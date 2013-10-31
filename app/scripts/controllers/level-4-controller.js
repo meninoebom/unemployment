@@ -316,7 +316,7 @@ unemploymentApp.controller('Level4Ctrl', ['$scope', 'unemploymentDataService', '
 					function() { $scope.locked = true; }, 
 					function() { 
 						$scope.$broadcast('closeAllPopovers');
-						$state.transitionTo('intro'); 
+						$state.transitionTo('recap'); 
 					},
 					2000 
 				);

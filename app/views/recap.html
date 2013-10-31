@@ -1,0 +1,10 @@
+<div class="recap-container">
+	<img src="img/pearson_logo.gif" class="logo" style="width:92px; height:27px;" width="92" height="27" alt="Pearson" />
+	<h1>Unemployment: <span>Recap</span></h1>
+	<div ng-show="step > 1" class="level-description recognize"><h2>Level 1: Recognize</h2><p>Distinguish between employment, the different types of unemployment (frictional, structural, and cyclical), the labor force, the non-labor force, and the adult population.</p></div>
+	<div ng-show="step > 2" class="level-description calculate"><h2>Level 2: Calculate</h2><p>Calculate the unemployment, employment, and labor force participation rates, along with the natural rate of unemployment using simulated data.</p></div>
+	<div ng-show="step > 3" class="level-description analyze"><h2>Level 3: Analyze</h2><p>Explain and measure the unemployment, employment, and labor force participation rates, along with the natural rate of unemployment, using real national, state, and regional data.</p></div>
+	<div ng-show="step > 4" class="level-description compare"><h2>Level 4: Compare</h2><p>Compare the different measures of the United States unemployment, employment, and labor force participation rates over time.</p></div>
+	<button ng-show="step < 5" class="button-link blue" ng-click="next()" type="button">Next</button>
+	<button ng-show="step == 5" class="button-link blue" ng-click="finish()" type="button">Finish</button>
+</div>
