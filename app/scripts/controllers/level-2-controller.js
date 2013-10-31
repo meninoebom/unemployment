@@ -2,7 +2,7 @@
 
 unemploymentApp.controller('Level2Ctrl', ['$scope', '$state', '$filter',  function($scope, $state, $filter ) {
 
-$scope.currentQuestion = {num: 4};//which question will display first
+$scope.currentQuestion = {num: 1};//which question will display first
 $scope.response = {value: '0.00'};
 $scope.instruction = ""
 $scope.locked = false;
@@ -103,7 +103,7 @@ $scope.employmentCategories = [
   };
 
   $scope.scenarios = [
-    { text: "a group of people who are employed full time lose thier jobs and find part time employment",
+    { text: "a group of people who are employed full time lose their jobs and find part time employment",
       moveFromCategoryId: null,
       moveToCategoryId: null,
       answers: {
@@ -130,7 +130,7 @@ $scope.employmentCategories = [
         unemployment: 'increase'
       }
     },
-    { text: "a group of baby boomers reitre from heir full time jobs",
+    { text: "a group of baby boomers retire from their full time jobs",
       moveFromCategoryId: 1,
       moveToCategoryId: 5,
       answers: {
