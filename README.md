@@ -16,9 +16,10 @@ D3.js
 h3. Running
 bc. npm install
 bc. bower install
+bc. grunt server
 
 h3. Building
-bc. Grunt Build
+bc. grunt build
 
 
 h3. Drag and Drop
